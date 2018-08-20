@@ -44,6 +44,12 @@ Route::prefix('admin')->group(function() {
     Route::get('/category_add/{id?}', 'Admin\CategoryController@create')->name('admin.category_add');
     Route::post('/category_store/{id?}', 'Admin\CategoryController@save_category')->name('admin.category_store');
     Route::get('/category_delete/{id}', 'Admin\CategoryController@destroy')->name('admin.category_delete');
+	
+	/*     * ********category routes ******************* */
+    Route::any('/story_list', 'Admin\StoryController@index')->name('admin.story_list');
+    Route::get('/story_add/{id?}', 'Admin\StoryController@create')->name('admin.story_add');
+    Route::post('/story_store/{id?}', 'Admin\StoryController@save_story')->name('admin.story_store');
+    Route::get('/story_delete/{id}', 'Admin\StoryController@destroy')->name('admin.story_delete');
 
     /*     * ********event type routes ******************* */
     Route::get('/eventtype_list', 'Admin\EventTypeController@index')->name('admin.eventtype_list');

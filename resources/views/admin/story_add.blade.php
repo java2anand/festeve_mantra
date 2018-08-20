@@ -75,7 +75,7 @@
                                 <?php
                                     $image = (isset($story->image) && !empty($story->image)) ? $story->image: '';
                                     if (file_exists( public_path() . '/images/story/' . $image)) {?>
-                                        <img src="{{ asset( 'public/images/story/'.$image)}}" />
+                                        <img src="{{ asset( 'public/images/story/'.$image)}}" width="25px;" height="25px;"/>
                                 <?php }?>
                             </div>
 
