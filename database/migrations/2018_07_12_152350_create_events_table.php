@@ -25,6 +25,7 @@ class CreateEventsTable extends Migration {
             $table->time('start_time');
             $table->time('end_time');
             $table->string('event_image');
+            $table->string('event_top_banner');
             $table->string('event_location');
             $table->text('event_address');
             $table->integer('city');

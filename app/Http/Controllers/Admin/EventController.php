@@ -57,26 +57,25 @@ class EventController extends Controller {
         $event->short_description = !empty($request->short_description) ? $request->short_description : '';
         $event->description = !empty($request->description) ? $request->description : '';
         $event->status = $request->status;
-		
-		/* Event Top Banner */
-		if ($request->hasFile('event_top_banner')) {
+
+        /* Event Top Banner */
+        if ($request->hasFile('event_top_banner')) {
             $file = $request->file('event_top_banner');
             $imagename = time() . '.' . $file->getClientOriginalExtension();
             $destinationPath = public_path('/images/event/top_banner');
             $thumb_img = Image::make($file->getRealPath())->resize(100, 100);
-            $thumb_img->save($destinationPath . '/' . $imagename, 80);
 
-            $destinationPath = public_path('/images/event/top_banner');
-            if ($file->move($destinationPath, $imagename)) {
+            //$destinationPath = public_path('/images/event/top_banner');
+            //if ($file->move($destinationPath, $imagename)) {
+            if ($thumb_img->save($destinationPath . '/' . $imagename, 80)) {
                 $prev_image_origi = public_path('images/event/top_banner') . '/' . $request->old_event_top_banner;
-                
-				@unlink($prev_image_origi);
+                @unlink($prev_image_origi);
             }
             $event->event_top_banner = $imagename;
         } else {
             $event->event_top_banner = (!empty($request->old_event_top_banner)) ? $request->old_event_top_banner : '';
         }
-		/* Event Top Banner */
+        /* Event Top Banner */
         /*         * **** event image + thumbnail ******** */
         if ($request->hasFile('event_image')) {
             $file = $request->file('event_image');
@@ -111,7 +110,7 @@ class EventController extends Controller {
         return redirect()->route('admin.category_list')->with('alert-success', 'Saved successfully!');
     }
 
-    public function save_schedule(Request $request,$event_id = false) {
+    public function save_schedule(Request $request, $event_id = false) {
         $page = 'add_event';
         $current_tab = 'event_schedule';
         $event_schedules_array = array();
@@ -123,11 +122,11 @@ class EventController extends Controller {
         }
         //dd($request);
         if ($request->isMethod('post')) {
-            for($i=0;$i< count($request->title);$i++) {
+            for ($i = 0; $i < count($request->title); $i++) {
                 $save_array = array(
                     'event_id' => $event_id,
                     'title' => (!empty($request->title[$i])) ? $request->title[$i] : '',
-                    'date' => (!empty($request->event_date[$i])) ? date('Y-m-d',strtotime($request->event_date[$i])) : '',
+                    'date' => (!empty($request->event_date[$i])) ? date('Y-m-d', strtotime($request->event_date[$i])) : '',
                     'from_time' => (!empty($request->from_time[$i])) ? $request->from_time[$i] : '',
                     'to_time' => (!empty($request->to_time[$i])) ? $request->to_time[$i] : '',
                     'status' => (!empty($request->status[$i])) ? $request->status[$i] : '',
@@ -135,9 +134,9 @@ class EventController extends Controller {
                 );
 
 
-                if($request->schedule_id[$i] == null){
+                if ($request->schedule_id[$i] == null) {
                     $save = DB::table('event_schedules')->insert($save_array);
-                }else{
+                } else {
                     $save = DB::table('event_schedules')->where('id', $request->schedule_id[$i])->update($save_array);
                 }
             }
@@ -150,7 +149,7 @@ class EventController extends Controller {
             }
         }
 
-        return view('admin.event_add_schedule', compact('event_schedules_array', 'page', 'current_tab','event_id'));
+        return view('admin.event_add_schedule', compact('event_schedules_array', 'page', 'current_tab', 'event_id'));
     }
 
     public function save_social(Request $request, $event_id = false) {
@@ -216,10 +215,8 @@ class EventController extends Controller {
 
             $state_list = DB::table('tbl_state')->get();
             if (isset($event->state) && !empty($event->state)) {
-                $city_list = DB::table('tbl_city')->where('state_id',$event->state)->get();
+                $city_list = DB::table('tbl_city')->where('state_id', $event->state)->get();
             }
-
-
         }
 
         if ($request->isMethod('post')) {
@@ -241,7 +238,7 @@ class EventController extends Controller {
                 return redirect('admin/event_add_address/' . $event_id);
             }
         }
-        return view('admin.event_add_address', compact('event', 'page', 'current_tab','state_list','city_list'));
+        return view('admin.event_add_address', compact('event', 'page', 'current_tab', 'state_list', 'city_list'));
     }
 
     public function destroy($id) {
@@ -253,13 +250,14 @@ class EventController extends Controller {
     public function delete_schedule(Request $request) {
         $row_id = $request->row_id;
         $delete = DB::table('event_schedules')->where('id', $row_id)->delete();
-        if($delete){
-            $result = json_encode(array('status'=>1,'msg'=>'deleted successfully!'));
-        }else{
-            $result = json_encode(array('status'=>1,'msg'=>'some error occurred!'));
+        if ($delete) {
+            $result = json_encode(array('status' => 1, 'msg' => 'deleted successfully!'));
+        } else {
+            $result = json_encode(array('status' => 1, 'msg' => 'some error occurred!'));
         }
         header('Content-Type: application/x-json; charset=utf-8');
-        echo  $result;
+        echo $result;
         die;
     }
+
 }
