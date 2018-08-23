@@ -1,6 +1,6 @@
 @include('admin.admin-header')
 @include('admin.admin-sidebar')
-<script src="{{ asset('public/admin/plugins/ckeditor/ckeditor.js') }}"></script>
+<script src="{{asset('admin/plugins/ckeditor/ckeditor.js') }}"></script>
 <?php $event_id = (isset($event->id) && !empty($event->id)) ? $event->id : ''; ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">

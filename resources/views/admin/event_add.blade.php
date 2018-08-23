@@ -1,7 +1,7 @@
 @include('admin.admin-header')
 @include('admin.admin-sidebar')
-<link rel="stylesheet" href="{{ asset('public/admin/plugins/datepicker/bootstrap-datepicker.min.css') }}">
-<link rel="stylesheet" href="{{ asset('public/admin/plugins/timepicker/bootstrap-timepicker.min.css') }}">
+<link rel="stylesheet" href="{{asset('admin/plugins/datepicker/bootstrap-datepicker.min.css') }}">
+<link rel="stylesheet" href="{{asset('admin/plugins/timepicker/bootstrap-timepicker.min.css') }}">
 <?php $event_id = (isset($event->id) && !empty($event->id)) ? $event->id : ''; ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -164,7 +164,7 @@
                             $image = (isset($event->event_image) && !empty($event->event_image)) ? $event->event_image : '';
                             if (file_exists(public_path() . '/images/event/thumb/' . $image)) {
                                 ?>
-                                <img src="{{ asset( 'public/images/event/thumb/'.$image)}}" />
+                                <img src="{{ asset( 'images/event/thumb/'.$image)}}" />
                             <?php } ?>
                         </div>
 
@@ -194,7 +194,7 @@
                             $image = (isset($event->event_top_banner) && !empty($event->event_top_banner)) ? $event->event_top_banner : '';
                             if (file_exists(public_path() . '/images/event/top_banner/' . $image)) {
                                 ?>
-                                <img src="{{ asset( 'public/images/event/top_banner/'.$image)}}" />
+                                <img src="{{ asset( 'images/event/top_banner/'.$image)}}" />
                             <?php } ?>
                         </div>
 						<!-- Code for Add event Top Banner ends here -->
@@ -250,9 +250,9 @@
 <!-- /.content-wrapper -->
 
 @include('admin/admin-footer')
-<script src="{{ asset('public/admin/plugins/ckeditor/ckeditor.js') }}"></script>
-<script src="{{ asset('public/admin/plugins/datepicker/bootstrap-datepicker.min.js') }}"></script>
-<script src="{{ asset('public/admin/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
+<script src="{{asset('admin/plugins/ckeditor/ckeditor.js') }}"></script>
+<script src="{{asset('admin/plugins/datepicker/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{asset('admin/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
 
 <script>
 $(document).ready(function () {

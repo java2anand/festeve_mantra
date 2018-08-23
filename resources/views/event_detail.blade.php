@@ -2,7 +2,7 @@
 <html lang="en">
     @include('head')
     <body class="about_page_outer">
-        <link href="{{ asset('public/ws/css/star-rating.min.css')}}" rel="stylesheet">
+        <link href="{{asset('ws/css/star-rating.min.css')}}" rel="stylesheet">
 
         <!-- header -->
         @include('header')
@@ -18,8 +18,8 @@
                     <div>
                         <ul class="event_follow_ul">
                             <li><input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="4"></li>
-                            <li> <a href="#"><img src="{{asset('public/ws/images/user_follow.svg')}}">  554</a></li>
-                            <li> <button class="follow_btn"><img src="{{asset('public/ws/images/follow.svg') }}"> Follow</button></li>
+                            <li> <a href="#"><img src="{{asset('ws/images/user_follow.svg')}}">  554</a></li>
+                            <li> <button class="follow_btn"><img src="{{asset('ws/images/follow.svg') }}"> Follow</button></li>
                         </ul>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                                 <h3 class="home_section_heading"><span>Speakers</span></h3>
 
                                 <div class="event2_spearkers_outer">
-                                    <img src="{{asset('public/ws/images/founder.jpg')}}" class="img-responsive event_organiser_pic">
+                                    <img src="{{asset('ws/images/founder.jpg')}}" class="img-responsive event_organiser_pic">
                                     <p class="founder_name">David Dave</p>
                                     <p class="founder_designation">Sr. Manager of KDL</p>
                                     <p class="founder_info event_text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45
@@ -56,7 +56,7 @@
                                         more obscure Latin words.</p>
                                 </div>
                                 <div class="event2_spearkers_outer">
-                                    <img src="{{asset('public/ws/images/founder.jpg')}}" class="img-responsive event_organiser_pic">
+                                    <img src="{{asset('ws/images/founder.jpg')}}" class="img-responsive event_organiser_pic">
                                     <p class="founder_name">David Dave</p>
                                     <p class="founder_designation">Sr. Manager of KDL</p>
                                     <p class="founder_info event_text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45
@@ -343,12 +343,12 @@
                         <div class="col-xs-12 text-center">
                             <div class="event_right_top_inner event_filled_bg">
                                 <h4>
-                                    <img src="{{asset('public/ws/images/tick_circle.jpg')}}"> Remind me!
+                                    <img src="{{asset('ws/images/tick_circle.jpg')}}"> Remind me!
                                 </h4>
                                 <p>Get Reminder & special offers</p>
                             </div>
                             <div class="event_right_top_inner event_white_bg">
-                                <a href="#"><img src="{{asset('public/ws/images/ticket.jpg')}}"></a>
+                                <a href="#"><img src="{{asset('ws/images/ticket.jpg')}}"></a>
                             </div>
                         </div>
                     </div>
@@ -371,7 +371,7 @@
                         <div class="col-xs-12">
                             <div class="event_right_bottom_inner event_page_ads">
                                 <a href="#">
-                                    <img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" class="img-responsive" alt="adsvertise banner">
+                                    <img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" class="img-responsive" alt="adsvertise banner">
                                 </a>
                             </div>
                         </div>
@@ -398,11 +398,11 @@
                             <div class="event_right_bottom_inner">
                                 <h5>Official Festival Links</h5>
                                 <p  class="event_social_links">
-                                    <a href="#"><img src="{{asset('public/ws/images/link.png')}}"></a>
-                                    <a href="#"><img src="{{asset('public/ws/images/facebook.png')}}"></a>
-                                    <a href="#"><img src="{{asset('public/ws/images/twitter.png')}}"></a>
-                                    <a href="#"><img src="{{asset('public/ws/images/youtube.png')}}"></a>
-                                    <a href="#"><img src="{{asset('public/ws/images/instagram.png')}}"></a>
+                                    <a href="#"><img src="{{asset('ws/images/link.png')}}"></a>
+                                    <a href="#"><img src="{{asset('ws/images/facebook.png')}}"></a>
+                                    <a href="#"><img src="{{asset('ws/images/twitter.png')}}"></a>
+                                    <a href="#"><img src="{{asset('ws/images/youtube.png')}}"></a>
+                                    <a href="#"><img src="{{asset('ws/images/instagram.png')}}"></a>
                                 </p>
                             </div>
                         </div>
@@ -434,7 +434,7 @@
                                 <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
                                     <div class="upcoming_item_container">
                                         <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+                                            <a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
                                         </div>
                                         <div class="upcoming_item_info">
                                             <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
@@ -449,7 +449,7 @@
                                 <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
                                     <div class="upcoming_item_container">
                                         <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+                                            <a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
                                         </div>
                                         <div class="upcoming_item_info">
                                             <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
@@ -463,7 +463,7 @@
                                 <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
                                     <div class="upcoming_item_container">
                                         <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+                                            <a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
                                         </div>
                                         <div class="upcoming_item_info">
                                             <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
@@ -477,7 +477,7 @@
                                 <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
                                     <div class="upcoming_item_container">
                                         <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+                                            <a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
                                         </div>
                                         <div class="upcoming_item_info">
                                             <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
@@ -491,7 +491,7 @@
                                 <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
                                     <div class="upcoming_item_container">
                                         <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+                                            <a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
                                         </div>
                                         <div class="upcoming_item_info">
                                             <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
@@ -519,7 +519,7 @@
         @include('footer')
         <!-- footer ends -->
 
-        <script src="{{ asset('public/ws/js/star-rating.min.js')}}"></script>
+        <script src="{{asset('ws/js/star-rating.min.js')}}"></script>
         <!-- Initialize Swiper -->
         <script>
     if ($(window).width() > 766) {

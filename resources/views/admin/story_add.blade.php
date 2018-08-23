@@ -75,7 +75,7 @@
                                 <?php
                                     $image = (isset($story->image) && !empty($story->image)) ? $story->image: '';
                                     if (file_exists( public_path() . '/images/story/' . $image)) {?>
-                                        <img src="{{ asset( 'public/images/story/'.$image)}}" width="25px;" height="25px;"/>
+                                        <img src="{{ asset( 'images/story/'.$image)}}" width="25px;" height="25px;"/>
                                 <?php }?>
                             </div>
 
@@ -108,7 +108,7 @@
 <!-- /.content-wrapper -->
 
 @include('admin/admin-footer')
-<script src="{{ asset('public/admin/plugins/ckeditor/ckeditor.js') }}"></script>
+<script src="{{asset('admin/plugins/ckeditor/ckeditor.js') }}"></script>
 <script>
 $(document).ready(function () {
     $("#story_form").validate({

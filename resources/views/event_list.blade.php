@@ -15,14 +15,14 @@
 				</form>
 			</div>
 			<div class="col-xs-12 listing_top_banner">
-				<a href="#"><img src="{{asset('public/ws/images/listing_banner.jpg')}}" alt="banner"></a>
+				<a href="#"><img src="{{asset('ws/images/listing_banner.jpg')}}" alt="banner"></a>
 			</div>
 		</div>
 		<div class="row mobile_filter_btn_outer">
-			<div class="col-xs-12 text-right"><button class="mobile_filter_btn"><img src="{{asset('public/ws/images/filter.svg')}}"> Filter</button></div>
+			<div class="col-xs-12 text-right"><button class="mobile_filter_btn"><img src="{{asset('ws/images/filter.svg')}}"> Filter</button></div>
 		</div>
 	</div>
-	
+
 	<div class="container listing_page_width listing_page_list_outer">
 		<div class="row">
 			<div class="col-xs-12">
@@ -36,7 +36,7 @@
 							</form>
 						</div>
 						<!-- location ends -->
-							
+
 						<!-- category filter -->
 						<div class="listing_left_sidebar_inner list_filter_spacing">
 							<h4>Categories</h4>
@@ -54,13 +54,13 @@
 												<input type="checkbox" id="filter_31">
 												<label for="filter_31">Sub category2</label>
 											</li>
-										
+
 										</ul>
 										<!-- sub categories ends -->
 								</li>
 								<li>
                                     <input type="checkbox" id="filter_2">
-                                    <label for="filter_2" class="sub_category_dropdown">Music <span><img src="{{asset('public/ws/images/down_arrow.jpg')}}"></span></label>
+                                    <label for="filter_2" class="sub_category_dropdown">Music <span><img src="{{asset('ws/images/down_arrow.jpg')}}"></span></label>
 									<!-- sub categories  -->
 										<ul class="category_sub_outer">
 											<li>
@@ -71,7 +71,7 @@
 												<input type="checkbox" id="filter_311">
 												<label for="filter_311">Sub category2</label>
 											</li>
-										
+
 										</ul>
 										<!-- sub categories ends -->
 								</li>
@@ -81,7 +81,7 @@
 								</li>
 								<li>
                                     <input type="checkbox" id="filter_4">
-                                    <label for="filter_4" class="sub_category_dropdown">All Event Types <span><img src="{{asset('public/ws/images/down_arrow.jpg')}}"></span></label>
+                                    <label for="filter_4" class="sub_category_dropdown">All Event Types <span><img src="{{asset('ws/images/down_arrow.jpg')}}"></span></label>
 									<!-- sub categories  -->
 										<ul class="category_sub_outer">
 											<li>
@@ -92,7 +92,7 @@
 												<input type="checkbox" id="filter_312">
 												<label for="filter_312">Sub category2</label>
 											</li>
-										
+
 										</ul>
 										<!-- sub categories ends -->
 								</li>
@@ -100,11 +100,11 @@
                                     <input type="checkbox" id="filter_5">
                                     <label for="filter_5">Music & DJ Parties</label>
 								</li>
-							
+
 							</ul>
 						</div>
 						<!-- category filter ends -->
-						
+
 						<!-- EVENT TYPE filter -->
 						<div class="listing_left_sidebar_inner list_filter_spacing">
 							<h4>EVENT TYPE</h4>
@@ -129,11 +129,11 @@
                                     <input type="checkbox" id="filter_5">
                                     <label for="filter_5">Music & DJ Parties</label>
 								</li>
-							
+
 							</ul>
 						</div>
 						<!-- EVENT TYPE ends -->
-						
+
 						<!-- Date filter -->
 						<div class="listing_left_sidebar_inner list_filter_spacing">
 							<h4>DATE</h4>
@@ -166,7 +166,7 @@
                                     <input type="checkbox" id="filter_12">
                                     <label for="filter_12" class="custom_date_search_form_label">Custom Date</label>
 								</li>
-								
+
 								<li class="custom_date_search_form">
 									<form>
                                     <label for="filter_sd">Start Date</label>
@@ -176,13 +176,13 @@
 									<button type="submit">Update</button>
 									</form>
 								</li>
-							
+
 							</ul>
 						</div>
 						<!-- Date ends -->
-						
-						
-					
+
+
+
 					</li>
 					<!-- right sidebar -->
 					<!-- listing -->
@@ -204,7 +204,7 @@
 								<p class="listing_mid_category_link"><a href="#">View</a></p>
 							</div>
 						</div>
-						
+
 						<div class="listing_page_mid_section_outer">
 							<div class="listing_page_mid_section_left">
 								<a href="#"></a>
@@ -302,33 +302,33 @@
 								</p>
 								<p class="listing_mid_category_link"><a href="#">View</a></p>
 							</div>
-							
-							
-							
-							
+
+
+
+
 						</div>
 						<!-- pagignation -->
 						<div class="text-center list_pager_outer">
 							<nav> <ul class="pagination"> <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li> <li><a href="#">2</a></li> <li><a href="#">3</a></li> <li><a href="#">4</a></li> <li><a href="#">5</a></li> <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li> </ul> </nav>
 						</div>
 							<!-- ends -->
-						
-						
-						
-					
+
+
+
+
 					</li>
 					<!-- list ends -->
 					<!-- right sidebar -->
-					<li class="listing_page_right_sidebar"><a href="#"><img src="{{asset('public/ws/images/sidebar_ads.jpg')}}" alt="ads banner"></a></li>
+					<li class="listing_page_right_sidebar"><a href="#"><img src="{{asset('ws/images/sidebar_ads.jpg')}}" alt="ads banner"></a></li>
 					<!-- right sidebar ends -->
 				</ul>
 			</div>
 		</div>
 	</div>
 	<!-- footer -->
-	
+
 	@include('footer')
-	
+
 	<!-- Initialize Swiper -->
   <script>
     var swiper = new Swiper('.swiper-container', {
@@ -339,39 +339,39 @@
         clickable: true,
       },
     });
-	
+
 	$(document).ready(function(){
 		$('.sub_category_dropdown').click(function(){ // sub category filter dropdown
 			$(this).next('.category_sub_outer').toggleClass('sub_category_dropdown_active');
 		})
-		$('.custom_date_search_form_label').click(function(){ // custom date filter form 
+		$('.custom_date_search_form_label').click(function(){ // custom date filter form
 			$('.custom_date_search_form').toggle();
 		})
-		
+
 		$('.mobile_filter_btn').click(function(){
 			$('.listing_page_sidebar').addClass('listing_page_sidebar_active');
 			$('body').addClass('body_overflow');
 			$('.moblie_filter_overlay').show();
-			
+
 		})
 		$('.moblie_filter_overlay').click(function(){
 			$('.listing_page_sidebar').removeClass('listing_page_sidebar_active');
 			$('body').removeClass('body_overflow');
 			$('.moblie_filter_overlay').hide();
-			
+
 		})
 		$('.mobile_nav_section button').click(function(){
 			$('.nav_desktop').addClass('listing_page_sidebar_active');
 			$('body').removeClass('body_overflow');
 			$('.moblie_header_overlay').show();
-			
+
 		})
-		
+
 		$('.moblie_header_overlay').click(function(){
 			$('.nav_desktop').removeClass('listing_page_sidebar_active');
 			$('body').removeClass('body_overflow');
 			$('.moblie_header_overlay').hide();
-			
+
 		})
 	})
   </script>

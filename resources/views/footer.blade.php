@@ -2,7 +2,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3 col-xs-12">
-					<img src="{{asset('public/ws/images/logo-white.png')}}" alt="footer logo" class="footer_logo">
+					<img src="{{asset('ws/images/logo-white.png')}}" alt="footer logo" class="footer_logo">
 					<p class="company_info_footer">About festeve mantra festeve
 						mantra  festeve mantra festeve
 						mantra festeve mantra festeve
@@ -30,10 +30,10 @@
 					<h3 class="footer_headings">Social Connect</h3>
 					<ul>
 						<li class="footer_social_icons">
-							<a href="#"><img src="{{asset('public/ws/images/fb.jpg')}}"></a>
-							<a href="#"><img src="{{asset('public/ws/images/tw.jpg')}}"></a>
-							<a href="#"><img src="{{asset('public/ws/images/in.jpg')}}"></a>
-							<a href="#"><img src="{{asset('public/ws/images/fb.jpg')}}"></a>
+							<a href="#"><img src="{{asset('ws/images/fb.jpg')}}"></a>
+							<a href="#"><img src="{{asset('ws/images/tw.jpg')}}"></a>
+							<a href="#"><img src="{{asset('ws/images/in.jpg')}}"></a>
+							<a href="#"><img src="{{asset('ws/images/fb.jpg')}}"></a>
 						</li>
 						<li><a href="#">Write for Us</a></li>
 						<li><a href="#">Fest Eve Jobs</a></li>
@@ -46,9 +46,9 @@
 			<p><span>Copyright @2018.</span> Digital Beginner. All Rights Reserved</p>
 		</div>
 	</footer>
-	
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{asset('public/ws/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('public/ws/js/swiper.min.js')}}"></script>
+    <script src="{{asset('ws/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('ws/js/swiper.min.js')}}"></script>

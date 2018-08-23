@@ -9,9 +9,9 @@
                     $image = Auth::guard('admin')->user()->profile_img;
                     $userimage = (isset($image) && !empty($image)) ? $image: '';
                     if (file_exists( public_path() . '/admin/profile_image/' . $userimage)) {?>
-                <img src="{{ asset( 'public/admin/profile_image/thumb/'.$userimage )}}" class="img-circle" alt="User profile picture"  style="height:45px;"/>
+                <img src="{{ asset( 'admin/profile_image/thumb/'.$userimage )}}" class="img-circle" alt="User profile picture"  style="height:45px;"/>
                 <?php } else {?>
-                        <img src="{{ asset('public/admin/dist/img/user2-160x160.jpg' )}} " class="img-circle" alt="User profile picture" />
+                        <img src="{{asset('dist/img/user2-160x160.jpg' )}} " class="img-circle" alt="User profile picture" />
                 <?php } ?>
             </div>
             <div class="pull-left info">

@@ -86,10 +86,10 @@
                                 <?php
                                     $mini_icon = (isset($category->mini_icon) && !empty($category->mini_icon)) ? $category->mini_icon: '';
                                     if (isset($mini_icon) && $mini_icon!="" && file_exists( public_path() . '/images/category/mini_icon/' . $mini_icon)) {?>
-                                        <img src="{{ asset( 'public/images/category/mini_icon/'.$mini_icon)}}" />
+                                        <img src="{{ asset( 'images/category/mini_icon/'.$mini_icon)}}" />
                                 <?php }?>
                             </div>
-							
+
 							<div class="form-group">
                                 <label for="icon">Category Icon</label>
                                 <input type="file" class="form-control" id="icon" name="icon" >
@@ -99,7 +99,7 @@
                                 <?php
                                     $icon = (isset($category->icon) && !empty($category->icon)) ? $category->icon: '';
                                     if (isset($icon) && $icon!="" && file_exists( public_path() . '/images/category/thumb/' . $icon)) {?>
-                                        <img src="{{ asset( 'public/images/category/thumb/'.$icon)}}" />
+                                        <img src="{{ asset( 'images/category/thumb/'.$icon)}}" />
                                 <?php }?>
                             </div>
 
@@ -112,7 +112,7 @@
                                 <?php
                                     $right_banner = (isset($category->right_banner) && !empty($category->right_banner)) ? $category->right_banner: '';
                                     if (isset($right_banner) && $right_banner!="" && file_exists( public_path() . '/images/category/right_banner/' . $right_banner)) {?>
-                                        <img src="{{ asset( 'public/images/category/right_banner/'.$right_banner)}}"  height='50px;'/>
+                                        <img src="{{ asset( 'images/category/right_banner/'.$right_banner)}}"  height='50px;'/>
                                 <?php }?>
                             </div>
 
@@ -125,7 +125,7 @@
                                 <?php
                                     $top_banner = (isset($category->top_banner) && !empty($category->top_banner)) ? $category->top_banner: '';
                                     if (isset($top_banner) && $top_banner!="" && file_exists( public_path() . '/images/category/top_banner/' . $top_banner)) {?>
-                                        <img src="{{ asset( 'public/images/category/top_banner/'.$top_banner)}}"  height='50px;'/>
+                                        <img src="{{ asset( 'images/category/top_banner/'.$top_banner)}}"  height='50px;'/>
                                 <?php }?>
                             </div>
 
@@ -157,7 +157,7 @@
 <!-- /.content-wrapper -->
 
 @include('admin/admin-footer')
-<script src="{{ asset('public/admin/plugins/ckeditor/ckeditor.js') }}"></script>
+<script src="{{asset('admin/plugins/ckeditor/ckeditor.js') }}"></script>
 <script>
 $(document).ready(function () {
     $("#category_form").validate({

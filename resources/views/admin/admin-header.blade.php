@@ -8,14 +8,14 @@
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
-        <link rel="stylesheet" href="{{ asset('public/admin/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{asset('admin/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="{{ asset('public/admin/bower_components/font-awesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{asset('admin/bower_components/font-awesome/css/font-awesome.min.css') }}">
         <!-- Theme style -->
-        <link rel="stylesheet" href="{{ asset('public/admin/dist/css/AdminLTE.min.css') }}">
+        <link rel="stylesheet" href="{{asset('admin/dist/css/AdminLTE.min.css') }}">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
-        <link rel="stylesheet" href="{{ asset('public/admin/dist/css/skins/_all-skins.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('public/admin/jquery.growl.css') }}">
+        <link rel="stylesheet" href="{{asset('admin/dist/css/skins/_all-skins.min.css') }}">
+        <link rel="stylesheet" href="{{asset('admin/jquery.growl.css') }}">
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
@@ -30,7 +30,7 @@
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="index2.html" class="logo">
+                <a href="{{ route('admin.home') }}" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>F</b>M</span>
                     <!-- logo for regular state and mobile devices -->
@@ -54,12 +54,12 @@
                                         $image = Auth::guard('admin')->user()->profile_img;
                                         $userimage = (isset($image) && !empty($image)) ? $image: '';
                                         if (file_exists( public_path() . '/admin/profile_image/' . $userimage)) {?>
-                                            <img src="{{ asset( 'public/admin/profile_image/'.$userimage )}}" class="user-image" alt="User profile picture" />
+                                            <img src="{{ asset( 'admin/profile_image/'.$userimage )}}" class="user-image" alt="User profile picture" />
                                     <?php } else {?>
-                                            <img src="{{ asset('public/admin/dist/img/user2-160x160.jpg' )}} " class="user-image" alt="User profile picture" />
+                                            <img src="{{asset('admin/dist/img/user2-160x160.jpg' )}} " class="user-image" alt="User profile picture" />
                                     <?php } ?>
 
-                                    <!--<img src="{{ asset('public/admin/dist/img/user2-160x160.jpg')}}"  alt="">-->
+                                    <!--<img src="{{asset('admin/dist/img/user2-160x160.jpg')}}"  alt="">-->
                                     <span class="hidden-xs">{{ Auth::guard('admin')->user()->firstname. ' '.Auth::guard('admin')->user()->lastname }}</span>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -69,9 +69,9 @@
                                             $image = Auth::guard('admin')->user()->profile_img;
                                             $userimage = (isset($image) && !empty($image)) ? $image: '';
                                             if (file_exists( public_path() . '/admin/profile_image/' . $userimage)) {?>
-                                                <img src="{{ asset( 'public/admin/profile_image/'.$userimage )}}" class="img-circle" alt="User profile picture" />
+                                                <img src="{{ asset( 'admin/profile_image/'.$userimage )}}" class="img-circle" alt="User profile picture" />
                                         <?php } else {?>
-                                                <img src="{{ asset('public/admin/dist/img/user2-160x160.jpg' )}} " class="img-circle" alt="User profile picture" />
+                                                <img src="{{asset('admin/dist/img/user2-160x160.jpg' )}} " class="img-circle" alt="User profile picture" />
                                         <?php } ?>
 
                                         <p>

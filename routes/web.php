@@ -20,7 +20,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about-us', 'HomeController@about_us')->name('about');
 Route::get('/event-category/{event_slug}', 'HomeController@event_list')->name('event-category');
 Route::get('/event-detail/{event_slug}', 'HomeController@event_detail')->name('event-detail');
-//Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 
 
@@ -31,8 +31,8 @@ Route::prefix('admin')->group(function() {
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 
+    Route::get('/home', 'Admin\AdminController@index')->name('admin.home');
     Route::any('/profile', 'Admin\AdminController@profile')->name('admin.profile');
-    Route::get('/', 'Admin\AdminController@index')->name('admin.home');
     Route::any('/site_setting/{id?}', 'Admin\AdminController@site_setting')->name('admin.sitesetting');
 
     //via ajax
@@ -44,7 +44,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/category_add/{id?}', 'Admin\CategoryController@create')->name('admin.category_add');
     Route::post('/category_store/{id?}', 'Admin\CategoryController@save_category')->name('admin.category_store');
     Route::get('/category_delete/{id}', 'Admin\CategoryController@destroy')->name('admin.category_delete');
-	
+
 	/*     * ********category routes ******************* */
     Route::any('/story_list', 'Admin\StoryController@index')->name('admin.story_list');
     Route::get('/story_add/{id?}', 'Admin\StoryController@create')->name('admin.story_add');

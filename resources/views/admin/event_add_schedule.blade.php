@@ -1,7 +1,7 @@
 @include('admin.admin-header')
 @include('admin.admin-sidebar')
-<link rel="stylesheet" href="{{ asset('public/admin/plugins/datepicker/bootstrap-datepicker.min.css') }}">
-<link rel="stylesheet" href="{{ asset('public/admin/plugins/timepicker/bootstrap-timepicker.min.css') }}">
+<link rel="stylesheet" href="{{asset('admin/plugins/datepicker/bootstrap-datepicker.min.css') }}">
+<link rel="stylesheet" href="{{asset('admin/plugins/timepicker/bootstrap-timepicker.min.css') }}">
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -264,9 +264,9 @@
 <!-- /.content-wrapper -->
 
 @include('admin/admin-footer')
-<script src="{{ asset('public/admin/plugins/ckeditor/ckeditor.js') }}"></script>
-<script src="{{ asset('public/admin/plugins/datepicker/bootstrap-datepicker.min.js') }}"></script>
-<script src="{{ asset('public/admin/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
+<script src="{{asset('admin/plugins/ckeditor/ckeditor.js') }}"></script>
+<script src="{{asset('admin/plugins/datepicker/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{asset('admin/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
 <script>
 $(document).ready(function () {
     $('.timepicker').timepicker({

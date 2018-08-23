@@ -105,7 +105,7 @@
 
                                 <?php
                                     if (file_exists( public_path() . '/images/logo/thumb/' . $site_setting->logo)) {?>
-                                        <img src="{{ asset( 'public/images/logo/thumb/'.$site_setting->logo)}}" />
+                                        <img src="{{ asset( 'images/logo/thumb/'.$site_setting->logo)}}" />
                                 <?php }?>
                             </div>
 
@@ -130,7 +130,7 @@
 <!-- /.content-wrapper -->
 
 @include('admin/admin-footer')
-<script src="{{ asset('public/admin/plugins/ckeditor/ckeditor.js') }}"></script>
+<script src="{{asset('admin/plugins/ckeditor/ckeditor.js') }}"></script>
 <script>
 $(document).ready(function () {
     $("#site_setting").validate({

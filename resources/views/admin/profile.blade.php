@@ -30,9 +30,9 @@ if (empty($tab)) { $tab = ''; }
                             <?php
                                 $image = (isset($user->profile_img) && !empty($user->profile_img)) ? $user->profile_img: '';
                                 if (file_exists( public_path() . '/admin/profile_image/' . $image)) {?>
-                                    <img class="profile-user-img img-responsive img-circle" id="logo_image" src="{{ asset( 'public/admin/profile_image/'.$image )}}" alt="User profile picture" />
+                                    <img class="profile-user-img img-responsive img-circle" id="logo_image" src="{{ asset( 'admin/profile_image/'.$image )}}" alt="User profile picture" />
                             <?php } else {?>
-                                    <img class="profile-user-img img-responsive img-circle" src="{{ asset('public/admin/dist/img/user2-160x160.jpg' )}} " alt="User profile picture" />
+                                    <img class="profile-user-img img-responsive img-circle" src="{{asset('dist/img/user2-160x160.jpg' )}} " alt="User profile picture" />
                             <?php } ?>
 
                             <a href="javascript:void(0)" title="Upload Logo" onClick="$('#image_upload').trigger('click');" class="pmop-edit edit_pic_btn" ><i class="fa fa-camera"></i></a>

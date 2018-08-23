@@ -98,7 +98,7 @@
                                     <?php
                                     $image = (isset($eventspeaker->image) && !empty($eventspeaker->image)) ? $eventspeaker->image: '';
                                         if (file_exists( public_path() . '/images/speaker/thumb/' . $image)) {?>
-                                            <img src="{{ asset( 'public/images/speaker/thumb/'.$image)}}" />
+                                            <img src="{{ asset( 'images/speaker/thumb/'.$image)}}" />
                                     <?php }?>
                                 </div>
 
@@ -130,7 +130,7 @@
 <!-- /.content-wrapper -->
 
 @include('admin/admin-footer')
-<script src="{{ asset('public/admin/plugins/ckeditor/ckeditor.js') }}"></script>
+<script src="{{asset('admin/plugins/ckeditor/ckeditor.js') }}"></script>
 <script>
 $(document).ready(function () {
     $("#eventspeaker_form").validate({

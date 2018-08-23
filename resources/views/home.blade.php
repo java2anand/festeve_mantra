@@ -10,7 +10,7 @@
 	<!-- top banner section -->
 	<div class="container-fluid top_banner_section">
 		<div class="row">
-			<img src="{{asset('public/ws/images/top_banner.jpg')}}" alt="banner">
+			<img src="{{asset('ws/images/top_banner.jpg')}}" alt="banner">
 		</div>
 	</div>
 	<!-- top banner ends -->
@@ -47,8 +47,8 @@
 				</ul>
 			</div>
 		</div><!-- search bottom links ends -->
-		
-		
+
+
 	</div>
 	<!-- search section ends -->
 
@@ -62,13 +62,13 @@
 			<div class="col-sm-4 col-xs-12 upcoming_events_items"><!-- upcoming event -->
 				<div class="upcoming_item_container">
 					<div class="upcoming_item_image">
-						<a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+						<a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
 					</div>
 					<div class="upcoming_item_info">
-					<span class="event_type_icon"><img src="{{asset('public/ws/images/uc_bg.jpg')}}"></span>
+					<span class="event_type_icon"><img src="{{asset('ws/images/uc_bg.jpg')}}"></span>
 						<p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
 						<p class="uc_event_date">Sep 12th 2018</p>
-						
+
 					</div>
 				</div>
 			</div><!-- upcoming event ends -->
@@ -76,10 +76,10 @@
 			<div class="col-sm-4 col-xs-12 upcoming_events_items"><!-- upcoming event -->
 				<div class="upcoming_item_container">
 					<div class="upcoming_item_image">
-						<a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+						<a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
 					</div>
 					<div class="upcoming_item_info">
-					<span class="event_type_icon"><img src="{{asset('public/ws/images/uc_bg.jpg')}}"></span>
+					<span class="event_type_icon"><img src="{{asset('ws/images/uc_bg.jpg')}}"></span>
 						<p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
 						<p class="uc_event_date">Sep 12th 2018</p>
 					</div>
@@ -88,10 +88,10 @@
 			<div class="col-sm-4 col-xs-12 upcoming_events_items"><!-- upcoming event -->
 				<div class="upcoming_item_container">
 					<div class="upcoming_item_image">
-						<a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+						<a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
 					</div>
 					<div class="upcoming_item_info">
-					<span class="event_type_icon"><img src="{{asset('public/ws/images/uc_bg.jpg')}}"></span>
+					<span class="event_type_icon"><img src="{{asset('ws/images/uc_bg.jpg')}}"></span>
 						<p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
 						<p class="uc_event_date">Sep 12th 2018</p>
 					</div>
@@ -100,10 +100,10 @@
 			<div class="col-sm-4 col-xs-12 upcoming_events_items"><!-- upcoming event -->
 				<div class="upcoming_item_container">
 					<div class="upcoming_item_image">
-						<a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+						<a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
 					</div>
 					<div class="upcoming_item_info">
-					<span class="event_type_icon"><img src="{{asset('public/ws/images/uc_bg.jpg')}}"></span>
+					<span class="event_type_icon"><img src="{{asset('ws/images/uc_bg.jpg')}}"></span>
 						<p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
 						<p class="uc_event_date">Sep 12th 2018</p>
 					</div>
@@ -112,10 +112,10 @@
 			<div class="col-sm-4 col-xs-12 upcoming_events_items"><!-- upcoming event -->
 				<div class="upcoming_item_container">
 					<div class="upcoming_item_image">
-						<a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+						<a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
 					</div>
 					<div class="upcoming_item_info">
-					<span class="event_type_icon"><img src="{{asset('public/ws/images/uc_bg.jpg')}}"></span>
+					<span class="event_type_icon"><img src="{{asset('ws/images/uc_bg.jpg')}}"></span>
 						<p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
 						<p class="uc_event_date">Sep 12th 2018</p>
 					</div>
@@ -124,10 +124,10 @@
 			<div class="col-sm-4 col-xs-12 upcoming_events_items"><!-- upcoming event -->
 				<div class="upcoming_item_container">
 					<div class="upcoming_item_image">
-						<a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+						<a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
 					</div>
 					<div class="upcoming_item_info">
-						<span class="event_type_icon"><img src="{{asset('public/ws/images/uc_bg.jpg')}}"></span>
+						<span class="event_type_icon"><img src="{{asset('ws/images/uc_bg.jpg')}}"></span>
 						<p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
 						<p class="uc_event_date">Sep 12th 2018</p>
 					</div>
@@ -151,13 +151,13 @@
 				      		<div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
 								<div class="upcoming_item_container">
 									<div class="upcoming_item_image">
-										<a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+										<a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
 									</div>
 									<div class="upcoming_item_info">
 										<p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
 										<div class="media">
 										  <div class="media-left">
-										    <img src="{{asset('public/ws/images/user.jpg')}}" class="media-object">
+										    <img src="{{asset('ws/images/user.jpg')}}" class="media-object">
 										  </div>
 										  <div class="media-body">
 										   <h4 class="media-heading"><span>by</span> John Doe</h4>
@@ -174,13 +174,13 @@
 				      		<div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
 								<div class="upcoming_item_container">
 									<div class="upcoming_item_image">
-										<a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+										<a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
 									</div>
 									<div class="upcoming_item_info">
 										<p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
 										<div class="media">
 										  <div class="media-left">
-										    <img src="{{asset('public/ws/images/user.jpg')}}" class="media-object">
+										    <img src="{{asset('ws/images/user.jpg')}}" class="media-object">
 										  </div>
 										  <div class="media-body">
 										    <h4 class="media-heading"><span>by</span> John Doe</h4>
@@ -196,13 +196,13 @@
 				      		<div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
 								<div class="upcoming_item_container">
 									<div class="upcoming_item_image">
-										<a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+										<a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
 									</div>
 									<div class="upcoming_item_info">
 										<p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
 										<div class="media">
 										  <div class="media-left">
-										    <img src="{{asset('public/ws/images/user.jpg')}}" class="media-object">
+										    <img src="{{asset('ws/images/user.jpg')}}" class="media-object">
 										  </div>
 										  <div class="media-body">
 										    <h4 class="media-heading"><span>by</span> John Doe</h4>
@@ -218,13 +218,13 @@
 				      		<div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
 								<div class="upcoming_item_container">
 									<div class="upcoming_item_image">
-										<a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+										<a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
 									</div>
 									<div class="upcoming_item_info">
 										<p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
 										<div class="media">
 										  <div class="media-left">
-										    <img src="{{asset('public/ws/images/user.jpg')}}" class="media-object">
+										    <img src="{{asset('ws/images/user.jpg')}}" class="media-object">
 										  </div>
 										  <div class="media-body">
 										    <h4 class="media-heading"><span>by</span> John Doe</h4>
@@ -240,13 +240,13 @@
 				      		<div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
 								<div class="upcoming_item_container">
 									<div class="upcoming_item_image">
-										<a href="#"><img src="{{asset('public/ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+										<a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
 									</div>
 									<div class="upcoming_item_info">
 										<p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
 										<div class="media">
 										  <div class="media-left">
-										    <img src="{{asset('public/ws/images/user.jpg')}}" class="media-object">
+										    <img src="{{asset('ws/images/user.jpg')}}" class="media-object">
 										  </div>
 										  <div class="media-body">
 										    <h4 class="media-heading"><span>by</span> John Doe</h4>
@@ -284,25 +284,25 @@
 					<div class="col-sm-7 col-xs-12 f_padding_right">
 						<a href="{{url('event-category/music')}}">
 							<div class="cat_left_item left_cat1">
-								<p><span><img src="{{asset('public/ws/images/new_icon1.png')}}"></span>Music</p>
+								<p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>Music</p>
 							</div>
 						</a>
-					</div>	
+					</div>
 					<div class="col-sm-5 col-xs-12">
-						<a href="{{url('event-category/sports')}}"><div class="cat_left_item left_cat2"><p><span><img src="{{asset('public/ws/images/new_icon1.png')}}"></span>sports</p></div></a>
+						<a href="{{url('event-category/sports')}}"><div class="cat_left_item left_cat2"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>sports</p></div></a>
 					</div>
 				</div><!-- left top categories -->
 				<div class="row text-center"><!-- left middle categories -->
 					<div class="col-sm-5 col-xs-12 f_padding_right">
-						<a href="{{url('event-category/food')}}"><div class="cat_left_item left_cat3"><p><span><img src="{{asset('public/ws/images/new_icon1.png')}}"></span>food</p></div></a>
-					</div>	
+						<a href="{{url('event-category/food')}}"><div class="cat_left_item left_cat3"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>food</p></div></a>
+					</div>
 					<div class="col-sm-7 col-xs-12">
-						<a href="{{url('event-category/travel')}}"><div class="cat_left_item left_cat4"><p><span><img src="{{asset('public/ws/images/new_icon1.png')}}"></span>travel</p></div></a>
+						<a href="{{url('event-category/travel')}}"><div class="cat_left_item left_cat4"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>travel</p></div></a>
 					</div>
 				</div><!-- left middle categories -->
 				<div class="row text-center"><!-- left bottom categories -->
 					<div class="col-sm-12 col-xs-12 ">
-						<a href="{{url('event-category/dj-party')}}"><div class="cat_left_item left_cat5"><p><span><img src="{{asset('public/ws/images/new_icon1.png')}}"></span>DJ Party</p></div></a>
+						<a href="{{url('event-category/dj-party')}}"><div class="cat_left_item left_cat5"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>DJ Party</p></div></a>
 					</div>
 				</div><!-- left bottom categories -->
 
@@ -310,12 +310,12 @@
 			<div class="col-md-3 col-sm-4 col-xs-12">
 				<div class="row text-center"><!-- right top categories -->
 					<div class="col-sm-12 col-xs-12">
-						<a href="{{url('event-category/conference')}}"><div class="cat_right_item1 right_cat1"><p><span><img src="{{asset('public/ws/images/new_icon1.png')}}"></span><br>Conference</p></div></a>
+						<a href="{{url('event-category/conference')}}"><div class="cat_right_item1 right_cat1"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span><br>Conference</p></div></a>
 					</div>
 				</div> <!-- ends -->
 				<div class="row text-center"><!-- right bottom categories -->
 					<div class="col-sm-12 col-xs-12">
-						<a href="{{url('event-category/skill-development')}}"><div class="cat_right_item2 right_cat2"><p><span><img src="{{asset('public/ws/images/new_icon1.png')}}"></span><br>Skill Development</p></div></a>
+						<a href="{{url('event-category/skill-development')}}"><div class="cat_right_item2 right_cat2"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span><br>Skill Development</p></div></a>
 					</div>
 				</div> <!-- ends -->
 
@@ -326,7 +326,7 @@
 	</div>
 
 	<!-- categories section ends -->
-	
+
 	<!-- get more buttons -->
 	<div class="container-fluid home_more_button">
 		<div class="row">
@@ -339,7 +339,7 @@
 		</div>
 	</div>
 	<!-- get more button ends -->
-	
+
 	<!-- newsletter section -->
 	<div class="home_newsletter">
 		<div class="container">
@@ -388,27 +388,27 @@
         clickable: true,
       },
     });
-	
+
 }
 
 
 	$(document).ready(function(){
-		
+
 		$('.mobile_nav_section button').click(function(){
 			$('.nav_desktop').addClass('listing_page_sidebar_active');
 			$('body').removeClass('body_overflow');
 			$('.moblie_header_overlay').show();
-			
+
 		})
-		
+
 		$('.moblie_header_overlay').click(function(){
 			$('.nav_desktop').removeClass('listing_page_sidebar_active');
 			$('body').removeClass('body_overflow');
 			$('.moblie_header_overlay').hide();
-			
+
 		})
-		
-		
+
+
 	})
   </script>
   </body>

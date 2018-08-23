@@ -6,4 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model {
     protected $table  = 'event_categories';
+
+    public function event(){
+        return $this->hasOne('App/Model/Event', 'id');
+    }
+
+
 }

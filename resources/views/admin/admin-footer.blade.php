@@ -14,17 +14,17 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="{{ asset('public/admin/bower_components/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{asset('admin/bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="{{ asset('public/admin/bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{asset('admin/bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <!-- Bootstrap 3.3.7 -->
-<script src="{{ asset('public/admin/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{asset('admin/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="{{ asset('public/admin/dist/js/adminlte.min.js') }}"></script>
-<script src="{{ asset('public/admin/jquery.validate.min.js') }}"></script>
-<script src="{{ asset('public/admin/common.js') }}"></script>
-<script src="{{ asset('public/admin/jquery.blockUI.js') }}"></script>
-<script src="{{ asset('public/admin/jquery.growl.js') }}"></script>
+<script src="{{asset('admin/dist/js/adminlte.min.js') }}"></script>
+<script src="{{asset('admin/jquery.validate.min.js') }}"></script>
+<script src="{{asset('admin/common.js') }}"></script>
+<script src="{{asset('admin/jquery.blockUI.js') }}"></script>
+<script src="{{asset('admin/jquery.growl.js') }}"></script>
 </body>
 </html>

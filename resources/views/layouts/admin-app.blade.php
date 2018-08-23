@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'festive_mantra_Admin') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+    <link href="{{asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -42,7 +42,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-						@if(Auth::guard('admin')->user()) 
+						@if(Auth::guard('admin')->user())
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     {{ Auth::guard('admin')->user() }} <span class="caret"></span>
@@ -72,6 +72,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('public/js/app.js') }}"></script>
+    <script src="{{asset('js/app.js') }}"></script>
 </body>
 </html>
