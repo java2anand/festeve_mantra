@@ -77,30 +77,30 @@
 
             <li class="treeview <?= ($pages=='add_speaker' || $pages == 'speaker_list') ? 'menu-open active' : ''; ?>">
                 <a href="#">
-                    <i class="fa fa-users"></i> <span>Event Speakers</span>
+                    <i class="fa fa-users"></i> <span>Speakers</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="<?= ($pages=='speaker_list') ? 'active' : ''; ?>"><a href="{{ route('admin.eventspeaker_list') }}"><i class="fa fa-circle-o"></i> List</a></li>
+                    <li class="<?= ($pages=='speaker_list') ? 'active' : ''; ?>"><a href="{{ route('admin.speaker_list') }}"><i class="fa fa-circle-o"></i> List</a></li>
 
-                    <li class="<?= ($pages=='add_speaker') ? 'active' : ''; ?>"><a href="{{ route('admin.eventspeaker_add') }}"><i class="fa fa-circle-o"></i> Add</a></li>
+                    <li class="<?= ($pages=='add_speaker') ? 'active' : ''; ?>"><a href="{{ route('admin.speaker_add') }}"><i class="fa fa-circle-o"></i> Add</a></li>
                 </ul>
             </li>
 
 
             <li class="treeview <?= ($pages=='add_organiser' || $pages == 'organiser_list') ? 'menu-open active' : ''; ?>">
                 <a href="#">
-                    <i class="fa fa-sitemap"></i> <span>Event Organisers</span>
+                    <i class="fa fa-sitemap"></i> <span>Organisers</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="<?= ($pages=='organiser_list') ? 'active' : ''; ?>"><a href="{{ route('admin.eventorganiser_list') }}"><i class="fa fa-circle-o"></i> List</a></li>
+                    <li class="<?= ($pages=='organiser_list') ? 'active' : ''; ?>"><a href="{{ route('admin.organiser_list') }}"><i class="fa fa-circle-o"></i> List</a></li>
 
-                    <li class="<?= ($pages=='add_organiser') ? 'active' : ''; ?>"><a href="{{ route('admin.eventorganiser_add') }}"><i class="fa fa-circle-o"></i> Add</a></li>
+                    <li class="<?= ($pages=='add_organiser') ? 'active' : ''; ?>"><a href="{{ route('admin.organiser_add') }}"><i class="fa fa-circle-o"></i> Add</a></li>
                 </ul>
             </li>
 

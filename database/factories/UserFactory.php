@@ -21,3 +21,21 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Admin::class, function (Faker $faker) {
+    return [
+        'firstname' => $faker->firstName,
+        'lastname' => $faker->lastName,
+        'email' => $faker->unique()->safeEmail,
+        'contact_number' => $faker->tollFreePhoneNumber,
+        'address' => $faker->address,
+        'country' => '99',
+        'state' => '18',
+        'city' => '274',
+        'postal_code' => $faker->postcode,
+        'profile_img' => '',
+        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'remember_token' => str_random(10),
+    ];
+});
+

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Model\Event;
+use App\Model\Category;
 
 class HomeController extends Controller {
 
@@ -23,8 +24,9 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $arrCategory = DB::table('event_categories')->where('parent_id', 0)->where('status', 1)->get();
-        return view('home', compact('arrCategory'));
+        $arr_category = DB::table('categories')->where('parent_id', 0)->where('status', 1)->get();
+        $arr_event = DB::table('events')->get();
+        return view('home', compact('arr_category','arr_event'));
     }
 
     public function about_us() {
@@ -32,7 +34,13 @@ class HomeController extends Controller {
     }
 
     public function event_list($slug) {
-        return view('event_list');
+        $category = Category::where('slug', '=', $slug)->first();
+        if ($category === null) {
+           return redirect('/');
+        }
+
+        $arrevent = Event::where('event_category','=',$category->id)->get();
+        return view('event_list',compact('arrevent'));
     }
 
     public function event_detail($slug) {
@@ -40,8 +48,15 @@ class HomeController extends Controller {
         if ($event === null) {
            return redirect('/');
         }
-        //dd($event);
-        return view('event_detail',compact('event'));
+
+        $schedule = DB::table('event_schedules')->where('event_id', $event->id)->where('status', 1)->get();
+
+        $speaker = DB::table('event_speakers')->where('event_id', $event->id)
+                ->join('speakers as spkr', 'spkr.id', '=', 'event_speakers.speaker_id')
+                ->select("spkr.id", "spkr.speaker_name", "spkr.image", "spkr.description",'spkr.title')->get();
+        $organiser = $event->organiser;
+
+        return view('event_detail',compact('event','schedule','speaker','organiser'));
     }
 
 }

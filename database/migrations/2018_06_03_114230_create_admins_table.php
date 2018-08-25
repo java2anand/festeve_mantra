@@ -18,8 +18,14 @@ class CreateAdminsTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email');
+            $table->bigInteger('contact_number');
             $table->string('address')->nullable();
-           	$table->string('password');
+            $table->integer('country');
+            $table->integer('state');
+            $table->integer('city');
+            $table->integer('postal_code');
+            $table->string('password');
+            $table->string('profile_img');
             $table->rememberToken();
             $table->timestamps();
         });

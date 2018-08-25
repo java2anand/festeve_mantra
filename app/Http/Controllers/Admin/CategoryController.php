@@ -19,18 +19,18 @@ class CategoryController extends Controller {
         $page = 'category_list';
         $search_term = $request->search;
         $arrCategory = Category::orderBy('id', 'DESC')
-                        ->when($search_term, function ($query) use ($search_term) {
-                            return $query->where('event_categories.category_name', 'like', '%' . $search_term . '%');
-                        })->paginate(10);
+			->when($search_term, function ($query) use ($search_term) {
+				return $query->where('categories.category_name', 'like', '%' . $search_term . '%');
+			})->paginate(10);
         return view('admin.category_list', compact('arrCategory', 'page', 'search_term'));
     }
 
     public function create($id = false) {
         $page = 'add_category';
-        $arrCategory = DB::table('event_categories')->where('status', 1)->where('parent_id', 0)->where('id', '!=', $id)->get();
+        $arrCategory = DB::table('categories')->where('status', 1)->where('parent_id', 0)->where('id', '!=', $id)->get();
         $category = array();
         if ($id) {
-            $category = DB::table('event_categories')->where('id', $id)->first();
+            $category = DB::table('categories')->where('id', $id)->first();
             if ($category == null) {
                 return redirect()->route('admin.category_list')->with('alert-danger', 'Category not found!');
             }

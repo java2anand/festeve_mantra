@@ -29,9 +29,9 @@ class AdminController extends Controller {
     public function index() {
         $page = 'dashboard';
         $data['total_events'] = DB::table('events')->count();
-        $data['total_category'] = DB::table('event_categories')->count();
-        $data['total_organiser'] = DB::table('event_organisers')->count();
-        $data['total_speaker'] = DB::table('event_speakers')->count();
+        $data['total_category'] = DB::table('categories')->count();
+        $data['total_organiser'] = DB::table('organisers')->count();
+        $data['total_speaker'] = DB::table('speakers')->count();
         $data['arrEvents'] = DB::table('events')->orderBy('id','DESC')->limit(10)->get();
 
         return view('admin.home',compact('page','data'));
@@ -196,7 +196,6 @@ class AdminController extends Controller {
         $site_setting = DB::table('site_settings')->first();
 
         if ($request->isMethod('post')) {
-
             $update_array = array(
                 'company_title'     => (!empty($request->company_title)) ? $request->company_title : '',
                 'address'     => (!empty($request->address)) ? $request->address : '',

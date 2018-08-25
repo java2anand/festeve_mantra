@@ -13,8 +13,8 @@
             <div class="container event_2_container">
                 <div class="event_topbanner_info">
                     <h3><?= $event->title ?></h3>
-                    <p class="event_topbanner_info_text"><?= date('d M',strtotime($event->start_date)) ?> - <?= date('d M',strtotime($event->end_date)) ?>,   <?= date('H:i A',strtotime($event->start_time)) ?> </p>
-                    <p class="event_topbanner_info_text">HudaCity, Sector 21, Guragon</p>
+                    <p class="event_topbanner_info_text"><?= date('d F',strtotime($event->start_date)) ?> - <?= date('d F',strtotime($event->end_date)) ?>,   <?= date('h:i A',strtotime($event->start_time)) ?> </p>
+                    <p class="event_topbanner_info_text">{{$event->event_location.', '.$event->event_address}}</p>
                     <div>
                         <ul class="event_follow_ul">
                             <li><input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="4"></li>
@@ -42,32 +42,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="event_inner_section">
-                                <h3 class="home_section_heading"><span>Speakers</span></h3>
 
-                                <div class="event2_spearkers_outer">
-                                    <img src="{{asset('ws/images/founder.jpg')}}" class="img-responsive event_organiser_pic">
-                                    <p class="founder_name">David Dave</p>
-                                    <p class="founder_designation">Sr. Manager of KDL</p>
-                                    <p class="founder_info event_text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45
-                                        BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the
-                                        more obscure Latin words.</p>
-                                </div>
-                                <div class="event2_spearkers_outer">
-                                    <img src="{{asset('ws/images/founder.jpg')}}" class="img-responsive event_organiser_pic">
-                                    <p class="founder_name">David Dave</p>
-                                    <p class="founder_designation">Sr. Manager of KDL</p>
-                                    <p class="founder_info event_text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45
-                                        BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the
-                                        more obscure Latin words.</p>
-                                </div>
 
+                    <?php if(count($speaker)>0){ ?>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="event_inner_section">
+                                    <h3 class="home_section_heading"><span>Speakers</span></h3>
+
+                                    <?php foreach($speaker as $spkr){ ?>
+                                        <div class="event2_spearkers_outer">
+                                            <img src="{{asset('images/speaker/'.$spkr->image)}}" class="img-responsive event_organiser_pic">
+                                            <p class="founder_name">{{$spkr->speaker_name}}</p>
+                                            <p class="founder_designation">{{$spkr->title}}</p>
+                                            <p class="founder_info event_text">{!! $spkr->description !!}</p>
+                                        </div>
+                                    <?php } ?>
+                                </div>
                             </div>
                         </div>
-
-                    </div>
+                    <?php } ?>
 
                     <!-- new section added -->
                     <div class="row"><!-- Schedule  section -->
@@ -80,10 +74,6 @@
                                     <ul class="nav nav-tabs event_schedule_tabs" role="tablist">
                                         <li role="presentation" class="active"><a href="#day1" aria-controls="day1" role="tab" data-toggle="tab"><span>August 22</span><br> Wednesday</a></li>
                                         <li role="presentation"><a href="#day2" aria-controls="day2" role="tab" data-toggle="tab"><span>August 22</span><br> Wednesday</a></li>
-                                        <li role="presentation"><a href="#day3" aria-controls="day3" role="tab" data-toggle="tab"><span>August 22</span><br> Wednesday</a></li>
-                                        <li role="presentation"><a href="#day4" aria-controls="day4" role="tab" data-toggle="tab"><span>August 22</span><br> Wednesday</a></li>
-                                        <li role="presentation"><a href="#day5" aria-controls="day5" role="tab" data-toggle="tab"><span>August 22</span><br> Wednesday</a></li>
-                                        <li role="presentation"><a href="#day6" aria-controls="day6" role="tab" data-toggle="tab"><span>August 22</span><br> Wednesday</a></li>
                                     </ul>
 
                                     <!-- Tab panes -->
@@ -125,186 +115,7 @@
                                             </div>
 
                                         </div>
-                                        <div role="tabpanel" class="tab-pane" id="day2">
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <ul>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee -day2</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane" id="day3">
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <ul>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee - day3</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane" id="day4">
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <ul>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee - day4</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane" id="day5">
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <ul>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee -day5</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane" id="day6">
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <ul>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee- day6</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
+
 
                                     </div>
 
@@ -321,15 +132,7 @@
                         <div class="col-xs-12">
                             <div class="event_inner_section event_text">
                                 <h3 class="home_section_heading"><span>About</span> the Organiser</h3>
-                                <p>
-                                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45
-                                    BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of
-                                    the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical
-                                    literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
-                                    Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
-                                    popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section
-                                    1.10.32.
-                                </p>
+                                {!! $organiser->description !!}
 
                             </div>
                         </div>
@@ -348,7 +151,7 @@
                                 <p>Get Reminder & special offers</p>
                             </div>
                             <div class="event_right_top_inner event_white_bg">
-                                <a href="#"><img src="{{asset('ws/images/ticket.jpg')}}"></a>
+                                <a href="{{ $event->ticket_url }}" target="_blank"><img src="{{asset('ws/images/ticket.jpg')}}"></a>
                             </div>
                         </div>
                     </div>
@@ -356,13 +159,10 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="event_right_bottom_inner">
-                                <h5>Discription</h5>
-                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
-                                    from 45 BC,</p>
                                 <h5>Location</h5>
-                                <p>400, Street 21, Cyber Park, Gurgaon. 122001. </p>
-                                <h5>Timmings</h5>
-                                <p>10:00 am - 1:30 pm</p>
+                                <p>{{$event->event_location.', '.$event->event_address}}</p>
+                                <h5>Start Time</h5>
+                                <p><?= date('d F Y',strtotime($event->start_date)) ?> -   <?= date('h:i A',strtotime($event->start_time)) ?></p>
                             </div>
                         </div>
                     </div>
@@ -398,11 +198,11 @@
                             <div class="event_right_bottom_inner">
                                 <h5>Official Festival Links</h5>
                                 <p  class="event_social_links">
-                                    <a href="#"><img src="{{asset('ws/images/link.png')}}"></a>
-                                    <a href="#"><img src="{{asset('ws/images/facebook.png')}}"></a>
-                                    <a href="#"><img src="{{asset('ws/images/twitter.png')}}"></a>
-                                    <a href="#"><img src="{{asset('ws/images/youtube.png')}}"></a>
-                                    <a href="#"><img src="{{asset('ws/images/instagram.png')}}"></a>
+                                    <a href="{{ $event->website_url }}" target="_blank"><img src="{{asset('ws/images/link.png')}}"></a>
+                                    <a href="{{ $event->facebook_id }}" target="_blank"><img src="{{asset('ws/images/facebook.png')}}"></a>
+                                    <a href="{{ $event->twitter_id }}" target="_blank"><img src="{{asset('ws/images/twitter.png')}}"></a>
+                                    <a href="{{ $event->facebook_id }}" target="_blank"><img src="{{asset('ws/images/youtube.png')}}"></a>
+                                    <a href="{{ $event->instagram_id }}" target="_blank"><img src="{{asset('ws/images/instagram.png')}}"></a>
                                 </p>
                             </div>
                         </div>

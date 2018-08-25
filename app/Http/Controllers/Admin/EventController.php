@@ -25,7 +25,7 @@ class EventController extends Controller {
         $page = 'add_event';
         $current_tab = 'event_details';
         $event = array();
-        $arrCategory = DB::table('event_categories')->where('status', 1)->get();
+        $arrCategory = DB::table('categories')->where('status', 1)->get();
         $arrEventType = DB::table('event_types')->where('status', 1)->get();
         if ($id) {
             $event = DB::table('events')->where('id', $id)->first();

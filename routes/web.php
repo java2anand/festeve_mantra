@@ -45,7 +45,7 @@ Route::prefix('admin')->group(function() {
     Route::post('/category_store/{id?}', 'Admin\CategoryController@save_category')->name('admin.category_store');
     Route::get('/category_delete/{id}', 'Admin\CategoryController@destroy')->name('admin.category_delete');
 
-	/*     * ********category routes ******************* */
+	/*     * ********Story routes ******************* */
     Route::any('/story_list', 'Admin\StoryController@index')->name('admin.story_list');
     Route::get('/story_add/{id?}', 'Admin\StoryController@create')->name('admin.story_add');
     Route::post('/story_store/{id?}', 'Admin\StoryController@save_story')->name('admin.story_store');
@@ -68,17 +68,17 @@ Route::prefix('admin')->group(function() {
     Route::post('/delete_event_schedule', 'Admin\EventController@delete_schedule')->name('admin.delete_event_schedule');
     Route::get('/event_delete/{id}', 'Admin\EventController@destroy')->name('admin.event_delete');
 
-    /*     * ********event speaker routes ******************* */
-    Route::get('/eventspeaker_list', 'Admin\EventSpeakerController@index')->name('admin.eventspeaker_list');
-    Route::get('/eventspeaker_add/{id?}', 'Admin\EventSpeakerController@create')->name('admin.eventspeaker_add');
-    Route::post('/eventspeaker_store/{id?}', 'Admin\EventSpeakerController@save_speaker')->name('admin.eventspeaker_store');
-    Route::get('/eventspeaker_delete/{id}', 'Admin\EventSpeakerController@destroy')->name('admin.eventspeaker_delete');
+    /*     * ********speaker routes ******************* */
+    Route::get('/speaker_list', 'Admin\SpeakerController@index')->name('admin.speaker_list');
+    Route::get('/speaker_add/{id?}', 'Admin\SpeakerController@create')->name('admin.speaker_add');
+    Route::post('/speaker_store/{id?}', 'Admin\SpeakerController@save_speaker')->name('admin.speaker_store');
+    Route::get('/speaker_delete/{id}', 'Admin\SpeakerController@destroy')->name('admin.speaker_delete');
 
-    /*     * ********event organisers routes ******************* */
-    Route::get('/eventorganiser_list', 'Admin\EventOrganiserController@index')->name('admin.eventorganiser_list');
-    Route::get('/eventorganiser_add/{id?}', 'Admin\EventOrganiserController@create')->name('admin.eventorganiser_add');
-    Route::post('/eventorganiser_store/{id?}', 'Admin\EventOrganiserController@save_organiser')->name('admin.eventorganiser_store');
-    Route::get('/eventorganiser_delete/{id}', 'Admin\EventOrganiserController@destroy')->name('admin.eventorganiser_delete');
+    /*     * ********organisers routes ******************* */
+    Route::get('/organiser_list', 'Admin\OrganiserController@index')->name('admin.organiser_list');
+    Route::get('/organiser_add/{id?}', 'Admin\OrganiserController@create')->name('admin.organiser_add');
+    Route::post('/organiser_store/{id?}', 'Admin\OrganiserController@save_organiser')->name('admin.organiser_store');
+    Route::get('/organiser_delete/{id}', 'Admin\OrganiserController@destroy')->name('admin.organiser_delete');
 
     /*     * ********newsletter routes ******************* */
     Route::get('/newsletter_list', 'Admin\AdminController@newsletters')->name('admin.newsletter_list');
