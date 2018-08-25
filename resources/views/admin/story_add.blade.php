@@ -43,9 +43,19 @@
                                     ?></span>
                             </div>
 
+                            <div class="form-group">
+                                <label for="narrator_name">Narrator Name*</label>
+                                <input type="text" class="form-control" id="narrator_name" name="narrator_name" placeholder="Enter Narrator name" value="<?= (isset($story->narrator_name) && !empty($story->narrator_name)) ? $story->narrator_name : old('narrator_name') ?>">
+                                <span class="error"><?php
+                                    if ($errors->has('narrator_name')) {
+                                        echo $errors->first('narrator_name');
+                                    }
+                                    ?></span>
+                            </div>
+
 
                             <div class="form-group">
-                                <label for="description">Description</label>
+                                <label for="description">Short Description</label>
                                 <textarea rows="6"  class="form-control ckeditor" id="short_desc" name="short_desc" ><?= (isset($story->short_desc) && !empty($story->short_desc)) ? $story->short_desc : old('short_desc') ?></textarea>
                                 <span class="error"><?php
                                     if ($errors->has('short_desc')) {
@@ -76,6 +86,20 @@
                                     $image = (isset($story->image) && !empty($story->image)) ? $story->image: '';
                                     if (file_exists( public_path() . '/images/story/' . $image)) {?>
                                         <img src="{{ asset( 'images/story/'.$image)}}" width="25px;" height="25px;"/>
+                                <?php }?>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="narrator_image">Narrator Image</label>
+                                <input type="file" class="form-control" id="narrator_image" name="narrator_image" >
+                                <span class="error"></span>
+                                <input type="hidden" name="old_narrator_image" value="<?= (isset($story->narrator_image) && !empty($story->narrator_image)) ? $story->narrator_image: '' ?>" />
+
+                                <?php
+                                    $narrator_image = (isset($story->narrator_image) && !empty($story->narrator_image)) ? $story->narrator_image: '';
+                                    if (file_exists( public_path() . '/images/story/narrator/' . $narrator_image)) {?>
+                                        <img src="{{ asset( 'images/story/narrator/'.$narrator_image)}}" width="25px;" height="25px;"/>
                                 <?php }?>
                             </div>
 

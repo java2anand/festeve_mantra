@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
 use App\Http\Controllers\Controller;
 use App\Model\Event;
+use App\Model\EventSpeaker;
 use Illuminate\Support\Facades\DB;
 use Image;
 
@@ -25,15 +26,21 @@ class EventController extends Controller {
         $page = 'add_event';
         $current_tab = 'event_details';
         $event = array();
+        $speakers = array();
         $arrCategory = DB::table('categories')->where('status', 1)->get();
         $arrEventType = DB::table('event_types')->where('status', 1)->get();
+        $arr_organisers = DB::table('organisers')->where('status', 1)->get();
+        $arr_speakers = DB::table('speakers')->where('status', 1)->get();
         if ($id) {
             $event = DB::table('events')->where('id', $id)->first();
+            $selected_speaker = DB::table('event_speakers')->where('event_id', $id)->get()->toArray();
+            $speakers = array_column($selected_speaker, 'speaker_id');
             if ($event == null) {
                 return redirect()->route('admin.event_list')->with('alert-danger', 'Event not found!');
             }
         }
-        return view('admin.event_add', compact('event', 'page', 'arrCategory', 'arrEventType', 'current_tab'));
+        //dd($speakers);
+        return view('admin.event_add', compact('event', 'page', 'arrCategory', 'arrEventType', 'current_tab', 'arr_organisers', 'arr_speakers', 'speakers'));
     }
 
     public function save_event(EventRequest $request, $event_id = false) {
@@ -56,6 +63,7 @@ class EventController extends Controller {
         $event->end_time = !empty($request->end_time) ? date("H:i:s", strtotime($request->end_time)) : '';
         $event->short_description = !empty($request->short_description) ? $request->short_description : '';
         $event->description = !empty($request->description) ? $request->description : '';
+        $event->organiser_id = !empty($request->organiser_id) ? $request->organiser_id : '';
         $event->status = $request->status;
 
         /* Event Top Banner */
@@ -100,6 +108,17 @@ class EventController extends Controller {
         /*         * *** save and get last id ***** */
         $event->save();
         $save_event_id = (isset($event_id) && !empty($event_id)) ? $event_id : $event->id;
+
+        /*         * ********** save speaker id will change logic after sometime********* */
+        $delete = DB::table('event_speakers')->where('event_id', $save_event_id)->delete();
+        if(count($request->speaker)>0){
+            foreach($request->speaker as $v){
+                $event_speaker = new EventSpeaker;
+                $event_speaker->event_id = $save_event_id;
+                $event_speaker->speaker_id = $v;
+                $event_speaker->save();
+            }
+        }
 
         $request->session()->flash('alert-success', 'Event saved successfully!');
         if ($request->submit == 'go') {

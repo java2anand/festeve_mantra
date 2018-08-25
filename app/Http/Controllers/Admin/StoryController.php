@@ -43,6 +43,7 @@ class StoryController extends Controller {
             $story = Story::find($id);
         }
         $story->story_name = $request->story_name;
+        $story->narrator_name = $request->narrator_name;
         $story->short_desc = !empty($request->short_desc) ? $request->short_desc : '';
         $story->description = !empty($request->description) ? $request->description : '';
         $story->status = $request->status;
@@ -56,14 +57,27 @@ class StoryController extends Controller {
 
             if($img->save($destinationPath.'/'.$imagename,80)){
                 $prev_image = public_path('images/story').'/'.$request->old_image;
-
                 @unlink($prev_image);
             }
-
             $story->image  = $imagename;
-
         }else{
-            $story->icon  = (!empty($request->old_image)) ? $request->old_image : '';
+            $story->image  = (!empty($request->old_image)) ? $request->old_image : '';
+        }
+
+        /****** narrator image *********/
+        if($request->hasFile('narrator_image')) {
+            $file = $request->file('narrator_image');
+            $nimagename = time().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('/images/story/narrator');
+            $img = Image::make($file->getRealPath())->resize(50, 50);
+
+            if($img->save($destinationPath.'/'.$nimagename,80)){
+                $prev_narrator_image = public_path('images/story/narrator').'/'.$request->old_narrator_image;
+                @unlink($prev_narrator_image);
+            }
+            $story->narrator_image  = $nimagename;
+        }else{
+            $story->narrator_image  = (!empty($request->old_narrator_image)) ? $request->old_narrator_image : '';
         }
 
         $story->save();

@@ -89,7 +89,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-clock-o"></i>
                                         </div>
-                                        <input type="text" class="form-control timepicker from_time" id="from_time" name="from_time[]" placeholder="Enter From Time" value="<?= (isset($schedule->from_time) && !empty($schedule->from_time)) ? $schedule->from_time : old('from_time') ?>">
+                                        <input type="text" class="form-control timepicker from_time" id="from_time_<?= $count; ?>" name="from_time[]" placeholder="Enter From Time" value="<?= (isset($schedule->from_time) && !empty($schedule->from_time)) ? $schedule->from_time : old('from_time') ?>">
                                         <span class="error"><?php
                                         if ($errors->has('from_time')) {
                                             echo $errors->first('from_time');
@@ -104,7 +104,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-clock-o"></i>
                                         </div>
-                                        <input type="text" class="form-control timepicker to_time" id="to_time" name="to_time[]" placeholder="Enter To Time" value="<?= (isset($schedule->to_time) && !empty($schedule->to_time)) ? $schedule->to_time : old('to_time') ?>">
+                                        <input type="text" class="form-control timepicker to_time" id="to_time_<?= $count; ?>" name="to_time[]" placeholder="Enter To Time" value="<?= (isset($schedule->to_time) && !empty($schedule->to_time)) ? $schedule->to_time : old('to_time') ?>">
                                         <span class="error"><?php
                                             if ($errors->has('to_time')) {
                                                 echo $errors->first('to_time');
@@ -187,7 +187,7 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-clock-o"></i>
                                     </div>
-                                    <input type="text" class="form-control timepicker from_time" id="from_time" name="from_time[]" placeholder="Enter From Time" value="">
+                                    <input type="text" class="form-control timepicker from_time" id="from_time_0" name="from_time[]" placeholder="Enter From Time" value="">
                                     <span class="error"><?php
                                     if ($errors->has('from_time')) {
                                         echo $errors->first('from_time');
@@ -202,7 +202,7 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-clock-o"></i>
                                     </div>
-                                    <input type="text" class="form-control timepicker to_time" id="to_time" name="to_time[]" placeholder="Enter To Time" value="">
+                                    <input type="text" class="form-control timepicker to_time" id="to_time_0" name="to_time[]" placeholder="Enter To Time" value="">
                                     <span class="error"><?php
                                     if ($errors->has('to_time')) {
                                         echo $errors->first('to_time');
@@ -269,9 +269,9 @@
 <script src="{{asset('admin/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
 <script>
 $(document).ready(function () {
-    $('.timepicker').timepicker({
+    /*$('.timepicker').timepicker({
         showInputs: false
-    });
+    });*/
 
 
     var date = new Date();
@@ -285,6 +285,14 @@ $(document).ready(function () {
             todayHighlight: true,
             startDate: today,
             autoclose: true
+        });
+
+        $('#from_time_'+i).timepicker({
+            showInputs: false
+        });
+
+        $('#to_time_'+i).timepicker({
+            showInputs: false
         });
         i++;
     });
@@ -309,6 +317,16 @@ $(document).ready(function () {
             todayHighlight: true,
             startDate: today,
             autoclose: true
+        });
+
+        newdiv.find('.from_time').attr('id', 'from_time_' + count);
+        $("#from_time_"+count).timepicker({
+            showInputs: false
+        });
+
+        newdiv.find('.to_time').attr('id', 'to_time_' + count);
+        $("#to_time_"+count).timepicker({
+            showInputs: false
         });
 
         newdiv.find('.title').val('');

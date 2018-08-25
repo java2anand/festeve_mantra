@@ -171,7 +171,7 @@
                         <div class="col-xs-12">
                             <div class="event_right_bottom_inner event_page_ads">
                                 <a href="#">
-                                    <img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" class="img-responsive" alt="adsvertise banner">
+                                    <img src="{{ asset( 'images/event/'.$event->event_image )}}" class="img-responsive" alt="adsvertise banner">
                                 </a>
                             </div>
                         </div>

@@ -78,140 +78,48 @@
             </div>
         <?php } ?>
 
-        <div class="home_storeis_outer"><!-- stories outer -->
-            <div class="container">
-                <div class="row">
-                    <h3 class="home_section_heading text-center">EVENT <span>STORIES</span></h3>
-                    <p class="text-center heading_seprator"><span></span></p>
-                    <!-- Swiper -->
-                    <div class="swiper-container">
-                        <div class="swiper-wrapper">
-
-                            <div class="swiper-slide">
-                                <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
-                                    <div class="upcoming_item_container">
-                                        <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
-                                        </div>
-                                        <div class="upcoming_item_info">
-                                            <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <img src="{{asset('ws/images/user.jpg')}}" class="media-object">
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><span>by</span> John Doe</h4>
-                                                    <p>Text text text text text text  text text ...</p>
-                                                </div>
+        <?php if(count($arr_story)>0){ ?>
+            <div class="home_storeis_outer"><!-- stories outer -->
+                <div class="container">
+                    <div class="row">
+                        <h3 class="home_section_heading text-center">EVENT <span>STORIES</span></h3>
+                        <p class="text-center heading_seprator"><span></span></p>
+                        <!-- Swiper -->
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                            <?php foreach($arr_story as $story){ ?>
+                                <div class="swiper-slide">
+                                    <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
+                                        <div class="upcoming_item_container">
+                                            <div class="upcoming_item_image">
+                                                <a href="#"><img src="{{ asset( 'images/story/'.$story->image)}}" alt="event banner"></a>
                                             </div>
+                                            <div class="upcoming_item_info">
+                                                <p class="uc_event_name"><a href="#">{{$story->story_name}}</a></p>
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <img src="{{ asset( 'images/story/narrator/'.$story->narrator_image)}}" class="media-object">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading"><span>by</span> {{$story->narrator_name}}</h4>
+                                                        <p>{!! substr($story->short_desc,0,50) !!}</p>
+                                                    </div>
+                                                </div>
 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            <?php } ?>
+
                             </div>
-
-                            <div class="swiper-slide">
-                                <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
-                                    <div class="upcoming_item_container">
-                                        <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
-                                        </div>
-                                        <div class="upcoming_item_info">
-                                            <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <img src="{{asset('ws/images/user.jpg')}}" class="media-object">
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><span>by</span> John Doe</h4>
-                                                    <p>Text text text text text text  text text ...</p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
-                                    <div class="upcoming_item_container">
-                                        <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
-                                        </div>
-                                        <div class="upcoming_item_info">
-                                            <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <img src="{{asset('ws/images/user.jpg')}}" class="media-object">
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><span>by</span> John Doe</h4>
-                                                    <p>Text text text text text text  text text ...</p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
-                                    <div class="upcoming_item_container">
-                                        <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
-                                        </div>
-                                        <div class="upcoming_item_info">
-                                            <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <img src="{{asset('ws/images/user.jpg')}}" class="media-object">
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><span>by</span> John Doe</h4>
-                                                    <p>Text text text text text text  text text ...</p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
-                                    <div class="upcoming_item_container">
-                                        <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
-                                        </div>
-                                        <div class="upcoming_item_info">
-                                            <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <img src="{{asset('ws/images/user.jpg')}}" class="media-object">
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><span>by</span> John Doe</h4>
-                                                    <p>Text text text text text text  text text ...</p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination" style="position:relative"></div>
                         </div>
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination" style="position:relative"></div>
                     </div>
-
-
                 </div>
-            </div>
-        </div><!-- stories outer -->
-
+            </div><!-- stories outer -->
+        <?php } ?>
 
         <!-- categories section -->
         <div class="container home_categories_secton">

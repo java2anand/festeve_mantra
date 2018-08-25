@@ -25,8 +25,9 @@ class HomeController extends Controller {
      */
     public function index() {
         $arr_category = DB::table('categories')->where('parent_id', 0)->where('status', 1)->get();
-        $arr_event = DB::table('events')->get();
-        return view('home', compact('arr_category','arr_event'));
+        $arr_event = DB::table('events')->orderBy('id', 'desc')->limit(6)->get();
+        $arr_story = DB::table('event_stories')->orderBy('id', 'desc')->limit(6)->get();
+        return view('home', compact('arr_category','arr_event','arr_story'));
     }
 
     public function about_us() {

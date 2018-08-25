@@ -2,6 +2,7 @@
 @include('admin.admin-sidebar')
 <link rel="stylesheet" href="{{asset('admin/plugins/datepicker/bootstrap-datepicker.min.css') }}">
 <link rel="stylesheet" href="{{asset('admin/plugins/timepicker/bootstrap-timepicker.min.css') }}">
+<link rel="stylesheet" href="{{asset('admin/plugins/select2/select2.min.css') }}">
 <?php $event_id = (isset($event->id) && !empty($event->id)) ? $event->id : ''; ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -70,12 +71,33 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-sm-12">
+                        <div class="form-group col-sm-6">
                             <label for="event_type_id">Select Event Type</label>
                             <select class="form-control" id="event_type_id" name="event_type_id">
 
                                 <?php foreach ($arrEventType as $k => $v) { ?>
                                     <option value="<?= $v->id ?>" <?= (!empty($event->event_type) && ($v->id == $event->event_type)) ? 'selected' : ''; ?>><?= $v->name ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="organiser_id">Select Organiser</label>
+                            <select class="form-control" id="organiser_id" name="organiser_id">
+
+                                <?php foreach ($arr_organisers as $k => $v) { ?>
+                                    <option value="<?= $v->id ?>" <?= (!empty($event->organiser_id) && ($v->id == $event->organiser_id)) ? 'selected' : ''; ?>><?= $v->name ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group col-sm-12">
+                            <label for="speaker">Select Speaker</label>
+                            <select class="form-control select2" id="speaker" name="speaker[]" multiple>
+
+                                <?php foreach ($arr_speakers as $k => $v) { ?>
+                                    <option value="<?= $v->id ?>" <?php echo (in_array($v->id, $speakers )) ? "selected" : ""; ?> ><?= $v->speaker_name ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -253,9 +275,11 @@
 <script src="{{asset('admin/plugins/ckeditor/ckeditor.js') }}"></script>
 <script src="{{asset('admin/plugins/datepicker/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{asset('admin/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
+<script src="{{asset('admin/plugins/select2/select2.full.js') }}"></script>
 
 <script>
 $(document).ready(function () {
+    $(".select2").select2();
     //timepicker
     $('.timepicker').timepicker({
         showInputs: false
