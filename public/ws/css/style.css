@@ -1020,12 +1020,12 @@ a{
 }
 .event_schedule_tabs_content ul li .sec_left_section{
     display:inline-block;
-    width:18%;
+    width:25%;
     color:#f07336;
 }
 .event_schedule_tabs_content ul li .sec_right_section{
     display:inline-block;
-    width:80%;
+    width:70%;
 
 }
 /* event 2 page ends */

@@ -3,47 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/festevemantra/public/admin/common.js</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/app/Http/Controllers/Admin/AdminController.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/app/Model/Category.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/resources/views/admin/speaker_list.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/app/Admin.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/routes/web.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/app/Http/Controllers/Auth/LoginController.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/resources/views/admin/admin-header.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/database/seeds/SpeakersTableSeeder.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/database/factories/UserFactory.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/database/migrations/2018_07_12_152350_create_events_table.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/app/Http/Kernel.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/app/Exceptions/Handler.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/database/seeds/DatabaseSeeder.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/app/Http/Controllers/Admin/SpeakerController.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/resources/views/event_detail.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/app/Http/Controllers/Admin/OrganiserController.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/database/seeds/UsersTableSeeder.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/app/Http/Controllers/Auth/AdminLoginController.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/resources/views/admin/profile.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/config/auth.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/public/.htaccess</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/resources/views/admin/speaker_add.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/app/Http/Controllers/HomeController.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/app/Model/Event.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/resources/views/layouts/app.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/resources/views/admin/admin-sidebar.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/resources/views/admin/organiser_add.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/resources/views/admin/organiser_list.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/app/Http/Middleware/RedirectIfAuthenticated.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/app/Http/Controllers/Admin/EventController.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/database/migrations/2018_08_24_095248_create_categories_table.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/database/migrations/2018_06_03_114230_create_admins_table.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/resources/views/admin/home.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/resources/views/event_list.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/database/seeds/CategoriesTableSeeder.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/resources/views/admin/event_add.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/database/seeds/AdminsTableSeeder.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/app/Http/Controllers/Admin/CategoryController.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/app/Http/Requests/CategoryRequest.php</file>
-            <file>file:/C:/xampp/htdocs/festevemantra/resources/views/admin/category_list.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/event_add_schedule.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/Admin/StoryController.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/event_add.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/event_detail.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/home.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/event_list.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/HomeController.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/story_add.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/Admin/EventController.php</file>
         </group>
     </open-files>
 </project-private>

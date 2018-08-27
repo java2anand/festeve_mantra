@@ -22,7 +22,7 @@ Route::get('/event-category/{event_slug}', 'HomeController@event_list')->name('e
 Route::get('/event-detail/{event_slug}', 'HomeController@event_detail')->name('event-detail');
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
-
+Route::post('/save_newsleter', 'HomeController@save_newsleter')->name('save_newsleter');
 
 /* * ***********Admin Panel ******************* */
 Route::prefix('admin')->group(function() {

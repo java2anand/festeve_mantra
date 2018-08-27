@@ -15,12 +15,16 @@ class Event extends Model{
         return $this->hasOne('App\Model\Organiser', 'id' ,'organiser_id');
     }
 
-    public function state(){
+    public function states(){
         return $this->hasOne('App\Model\State', 'state_id' ,'state');
     }
 
-    public function city(){
+    public function cities(){
         return $this->hasOne('App\Model\City', 'city_id' ,'city');
+    }
+
+    public function speaker(){
+        
     }
 
 }

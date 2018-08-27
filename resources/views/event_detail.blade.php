@@ -12,8 +12,8 @@
         <div class="event1_top_bg_section">
             <div class="container event_2_container">
                 <div class="event_topbanner_info">
-                    <h3><?= $event->title ?></h3>
-                    <p class="event_topbanner_info_text"><?= date('d F',strtotime($event->start_date)) ?> - <?= date('d F',strtotime($event->end_date)) ?>,   <?= date('h:i A',strtotime($event->start_time)) ?> </p>
+                    <h3>{{ $event->title }}</h3>
+                    <p class="event_topbanner_info_text"> {{ date('dS F',strtotime($event->start_date)) }} - {{ date('dS F',strtotime($event->end_date)) }},   {{ date('h:i A',strtotime($event->start_time)) }} </p>
                     <p class="event_topbanner_info_text">{{$event->event_location.', '.$event->event_address}}</p>
                     <div>
                         <ul class="event_follow_ul">
@@ -33,7 +33,6 @@
                 <div class="col-md-9 col-sm-8 col-xs-12 event_content_left"><!-- left section -->
                     <div class="row">
 
-
                         <div class="col-xs-12">
                             <div class="event_inner_section event_text">
                                 <h1 class="home_section_heading"><span>Description</span> About Event</h1>
@@ -44,24 +43,24 @@
                     </div>
 
 
-                    <?php if(count($speaker)>0){ ?>
+                    @if(count($speaker)>0)
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="event_inner_section">
                                     <h3 class="home_section_heading"><span>Speakers</span></h3>
 
-                                    <?php foreach($speaker as $spkr){ ?>
+                                        @foreach($speaker as $spkr)
                                         <div class="event2_spearkers_outer">
                                             <img src="{{asset('images/speaker/'.$spkr->image)}}" class="img-responsive event_organiser_pic">
                                             <p class="founder_name">{{$spkr->speaker_name}}</p>
                                             <p class="founder_designation">{{$spkr->title}}</p>
                                             <p class="founder_info event_text">{!! $spkr->description !!}</p>
                                         </div>
-                                    <?php } ?>
+                                        @endforeach
                                 </div>
                             </div>
                         </div>
-                    <?php } ?>
+                    @endif
 
                     <!-- new section added -->
                     <div class="row"><!-- Schedule  section -->
@@ -72,50 +71,35 @@
                                 <div>
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs event_schedule_tabs" role="tablist">
-                                        <li role="presentation" class="active"><a href="#day1" aria-controls="day1" role="tab" data-toggle="tab"><span>August 22</span><br> Wednesday</a></li>
-                                        <li role="presentation"><a href="#day2" aria-controls="day2" role="tab" data-toggle="tab"><span>August 22</span><br> Wednesday</a></li>
+                                        @php ($i = 1)
+                                        @foreach($arr_schedule as $k=>$sch)
+                                            <li role="presentation" class="{{{ $i==1 ? 'active': '' }}}"><a href="#day{{$k}}" aria-controls="day{{$k}}" role="tab" data-toggle="tab"><span>{{ date('F d',strtotime($k)) }}</span><br>{{ date('l', strtotime($k)) }}</a></li>
+                                        @php ($i++)
+                                        @endforeach
                                     </ul>
 
                                     <!-- Tab panes -->
                                     <div class="tab-content event_schedule_tabs_content">
-                                        <div role="tabpanel" class="tab-pane active" id="day1">
+                                        @php ($i = 1)
+                                        @foreach($arr_schedule as $k=>$sch)
+                                        <div role="tabpanel" class="tab-pane {{{ $i==1 ? 'active': '' }}}" id="day{{$k}}">
                                             <div class="row">
                                                 <div class="col-xs-12">
                                                     <ul>
+                                                        @foreach($sch as $date)
                                                         <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
+                                                            <span class="sec_left_section">
+                                                            {{ date('h:iA',strtotime($date->from_time)).' - '. date('h:iA',strtotime($date->to_time))}}
+                                                            </span>
+                                                            <span class="sec_right_section">{{$date->title }}</span>
                                                         </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="sec_left_section">08:00 - 09:00 PM</span>
-                                                            <span class="sec_right_section">Registration, morning coffee</span>
-                                                        </li>
+                                                        @endforeach
                                                     </ul>
                                                 </div>
                                             </div>
-
                                         </div>
-
+                                        @php ($i++)
+                                        @endforeach
 
                                     </div>
 
@@ -162,7 +146,7 @@
                                 <h5>Location</h5>
                                 <p>{{$event->event_location.', '.$event->event_address}}</p>
                                 <h5>Start Time</h5>
-                                <p><?= date('d F Y',strtotime($event->start_date)) ?> -   <?= date('h:i A',strtotime($event->start_time)) ?></p>
+                                <p>{{ date('d F Y',strtotime($event->start_date)) }} -   {{ date('h:i A',strtotime($event->start_time)) }}</p>
                             </div>
                         </div>
                     </div>
@@ -219,6 +203,7 @@
 
         <!-- event page content section ends -->
 
+        @if(count($arr_similar_event)>0)
         <div class="event_page_latest_list"><!-- stories outer -->
             <div class="container">
                 <div class="row">
@@ -229,91 +214,32 @@
                     <!-- Swiper -->
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-
+                            @foreach($arr_similar_event as $s_event)
                             <div class="swiper-slide">
                                 <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
                                     <div class="upcoming_item_container">
                                         <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+                                            <a href="#"><img src="{{ asset( 'images/event/'.$s_event->event_image )}}" alt="event banner"></a>
                                         </div>
                                         <div class="upcoming_item_info">
-                                            <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
-                                            <p class="uc_event_date">Sep 12th 2018</p>
-                                            <p class="uc_event_link"><a href="#">Read More</a></p>
+                                            <p class="uc_event_name"><a href="{{ url('event-detail/'.$s_event->slug )}}">{{ $s_event->title }}</a></p>
+                                            <p class="uc_event_date">{{ date('F dS, Y',strtotime($s_event->start_date)) }}</p>
+                                            <p class="uc_event_link"><a href="{{ url('event-detail/'.$s_event->slug )}}">View Event</a></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="swiper-slide">
-                                <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
-                                    <div class="upcoming_item_container">
-                                        <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
-                                        </div>
-                                        <div class="upcoming_item_info">
-                                            <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
-                                            <p class="uc_event_date">Sep 12th 2018</p>
-                                            <p class="uc_event_link"><a href="#">Read More</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
-                                    <div class="upcoming_item_container">
-                                        <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
-                                        </div>
-                                        <div class="upcoming_item_info">
-                                            <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
-                                            <p class="uc_event_date">Sep 12th 2018</p>
-                                            <p class="uc_event_link"><a href="#">Read More</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
-                                    <div class="upcoming_item_container">
-                                        <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
-                                        </div>
-                                        <div class="upcoming_item_info">
-                                            <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
-                                            <p class="uc_event_date">Sep 12th 2018</p>
-                                            <p class="uc_event_link"><a href="#">Read More</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
-                                    <div class="upcoming_item_container">
-                                        <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
-                                        </div>
-                                        <div class="upcoming_item_info">
-                                            <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
-                                            <p class="uc_event_date">Sep 12th 2018</p>
-                                            <p class="uc_event_link"><a href="#">Read More</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
+                            @endforeach
                         </div>
                         <!-- Add Pagination -->
                         <div class="swiper-pagination" style="position:relative"></div>
                     </div>
 
-
                 </div>
             </div>
         </div><!-- stories outer -->
+
+        @endif
 
         <!-- footer -->
         @include('footer')

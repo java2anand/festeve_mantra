@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'festive_mantra'),
+    //'name' => env('APP_NAME', 'festive_mantra'),
+    'name' => 'Festeve Mantra',
 
     /*
     |--------------------------------------------------------------------------

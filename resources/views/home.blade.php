@@ -51,7 +51,7 @@
 
         </div>
         <!-- search section ends -->
-        <?php if(count($arr_event)>0){ ?>
+        @if(count($arr_event)>0)
             <div class="container home_section upcoming_events">
                 <div class="row">
                     <h3 class="home_section_heading text-center">UPCOMING <span>EVENT</span></h3>
@@ -59,7 +59,7 @@
                         <span></span>
                     </p>
 
-                    <?php foreach($arr_event as $event){ ?>
+                    @foreach($arr_event as $event)
                         <div class="col-sm-4 col-xs-12 upcoming_events_items"><!-- upcoming event -->
                             <div class="upcoming_item_container">
                                 <div class="upcoming_item_image">
@@ -73,12 +73,12 @@
                                 </div>
                             </div>
                         </div><!-- upcoming event ends -->
-                    <?php } ?>
+                    @endforeach
                 </div>
             </div>
-        <?php } ?>
+        @endif
 
-        <?php if(count($arr_story)>0){ ?>
+        @if(count($arr_story)>0)
             <div class="home_storeis_outer"><!-- stories outer -->
                 <div class="container">
                     <div class="row">
@@ -87,7 +87,7 @@
                         <!-- Swiper -->
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
-                            <?php foreach($arr_story as $story){ ?>
+                            @foreach($arr_story as $story)
                                 <div class="swiper-slide">
                                     <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
                                         <div class="upcoming_item_container">
@@ -110,7 +110,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php } ?>
+                            @endforeach
 
                             </div>
                             <!-- Add Pagination -->
@@ -119,7 +119,7 @@
                     </div>
                 </div>
             </div><!-- stories outer -->
-        <?php } ?>
+        @endif
 
         <!-- categories section -->
         <div class="container home_categories_secton">
@@ -199,11 +199,11 @@
                         </h3>
                     </div>
                     <div class="col-sm-6">
-                        <form name="newsletter_from" id="newsletter_form">
+                        <form name="newsletter_form" id="newsletter_form">
                             <div class="input-group">
                                 <input type="email" class="form-control" name="newsletter_email" id="newsletter_email">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" name="newsletter_button" id="newsletter_button">Subscribe</button>
+                                    <button class="btn btn-default" type="submit" name="newsletter_button" id="newsletter_button">Subscribe</button>
                                 </span>
                             </div><!-- /input-group -->
                         </form>
@@ -254,9 +254,31 @@
                     $('body').removeClass('body_overflow');
                     $('.moblie_header_overlay').hide();
 
-                })
+                });
 
-
+                $("#newsletter_form").validate({
+                    errorElement: 'span',
+                    rules: {
+                        newsletter_email: "required",
+                    },
+                    messages: {
+                        newsletter_email: "Enter email.",
+                    },
+                    submitHandler: function (form) {
+                        $.ajax({
+                            url: "{{ URL::route('save_newsleter') }}",
+                            crossDomain: true,
+                            type: "POST",
+                            data: {'email': $("#newsletter_email").val()},
+                            dataType: 'json',
+                            success: function (response) {
+                                if (response.success == true){
+                                   alert('hello');
+                                }
+                            }
+                        });
+                    }
+                });
             })
         </script>
     </body>
