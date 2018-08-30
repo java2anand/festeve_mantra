@@ -66,7 +66,7 @@
                             <select class="form-control" id="category_id" name="category_id">
 
                                 <?php foreach ($arrCategory as $k => $v) { ?>
-                                    <option value="<?= $v->id ?>" <?= (!empty($event->event_category) && ($v->id == $event->event_category)) ? 'selected' : ''; ?>><?= ($v->parent_id == 0) ? $v->category_name : '>>'.$v->category_name ?></option>
+                                    <option value="<?= $v->id ?>" <?= (!empty($event->event_category) && ($v->id == $event->event_category)) ? 'selected' : ''; ?>><?= ($v->parent_id == 0) ? $v->category_name : '>>' . $v->category_name ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -97,7 +97,7 @@
                             <select class="form-control select2" id="speaker" name="speaker[]" multiple>
 
                                 <?php foreach ($arr_speakers as $k => $v) { ?>
-                                    <option value="<?= $v->id ?>" <?php echo (in_array($v->id, $speakers )) ? "selected" : ""; ?> ><?= $v->speaker_name ?></option>
+                                    <option value="<?= $v->id ?>" <?php echo (in_array($v->id, $speakers)) ? "selected" : ""; ?> ><?= $v->speaker_name ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -186,7 +186,7 @@
                             $image = (isset($event->event_image) && !empty($event->event_image)) ? $event->event_image : '';
                             if (file_exists(public_path() . '/images/event/thumb/' . $image)) {
                                 ?>
-                                <img src="{{ asset( 'images/event/thumb/'.$image)}}" />
+                                <img src="{{ asset( 'images/event/thumb/'.$image)}}" width="100" height="50"/>
                             <?php } ?>
                         </div>
 
@@ -201,8 +201,8 @@
                         </div>
 
                         <div style="clear:both;"></div>
-						<!--Code for Add Event Top banner -->
-							<div class="form-group col-sm-12">
+                        <!--Code for Add Event Top banner -->
+                        <div class="form-group col-sm-12">
                             <label for="event_top_banner">Top Banner*</label>
                             <input type="file" class="form-control" id="event_top_banner" name="event_top_banner" >
                             <span class="error"><?php
@@ -216,10 +216,10 @@
                             $image = (isset($event->event_top_banner) && !empty($event->event_top_banner)) ? $event->event_top_banner : '';
                             if (file_exists(public_path() . '/images/event/top_banner/' . $image)) {
                                 ?>
-                                <img src="{{ asset( 'images/event/top_banner/'.$image)}}" />
+                                <img src="{{ asset( 'images/event/top_banner/'.$image)}}" width="300px" height="100px"/>
                             <?php } ?>
                         </div>
-						<!-- Code for Add event Top Banner ends here -->
+                        <!-- Code for Add event Top Banner ends here -->
                         <div class="form-group col-sm-12">
                             <label for="short_description">Short Description</label>
                             <textarea rows="6"  class="form-control ckeditor" id="short_description" name="short_description" ><?= (isset($event->short_description) && !empty($event->short_description)) ? $event->short_description : old('short_description') ?></textarea>
@@ -306,10 +306,10 @@ $(document).ready(function () {
         startDate: today,
         autoclose: true
     })
-    .on('changeDate', function (selected) {
-        var minDate = new Date(selected.date.valueOf());
-        $('#start_date').datepicker('setEndDate', minDate);
-    });
+            .on('changeDate', function (selected) {
+                var minDate = new Date(selected.date.valueOf());
+                $('#start_date').datepicker('setEndDate', minDate);
+            });
 
 
     $("#event_form").validate({

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Model\Event;
 use App\Model\Category;
+use App\Model\Newsletter;
 
 class HomeController extends Controller {
 
@@ -40,29 +41,26 @@ class HomeController extends Controller {
         if ($category === null) {
            return redirect('/');
         }
-
-        $arrevent = Event::where('event_category','=',$category->id)->paginate(1);
-
+        $arrevent = Event::where('event_category','=',$category->id)->paginate(20);
         return view('event_list',compact('arrevent'));
     }
 
     public function event_detail($slug) {
+        $arr_schedule = array();
         $event = Event::where('slug', '=', $slug)->first();
         if ($event === null) {
            return redirect('/');
         }
 
         $speaker = DB::table('event_speakers')->where('event_id', $event->id)
-                ->join('speakers as spkr', 'spkr.id', '=', 'event_speakers.speaker_id')
-                ->select("spkr.id", "spkr.speaker_name", "spkr.image", "spkr.description",'spkr.title')->get();
+            ->join('speakers as spkr', 'spkr.id', '=', 'event_speakers.speaker_id')
+            ->select("spkr.id", "spkr.speaker_name", "spkr.image", "spkr.description",'spkr.title')->get();
         $organiser = $event->organiser;
 
         //query to find schedule
         $schedule_date = DB::table('event_schedules')->select('date')->where('event_id', $event->id)->where('status', 1)->groupBy('date')->get();
         if(count($schedule_date)>0){
-            $arr_schedule = array();
             foreach($schedule_date as $date){
-
                 $arr_schedule[$date->date] = DB::table('event_schedules')->where('event_id', $event->id)->where('status', 1)->where('date',$date->date)->get();
             }
         }
@@ -74,18 +72,17 @@ class HomeController extends Controller {
     }
 
     public function save_newsleter(Request $request){
-        $email = $request->newsletter_email;
-        echo $email;die;
+        $email = $request->email;
 
         $newsletter = Newsletter::where('email',$email)->first();
         if($newsletter){
-            $msg = 'Already subscribed.';
+            $msg = '<span class="text-danger">Already subscribed.</span>';
         }else{
             $save_news = new Newsletter;
             $save_news->email = $email;
             $save_news->save();
 
-            $msg = 'Subscribed successfully.';
+            $msg = '<span class="text-success">Subscribed successfully.</span>';
         }
 
         header('Content-Type: application/x-json; charset=utf-8');

@@ -22,9 +22,4 @@ class Event extends Model{
     public function cities(){
         return $this->hasOne('App\Model\City', 'city_id' ,'city');
     }
-
-    public function speaker(){
-        
-    }
-
 }

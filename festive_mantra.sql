@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 25, 2018 at 10:10 PM
+-- Generation Time: Aug 30, 2018 at 05:16 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.0.23
 
@@ -51,7 +51,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `firstname`, `lastname`, `email`, `contact_number`, `address`, `country`, `state`, `city`, `postal_code`, `password`, `profile_img`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Kapil', 'Khandelwal', 'admin@festevemantra.com', 844742, '89857 Kilback Villages Apt. 302\nPort Sharonfort, MA 41632-5354', 99, 18, 274, 55520, '$2y$10$w8PFGGl22h0whbcvci/sWus8Ono9csQgeqSGQaN/yjNLH6Zy/g0p.', '1535112653.jpg', 'SWy8bAfMTp4yBcmErpg1qiL5unSoSDOa5QnklmQWF2KEq8h2eEdCzvQMWWoE', '2018-08-24 06:34:43', '2018-08-25 04:03:23'),
+(1, 'Kapil', 'Khandelwal', 'admin@festevemantra.com', 844742, '89857 Kilback Villages Apt. 302\nPort Sharonfort, MA 41632-5354', 99, 18, 274, 55520, '$2y$10$w8PFGGl22h0whbcvci/sWus8Ono9csQgeqSGQaN/yjNLH6Zy/g0p.', '1535112653.jpg', 'gV6SButSnvEkY8KeXiyEb3fQQeCZXimXTub5fXdGFYxn1jD6RLX4VMFxbl2p', '2018-08-24 06:34:43', '2018-08-25 04:03:23'),
 (2, 'Sherwood', 'Waelchi', 'otillman@example.net', 844, '8299 Farrell Parks Suite 115\nStreichborough, IA 41035', 99, 18, 274, 64969, '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', '', 'poGbimknoZ', '2018-08-24 06:34:44', '2018-08-24 06:34:44'),
 (3, 'Bradford', 'King', 'carlee51@example.net', 844, '4742 Volkman Mills Apt. 280\nJohathantown, DE 05952', 99, 18, 274, 98129, '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', '', 'FLyevet8pw', '2018-08-24 06:34:44', '2018-08-24 06:34:44'),
 (4, 'Corine', 'Heaney', 'yokuneva@example.com', 0, '719 Oma Canyon\nNorth Alba, NM 19007', 99, 18, 274, 2744, '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', '', '4sa1aq9pPd', '2018-08-24 06:34:44', '2018-08-24 06:34:44'),
@@ -141,8 +141,8 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `title`, `slug`, `event_category`, `event_type`, `short_description`, `description`, `start_date`, `end_date`, `start_time`, `end_time`, `event_image`, `event_top_banner`, `organiser_id`, `event_location`, `event_address`, `city`, `state`, `country`, `event_document`, `ticket_url`, `website_url`, `facebook_id`, `twitter_id`, `linked_id`, `instagram_id`, `googleplus_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'First Music Event', 'first-music-event', 1, 1, '<p>A concert is a live&nbsp;<strong>music</strong>&nbsp;performance in front of an audience. The performance may be by a single musician, sometimes then called a recital, or by a&nbsp;<strong>musical</strong>ensemble, such as an orchestra, choir, or band. ... Concerts often require live<strong>event</strong>&nbsp;support with professional audio equipment.</p>', '<p>A concert is a live&nbsp;<strong>music</strong>&nbsp;performance in front of an audience. The performance may be by a single musician, sometimes then called a recital, or by a&nbsp;<strong>musical</strong>ensemble, such as an orchestra, choir, or band. ... Concerts often require live<strong>event</strong>&nbsp;support with professional audio equipment.</p>', '2018-08-25', '2018-09-08', '15:15:00', '18:15:00', '1535189717.jpg', '', 2, 'Tower 4B', 'Dlf Corporate Park', 132, 12, 0, '', '', '', '', '', '', '', '', 1, '2018-08-25 04:05:17', '2018-08-25 13:43:33'),
-(2, 'Second Music Event', 'second-music-event', 1, 1, '<p>short</p>', '<p>long</p>', '2018-08-26', '2018-08-30', '01:30:00', '13:30:00', '1535226856.jpg', '', 1, '', '', 0, 0, 0, '', '', '', '', '', '', '', '', 1, '2018-08-25 14:24:16', '2018-08-25 14:24:16');
+(1, 'First Music Event', 'first-music-event', 1, 1, '<p>A concert is a live&nbsp;<strong>music</strong>&nbsp;performance in front of an audience. The performance may be by a single musician, sometimes then called a recital, or by a&nbsp;<strong>musical</strong>ensemble, such as an orchestra, choir, or band. ... Concerts often require live<strong>event</strong>&nbsp;support with professional audio equipment.</p>', '<p>A concert is a live&nbsp;<strong>music</strong>&nbsp;performance in front of an audience. The performance may be by a single musician, sometimes then called a recital, or by a&nbsp;<strong>musical</strong>ensemble, such as an orchestra, choir, or band. ... Concerts often require live<strong>event</strong>&nbsp;support with professional audio equipment.</p>', '2018-08-25', '2018-09-08', '15:15:00', '18:15:00', '1535642054.jpg', '1535642054.jpg', 2, 'Tower 4B', 'Dlf Corporate Park', 132, 12, 0, '', '', '', '', '', '', '', '', 1, '2018-08-25 04:05:17', '2018-08-30 09:44:14'),
+(2, 'Second Music Event', 'second-music-event', 1, 1, '<p>short</p>', '<p>long</p>', '2018-08-26', '2018-08-30', '01:30:00', '13:30:00', '1535551199.jpg', '1535641658.jpg', 1, '', '', 0, 0, 0, '', '', '', '', '', '', '', '', 1, '2018-08-25 14:24:16', '2018-08-30 09:37:39');
 
 -- --------------------------------------------------------
 
@@ -201,10 +201,10 @@ CREATE TABLE `event_speakers` (
 --
 
 INSERT INTO `event_speakers` (`id`, `event_id`, `speaker_id`, `created_at`, `updated_at`) VALUES
-(4, 1, 1, '2018-08-25 14:22:19', '2018-08-25 14:22:19'),
-(5, 1, 2, '2018-08-25 14:22:20', '2018-08-25 14:22:20'),
-(7, 2, 1, '2018-08-25 14:26:38', '2018-08-25 14:26:38'),
-(8, 2, 2, '2018-08-25 14:26:38', '2018-08-25 14:26:38');
+(23, 2, 1, '2018-08-30 09:37:39', '2018-08-30 09:37:39'),
+(24, 2, 2, '2018-08-30 09:37:39', '2018-08-30 09:37:39'),
+(27, 1, 1, '2018-08-30 09:44:14', '2018-08-30 09:44:14'),
+(28, 1, 2, '2018-08-30 09:44:14', '2018-08-30 09:44:14');
 
 -- --------------------------------------------------------
 
@@ -230,8 +230,8 @@ CREATE TABLE `event_stories` (
 --
 
 INSERT INTO `event_stories` (`id`, `story_name`, `short_desc`, `description`, `image`, `narrator_name`, `narrator_image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Story 1', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '1535116253.jpg', 'Story Teller 2', '1535223630.jpg', 1, '2018-08-24 07:40:53', '2018-08-25 13:30:30'),
-(2, 'Story 2', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '1535174041.jpg', 'Story Teller 1', '1535223617.jpg', 1, '2018-08-24 23:44:01', '2018-08-25 13:30:17');
+(1, 'Story 1', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '1535548452.jpg', 'Story Teller 2', '1535223630.jpg', 1, '2018-08-24 07:40:53', '2018-08-29 07:44:12'),
+(2, 'Story 2', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '1535548431.jpg', 'Story Teller 1', '1535223617.jpg', 1, '2018-08-24 23:44:01', '2018-08-29 07:43:51');
 
 -- --------------------------------------------------------
 
@@ -305,6 +305,19 @@ CREATE TABLE `newsletters` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `newsletters`
+--
+
+INSERT INTO `newsletters` (`id`, `email`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'sd@sdf.cin', 0, '2018-08-27 08:41:32', '2018-08-27 08:41:32'),
+(2, 'asda@sdc.sds', 0, '2018-08-27 08:45:03', '2018-08-27 08:45:03'),
+(3, 'ads@sdf.dscsd', 0, '2018-08-27 08:56:09', '2018-08-27 08:56:09'),
+(4, 'dsd@dfx.gtrdtf', 0, '2018-08-27 08:56:30', '2018-08-27 08:56:30'),
+(5, 'as@sdfs.sdfd', 0, '2018-08-28 01:41:46', '2018-08-28 01:41:46'),
+(6, 'arvind@tech.dfg', 0, '2018-08-28 01:42:09', '2018-08-28 01:42:09'),
+(7, 'abhishek.anand@gmail.com', 0, '2018-08-30 09:46:27', '2018-08-30 09:46:27');
 
 -- --------------------------------------------------------
 
@@ -1540,7 +1553,7 @@ ALTER TABLE `event_schedules`
 -- AUTO_INCREMENT for table `event_speakers`
 --
 ALTER TABLE `event_speakers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `event_stories`
@@ -1564,7 +1577,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `newsletters`
 --
 ALTER TABLE `newsletters`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `organisers`

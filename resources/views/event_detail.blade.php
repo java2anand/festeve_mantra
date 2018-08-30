@@ -9,7 +9,7 @@
         <!-- header ends -->
 
         <!-- evnt page content section -->
-        <div class="event1_top_bg_section">
+        <div class="event1_top_bg_section" style="background-image: url('{{ asset( 'images/event/top_banner/'.$event->event_top_banner )}}')">
             <div class="container event_2_container">
                 <div class="event_topbanner_info">
                     <h3>{{ $event->title }}</h3>

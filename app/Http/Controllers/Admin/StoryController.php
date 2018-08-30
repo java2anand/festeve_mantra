@@ -53,7 +53,7 @@ class StoryController extends Controller {
             $file = $request->file('image');
             $imagename = time().'.'.$file->getClientOriginalExtension();
             $destinationPath = public_path('/images/story');
-            $img = Image::make($file->getRealPath())->resize(200, 200);
+            $img = Image::make($file->getRealPath())->resize(1000, 700);
 
             if($img->save($destinationPath.'/'.$imagename,80)){
                 $prev_image = public_path('images/story').'/'.$request->old_image;

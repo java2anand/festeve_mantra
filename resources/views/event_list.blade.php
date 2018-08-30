@@ -205,17 +205,17 @@
                                     </div>
                                 </div>
                                 @endforeach
+                                <!-- pagignation -->
+                                <div class="text-center list_pager_outer">
+                                    {{ $arrevent->links() }}
+                                    <!--<nav> <ul class="pagination"> <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li> <li><a href="#">2</a></li> <li><a href="#">3</a></li> <li><a href="#">4</a></li> <li><a href="#">5</a></li> <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li> </ul> </nav>-->
+                                </div>
+                                <!-- ends -->
+                            @else
+                                <div class="listing_page_mid_section_outer">
+                                    <h2 class="text-center">No Event Found.</h2>
+                                </div>
                             @endif
-
-                            <!-- pagignation -->
-                            <div class="text-center list_pager_outer">
-                                {{ $arrevent->links() }}
-                                <!--<nav> <ul class="pagination"> <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li> <li><a href="#">2</a></li> <li><a href="#">3</a></li> <li><a href="#">4</a></li> <li><a href="#">5</a></li> <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li> </ul> </nav>-->
-                            </div>
-                            <!-- ends -->
-
-
-
 
                         </li>
                         <!-- list ends -->

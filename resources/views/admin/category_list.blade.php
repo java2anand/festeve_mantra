@@ -55,49 +55,50 @@
                             </div>
                         </div>
 
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <?php if (count($arrCategory) > 0) { ?>
+                                    <tbody>
+                                        <tr>
+                                            <th>Sr. No.</th>
+                                            <th>Category Name</th>
+                                            <th>Category Url</th>
+                                            <th>Added Date</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        @php $i = 1; @endphp
+                                        @foreach($arrCategory  as $cat)
+                                        <tr>
 
-                        <table class="table table-bordered">
-                            <?php if (count($arrCategory) > 0) { ?>
-                                <tbody>
-                                    <tr>
-                                        <th>Sr. No.</th>
-                                        <th>Category Name</th>
-                                        <th>Category Url</th>
-                                        <th>Added Date</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    @php $i = 1; @endphp
-                                    @foreach($arrCategory  as $cat)
-                                    <tr>
-
-                                        <td>{{ $i }}.</td>
-                                        <td>{{ $cat->category_name}}</td>
-                                        <td><a href="{{ url('event-category/'.$cat->slug)}}" target="_blank">Visit Website</a></td>
-                                        <td>{{ date('d-m-Y',strtotime($cat->created_at)) }}</td>
-                                        <td>
-                                            <?= $cat->status == 1 ? 'Active' : 'Inactive'; ?>
-                                        </td>
-                                        <td width="10%">
-                                            <div class="btn-group">
-                                                <a href="{{ url('admin/category_add',$cat->id) }}" data-toggle="tooltip" title="" class="btn btn-sm btn-success" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
-                                            </div>
-                                            <div class="btn-group">
-                                                <a href="{{ url('admin/category_delete',$cat->id) }}" data-toggle="tooltip" title="" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete? ')" data-original-title="Delete"><i class="fa fa-times"></i></a>
-                                            </div>
+                                            <td>{{ $i }}.</td>
+                                            <td>{{ $cat->category_name}}</td>
+                                            <td><a href="{{ url('event-category/'.$cat->slug)}}" target="_blank">Visit Website</a></td>
+                                            <td>{{ date('d-m-Y',strtotime($cat->created_at)) }}</td>
+                                            <td>
+                                                <?= $cat->status == 1 ? 'Active' : 'Inactive'; ?>
+                                            </td>
+                                            <td width="10%">
+                                                <div class="btn-group">
+                                                    <a href="{{ url('admin/category_add',$cat->id) }}" data-toggle="tooltip" title="" class="btn btn-sm btn-success" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <a href="{{ url('admin/category_delete',$cat->id) }}" data-toggle="tooltip" title="" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete? ')" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                                                </div>
 
 
-                                        </td>
-                                        <?php $i++; ?>
-                                    </tr>
-                                    @endforeach
+                                            </td>
+                                            <?php $i++; ?>
+                                        </tr>
+                                        @endforeach
 
-                                </tbody>
-                            <?php } else { ?>
-                                <p class="text-center">No Category found.</p>
-                            <?php } ?>
+                                    </tbody>
+                                <?php } else { ?>
+                                    <p class="text-center">No Category found.</p>
+                                <?php } ?>
 
-                        </table>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">

@@ -71,7 +71,8 @@ class EventController extends Controller {
             $file = $request->file('event_top_banner');
             $imagename = time() . '.' . $file->getClientOriginalExtension();
             $destinationPath = public_path('/images/event/top_banner');
-            $thumb_img = Image::make($file->getRealPath())->resize(100, 100);
+            $thumb_img = Image::make($file->getRealPath());
+            //$thumb_img = Image::make($file->getRealPath())->resize(100, 100);
 
             //$destinationPath = public_path('/images/event/top_banner');
             //if ($file->move($destinationPath, $imagename)) {

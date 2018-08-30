@@ -916,7 +916,7 @@ a{
     position:relative;
     height:450px;
     background-color:#f5f5f5;
-    background-image:url('../images/top_bg.jpg');
+    /*background-image:url('../images/top_bg.jpg');*/
     background-repeat:no-repeat;
     background-size:cover;
     background-position:center;

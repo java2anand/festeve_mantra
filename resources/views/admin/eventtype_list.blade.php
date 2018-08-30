@@ -29,6 +29,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                    <div class="table-responsive">
                         <table id="" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
@@ -47,7 +48,7 @@
 
                                     <td>{{ $i }}.</td>
                                     <td>{{ $type->name}}</td>
-                                    <td>{{ $type->description}}</td>
+                                    <td>{!! $type->description!!}</td>
                                     <td>{{ $type->created_at}}</td>
                                     <td>
                                         <?= $type->status == 1 ? 'Active' : 'Inactive';  ?>
@@ -68,6 +69,7 @@
                             </tbody>
 
                         </table>
+                    </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">

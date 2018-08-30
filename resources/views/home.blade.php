@@ -195,7 +195,7 @@
                     <div class="col-sm-6">
                         <h3>
                             <small>get our latest updates</small>
-                            SUBSCRIBE NEWSLATTER
+                            SUBSCRIBE NEWSLETTER
                         </h3>
                     </div>
                     <div class="col-sm-6">
@@ -208,6 +208,7 @@
                             </div><!-- /input-group -->
                         </form>
                     </div>
+                    <div id="msg" class="col-md-6"></div>
                 </div>
             </div>
         </div>
@@ -272,9 +273,7 @@
                             data: {'email': $("#newsletter_email").val()},
                             dataType: 'json',
                             success: function (response) {
-                                if (response.success == true){
-                                   alert('hello');
-                                }
+                                $("#msg").html(response.msg);
                             }
                         });
                     }

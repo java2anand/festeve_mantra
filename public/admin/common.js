@@ -7,7 +7,7 @@ $(document).ready(function () {
 
     //form changes alert before leaving the page
     formmodified = 0;
-    $('#category_form, #event_form, #event_add_address_form, #event_add_schedule_form, #event_add_social_form, #eventorganiser_form, #eventspeaker_form, #eventtype_form, #newsletter_form, #update_basic_frm, #update_pass_frm, #site_setting').change(function () {
+    $('#category_form, #eventtype_form, #newsletter_form, #update_basic_frm, #update_pass_frm, #site_setting').change(function () {
         formmodified = 1;
     });
     $("input[type=submit], button[type=submit]").click(function () {
