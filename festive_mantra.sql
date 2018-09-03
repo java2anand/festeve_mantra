@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2018 at 05:16 PM
+-- Generation Time: Sep 03, 2018 at 05:50 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.0.23
 
@@ -51,7 +51,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `firstname`, `lastname`, `email`, `contact_number`, `address`, `country`, `state`, `city`, `postal_code`, `password`, `profile_img`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Kapil', 'Khandelwal', 'admin@festevemantra.com', 844742, '89857 Kilback Villages Apt. 302\nPort Sharonfort, MA 41632-5354', 99, 18, 274, 55520, '$2y$10$w8PFGGl22h0whbcvci/sWus8Ono9csQgeqSGQaN/yjNLH6Zy/g0p.', '1535112653.jpg', 'gV6SButSnvEkY8KeXiyEb3fQQeCZXimXTub5fXdGFYxn1jD6RLX4VMFxbl2p', '2018-08-24 06:34:43', '2018-08-25 04:03:23'),
+(1, 'Kapil', 'Khandelwal', 'admin@festevemantra.com', 844742, '89857 Kilback Villages Apt. 302\nPort Sharonfort, MA 41632-5354', 99, 18, 274, 55520, '$2y$10$w8PFGGl22h0whbcvci/sWus8Ono9csQgeqSGQaN/yjNLH6Zy/g0p.', '1535112653.jpg', 'GYr8dC8kTArGv68kSkiE84gHq2IpwCXTnanYtuhZsZdWNZllcqXTxXZ4PYLE', '2018-08-24 06:34:43', '2018-08-25 04:03:23'),
 (2, 'Sherwood', 'Waelchi', 'otillman@example.net', 844, '8299 Farrell Parks Suite 115\nStreichborough, IA 41035', 99, 18, 274, 64969, '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', '', 'poGbimknoZ', '2018-08-24 06:34:44', '2018-08-24 06:34:44'),
 (3, 'Bradford', 'King', 'carlee51@example.net', 844, '4742 Volkman Mills Apt. 280\nJohathantown, DE 05952', 99, 18, 274, 98129, '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', '', 'FLyevet8pw', '2018-08-24 06:34:44', '2018-08-24 06:34:44'),
 (4, 'Corine', 'Heaney', 'yokuneva@example.com', 0, '719 Oma Canyon\nNorth Alba, NM 19007', 99, 18, 274, 2744, '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', '', '4sa1aq9pPd', '2018-08-24 06:34:44', '2018-08-24 06:34:44'),
@@ -79,6 +79,12 @@ CREATE TABLE `categories` (
   `top_banner` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `right_banner` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `mini_icon` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sort_order` int(11) NOT NULL,
+  `meta_title` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `page_title` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `page_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` tinyint(4) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -88,14 +94,16 @@ CREATE TABLE `categories` (
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `parent_id`, `category_name`, `slug`, `description`, `icon`, `thumbnail`, `top_banner`, `right_banner`, `mini_icon`, `status`, `created_at`, `updated_at`) VALUES
-(1, 0, 'Music', 'music', '<p><strong>Music</strong>&nbsp;is an art form and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Culture\" title=\"Culture\">cultural</a>&nbsp;activity whose medium is sound organized in time. The common elements of music are&nbsp;<a href=\"https://en.wikipedia.org/wiki/Pitch_(music)\" title=\"Pitch (music)\">pitch</a>&nbsp;(which governs&nbsp;<a href=\"https://en.wikipedia.org/wiki/Melody\" title=\"Melody\">melody</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Harmony\" title=\"Harmony\">harmony</a>),&nbsp;<a href=\"https://en.wikipedia.org/wiki/Rhythm\" title=\"Rhythm\">rhythm</a>&nbsp;(and its associated concepts&nbsp;<a href=\"https://en.wikipedia.org/wiki/Tempo\" title=\"Tempo\">tempo</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Meter_(music)\" title=\"Meter (music)\">meter</a>, and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Articulation_(music)\" title=\"Articulation (music)\">articulation</a>),&nbsp;<a href=\"https://en.wikipedia.org/wiki/Dynamics_(music)\" title=\"Dynamics (music)\">dynamics</a>&nbsp;(loudness and softness), and the sonic qualities of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Timbre\" title=\"Timbre\">timbre</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Texture_(music)\" title=\"Texture (music)\">texture</a>&nbsp;(which are sometimes termed the &quot;color&quot; of a musical sound). Different&nbsp;<a href=\"https://en.wikipedia.org/wiki/Music_genre\" title=\"Music genre\">styles or types</a>&nbsp;of music may emphasize, de-emphasize or omit some of these elements. Music is performed with a vast range of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Musical_instrument\" title=\"Musical instrument\">instruments</a>&nbsp;and vocal techniques ranging from singing to&nbsp;<a href=\"https://en.wikipedia.org/wiki/Rapping\" title=\"Rapping\">rapping</a>; there are solely&nbsp;<a href=\"https://en.wikipedia.org/wiki/Instrumental_music\" title=\"Instrumental music\">instrumental pieces</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/A_capella\" title=\"A capella\">solely vocal pieces</a>&nbsp;(such as songs without instrumental&nbsp;<a href=\"https://en.wikipedia.org/wiki/Accompaniment\" title=\"Accompaniment\">accompaniment</a>) and pieces that combine singing and instruments. The word derives from&nbsp;<a href=\"https://en.wikipedia.org/wiki/Greek_language\" title=\"Greek language\">Greek</a>&nbsp;<a href=\"https://en.wiktionary.org/wiki/%CE%BC%CE%BF%CF%85%CF%83%CE%B9%CE%BA%CE%AE#Ancient_Greek\" title=\"wikt:μουσική\">&mu;&omicron;&upsilon;&sigma;&iota;&kappa;ή</a>&nbsp;(<em>mousike</em>; &quot;art of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Muse\" title=\"Muse\">Muses</a>&quot;).<sup><a href=\"https://en.wikipedia.org/wiki/Music#cite_note-perseus.tufts.edu-1\">[1]</a></sup>&nbsp;See&nbsp;<a href=\"https://en.wikipedia.org/wiki/Glossary_of_musical_terminology\" title=\"Glossary of musical terminology\">glossary of musical terminology</a>.</p>', '1535113552.jpg', '1535113552.jpg', '1535113647.jpg', '1535113647.jpg', '1535113552.jpg', 1, '2018-08-24 06:55:52', '2018-08-24 06:57:27'),
-(2, 0, 'Sports', 'sports', '<p>A sport is commonly defined as an athletic activity or skill and involves a degree of competition, such as<strong>tennis</strong>&nbsp;or&nbsp;<strong>basketball</strong>. Some games and many kinds of racing are called sports. A professional at a sport is called an athlete. Many people play sports with their friends.</p>', '1535113758.jpg', '1535113758.jpg', '1535113758.jpg', '1535113758.jpg', '', 1, '2018-08-24 06:59:18', '2018-08-24 06:59:18'),
-(3, 0, 'Food', 'food', '<p><strong>Food</strong>&nbsp;is any substance<sup><a href=\"https://en.wikipedia.org/wiki/Food#cite_note-1\">[1]</a></sup>&nbsp;consumed to provide nutritional support for an organism. It is usually of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Plant\" title=\"Plant\">plant</a>&nbsp;or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Animal\" title=\"Animal\">animal</a>&nbsp;origin, and contains essential&nbsp;<a href=\"https://en.wikipedia.org/wiki/Nutrient\" title=\"Nutrient\">nutrients</a>, such as&nbsp;<a href=\"https://en.wikipedia.org/wiki/Carbohydrate\" title=\"Carbohydrate\">carbohydrates</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Fat\" title=\"Fat\">fats</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Protein_(nutrient)\" title=\"Protein (nutrient)\">proteins</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Vitamin\" title=\"Vitamin\">vitamins</a>, or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Mineral_(nutrient)\" title=\"Mineral (nutrient)\">minerals</a>. The substance is&nbsp;<a href=\"https://en.wikipedia.org/wiki/Ingestion\" title=\"Ingestion\">ingested</a>&nbsp;by an&nbsp;<a href=\"https://en.wikipedia.org/wiki/Organism\" title=\"Organism\">organism</a>&nbsp;and assimilated by the organism&#39;s&nbsp;<a href=\"https://en.wikipedia.org/wiki/Cell_(biology)\" title=\"Cell (biology)\">cells</a>&nbsp;to provide&nbsp;<a href=\"https://en.wikipedia.org/wiki/Energy\" title=\"Energy\">energy</a>, maintain life, or stimulate growth.</p>\r\n\r\n<p>Historically,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Human\" title=\"Human\">humans</a>&nbsp;secured food through two methods:&nbsp;<a href=\"https://en.wikipedia.org/wiki/Hunter-gatherer\" title=\"Hunter-gatherer\">hunting and gathering</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Agriculture\" title=\"Agriculture\">agriculture</a>. Today, the majority of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Food_energy\" title=\"Food energy\">food energy</a>required by the ever&nbsp;<a href=\"https://en.wikipedia.org/wiki/Population_growth\" title=\"Population growth\">increasing</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/World_population\" title=\"World population\">population of the world</a>&nbsp;is supplied by the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Food_industry\" title=\"Food industry\">food industry</a>.</p>', '1535113998.jpg', '1535113998.jpg', '1535113998.jpg', '1535113998.jpg', '', 1, '2018-08-24 07:03:18', '2018-08-24 07:03:18'),
-(4, 0, 'Travel', 'travel', '<p>The origin of the word &quot;travel&quot; is most likely lost to history. The term &quot;travel&quot; may originate from the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Old_French\" title=\"Old French\">Old French</a>&nbsp;word&nbsp;<em>travail</em>, which means &#39;work&#39;.<sup><a href=\"https://en.wikipedia.org/wiki/Travel#cite_note-3\">[3]</a></sup>&nbsp;According to the Merriam Webster dictionary, the first known use of the word&nbsp;<em>travel</em>&nbsp;was in the 14th century. It also states that the word comes from Middle English&nbsp;<em>travailen</em>,&nbsp;<em>travelen</em>&nbsp;(which means to torment, labor, strive, journey) and earlier from Old French&nbsp;<em>travailler</em>&nbsp;(which means to work strenuously, toil). In English we still occasionally use the words &quot;travail&quot;, which means struggle. According to Simon Winchester in his book&nbsp;<em>The Best Travelers&#39; Tales (2004)</em>, the words &quot;travel&quot; and &quot;travail&quot; both share an even more ancient root: a Roman instrument of torture called the&nbsp;<em>tripalium</em>&nbsp;(in Latin it means &quot;three stakes&quot;, as in to impale). This link may reflect the extreme difficulty of travel in ancient times. Today, travel may or may not be much easier depending upon the destination you choose (e.g.&nbsp;<a href=\"https://en.wikipedia.org/wiki/Mt._Everest\" title=\"Mt. Everest\">Mt. Everest</a>, the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Amazon_rainforest\" title=\"Amazon rainforest\">Amazon rainforest</a>), how you plan to get there (<a href=\"https://en.wikipedia.org/wiki/Bus\" title=\"Bus\">tour bus</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Cruise_ship\" title=\"Cruise ship\">cruise ship</a>, or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bullock_cart\" title=\"Bullock cart\">oxcart</a>), and whether you decide to &quot;rough it&quot; (see&nbsp;<a href=\"https://en.wikipedia.org/wiki/Extreme_tourism\" title=\"Extreme tourism\">extreme tourism</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Adventure_travel\" title=\"Adventure travel\">adventure travel</a>). &quot;There&#39;s a big difference between simply being a tourist and being a true world traveler&quot;, notes travel writer Michael Kasum. This is, however, a contested distinction as academic work on the cultures and sociology of travel has noted.<sup><a href=\"https://en.wikipedia.org/wiki/Travel#cite_note-4\">[4]</a></sup></p>', '1535114095.jpg', '1535114095.jpg', '1535114095.jpg', '1535114095.jpg', '', 1, '2018-08-24 07:04:55', '2018-08-24 07:04:55'),
-(5, 0, 'DJ Party', 'dj-party', '<p>A&nbsp;<strong>disc jockey</strong>, often abbreviated as&nbsp;<strong>DJ</strong>, is a person who plays existing recorded&nbsp;<a href=\"https://en.wikipedia.org/wiki/Music\" title=\"Music\">music</a>&nbsp;for a live audience. Most common types of DJs include&nbsp;<a href=\"https://en.wikipedia.org/wiki/Radio_personality\" title=\"Radio personality\">radio DJ</a>, club DJ who performs at a&nbsp;<a href=\"https://en.wikipedia.org/wiki/Nightclub\" title=\"Nightclub\">nightclub</a>&nbsp;or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Music_festival\" title=\"Music festival\">music festival</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Turntablism\" title=\"Turntablism\">turntablist</a>&nbsp;who uses record players, usually&nbsp;<a href=\"https://en.wikipedia.org/wiki/Turntable\" title=\"Turntable\">turntables</a>, to manipulate sounds on&nbsp;<a href=\"https://en.wikipedia.org/wiki/Phonograph_record\" title=\"Phonograph record\">phonograph records</a>. Originally, the disc in disc jockey referred to&nbsp;<a href=\"https://en.wikipedia.org/wiki/Gramophone_record\" title=\"Gramophone record\">gramophone records</a>, but now DJ is used as an all-encompassing term to describe someone who mixes recorded music from any source, including&nbsp;<a href=\"https://en.wikipedia.org/wiki/Compact_cassette\" title=\"Compact cassette\">cassettes</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Compact_disc\" title=\"Compact disc\">CDs</a>&nbsp;or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Digital_audio_file\" title=\"Digital audio file\">digital audio files</a>&nbsp;on a&nbsp;<a href=\"https://en.wikipedia.org/wiki/CDJ\" title=\"CDJ\">CDJ</a>&nbsp;or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Laptop\" title=\"Laptop\">laptop</a>. The title DJ is commonly used by DJs in front of their real names or adopted&nbsp;<a href=\"https://en.wikipedia.org/wiki/Pseudonym\" title=\"Pseudonym\">pseudonyms</a>&nbsp;or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Stage_name\" title=\"Stage name\">stage names</a>.</p>', '1535114178.jpg', '1535114178.jpg', '1535114178.jpg', '1535114178.jpg', '', 1, '2018-08-24 07:06:18', '2018-08-24 07:06:18'),
-(6, 0, 'Conference', 'conference', '<p>Conferences are usually composed of various&nbsp;<a href=\"https://en.wikipedia.org/wiki/Presentation\" title=\"Presentation\">presentations</a>. They tend to be short and concise, with a time span of about 10 to 30 minutes;&nbsp;<a href=\"https://en.wikipedia.org/wiki/Presentation\" title=\"Presentation\">presentations</a>&nbsp;are usually followed by a&nbsp;<a href=\"https://en.wikipedia.org/wiki/Discussion\" title=\"Discussion\">discussion</a>. The work may be bundled in written form as&nbsp;<a href=\"https://en.wikipedia.org/wiki/Academic_paper\" title=\"Academic paper\">academic papers</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Publish\" title=\"Publish\">published</a>&nbsp;as the conference&nbsp;<a href=\"https://en.wikipedia.org/wiki/Proceedings\" title=\"Proceedings\">proceedings</a>.</p>\r\n\r\n<p>Usually a conference will include&nbsp;<a href=\"https://en.wikipedia.org/wiki/Keynote_speaker\" title=\"Keynote speaker\">keynote speakers</a>&nbsp;(often, scholars of some standing, but sometimes individuals from outside academia). The keynote lecture is often longer, lasting sometimes up to an hour and a half, particularly if there are several keynote speakers on a&nbsp;<a href=\"https://en.wikipedia.org/w/index.php?title=Convention_panel&amp;action=edit&amp;redlink=1\" title=\"Convention panel (page does not exist)\">panel</a>.</p>', '1535114351.jpg', '1535114351.jpg', '1535114351.jpg', '1535114351.jpg', '', 1, '2018-08-24 07:09:11', '2018-08-24 07:09:11'),
-(7, 0, 'Skill Development', 'skill-development', '<p>Skill Development means developing yourself and your skill sets to add value for the organization and for your own career development. Fostering an attitude of appreciation for lifelong learning is the key to workplace success. Continuously learning and developing one&#39;s skills requires identifying the skills needed for&nbsp;<a href=\"https://hr.berkeley.edu/development/professional-development/uc-berkeley-competencies\">mobility</a>&nbsp;at Cal, and then successfully seeking out trainings or on-the-job opportunities for developing those skills.</p>\r\n\r\n<p>Developing your skills begins with assessing which skills are important for your desired career development. Read about career skills in the&nbsp;<a href=\"https://hr.berkeley.edu/development/career-development/self-assessment\">self-assessment</a>&nbsp;section of this website.&nbsp;<a href=\"https://hr.berkeley.edu/development/career-development/career-management/relationship-building/managing-up\">Speak with your supervisor or manager</a>&nbsp;and other career mentors to identify the types of skills that will help move you forward in your career.</p>', '1535114436.jpg', '1535114436.jpg', '1535114436.jpg', '1535114436.jpg', '', 1, '2018-08-24 07:10:36', '2018-08-24 07:10:36');
+INSERT INTO `categories` (`id`, `parent_id`, `category_name`, `slug`, `description`, `icon`, `thumbnail`, `top_banner`, `right_banner`, `mini_icon`, `sort_order`, `meta_title`, `meta_keyword`, `meta_description`, `page_title`, `page_description`, `status`, `created_at`, `updated_at`) VALUES
+(1, 0, 'Music', 'music', '<p><strong>Music</strong>&nbsp;is an art form and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Culture\" title=\"Culture\">cultural</a>&nbsp;activity whose medium is sound organized in time. The common elements of music are&nbsp;<a href=\"https://en.wikipedia.org/wiki/Pitch_(music)\" title=\"Pitch (music)\">pitch</a>&nbsp;(which governs&nbsp;<a href=\"https://en.wikipedia.org/wiki/Melody\" title=\"Melody\">melody</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Harmony\" title=\"Harmony\">harmony</a>),&nbsp;<a href=\"https://en.wikipedia.org/wiki/Rhythm\" title=\"Rhythm\">rhythm</a>&nbsp;(and its associated concepts&nbsp;<a href=\"https://en.wikipedia.org/wiki/Tempo\" title=\"Tempo\">tempo</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Meter_(music)\" title=\"Meter (music)\">meter</a>, and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Articulation_(music)\" title=\"Articulation (music)\">articulation</a>),&nbsp;<a href=\"https://en.wikipedia.org/wiki/Dynamics_(music)\" title=\"Dynamics (music)\">dynamics</a>&nbsp;(loudness and softness), and the sonic qualities of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Timbre\" title=\"Timbre\">timbre</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Texture_(music)\" title=\"Texture (music)\">texture</a>&nbsp;(which are sometimes termed the &quot;color&quot; of a musical sound). Different&nbsp;<a href=\"https://en.wikipedia.org/wiki/Music_genre\" title=\"Music genre\">styles or types</a>&nbsp;of music may emphasize, de-emphasize or omit some of these elements. Music is performed with a vast range of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Musical_instrument\" title=\"Musical instrument\">instruments</a>&nbsp;and vocal techniques ranging from singing to&nbsp;<a href=\"https://en.wikipedia.org/wiki/Rapping\" title=\"Rapping\">rapping</a>; there are solely&nbsp;<a href=\"https://en.wikipedia.org/wiki/Instrumental_music\" title=\"Instrumental music\">instrumental pieces</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/A_capella\" title=\"A capella\">solely vocal pieces</a>&nbsp;(such as songs without instrumental&nbsp;<a href=\"https://en.wikipedia.org/wiki/Accompaniment\" title=\"Accompaniment\">accompaniment</a>) and pieces that combine singing and instruments. The word derives from&nbsp;<a href=\"https://en.wikipedia.org/wiki/Greek_language\" title=\"Greek language\">Greek</a>&nbsp;<a href=\"https://en.wiktionary.org/wiki/%CE%BC%CE%BF%CF%85%CF%83%CE%B9%CE%BA%CE%AE#Ancient_Greek\" title=\"wikt:μουσική\">&mu;&omicron;&upsilon;&sigma;&iota;&kappa;ή</a>&nbsp;(<em>mousike</em>; &quot;art of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Muse\" title=\"Muse\">Muses</a>&quot;).<sup><a href=\"https://en.wikipedia.org/wiki/Music#cite_note-perseus.tufts.edu-1\">[1]</a></sup>&nbsp;See&nbsp;<a href=\"https://en.wikipedia.org/wiki/Glossary_of_musical_terminology\" title=\"Glossary of musical terminology\">glossary of musical terminology</a>.</p>', '1535113552.jpg', '1535113552.jpg', '1535113647.jpg', '1535113647.jpg', '1535113552.jpg', 0, '', '', '', '', '', 1, '2018-08-24 06:55:52', '2018-08-24 06:57:27'),
+(2, 0, 'Sports', 'sports', '<p>A sport is commonly defined as an athletic activity or skill and involves a degree of competition, such as<strong>tennis</strong>&nbsp;or&nbsp;<strong>basketball</strong>. Some games and many kinds of racing are called sports. A professional at a sport is called an athlete. Many people play sports with their friends.</p>', '1535113758.jpg', '1535113758.jpg', '1535113758.jpg', '1535113758.jpg', '', 0, '', '', '', '', '', 1, '2018-08-24 06:59:18', '2018-08-24 06:59:18'),
+(3, 0, 'Food', 'food', '<p><strong>Food</strong>&nbsp;is any substance<sup><a href=\"https://en.wikipedia.org/wiki/Food#cite_note-1\">[1]</a></sup>&nbsp;consumed to provide nutritional support for an organism. It is usually of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Plant\" title=\"Plant\">plant</a>&nbsp;or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Animal\" title=\"Animal\">animal</a>&nbsp;origin, and contains essential&nbsp;<a href=\"https://en.wikipedia.org/wiki/Nutrient\" title=\"Nutrient\">nutrients</a>, such as&nbsp;<a href=\"https://en.wikipedia.org/wiki/Carbohydrate\" title=\"Carbohydrate\">carbohydrates</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Fat\" title=\"Fat\">fats</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Protein_(nutrient)\" title=\"Protein (nutrient)\">proteins</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Vitamin\" title=\"Vitamin\">vitamins</a>, or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Mineral_(nutrient)\" title=\"Mineral (nutrient)\">minerals</a>. The substance is&nbsp;<a href=\"https://en.wikipedia.org/wiki/Ingestion\" title=\"Ingestion\">ingested</a>&nbsp;by an&nbsp;<a href=\"https://en.wikipedia.org/wiki/Organism\" title=\"Organism\">organism</a>&nbsp;and assimilated by the organism&#39;s&nbsp;<a href=\"https://en.wikipedia.org/wiki/Cell_(biology)\" title=\"Cell (biology)\">cells</a>&nbsp;to provide&nbsp;<a href=\"https://en.wikipedia.org/wiki/Energy\" title=\"Energy\">energy</a>, maintain life, or stimulate growth.</p>\r\n\r\n<p>Historically,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Human\" title=\"Human\">humans</a>&nbsp;secured food through two methods:&nbsp;<a href=\"https://en.wikipedia.org/wiki/Hunter-gatherer\" title=\"Hunter-gatherer\">hunting and gathering</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Agriculture\" title=\"Agriculture\">agriculture</a>. Today, the majority of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Food_energy\" title=\"Food energy\">food energy</a>required by the ever&nbsp;<a href=\"https://en.wikipedia.org/wiki/Population_growth\" title=\"Population growth\">increasing</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/World_population\" title=\"World population\">population of the world</a>&nbsp;is supplied by the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Food_industry\" title=\"Food industry\">food industry</a>.</p>', '1535113998.jpg', '1535113998.jpg', '1535113998.jpg', '1535113998.jpg', '', 0, '', '', '', '', '', 1, '2018-08-24 07:03:18', '2018-08-24 07:03:18'),
+(4, 0, 'Travel', 'travel', '<p>The origin of the word &quot;travel&quot; is most likely lost to history. The term &quot;travel&quot; may originate from the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Old_French\" title=\"Old French\">Old French</a>&nbsp;word&nbsp;<em>travail</em>, which means &#39;work&#39;.<sup><a href=\"https://en.wikipedia.org/wiki/Travel#cite_note-3\">[3]</a></sup>&nbsp;According to the Merriam Webster dictionary, the first known use of the word&nbsp;<em>travel</em>&nbsp;was in the 14th century. It also states that the word comes from Middle English&nbsp;<em>travailen</em>,&nbsp;<em>travelen</em>&nbsp;(which means to torment, labor, strive, journey) and earlier from Old French&nbsp;<em>travailler</em>&nbsp;(which means to work strenuously, toil). In English we still occasionally use the words &quot;travail&quot;, which means struggle. According to Simon Winchester in his book&nbsp;<em>The Best Travelers&#39; Tales (2004)</em>, the words &quot;travel&quot; and &quot;travail&quot; both share an even more ancient root: a Roman instrument of torture called the&nbsp;<em>tripalium</em>&nbsp;(in Latin it means &quot;three stakes&quot;, as in to impale). This link may reflect the extreme difficulty of travel in ancient times. Today, travel may or may not be much easier depending upon the destination you choose (e.g.&nbsp;<a href=\"https://en.wikipedia.org/wiki/Mt._Everest\" title=\"Mt. Everest\">Mt. Everest</a>, the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Amazon_rainforest\" title=\"Amazon rainforest\">Amazon rainforest</a>), how you plan to get there (<a href=\"https://en.wikipedia.org/wiki/Bus\" title=\"Bus\">tour bus</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Cruise_ship\" title=\"Cruise ship\">cruise ship</a>, or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bullock_cart\" title=\"Bullock cart\">oxcart</a>), and whether you decide to &quot;rough it&quot; (see&nbsp;<a href=\"https://en.wikipedia.org/wiki/Extreme_tourism\" title=\"Extreme tourism\">extreme tourism</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Adventure_travel\" title=\"Adventure travel\">adventure travel</a>). &quot;There&#39;s a big difference between simply being a tourist and being a true world traveler&quot;, notes travel writer Michael Kasum. This is, however, a contested distinction as academic work on the cultures and sociology of travel has noted.<sup><a href=\"https://en.wikipedia.org/wiki/Travel#cite_note-4\">[4]</a></sup></p>', '1535114095.jpg', '1535114095.jpg', '1535114095.jpg', '1535114095.jpg', '', 0, '', '', '', '', '', 1, '2018-08-24 07:04:55', '2018-08-24 07:04:55'),
+(5, 0, 'DJ Party', 'dj-party', '<p>A&nbsp;<strong>disc jockey</strong>, often abbreviated as&nbsp;<strong>DJ</strong>, is a person who plays existing recorded&nbsp;<a href=\"https://en.wikipedia.org/wiki/Music\" title=\"Music\">music</a>&nbsp;for a live audience. Most common types of DJs include&nbsp;<a href=\"https://en.wikipedia.org/wiki/Radio_personality\" title=\"Radio personality\">radio DJ</a>, club DJ who performs at a&nbsp;<a href=\"https://en.wikipedia.org/wiki/Nightclub\" title=\"Nightclub\">nightclub</a>&nbsp;or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Music_festival\" title=\"Music festival\">music festival</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Turntablism\" title=\"Turntablism\">turntablist</a>&nbsp;who uses record players, usually&nbsp;<a href=\"https://en.wikipedia.org/wiki/Turntable\" title=\"Turntable\">turntables</a>, to manipulate sounds on&nbsp;<a href=\"https://en.wikipedia.org/wiki/Phonograph_record\" title=\"Phonograph record\">phonograph records</a>. Originally, the disc in disc jockey referred to&nbsp;<a href=\"https://en.wikipedia.org/wiki/Gramophone_record\" title=\"Gramophone record\">gramophone records</a>, but now DJ is used as an all-encompassing term to describe someone who mixes recorded music from any source, including&nbsp;<a href=\"https://en.wikipedia.org/wiki/Compact_cassette\" title=\"Compact cassette\">cassettes</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Compact_disc\" title=\"Compact disc\">CDs</a>&nbsp;or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Digital_audio_file\" title=\"Digital audio file\">digital audio files</a>&nbsp;on a&nbsp;<a href=\"https://en.wikipedia.org/wiki/CDJ\" title=\"CDJ\">CDJ</a>&nbsp;or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Laptop\" title=\"Laptop\">laptop</a>. The title DJ is commonly used by DJs in front of their real names or adopted&nbsp;<a href=\"https://en.wikipedia.org/wiki/Pseudonym\" title=\"Pseudonym\">pseudonyms</a>&nbsp;or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Stage_name\" title=\"Stage name\">stage names</a>.</p>', '1535114178.jpg', '1535114178.jpg', '1535114178.jpg', '1535114178.jpg', '', 0, '', '', '', '', '', 1, '2018-08-24 07:06:18', '2018-08-24 07:06:18'),
+(6, 0, 'Conference', 'conference', '<p>Conferences are usually composed of various&nbsp;<a href=\"https://en.wikipedia.org/wiki/Presentation\" title=\"Presentation\">presentations</a>. They tend to be short and concise, with a time span of about 10 to 30 minutes;&nbsp;<a href=\"https://en.wikipedia.org/wiki/Presentation\" title=\"Presentation\">presentations</a>&nbsp;are usually followed by a&nbsp;<a href=\"https://en.wikipedia.org/wiki/Discussion\" title=\"Discussion\">discussion</a>. The work may be bundled in written form as&nbsp;<a href=\"https://en.wikipedia.org/wiki/Academic_paper\" title=\"Academic paper\">academic papers</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Publish\" title=\"Publish\">published</a>&nbsp;as the conference&nbsp;<a href=\"https://en.wikipedia.org/wiki/Proceedings\" title=\"Proceedings\">proceedings</a>.</p>\r\n\r\n<p>Usually a conference will include&nbsp;<a href=\"https://en.wikipedia.org/wiki/Keynote_speaker\" title=\"Keynote speaker\">keynote speakers</a>&nbsp;(often, scholars of some standing, but sometimes individuals from outside academia). The keynote lecture is often longer, lasting sometimes up to an hour and a half, particularly if there are several keynote speakers on a&nbsp;<a href=\"https://en.wikipedia.org/w/index.php?title=Convention_panel&amp;action=edit&amp;redlink=1\" title=\"Convention panel (page does not exist)\">panel</a>.</p>', '1535114351.jpg', '1535114351.jpg', '1535114351.jpg', '1535114351.jpg', '', 0, '', '', '', '', '', 1, '2018-08-24 07:09:11', '2018-08-24 07:09:11'),
+(7, 0, 'Skill Development', 'skill-development', '<p>Skill Development means developing yourself and your skill sets to add value for the organization and for your own career development. Fostering an attitude of appreciation for lifelong learning is the key to workplace success. Continuously learning and developing one&#39;s skills requires identifying the skills needed for&nbsp;<a href=\"https://hr.berkeley.edu/development/professional-development/uc-berkeley-competencies\">mobility</a>&nbsp;at Cal, and then successfully seeking out trainings or on-the-job opportunities for developing those skills.</p>\r\n\r\n<p>Developing your skills begins with assessing which skills are important for your desired career development. Read about career skills in the&nbsp;<a href=\"https://hr.berkeley.edu/development/career-development/self-assessment\">self-assessment</a>&nbsp;section of this website.&nbsp;<a href=\"https://hr.berkeley.edu/development/career-development/career-management/relationship-building/managing-up\">Speak with your supervisor or manager</a>&nbsp;and other career mentors to identify the types of skills that will help move you forward in your career.</p>', '1535114436.jpg', '1535114436.jpg', '1535114436.jpg', '1535114436.jpg', '', 0, '', '', '', '', '', 1, '2018-08-24 07:10:36', '2018-08-24 07:10:36'),
+(8, 1, 'Soft Music', 'soft-music', '<p>Soft Music</p>', '', '', '', '', '', 0, '', '', '', '', '', 1, '2018-09-03 02:54:46', '2018-09-03 02:54:46'),
+(9, 2, 'Cricket', 'cricket', '', '', '', '', '', '', 0, '', '', '', '', '', 1, '2018-09-03 03:06:46', '2018-09-03 03:06:46');
 
 -- --------------------------------------------------------
 
@@ -118,11 +126,6 @@ CREATE TABLE `events` (
   `event_image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `event_top_banner` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `organiser_id` int(11) NOT NULL,
-  `event_location` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `event_address` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `city` int(11) NOT NULL,
-  `state` int(11) NOT NULL,
-  `country` int(11) NOT NULL,
   `event_document` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ticket_url` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `website_url` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -131,6 +134,8 @@ CREATE TABLE `events` (
   `linked_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `instagram_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `googleplus_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sort_order` int(11) NOT NULL,
+  `total_view` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -140,9 +145,37 @@ CREATE TABLE `events` (
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `title`, `slug`, `event_category`, `event_type`, `short_description`, `description`, `start_date`, `end_date`, `start_time`, `end_time`, `event_image`, `event_top_banner`, `organiser_id`, `event_location`, `event_address`, `city`, `state`, `country`, `event_document`, `ticket_url`, `website_url`, `facebook_id`, `twitter_id`, `linked_id`, `instagram_id`, `googleplus_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'First Music Event', 'first-music-event', 1, 1, '<p>A concert is a live&nbsp;<strong>music</strong>&nbsp;performance in front of an audience. The performance may be by a single musician, sometimes then called a recital, or by a&nbsp;<strong>musical</strong>ensemble, such as an orchestra, choir, or band. ... Concerts often require live<strong>event</strong>&nbsp;support with professional audio equipment.</p>', '<p>A concert is a live&nbsp;<strong>music</strong>&nbsp;performance in front of an audience. The performance may be by a single musician, sometimes then called a recital, or by a&nbsp;<strong>musical</strong>ensemble, such as an orchestra, choir, or band. ... Concerts often require live<strong>event</strong>&nbsp;support with professional audio equipment.</p>', '2018-08-25', '2018-09-08', '15:15:00', '18:15:00', '1535642054.jpg', '1535642054.jpg', 2, 'Tower 4B', 'Dlf Corporate Park', 132, 12, 0, '', '', '', '', '', '', '', '', 1, '2018-08-25 04:05:17', '2018-08-30 09:44:14'),
-(2, 'Second Music Event', 'second-music-event', 1, 1, '<p>short</p>', '<p>long</p>', '2018-08-26', '2018-08-30', '01:30:00', '13:30:00', '1535551199.jpg', '1535641658.jpg', 1, '', '', 0, 0, 0, '', '', '', '', '', '', '', '', 1, '2018-08-25 14:24:16', '2018-08-30 09:37:39');
+INSERT INTO `events` (`id`, `title`, `slug`, `event_category`, `event_type`, `short_description`, `description`, `start_date`, `end_date`, `start_time`, `end_time`, `event_image`, `event_top_banner`, `organiser_id`, `event_document`, `ticket_url`, `website_url`, `facebook_id`, `twitter_id`, `linked_id`, `instagram_id`, `googleplus_id`, `sort_order`, `total_view`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'First Music Event', 'first-music-event', 1, 1, '<p>A concert is a live&nbsp;<strong>music</strong>&nbsp;performance in front of an audience. The performance may be by a single musician, sometimes then called a recital, or by a&nbsp;<strong>musical</strong>ensemble, such as an orchestra, choir, or band. ... Concerts often require live<strong>event</strong>&nbsp;support with professional audio equipment.</p>', '<p>A concert is a live&nbsp;<strong>music</strong>&nbsp;performance in front of an audience. The performance may be by a single musician, sometimes then called a recital, or by a&nbsp;<strong>musical</strong>ensemble, such as an orchestra, choir, or band. ... Concerts often require live<strong>event</strong>&nbsp;support with professional audio equipment.</p>', '2018-08-25', '2018-09-08', '15:15:00', '18:15:00', '1535642054.jpg', '1535642054.jpg', 2, '', '', '', '', '', '', '', '', 0, 7, 1, '2018-08-25 04:05:17', '2018-09-03 07:37:57'),
+(2, 'Second Music Event', 'second-music-event', 1, 1, '<p>short</p>', '<p>long</p>', '2018-08-26', '2018-08-30', '01:30:00', '13:30:00', '1535551199.jpg', '1535641658.jpg', 1, '', '', '', '', '', '', '', '', 0, 3, 1, '2018-08-25 14:24:16', '2018-09-03 08:07:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_addresses`
+--
+
+CREATE TABLE `event_addresses` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `event_location` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `state` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `postal_code` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `latitude` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `longitude` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `event_addresses`
+--
+
+INSERT INTO `event_addresses` (`id`, `event_id`, `event_location`, `city`, `state`, `country`, `postal_code`, `latitude`, `longitude`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Fortis Hospital, Rasoolpur Nawada, Industrial Area, Sector 62, Noida, Uttar Pradesh', 'Noida', 'Uttar Pradesh', 'India', '201309', '28.6179555', '77.36994759999993', NULL, NULL),
+(2, 1, 'Keshavpur Vegetable Market, Block WZ, Chaukhandi, Vishnu Garden, Delhi, India', 'Delhi', 'Delhi', 'India', '110018', '28.6518809', '77.0888228', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -168,12 +201,6 @@ CREATE TABLE `event_schedules` (
 --
 
 INSERT INTO `event_schedules` (`id`, `event_id`, `title`, `date`, `from_time`, `to_time`, `activity`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 'First Day Morning', '2018-08-25', '09:00:00', '12:00:00', '', 1, NULL, NULL),
-(2, 1, 'First Day AfterNoon', '2018-08-25', '01:00:00', '04:00:00', '', 1, NULL, NULL),
-(3, 1, 'First Day Night', '2018-08-25', '06:00:00', '09:00:00', '', 1, NULL, NULL),
-(4, 1, 'Second Day Morning', '2018-08-26', '09:00:00', '12:00:00', '', 1, NULL, NULL),
-(5, 1, 'Second Day AfterNoon', '2018-08-26', '01:00:00', '04:00:00', '', 1, NULL, NULL),
-(6, 1, 'Second Day Night', '2018-08-26', '06:00:00', '09:00:00', '', 1, NULL, NULL),
 (7, 2, 'First Day Morning', '2018-08-25', '09:00:00', '12:00:00', '', 1, NULL, NULL),
 (8, 2, 'First Day AfterNoon', '2018-08-25', '01:00:00', '04:00:00', '', 1, NULL, NULL),
 (9, 2, 'First Day Night', '2018-08-25', '06:00:00', '09:00:00', '', 1, NULL, NULL),
@@ -181,6 +208,32 @@ INSERT INTO `event_schedules` (`id`, `event_id`, `title`, `date`, `from_time`, `
 (11, 2, 'Second Day AfterNoon', '2018-08-26', '01:00:00', '04:00:00', '', 1, NULL, NULL),
 (12, 2, 'Second Day Night', '2018-08-26', '06:00:00', '09:00:00', '', 1, NULL, NULL),
 (13, 2, 'Third Day Morning', '2018-08-28', '10:45:00', '11:30:00', '', 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_seos`
+--
+
+CREATE TABLE `event_seos` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `meta_title` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `page_title` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `page_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `event_seos`
+--
+
+INSERT INTO `event_seos` (`id`, `event_id`, `meta_title`, `meta_keyword`, `meta_description`, `page_title`, `page_description`, `created_at`, `updated_at`) VALUES
+(1, 2, '', 'Second Keyword', 'Second Keyword', 'Second Keyword', 'Second Keyword', NULL, NULL),
+(2, 1, '', 'FirstKeyword', 'FirstKeyword', 'FirstKeyword', 'FirstKeyword', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -201,10 +254,7 @@ CREATE TABLE `event_speakers` (
 --
 
 INSERT INTO `event_speakers` (`id`, `event_id`, `speaker_id`, `created_at`, `updated_at`) VALUES
-(23, 2, 1, '2018-08-30 09:37:39', '2018-08-30 09:37:39'),
-(24, 2, 2, '2018-08-30 09:37:39', '2018-08-30 09:37:39'),
-(27, 1, 1, '2018-08-30 09:44:14', '2018-08-30 09:44:14'),
-(28, 1, 2, '2018-08-30 09:44:14', '2018-08-30 09:44:14');
+(1, 2, 1, '2018-09-03 08:07:01', '2018-09-03 08:07:01');
 
 -- --------------------------------------------------------
 
@@ -230,8 +280,8 @@ CREATE TABLE `event_stories` (
 --
 
 INSERT INTO `event_stories` (`id`, `story_name`, `short_desc`, `description`, `image`, `narrator_name`, `narrator_image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Story 1', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '1535548452.jpg', 'Story Teller 2', '1535223630.jpg', 1, '2018-08-24 07:40:53', '2018-08-29 07:44:12'),
-(2, 'Story 2', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '1535548431.jpg', 'Story Teller 1', '1535223617.jpg', 1, '2018-08-24 23:44:01', '2018-08-29 07:43:51');
+(1, 'Story 1', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '1535548452.jpg', 'Story Teller 2', '1535962720.jpg', 1, '2018-08-24 07:40:53', '2018-09-03 02:48:41'),
+(2, 'Story 2', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '1535548431.jpg', 'Story Teller 1', '1535962708.jpg', 1, '2018-08-24 23:44:01', '2018-09-03 02:48:28');
 
 -- --------------------------------------------------------
 
@@ -287,10 +337,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2018_08_24_095248_create_categories_table', 1),
 (11, '2018_08_24_095711_create_speakers_table', 1),
 (12, '2018_08_24_100031_create_organisers_table', 1),
-(13, '2018_08_25_052337_drop_user_table', 2),
-(14, '2018_08_25_052840_add_narrator_to_event_stories', 2),
-(15, '2018_08_25_060625_add_organiser_to_events', 3),
-(16, '2018_08_25_061133_create_event_speakers_table', 4);
+(18, '2018_08_25_052337_drop_user_table', 2),
+(19, '2018_08_25_052840_add_narrator_to_event_stories', 2),
+(20, '2018_08_25_060625_add_organiser_to_events', 2),
+(21, '2018_08_25_061133_create_event_speakers_table', 2),
+(22, '2018_09_03_060711_create_event_addresses_table', 2),
+(25, '2018_09_03_084443_create_event_seos_table', 3);
 
 -- --------------------------------------------------------
 
@@ -1410,7 +1462,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Alvah Daugherty', 'conn.buddy@example.org', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', '2Dx0wqSr3P', '2018-08-24 06:34:43', '2018-08-24 06:34:43'),
+(1, 'java2anand@gmail.com', 'conn.buddy@example.org', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', '2Dx0wqSr3P', '2018-08-24 06:34:43', '2018-08-24 06:34:43'),
 (2, 'Hyman Reynolds', 'ismael53@example.net', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'yXaIA8jWDV', '2018-08-24 06:34:43', '2018-08-24 06:34:43'),
 (3, 'Dr. Gerald Kertzmann V', 'karley.metz@example.org', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'K5UsnzRu6B', '2018-08-24 06:34:43', '2018-08-24 06:34:43'),
 (4, 'Bill Ortiz Jr.', 'wwindler@example.org', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'y5CNQt3sR0', '2018-08-24 06:34:43', '2018-08-24 06:34:43'),
@@ -1419,7 +1471,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 (7, 'Alford Hand', 'wlind@example.org', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'PZ89ZqgzIJ', '2018-08-24 06:34:43', '2018-08-24 06:34:43'),
 (8, 'Dr. Gennaro Johnson', 'deron.rutherford@example.com', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'wTY5bmN7lf', '2018-08-24 06:34:43', '2018-08-24 06:34:43'),
 (9, 'Dr. Viola Kemmer Jr.', 'elesch@example.net', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'fISEMAwn9w', '2018-08-24 06:34:43', '2018-08-24 06:34:43'),
-(10, 'Lavon Leuschke', 'raleigh00@example.com', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'y0sHXbKfcI', '2018-08-24 06:34:43', '2018-08-24 06:34:43');
+(10, 'Lavon Leuschke', 'raleigh00@example.com', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'y0sHXbKfcI', '2018-08-24 06:34:43', '2018-08-24 06:34:43'),
+(11, 'Abhishek Anand', 'java2anand@gmail.com', '$2y$10$DD/SzBIN.e.1LXyFQ8cHTOy2bosG57Z6yG0n4i/HCsnUS06aAK27y', 'U4ZmdmkgPeeRSGQVq6s04mteoRK0xL7CMxRs5DKw0KU9cLmkUmISaYaaMfPt', '2018-09-01 03:57:25', '2018-09-01 03:57:25');
 
 --
 -- Indexes for dumped tables
@@ -1444,9 +1497,21 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `event_addresses`
+--
+ALTER TABLE `event_addresses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `event_schedules`
 --
 ALTER TABLE `event_schedules`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `event_seos`
+--
+ALTER TABLE `event_seos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1535,12 +1600,18 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `event_addresses`
+--
+ALTER TABLE `event_addresses`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -1550,10 +1621,16 @@ ALTER TABLE `event_schedules`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `event_seos`
+--
+ALTER TABLE `event_seos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `event_speakers`
 --
 ALTER TABLE `event_speakers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `event_stories`
@@ -1571,7 +1648,7 @@ ALTER TABLE `event_types`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `newsletters`
@@ -1613,7 +1690,7 @@ ALTER TABLE `tbl_state`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
