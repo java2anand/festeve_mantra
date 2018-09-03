@@ -16,12 +16,16 @@
 });
 */
 Auth::routes();
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/about-us', 'HomeController@about_us')->name('about');
-Route::get('/event-category/{event_slug}', 'HomeController@event_list')->name('event-category');
-Route::get('/event-detail/{event_slug}', 'HomeController@event_detail')->name('event-detail');
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/about-us', 'HomeController@about_us')->name('about');
+Route::get('/categories', 'HomeController@categories')->name('categories');
+Route::get('/event-category/{event_slug}', 'HomeController@event_list')->name('event-category');
+Route::get('/event-detail/{event_slug}', 'HomeController@event_detail')->name('event-detail');
+Route::get('/top-100', 'HomeController@top_hundred')->name('top-100');
+Route::get('/add-event', 'HomeController@add_event')->name('add-event');
+Route::get('/search/{keyword?}', 'HomeController@search')->name('search');
 Route::post('/save_newsleter', 'HomeController@save_newsleter')->name('save_newsleter');
 
 /* * ***********Admin Panel ******************* */
@@ -64,6 +68,7 @@ Route::prefix('admin')->group(function() {
     Route::any('/event_add_schedule/{id?}', 'Admin\EventController@save_schedule')->name('admin.event_add_schedule');
     Route::any('/event_add_address/{id?}', 'Admin\EventController@save_address')->name('admin.event_add_address');
     Route::any('/event_add_social/{id?}', 'Admin\EventController@save_social')->name('admin.event_add_social');
+    Route::any('/event_add_seo/{id?}', 'Admin\EventController@save_seo')->name('admin.event_add_seo');
 
     Route::post('/delete_event_schedule', 'Admin\EventController@delete_schedule')->name('admin.delete_event_schedule');
     Route::get('/event_delete/{id}', 'Admin\EventController@destroy')->name('admin.event_delete');

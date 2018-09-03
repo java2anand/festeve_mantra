@@ -14,12 +14,12 @@
                 <div class="event_topbanner_info">
                     <h3>{{ $event->title }}</h3>
                     <p class="event_topbanner_info_text"> {{ date('dS F',strtotime($event->start_date)) }} - {{ date('dS F',strtotime($event->end_date)) }},   {{ date('h:i A',strtotime($event->start_time)) }} </p>
-                    <p class="event_topbanner_info_text">{{$event->event_location.', '.$event->event_address}}</p>
+                    <p class="event_topbanner_info_text">{{$event->address->event_location}}</p>
                     <div>
                         <ul class="event_follow_ul">
-                            <li><input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="4"></li>
-                            <li> <a href="#"><img src="{{asset('ws/images/user_follow.svg')}}">  554</a></li>
-                            <li> <button class="follow_btn"><img src="{{asset('ws/images/follow.svg') }}"> Follow</button></li>
+                            <!--<li><input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="4"></li>-->
+                            <li> <img src="{{asset('ws/images/user_follow.svg')}}"> {{ $event->total_view }}</li>
+                            <!--<li> <button class="follow_btn"><img src="{{asset('ws/images/follow.svg') }}"> Follow</button></li>-->
                         </ul>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
 
                         <div class="col-xs-12">
                             <div class="event_inner_section event_text">
-                                <h1 class="home_section_heading"><span>Description</span> About Event</h1>
+                                <h1 class="home_section_heading"> About Event</h1>
                                 {!! $event->description !!}
 
                             </div>
@@ -62,6 +62,7 @@
                         </div>
                     @endif
 
+                    @if(count($arr_schedule)>0)
                     <!-- new section added -->
                     <div class="row"><!-- Schedule  section -->
                         <div class="col-xs-12">
@@ -111,7 +112,9 @@
                             </div>
                         </div>
                     </div><!-- Schedule section ends -->
+                    @endif
 
+                    @if(isset($organiser->description) && !empty($organiser->description))
                     <div class="row"><!-- about organisers -->
                         <div class="col-xs-12">
                             <div class="event_inner_section event_text">
@@ -121,7 +124,7 @@
                             </div>
                         </div>
                     </div> <!-- about organisers ends -->
-
+                    @endif
                     <!-- new section ends -->
 
                 </div><!-- left section ends -->
@@ -144,7 +147,7 @@
                         <div class="col-xs-12">
                             <div class="event_right_bottom_inner">
                                 <h5>Location</h5>
-                                <p>{{$event->event_location.', '.$event->event_address}}</p>
+                                <p>{{$event->address->event_location}}</p>
                                 <h5>Start Time</h5>
                                 <p>{{ date('d F Y',strtotime($event->start_date)) }} -   {{ date('h:i A',strtotime($event->start_time)) }}</p>
                             </div>

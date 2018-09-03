@@ -71,15 +71,15 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-sm-6">
+                        <!--<div class="form-group col-sm-6">
                             <label for="event_type_id">Select Event Type</label>
                             <select class="form-control" id="event_type_id" name="event_type_id">
 
-                                <?php foreach ($arrEventType as $k => $v) { ?>
-                                    <option value="<?= $v->id ?>" <?= (!empty($event->event_type) && ($v->id == $event->event_type)) ? 'selected' : ''; ?>><?= $v->name ?></option>
-                                <?php } ?>
+                        <?php /* foreach ($arrEventType as $k => $v) { ?>
+                          <option value="<?= $v->id ?>" <?= (!empty($event->event_type) && ($v->id == $event->event_type)) ? 'selected' : ''; ?>><?= $v->name ?></option>
+                          <?php } */ ?>
                             </select>
-                        </div>
+                        </div>-->
 
                         <div class="form-group col-sm-6">
                             <label for="organiser_id">Select Organiser</label>
@@ -92,7 +92,7 @@
                         </div>
 
 
-                        <div class="form-group col-sm-12">
+                        <div class="form-group col-sm-6">
                             <label for="speaker">Select Speaker</label>
                             <select class="form-control select2" id="speaker" name="speaker[]" multiple>
 
@@ -172,8 +172,8 @@
 
                         <div style="clear:both;"></div>
 
-                        <div class="form-group col-sm-6">
-                            <label for="event_image">Image*</label>
+                        <div class="form-group col-sm-12">
+                            <label for="event_image">Image<span class="error">* Image must be in width & height less than (1200 X 600), format (jpeg,jpg,png) and max_size(2MB)</span></label>
                             <input type="file" class="form-control" id="event_image" name="event_image" >
                             <span class="error"><?php
                                 if ($errors->has('event_image')) {
@@ -184,26 +184,26 @@
 
                             <?php
                             $image = (isset($event->event_image) && !empty($event->event_image)) ? $event->event_image : '';
-                            if (file_exists(public_path() . '/images/event/thumb/' . $image)) {
+                            if (isset($image) && !empty($image) && file_exists(public_path() . '/images/event/thumb/' . $image)) {
                                 ?>
                                 <img src="{{ asset( 'images/event/thumb/'.$image)}}" width="100" height="50"/>
                             <?php } ?>
                         </div>
 
-                        <div class="form-group col-sm-6">
-                            <label for="end_time">Document*</label>
+                        <!--<div class="form-group col-sm-6">
+                            <label for="end_time">Document<span class="error">* Banner must be in format (pdf,doc,docx) and max_size(2MB)</span></label>
                             <input type="file" class="form-control" id="end_time" name="end_time" placeholder="Enter End Time" value="<?= (isset($event->end_time) && !empty($event->end_time)) ? $event->end_time : old('end_time') ?>">
                             <span class="error"><?php
                                 if ($errors->has('end_time')) {
                                     echo $errors->first('end_time');
                                 }
                                 ?></span>
-                        </div>
+                        </div>-->
 
                         <div style="clear:both;"></div>
                         <!--Code for Add Event Top banner -->
                         <div class="form-group col-sm-12">
-                            <label for="event_top_banner">Top Banner*</label>
+                            <label for="event_top_banner">Top Banner<span class="error">* Banner must be in width & height less than (1200 X 600), format (jpeg,jpg,png) and max_size(2MB)</span></label>
                             <input type="file" class="form-control" id="event_top_banner" name="event_top_banner" >
                             <span class="error"><?php
                                 if ($errors->has('event_top_banner')) {
@@ -213,10 +213,10 @@
                             <input type="hidden" name="old_event_top_banner" value="<?= (isset($event->event_top_banner) && !empty($event->event_top_banner)) ? $event->event_top_banner : '' ?>" />
 
                             <?php
-                            $image = (isset($event->event_top_banner) && !empty($event->event_top_banner)) ? $event->event_top_banner : '';
-                            if (file_exists(public_path() . '/images/event/top_banner/' . $image)) {
+                            $top_banner = (isset($event->event_top_banner) && !empty($event->event_top_banner)) ? $event->event_top_banner : '';
+                            if (isset($top_banner) && !empty($top_banner) && file_exists(public_path() . '/images/event/top_banner/' . $top_banner)) {
                                 ?>
-                                <img src="{{ asset( 'images/event/top_banner/'.$image)}}" width="300px" height="100px"/>
+                                <img src="{{ asset( 'images/event/top_banner/'.$top_banner)}}" width="300px" height="100px"/>
                             <?php } ?>
                         </div>
                         <!-- Code for Add event Top Banner ends here -->

@@ -1,7 +1,7 @@
 @include('admin.admin-header')
 @include('admin.admin-sidebar')
 <script src="{{asset('admin/plugins/ckeditor/ckeditor.js') }}"></script>
-<?php //$event_id = (isset($event->id) && !empty($event->id)) ? $event->id : ''; ?>
+<?php $event_id = (isset($event->id) && !empty($event->id)) ? $event->id : ''; ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -38,66 +38,82 @@
                     'id' => 'event_add_address_form',
                     ]) !!}
 
-                    <input type="hidden" name="latitude" id="latitude" value="<?= (isset($event->address->latitude) && !empty($event->address->latitude)) ? $event->address->latitude : old('latitude') ?>" />
-                    <input type="hidden" name="longitude" id="longitude" value="<?= (isset($event->address->longitude) && !empty($event->address->longitude)) ? $event->address->longitude : old('longitude') ?>"  />
-                    <input type="hidden" name="address_id"  value="<?= (isset($event->address->id) && !empty($event->address->id)) ? $event->address->id : '' ?>"  />
-
-
                     <div class="box-body">
-                        <div class="form-group col-sm-12">
+                        <div class="form-group col-sm-6">
                             <label for="event_location	">Event Location</label>
-                            <input type="text" name="event_location" class="form-control input-md" onFocus="geolocate()" id="autocomplete" placeholder="Type location.."  value="<?= (isset($event->address->event_location) && !empty($event->address->event_location)) ? $event->address->event_location : old('event_location') ?>" />
+                            <input type="text" name="city" value="" class="form-control input-md" onFocus="geolocate()" id="autocomplete" placeholder="Type you city..."  />
 
+                            <input type="text" class="form-control" id="event_location" name="event_location" placeholder="Enter event location" value="<?= (isset($event->event_location) && !empty($event->event_location)) ? $event->event_location : old('event_location') ?>">
                             <span class="error"><?php if ($errors->has('event_location')) { echo $errors->first('event_location'); } ?></span>
                         </div>
 
-
-                        <div style="clear:both;"></div>
-
                         <div class="form-group col-sm-6">
-                            <label for="city">Event City</label>
-                            <input type="text" class="form-control" id="locality" name="city"  value="<?= (isset($event->address->city) && !empty($event->address->city)) ? $event->address->city : old('city') ?>">
-                            <span class="error"><?php if ($errors->has('city')) {
-    echo $errors->first('city');
+                            <label for="event_address">Event Address</label>
+                            <input type="text" class="form-control" id="event_address" name="event_address" placeholder="Enter event Address" value="<?= (isset($event->event_address) && !empty($event->event_address)) ? $event->event_address : old('event_address') ?>">
+                            <span class="error"><?php if ($errors->has('event_address')) {
+    echo $errors->first('event_address');
 } ?></span>
-                        </div>
-
-
-                        <div class="form-group col-sm-6">
-                            <label for="state">Event State</label>
-                            <input type="text" class="form-control" id="administrative_area_level_1" name="state"  value="<?= (isset($event->address->state) && !empty($event->address->state)) ? $event->address->state : old('state') ?>">
-                            <span class="error"><?php if ($errors->has('state')) { echo $errors->first('state'); } ?></span>
                         </div>
 
                         <div style="clear:both;"></div>
 
                         <div class="form-group col-sm-6">
                             <label for="country">Event Country</label>
-                            <input type="text" class="form-control" id="country" name="country"  value="<?= (isset($event->address->country) && !empty($event->address->country)) ? $event->address->country : old('country') ?>">
-
+                            <input type="text" class="form-control" id="country" name="country" placeholder="Enter event Country" disabled value="India">
                             <span class="error"><?php if ($errors->has('country')) {
     echo $errors->first('country');
 } ?></span>
                         </div>
 
-                        <div class="form-group col-sm-6">
-                            <label for="postal_code">Postal Code</label>
-                            <input type="text" class="form-control" id="postal_code" name="postal_code"  value="<?= (isset($event->address->postal_code) && !empty($event->address->postal_code)) ? $event->address->postal_code : old('postal_code') ?>">
 
-                            <span class="error"><?php if ($errors->has('postal_code')) {
-    echo $errors->first('postal_code');
+                        <div class="form-group col-sm-6">
+                            <label for="state">Event State</label>
+                            <select class="form-control" name="state" id="state">
+                                <option value="">Select State</option>
+                                <?php
+                                if (count($state_list) > 0) {
+                                    foreach ($state_list as $state) {
+                                        ?>
+                                        <option value="<?= $state->state_id; ?>" <?= (isset($event->state) && $event->state == $state->state_id) ? "selected" : ""; ?>><?= $state->state_name ; ?></option>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </select>
+                            <span class="error"><?php if ($errors->has('state')) {
+    echo $errors->first('state');
 } ?></span>
+
                         </div>
 
                         <div style="clear:both;"></div>
 
+                        <div class="form-group col-sm-6">
+                            <label for="city">Event City</label>
+                            <select class="form-control" name="city" id="city">
+                                <option value="">Select City</option>
+                                <?php
+                                if (count($city_list) > 0) {
+                                    foreach ($city_list as $city) {
+                                        ?>
+                                        <option value="<?= $city->city_id; ?>" <?= (isset($event->city) && $event->city == $city->city_id) ? "selected" : ""; ?>><?= $city->city_name; ?></option>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </select>
+                            <span class="error"><?php if ($errors->has('city')) {
+    echo $errors->first('city');
+} ?></span>
+
+                        </div>
                     </div>
                     <!-- /.card-body -->
 
                     <div class="box-footer">
                         <a href="{{ route('admin.event_add_social',$event_id) }}" class="btn btn-danger">Back</a>
                         <button type="submit" name='submit' value='save' class="btn btn-primary">Save</button>
-                        <button type="submit" name='submit' value='go' class="btn btn-primary">Save & Go To Seo</button>
+                        <button type="submit" name='submit' value='go' class="btn btn-primary">Save & Go To List</button>
                         <a href="{{ route('admin.event_list') }}" class="btn btn-danger">Cancel</a>
 
                     </div>
@@ -138,10 +154,12 @@ $(document).ready(function () {
 <script>
     var placeSearch, autocomplete;
     var componentForm = {
-        locality: 'long_name', // city
-        administrative_area_level_1: 'long_name', //state
-        country: 'long_name', //country
-        postal_code: 'short_name' // pin code
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'long_name',
+        country: 'long_name',
+        postal_code: 'short_name'
     };
     function initAutocomplete() {
         // Create the autocomplete object, restricting the search to geographical
@@ -157,9 +175,7 @@ $(document).ready(function () {
     function fillInAddress() {
         // Get the place details from the autocomplete object.
         var place = autocomplete.getPlace();
-        $("#latitude").val(place.geometry.location.lat());
-        $("#longitude").val(place.geometry.location.lng());
-
+console.log(place);
         for (var component in componentForm) {
             document.getElementById(component).value = '';
             document.getElementById(component).disabled = false;

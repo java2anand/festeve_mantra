@@ -19,7 +19,7 @@
         <div class="container home_search_outer">
             <div class="row search_first_section">
                 <div class="col-xs-12 text-center">
-                    <form class="form-inline">
+                    <form class="form-inline" >
                         <div class="form-group frm_event_name">
                             <input type="text" class="form-control" name="event_name" id="event_name" placeholder="Event...">
                         </div>
@@ -114,7 +114,8 @@
 
                             </div>
                             <!-- Add Pagination -->
-                            <div class="swiper-pagination" style="position:relative"></div>
+                            <!--<div class="swiper-pagination" style="position:relative"></div>-->
+                            <p class="col-xs-12 text-center"><a href="{{ url('/stories')}}" class="home_seeall_cat_link">SEE ALL STORIES</a></p>
                         </div>
                     </div>
                 </div>
@@ -168,7 +169,7 @@
                     </div> <!-- ends -->
 
                 </div>
-                <p class="col-xs-12 text-center"><a href="" class="home_seeall_cat_link">SEE ALL CATEGORIES</a></p>
+                <p class="col-xs-12 text-center"><a href="{{ url('/categories')}}" class="home_seeall_cat_link">SEE ALL CATEGORIES</a></p>
 
             </div>
         </div>
@@ -181,7 +182,7 @@
                 <h3 class="home_section_heading text-center">Get more with no surprises</h3>
                 <p class="text-center heading_seprator"><span></span></p>
                 <div class="col-xs-12 text-center">
-                    <a href="#" class="orange_btn">Create Event</a>
+                    <a href="{{ url('/add-event')}}" class="orange_btn">Create Event</a>
                     <a href="#" class="black_btn">Find Event</a>
                 </div>
             </div>

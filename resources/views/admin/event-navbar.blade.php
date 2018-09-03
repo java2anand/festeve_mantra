@@ -9,6 +9,7 @@
 
             <li class='<?= (isset($current_tab) && $current_tab=='event_address') ? 'active' :'';  ?>'><a href="{{ route('admin.event_add_address',$event_id)}}">Event Address</a></li>
 
+            <li class='<?= (isset($current_tab) && $current_tab=='event_seo') ? 'active' :'';  ?>'><a href="{{ route('admin.event_add_seo',$event_id)}}">Event Seo</a></li>
 
         </ul>
     </div>

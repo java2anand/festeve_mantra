@@ -26,11 +26,6 @@ class CreateEventsTable extends Migration {
             $table->time('end_time');
             $table->string('event_image');
             $table->string('event_top_banner');
-            $table->string('event_location');
-            $table->text('event_address');
-            $table->integer('city');
-            $table->integer('state');
-            $table->integer('country');
             $table->string('event_document');
             $table->string('ticket_url');
             $table->string('website_url');
@@ -39,6 +34,8 @@ class CreateEventsTable extends Migration {
             $table->string('linked_id');
             $table->string('instagram_id');
             $table->string('googleplus_id');
+            $table->integer('sort_order');
+            $table->integer('total_view');
             $table->tinyInteger('status');
             $table->timestamps();
         });

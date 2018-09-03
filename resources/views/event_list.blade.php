@@ -8,15 +8,20 @@
         <div class="moblie_filter_overlay"></div>
         <div class="container listing_page_width listing_page_top_section">
             <div class="row">
-                <h1 class="col-xs-12 text-center home_section_heading">Search for <span>event</span></h1>
-                <div class="col-xs-12 text-center">
+                <h1 class="col-xs-12 text-center home_section_heading"><span>{{$category->category_name}}</span></h1>
+                <!--<div class="col-xs-12 text-center">
                     <form name="listing_search_form" id="listing_search_form">
                         <input type="text" class="listing_search_input" placeholder="Discover over 18,000 fests and get your favorites coming up!">
                     </form>
-                </div>
-                <div class="col-xs-12 listing_top_banner">
-                    <a href="#"><img src="{{asset('ws/images/listing_banner.jpg')}}" alt="banner"></a>
-                </div>
+                </div>-->
+
+
+                @if(isset($category->top_banner) && !empty($category->top_banner) && file_exists(public_path() . '/images/category/top_banner/' . $category->top_banner))
+                    <div class="col-xs-12 listing_top_banner">
+                        <a href="#"><img src="{{ asset( 'images/category/top_banner/'.$category->top_banner )}}" alt="banner"></a>
+                    </div>
+                @endif
+
             </div>
             <div class="row mobile_filter_btn_outer">
                 <div class="col-xs-12 text-right"><button class="mobile_filter_btn"><img src="{{asset('ws/images/filter.svg')}}"> Filter</button></div>
@@ -41,72 +46,29 @@
                             <div class="listing_left_sidebar_inner list_filter_spacing">
                                 <h4>Categories</h4>
                                 <ul>
+                                    @foreach($arr_category as $k=>$maincat)
                                     <li>
-                                        <input type="checkbox" id="filter_1">
-                                        <label for="filter_1">All Event Types</label>
+                                        <input type="checkbox" id="filter_{{$k}}">
+                                        <label for="filter_{{$k}}" class="sub_category_dropdown">{{ $maincat->category_name }} <span><img src="{{asset('ws/images/down_arrow.jpg')}}"></span></label>
                                         <!-- sub categories  -->
                                         <ul class="category_sub_outer">
+                                            @foreach($maincat->children as $key=>$childcat)
                                             <li>
-                                                <input type="checkbox" id="filter_21">
-                                                <label for="filter_21">Sub category1</label>
+                                                <input type="checkbox" id="filters_{{$k.$key}}">
+                                                <label for="filters_{{$k.$key}}">{{ $childcat->category_name }}</label>
                                             </li>
-                                            <li>
-                                                <input type="checkbox" id="filter_31">
-                                                <label for="filter_31">Sub category2</label>
-                                            </li>
-
+                                            @endforeach
                                         </ul>
                                         <!-- sub categories ends -->
                                     </li>
-                                    <li>
-                                        <input type="checkbox" id="filter_2">
-                                        <label for="filter_2" class="sub_category_dropdown">Music <span><img src="{{asset('ws/images/down_arrow.jpg')}}"></span></label>
-                                        <!-- sub categories  -->
-                                        <ul class="category_sub_outer">
-                                            <li>
-                                                <input type="checkbox" id="filter_211">
-                                                <label for="filter_211">Sub category1</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="filter_311">
-                                                <label for="filter_311">Sub category2</label>
-                                            </li>
-
-                                        </ul>
-                                        <!-- sub categories ends -->
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="filter_3">
-                                        <label for="filter_3">Exhibition & Trade Fair</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="filter_4">
-                                        <label for="filter_4" class="sub_category_dropdown">All Event Types <span><img src="{{asset('ws/images/down_arrow.jpg')}}"></span></label>
-                                        <!-- sub categories  -->
-                                        <ul class="category_sub_outer">
-                                            <li>
-                                                <input type="checkbox" id="filter_212">
-                                                <label for="filter_212">Sub category1</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="filter_312">
-                                                <label for="filter_312">Sub category2</label>
-                                            </li>
-
-                                        </ul>
-                                        <!-- sub categories ends -->
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="filter_5">
-                                        <label for="filter_5">Music & DJ Parties</label>
-                                    </li>
+                                    @endforeach
 
                                 </ul>
                             </div>
                             <!-- category filter ends -->
 
                             <!-- EVENT TYPE filter -->
-                            <div class="listing_left_sidebar_inner list_filter_spacing">
+                            <!--<div class="listing_left_sidebar_inner list_filter_spacing">
                                 <h4>EVENT TYPE</h4>
                                 <ul>
                                     <li>
@@ -131,7 +93,7 @@
                                     </li>
 
                                 </ul>
-                            </div>
+                            </div>-->
                             <!-- EVENT TYPE ends -->
 
                             <!-- Date filter -->

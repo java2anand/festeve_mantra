@@ -79,7 +79,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="mini_icon">Category Mini Icon</label>
+                            <label for="mini_icon">Category Mini Icon<span class="error">* Old Icon must be in width & height less than (100 X 100), format (jpeg,jpg,png) and max_size(2MB)</span> </label>
                             <input type="file" class="form-control" id="mini_icon" name="mini_icon" >
                             <span class="error"></span>
                             <input type="hidden" name="old_mini_icon" value="<?= (isset($category->mini_icon) && !empty($category->mini_icon)) ? $category->mini_icon : '' ?>" />
@@ -121,7 +121,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="top_banner">Top Banner</label>
+                            <label for="top_banner">Top Banner<span class="error">* Banner must be in width & height less than (1200 X 600), format (jpeg,jpg,png) and max_size(2MB)</span> </label>
                             <input type="file" class="form-control" id="top_banner" name="top_banner" >
                             <span class="error"></span>
                             <input type="hidden" name="old_top_banner" value="<?= (isset($category->top_banner) && !empty($category->top_banner)) ? $category->top_banner : '' ?>" />
@@ -131,7 +131,62 @@
                             if (isset($top_banner) && $top_banner != "" && file_exists(public_path() . '/images/category/top_banner/' . $top_banner)) {
                                 ?>
                                 <img src="{{ asset( 'images/category/top_banner/'.$top_banner)}}"  height='50px;'/>
-<?php } ?>
+                            <?php } ?> <br />
+                            <span class="error"><?php
+                            if ($errors->has('top_banner')) {
+                                echo $errors->first('top_banner');
+                            }
+                            ?></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="meta_title">Meta Title</label>
+                            <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="" value="<?= (isset($category->meta_title) && !empty($category->meta_title)) ? $category->meta_title : old('meta_title') ?>">
+                            <span class="error"><?php
+                                if ($errors->has('meta_title')) {
+                                    echo $errors->first('meta_title');
+                                }
+                                ?></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="meta_keyword">Meta Keyword</label>
+                            <input type="text" class="form-control" id="meta_keyword" name="meta_keyword" placeholder="" value="<?= (isset($category->meta_keyword) && !empty($category->meta_keyword)) ? $category->meta_keyword : old('meta_keyword') ?>">
+                            <span class="error"><?php
+                                if ($errors->has('meta_keyword')) {
+                                    echo $errors->first('meta_keyword');
+                                }
+                                ?></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="meta_description">Meta Description</label>
+                            <input type="text" class="form-control" id="meta_description" name="meta_description" placeholder="" value="<?= (isset($category->meta_description) && !empty($category->meta_description)) ? $category->meta_description : old('meta_description') ?>">
+                            <span class="error"><?php
+                                if ($errors->has('meta_description')) {
+                                    echo $errors->first('meta_description');
+                                }
+                                ?></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="page_title">Page Title</label>
+                            <input type="text" class="form-control" id="page_title" name="page_title" placeholder="" value="<?= (isset($category->page_title) && !empty($category->page_title)) ? $category->page_title : old('page_title') ?>">
+                            <span class="error"><?php
+                                if ($errors->has('page_title')) {
+                                    echo $errors->first('page_title');
+                                }
+                                ?></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="page_description">Page Description</label>
+                            <input type="text" class="form-control" id="page_description" name="page_description" placeholder="" value="<?= (isset($category->page_description) && !empty($category->page_description)) ? $category->page_description : old('page_description') ?>">
+                            <span class="error"><?php
+                                if ($errors->has('page_description')) {
+                                    echo $errors->first('page_description');
+                                }
+                                ?></span>
                         </div>
 
                         <div class="form-group">

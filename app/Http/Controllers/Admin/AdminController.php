@@ -159,7 +159,7 @@ class AdminController extends Controller {
 
     public function newsletters() {
         $page = 'newsletter';
-        $arrNewsletter = DB::table('newsletters')->paginate(2);
+        $arrNewsletter = DB::table('newsletters')->paginate(20);
         return view('admin.newsletter',compact('arrNewsletter','page'));
     }
 

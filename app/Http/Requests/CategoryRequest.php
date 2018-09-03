@@ -27,6 +27,8 @@ class CategoryRequest extends FormRequest
         return [
             'category_name'=>'required|unique:categories,category_name,'.$id,
             'slug'=>'required|unique:categories,slug,'.$id,
+            'mini_icon' => 'mimes:jpeg,jpg,png | max:2048 |dimensions:max_width=100,max_height=100',
+            'top_banner' => 'mimes:jpeg,jpg,png | max:2048 |dimensions:max_width=1200,max_height=600',
             'status'=>'required'
         ];
     }

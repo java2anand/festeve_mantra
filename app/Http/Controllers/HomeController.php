@@ -17,6 +17,7 @@ class HomeController extends Controller {
      */
     public function __construct() {
         //$this->middleware('auth');
+        $this->middleware('auth', ['except' => ['index','about_us','categories','event_list','event_detail','save_newsleter','top_hundred','search']]);
     }
 
     /**
@@ -36,13 +37,21 @@ class HomeController extends Controller {
         return view('about');
     }
 
+
+    public function categories(){
+        $arr_category = Category::whereStatus(1)->get();
+        dd($arr_category);
+    }
+
     public function event_list($slug) {
         $category = Category::where('slug', '=', $slug)->first();
         if ($category === null) {
            return redirect('/');
         }
+        $arr_category = Category::where('status','=',1)->where('parent_id','=',0)->get();
+
         $arrevent = Event::where('event_category','=',$category->id)->paginate(20);
-        return view('event_list',compact('arrevent'));
+        return view('event_list',compact('arrevent','arr_category','category'));
     }
 
     public function event_detail($slug) {
@@ -52,9 +61,15 @@ class HomeController extends Controller {
            return redirect('/');
         }
 
+        //increment event view
+        DB::table('events')->whereId($event->id)->increment('total_view');
+
+        //event speaker
         $speaker = DB::table('event_speakers')->where('event_id', $event->id)
             ->join('speakers as spkr', 'spkr.id', '=', 'event_speakers.speaker_id')
             ->select("spkr.id", "spkr.speaker_name", "spkr.image", "spkr.description",'spkr.title')->get();
+
+        //event organiser
         $organiser = $event->organiser;
 
         //query to find schedule
@@ -69,6 +84,8 @@ class HomeController extends Controller {
         $arr_similar_event = Event::where('event_category', '=', $event->event_category)->where('id', '!=', $event->id)->get();
 
         return view('event_detail',compact('event','speaker','organiser','arr_schedule','arr_similar_event'));
+
+
     }
 
     public function save_newsleter(Request $request){
@@ -89,6 +106,21 @@ class HomeController extends Controller {
         $result = json_encode(array('success'=>true,'msg'=>$msg));
         echo  $result;
         die;
+    }
+
+    public function top_hundred(){
+        $arr_events = Event::whereStatus(1)->orderBy('sort_order', 'asc')->get();
+        dd($arr_events);
+    }
+
+
+    public function add_event(){
+        echo 'add event';
+    }
+
+
+    public function search(Request $request){
+
     }
 
 }

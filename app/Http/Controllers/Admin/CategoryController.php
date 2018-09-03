@@ -19,9 +19,9 @@ class CategoryController extends Controller {
         $page = 'category_list';
         $search_term = $request->search;
         $arrCategory = Category::orderBy('id', 'DESC')
-			->when($search_term, function ($query) use ($search_term) {
-				return $query->where('categories.category_name', 'like', '%' . $search_term . '%');
-			})->paginate(10);
+                        ->when($search_term, function ($query) use ($search_term) {
+                            return $query->where('categories.category_name', 'like', '%' . $search_term . '%');
+                        })->paginate(10);
         return view('admin.category_list', compact('arrCategory', 'page', 'search_term'));
     }
 
@@ -48,6 +48,11 @@ class CategoryController extends Controller {
         $category->description = !empty($request->description) ? $request->description : '';
         $category->parent_id = $request->parent_id;
         $category->status = $request->status;
+        $category->meta_title = !empty($request->meta_title) ? $request->meta_title : '';
+        $category->meta_keyword = !empty($request->meta_keyword) ? $request->meta_keyword : '';
+        $category->meta_description = !empty($request->meta_description) ? $request->meta_description : '';
+        $category->page_title = !empty($request->page_title) ? $request->page_title : '';
+        $category->page_description = !empty($request->page_description) ? $request->page_description : '';
 
         /* For Mini Icon */
         if ($request->hasFile('mini_icon')) {

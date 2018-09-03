@@ -13,11 +13,18 @@
             </div>
             <div class="col-sm-8 nav_desktop">
                 <ul class="header_navigation">
-                    <li><a href="#">+festeve</a></li>
-                    <li><a href="#">Top 100</a></li>
-                    <li><a href="#">categories</a></li>
-                    <li><a href="{{ route('login') }}" class="login_link">login</a></li>
-                    <li><a href="{{ route('register') }}" class="active_btn">signup</a></li>
+                    <li><a href="{{ route('add-event') }}">+festeve</a></li>
+                    <li><a href="{{ route('top-100') }}">Top 100</a></li>
+                    <li><a href="{{ route('categories') }}">categories</a></li>
+
+                    @guest
+                        <li><a href="{{ route('login') }}" class="login_link">login</a></li>
+                        <li><a href="{{ route('register') }}" class="active_btn">signup</a></li>
+                    @else
+                        <li><a href="{{ route('user.logout') }}" class="active_btn" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                    @endguest
+
                 </ul>
             </div>
         </div>

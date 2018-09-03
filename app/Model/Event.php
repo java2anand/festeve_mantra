@@ -15,11 +15,11 @@ class Event extends Model{
         return $this->hasOne('App\Model\Organiser', 'id' ,'organiser_id');
     }
 
-    public function states(){
-        return $this->hasOne('App\Model\State', 'state_id' ,'state');
+    public function address(){
+        return $this->belongsTo('App\Model\EventAddress', 'id','event_id');
     }
 
-    public function cities(){
-        return $this->hasOne('App\Model\City', 'city_id' ,'city');
+    public function seo(){
+        return $this->belongsTo('App\Model\EventSeo', 'id','event_id');
     }
 }

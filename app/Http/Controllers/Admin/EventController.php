@@ -7,6 +7,7 @@ use App\Http\Requests\EventRequest;
 use App\Http\Controllers\Controller;
 use App\Model\Event;
 use App\Model\EventSpeaker;
+use App\Model\EventAddress;
 use Illuminate\Support\Facades\DB;
 use Image;
 
@@ -28,7 +29,7 @@ class EventController extends Controller {
         $event = array();
         $speakers = array();
         $arrCategory = DB::table('categories')->where('status', 1)->get();
-        $arrEventType = DB::table('event_types')->where('status', 1)->get();
+        //$arrEventType = DB::table('event_types')->where('status', 1)->get();
         $arr_organisers = DB::table('organisers')->where('status', 1)->get();
         $arr_speakers = DB::table('speakers')->where('status', 1)->get();
         if ($id) {
@@ -40,7 +41,7 @@ class EventController extends Controller {
             }
         }
         //dd($speakers);
-        return view('admin.event_add', compact('event', 'page', 'arrCategory', 'arrEventType', 'current_tab', 'arr_organisers', 'arr_speakers', 'speakers'));
+        return view('admin.event_add', compact('event', 'page', 'arrCategory', 'current_tab', 'arr_organisers', 'arr_speakers', 'speakers'));
     }
 
     public function save_event(EventRequest $request, $event_id = false) {
@@ -55,7 +56,7 @@ class EventController extends Controller {
         $event->title = !empty($request->title) ? $request->title : '';
         $event->slug = !empty($request->slug) ? $request->slug : '';
         $event->event_category = !empty($request->category_id) ? $request->category_id : '';
-        $event->event_type = !empty($request->event_type_id) ? $request->event_type_id : '';
+        //$event->event_type = !empty($request->event_type_id) ? $request->event_type_id : '';
 
         $event->start_date = !empty($request->start_date) ? date("Y-m-d", strtotime($request->start_date)) : '';
         $event->end_date = !empty($request->end_date) ? date("Y-m-d", strtotime($request->end_date)) : '';
@@ -219,46 +220,86 @@ class EventController extends Controller {
     public function save_address(Request $request, $event_id = false) {
         $page = 'add_event';
         $current_tab = 'event_address';
-        $state_list = array();
-        $city_list = array();
-
 
         if (!$event_id) {
             return redirect()->route('admin.event_list')->with('alert-danger', 'Event not found!');
         } else {
             $event = array();
-            $event = DB::table('events')->select('id', 'event_location', 'event_address', 'city', 'state', 'country')->where('id', $event_id)->first();
-
+            $event = Event::find($event_id);
             if ($event == null) {
                 return redirect()->route('admin.event_list')->with('alert-danger', 'Event not found!');
-            }
-
-            $state_list = DB::table('tbl_state')->get();
-            if (isset($event->state) && !empty($event->state)) {
-                $city_list = DB::table('tbl_city')->where('state_id', $event->state)->get();
             }
         }
 
         if ($request->isMethod('post')) {
-
-            $update_array = array(
+            $save_array = array(
+                'event_id' => $event_id,
                 'event_location' => (!empty($request->event_location)) ? $request->event_location : '',
-                'event_address' => (!empty($request->event_address)) ? $request->event_address : '',
                 'city' => (!empty($request->city)) ? $request->city : '',
                 'state' => (!empty($request->state)) ? $request->state : '',
                 'country' => (!empty($request->country)) ? $request->country : '',
+                'postal_code' => (!empty($request->postal_code)) ? $request->postal_code : '',
+                'latitude' => (!empty($request->latitude)) ? $request->latitude : '',
+                'longitude' => (!empty($request->longitude)) ? $request->longitude : '',
             );
 
-            $save = DB::table('events')->where('id', $event_id)->update($update_array);
+            if ($request->address_id == null) {
+                $save = DB::table('event_addresses')->insert($save_array);
+            } else {
+                $save = DB::table('event_addresses')->where('id', $request->address_id)->update($save_array);
+            }
+
+            $request->session()->flash('alert-success', 'Event address updated successfully!');
+
+            if ($request->submit == 'go') {
+                return redirect('admin/event_add_seo/'. $event_id);
+            } else {
+                return redirect('admin/event_add_address/' . $event_id);
+            }
+        }
+        return view('admin.event_add_address', compact('event', 'page', 'current_tab','event_id'));
+    }
+
+
+    public function save_seo(Request $request, $event_id = false) {
+        $page = 'add_seo';
+        $current_tab = 'event_seo';
+
+        if (!$event_id) {
+            return redirect()->route('admin.event_list')->with('alert-danger', 'Event not found!');
+        } else {
+            $event = array();
+            $event = Event::find($event_id);
+            if ($event == null) {
+                return redirect()->route('admin.event_list')->with('alert-danger', 'Event not found!');
+            }
+        }
+
+        if ($request->isMethod('post')) {
+            $save_array = array(
+                'event_id' => $event_id,
+                'meta_title' => (!empty($request->meta_title)) ? $request->meta_title : '',
+                'meta_keyword' => (!empty($request->meta_keyword)) ? $request->meta_keyword : '',
+                'meta_description' => (!empty($request->meta_description)) ? $request->meta_description : '',
+                'page_title' => (!empty($request->page_title)) ? $request->page_title : '',
+                'page_description' => (!empty($request->page_description)) ? $request->page_description : '',
+            );
+
+            if ($request->seo_id == null) {
+                $save = DB::table('event_seos')->insert($save_array);
+            } else {
+                $save = DB::table('event_seos')->where('id', $request->seo_id)->update($save_array);
+            }
+
             $request->session()->flash('alert-success', 'Event address updated successfully!');
 
             if ($request->submit == 'go') {
                 return redirect('admin/event_list');
             } else {
-                return redirect('admin/event_add_address/' . $event_id);
+                return redirect('admin/event_add_seo/' . $event_id);
             }
         }
-        return view('admin.event_add_address', compact('event', 'page', 'current_tab', 'state_list', 'city_list'));
+        return view('admin.event_add_seo', compact('event', 'page', 'current_tab','event_id'));
     }
 
     public function destroy($id) {
