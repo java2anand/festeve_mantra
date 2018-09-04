@@ -133,4 +133,22 @@ class CategoryController extends Controller {
         return back()->with('alert-success', 'Deleted successfully!');
     }
 
+    public function category_sorting(){
+        $page = 'category-sorting';
+        $arr_category = Category::orderBy('sort_order','ASC')->select('id','category_name')->where('status',1)->where('parent_id',0)->get();
+
+        return view('admin.category_sorting', compact('arr_category', 'page'));
+    }
+
+    public function update_order(Request $request){
+
+        $arr_order = $request->order;
+        if(count($arr_order)>0){
+            foreach ($arr_order as $order) {
+                DB::table('categories')->where('id', $order['id'])->update(['sort_order' => $order['position']]);
+            }
+        }
+        return response('Update Successfully.', 200);
+    }
+
 }

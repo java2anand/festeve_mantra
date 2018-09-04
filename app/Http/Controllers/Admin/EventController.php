@@ -321,4 +321,22 @@ class EventController extends Controller {
         die;
     }
 
+    public function event_top_hundred(){
+        $page = 'event-top-hundred';
+        $arr_event = Event::orderBy('sort_order','ASC')->select('id','title')->where('status',1)->get();
+
+        return view('admin.event_top_hundred', compact('arr_event', 'page'));
+    }
+
+    public function update_order(Request $request){
+
+        $arr_order = $request->order;
+        if(count($arr_order)>0){
+            foreach ($arr_order as $order) {
+                DB::table('events')->where('id', $order['id'])->update(['sort_order' => $order['position']]);
+            }
+        }
+        return response('Update Successfully.', 200);
+    }
+
 }

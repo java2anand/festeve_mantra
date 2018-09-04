@@ -34,7 +34,7 @@
                 </a>
             </li>
 
-            <li class="treeview <?= ($pages == 'add_category' || $pages == 'category_list') ? 'menu-open active' : ''; ?>">
+            <li class="treeview <?= ($pages == 'add_category' || $pages == 'category_list' || $pages == 'category-sorting') ? 'menu-open active' : ''; ?>">
                 <a href="#">
                     <i class="fa fa-tags"></i> <span>Categories</span>
                     <span class="pull-right-container">
@@ -45,6 +45,8 @@
                     <li class="<?= ($pages == 'category_list') ? 'active' : ''; ?>"><a href="{{ route('admin.category_list') }}"><i class="fa fa-circle-o"></i> List</a></li>
 
                     <li class="<?= ($pages == 'add_category') ? 'active' : ''; ?>"><a href="{{ route('admin.category_add') }}"><i class="fa fa-circle-o"></i> Add</a></li>
+
+                    <li class="<?= ($pages == 'category-sorting') ? 'active' : ''; ?>"><a href="{{ route('admin.category_sorting') }}"><i class="fa fa-circle-o"></i> Sort Category</a></li>
                 </ul>
             </li>
 
@@ -62,7 +64,7 @@
                 </ul>
             </li>-->
 
-            <li class="treeview <?= ($pages == 'add_event' || $pages == 'event_list') ? 'menu-open active' : ''; ?>">
+            <li class="treeview <?= ($pages == 'add_event' || $pages == 'event_list' || $pages == 'event-top-hundred') ? 'menu-open active' : ''; ?>">
                 <a href="#">
                     <i class="fa fa-calendar-check-o"></i> <span>Events</span>
                     <span class="pull-right-container">
@@ -73,6 +75,8 @@
                     <li class="<?= ($pages == 'event_list') ? 'active' : ''; ?>"><a href="{{ route('admin.event_list') }}"><i class="fa fa-circle-o"></i> List</a></li>
 
                     <li class="<?= ($pages == 'add_event') ? 'active' : ''; ?>"><a href="{{ route('admin.event_add') }}"><i class="fa fa-circle-o"></i> Add</a></li>
+
+                    <li class="<?= ($pages == 'event-top-hundred') ? 'active' : ''; ?>"><a href="{{ route('admin.event_top_hundred') }}"><i class="fa fa-circle-o"></i> Top 100</a></li>
                 </ul>
             </li>
 

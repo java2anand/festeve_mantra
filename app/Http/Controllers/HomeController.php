@@ -26,7 +26,7 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $arr_category = DB::table('categories')->where('parent_id', 0)->where('status', 1)->get();
+        $arr_category = DB::table('categories')->where('parent_id', 0)->where('status', 1)->orderBy('sort_order','asc')->get();
         $arr_event = DB::table('events')->orderBy('id', 'desc')->limit(6)->get();
         $arr_story = DB::table('event_stories')->orderBy('id', 'desc')->limit(6)->get();
 
@@ -109,7 +109,7 @@ class HomeController extends Controller {
     }
 
     public function top_hundred(){
-        $arr_events = Event::whereStatus(1)->orderBy('sort_order', 'asc')->get();
+        $arr_events = Event::whereStatus(1)->orderBy('sort_order', 'asc')->select('id','title','slug')->get();
         dd($arr_events);
     }
 

@@ -48,6 +48,8 @@ Route::prefix('admin')->group(function() {
     Route::get('/category_add/{id?}', 'Admin\CategoryController@create')->name('admin.category_add');
     Route::post('/category_store/{id?}', 'Admin\CategoryController@save_category')->name('admin.category_store');
     Route::get('/category_delete/{id}', 'Admin\CategoryController@destroy')->name('admin.category_delete');
+    Route::get('/category_sorting', 'Admin\CategoryController@category_sorting')->name('admin.category_sorting');
+    Route::post('/sortcategory', 'Admin\CategoryController@update_order')->name('admin.sortcategory');
 
 	/*     * ********Story routes ******************* */
     Route::any('/story_list', 'Admin\StoryController@index')->name('admin.story_list');
@@ -72,6 +74,9 @@ Route::prefix('admin')->group(function() {
 
     Route::post('/delete_event_schedule', 'Admin\EventController@delete_schedule')->name('admin.delete_event_schedule');
     Route::get('/event_delete/{id}', 'Admin\EventController@destroy')->name('admin.event_delete');
+
+    Route::get('/event_top_hundred', 'Admin\EventController@event_top_hundred')->name('admin.event_top_hundred');
+    Route::post('/sortevent', 'Admin\EventController@update_order')->name('admin.sortevent');
 
     /*     * ********speaker routes ******************* */
     Route::get('/speaker_list', 'Admin\SpeakerController@index')->name('admin.speaker_list');

@@ -37,13 +37,17 @@
             <div class="row search_bottom_section"><!-- search bottom links -->
                 <div class="col-xs-12 text-center">
                     <ul>
-                        <li><a href="{{url('event-category/music')}}">Music</a></li>
+                        @foreach($arr_category as $cat)
+                            <li><a href="{{url('event-category/'.$cat->slug)}}">{{$cat->category_name}}</a></li>
+                        @endforeach
+                        <!--<li><a href="{{url('event-category/music')}}">Music</a></li>
                         <li><a href="{{url('event-category/sports')}}">Sports</a></li>
                         <li><a href="{{url('event-category/conference')}}">Conference</a></li>
                         <li><a href="{{url('event-category/food')}}">Food</a></li>
                         <li><a href="{{url('event-category/travel')}}">Travel</a></li>
                         <li><a href="{{url('event-category/party')}}">Party</a></li>
-                        <li><a href="{{url('event-category/skill-development')}}">Skill Development</a></li>
+                        <li><a href="{{url('event-category/skill-development')}}">Skill Development</a></li>-->
+
                     </ul>
                 </div>
             </div><!-- search bottom links ends -->
