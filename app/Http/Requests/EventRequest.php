@@ -26,8 +26,8 @@ class EventRequest extends FormRequest
         $id = $this->route('id');
         return [
             'slug'=>'required|unique:events,slug,'.$id,
-            'event_image' => 'mimes:jpeg,jpg,png | max:2048 |dimensions:max_width=1200,max_height=600',
-            'event_top_banner' => 'mimes:jpeg,jpg,png | max:2048 |dimensions:max_width=2000,max_height=2000',
+            'event_image' => 'mimes:jpeg,jpg,png | max:3072 |dimensions:max_width=360,max_height=210',
+            'event_top_banner' => 'mimes:jpeg,jpg,png | max:3072 |dimensions:max_width=1400,max_height=450',
             'event_document' => 'mimes:pdf,doc,docx | max:2048 ',
             'status'=>'required'
         ];

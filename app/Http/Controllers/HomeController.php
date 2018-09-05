@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Model\Event;
 use App\Model\Category;
+use App\Model\Story;
 use App\Model\Newsletter;
 
 class HomeController extends Controller {
@@ -17,7 +18,7 @@ class HomeController extends Controller {
      */
     public function __construct() {
         //$this->middleware('auth');
-        $this->middleware('auth', ['except' => ['index','about_us','categories','event_list','event_detail','save_newsleter','top_hundred','search']]);
+        $this->middleware('auth', ['except' => ['index','about_us','categories','event_list','event_detail','save_newsleter','top_hundred','search','stories']]);
     }
 
     /**
@@ -40,7 +41,12 @@ class HomeController extends Controller {
 
     public function categories(){
         $arr_category = Category::whereStatus(1)->get();
-        dd($arr_category);
+        return view('category_list', compact('arr_category'));
+    }
+
+    public function stories(){
+        $arr_story = Story::whereStatus(1)->get();
+        return view('story_list', compact('arr_story'));
     }
 
     public function event_list($slug) {

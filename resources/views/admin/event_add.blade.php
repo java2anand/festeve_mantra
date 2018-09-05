@@ -173,7 +173,7 @@
                         <div style="clear:both;"></div>
 
                         <div class="form-group col-sm-12">
-                            <label for="event_image">Image<span class="error">* Image must be in width & height less than (1200 X 600), format (jpeg,jpg,png) and max_size(2MB)</span></label>
+                            <label for="event_image">Image<span class="error">* Image must be in width & height less than (360 X 210), format (jpeg,jpg,png) and max_size(3MB)</span></label>
                             <input type="file" class="form-control" id="event_image" name="event_image" >
                             <span class="error"><?php
                                 if ($errors->has('event_image')) {
@@ -203,7 +203,7 @@
                         <div style="clear:both;"></div>
                         <!--Code for Add Event Top banner -->
                         <div class="form-group col-sm-12">
-                            <label for="event_top_banner">Top Banner<span class="error">* Banner must be in width & height less than (1200 X 600), format (jpeg,jpg,png) and max_size(2MB)</span></label>
+                            <label for="event_top_banner">Top Banner<span class="error">* Banner must be in width & height less than (1400 X 450), format (jpeg,jpg,png) and max_size(3MB)</span></label>
                             <input type="file" class="form-control" id="event_top_banner" name="event_top_banner" >
                             <span class="error"><?php
                                 if ($errors->has('event_top_banner')) {

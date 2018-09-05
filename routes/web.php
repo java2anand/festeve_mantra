@@ -21,6 +21,7 @@ Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logou
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about-us', 'HomeController@about_us')->name('about');
 Route::get('/categories', 'HomeController@categories')->name('categories');
+Route::get('/stories', 'HomeController@stories')->name('stories');
 Route::get('/event-category/{event_slug}', 'HomeController@event_list')->name('event-category');
 Route::get('/event-detail/{event_slug}', 'HomeController@event_detail')->name('event-detail');
 Route::get('/top-100', 'HomeController@top_hundred')->name('top-100');

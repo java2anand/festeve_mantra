@@ -121,7 +121,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="top_banner">Top Banner<span class="error">* Banner must be in width & height less than (1200 X 600), format (jpeg,jpg,png) and max_size(2MB)</span> </label>
+                            <label for="top_banner">Top Banner<span class="error">* Banner must be in width & height less than (1400 X 450), format (jpeg,jpg,png) and max_size(3MB)</span> </label>
                             <input type="file" class="form-control" id="top_banner" name="top_banner" >
                             <span class="error"></span>
                             <input type="hidden" name="old_top_banner" value="<?= (isset($category->top_banner) && !empty($category->top_banner)) ? $category->top_banner : '' ?>" />
