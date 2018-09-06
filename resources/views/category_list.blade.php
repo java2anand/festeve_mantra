@@ -58,7 +58,7 @@
                     <ul>
                         @foreach($arr_category as $cat)
                         <li>
-                            <a href="{{ $cat->slug }}">
+                            <a href="{{ url('event-category/'.$cat->slug) }}">
                                 <img src="{{ asset('ws/images/new_icon1.png')}}"><br>
                                 {{ $cat->category_name }}
                             </a>

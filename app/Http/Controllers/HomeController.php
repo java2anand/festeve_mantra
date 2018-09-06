@@ -8,6 +8,7 @@ use App\Model\Event;
 use App\Model\Category;
 use App\Model\Story;
 use App\Model\Newsletter;
+use App\Classes\Common;
 
 class HomeController extends Controller {
 
@@ -28,6 +29,7 @@ class HomeController extends Controller {
      */
     public function index() {
         $arr_category = DB::table('categories')->where('parent_id', 0)->where('status', 1)->orderBy('sort_order','asc')->get();
+
         $arr_event = DB::table('events')->orderBy('id', 'desc')->limit(6)->get();
         $arr_story = DB::table('event_stories')->orderBy('id', 'desc')->limit(6)->get();
 
@@ -127,6 +129,19 @@ class HomeController extends Controller {
 
     public function search(Request $request){
 
+        $event_name = $request->event_name;
+        $event_date = $request->event_date;
+        $event_location = $request->event_location;
+
+
+        $arrevent = Event::orderBy('id', 'DESC')
+            ->when($event_name, function ($query) use ($event_name) {
+                return $query->where('events.title', 'like', '%' . $event_name . '%');
+            })->paginate(10);
+
+        $arr_category = Category::where('status','=',1)->where('parent_id','=',0)->get();
+
+        return view('search',compact('arrevent','arr_category'));
     }
 
 }

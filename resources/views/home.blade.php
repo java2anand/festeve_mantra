@@ -19,7 +19,7 @@
         <div class="container home_search_outer">
             <div class="row search_first_section">
                 <div class="col-xs-12 text-center">
-                    <form class="form-inline" >
+                    <form class="form-inline" action="{{ url('search/')}}">
                         <div class="form-group frm_event_name">
                             <input type="text" class="form-control" name="event_name" id="event_name" placeholder="Event...">
                         </div>
