@@ -19,7 +19,14 @@ Auth::routes();
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::get('/', 'HomeController@index')->name('home');
+
 Route::get('/about-us', 'HomeController@about_us')->name('about');
+Route::get('/our-team', 'HomeController@our_team')->name('our-team');
+Route::get('/careers', 'HomeController@careers')->name('careers');
+Route::get('/terms-conditions', 'HomeController@terms_conditions')->name('terms-conditions');
+Route::get('/privacy-policy', 'HomeController@privacy_policy')->name('privacy-policy');
+Route::get('/contact-us', 'HomeController@contact_us')->name('contact-us');
+
 Route::get('/categories', 'HomeController@categories')->name('categories');
 Route::get('/stories', 'HomeController@stories')->name('stories');
 Route::get('/event-category/{event_slug}', 'HomeController@event_list')->name('event-category');
@@ -28,6 +35,7 @@ Route::get('/top-100', 'HomeController@top_hundred')->name('top-100');
 Route::get('/add-event', 'HomeController@add_event')->name('add-event');
 Route::get('/search/{keyword?}', 'HomeController@search')->name('search');
 Route::post('/save_newsleter', 'HomeController@save_newsleter')->name('save_newsleter');
+Route::get('/get_reminder', 'HomeController@get_reminder')->name('get_reminder');
 
 /* * ***********Admin Panel ******************* */
 Route::prefix('admin')->group(function() {

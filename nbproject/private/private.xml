@@ -3,11 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/Admin/CategoryController.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/composer.lock</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/footer.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/routes/web.php</file>
             <file>file:/C:/xampp/htdocs/festeve_mantra/composer.json</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Classes/Common.php</file>
             <file>file:/C:/xampp/htdocs/festeve_mantra/vendor/composer/autoload_files.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Providers/AppServiceProvider.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/Admin/CategoryController.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/config/app.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/search.blade.php</file>
             <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/Admin/AdminController.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Helpers/Helper.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Providers/HelperServiceProvider.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/home.blade.php</file>
             <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/HomeController.php</file>
             <file>file:/C:/xampp/htdocs/festeve_mantra/vendor/composer/autoload_classmap.php</file>
         </group>

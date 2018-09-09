@@ -131,12 +131,16 @@
                 <div class="col-md-3 col-sm-4 col-xs-12"><!-- right section -->
                     <div class="row">
                         <div class="col-xs-12 text-center">
+
                             <div class="event_right_top_inner event_filled_bg">
-                                <h4>
-                                    <img src="{{asset('ws/images/tick_circle.jpg')}}"> Remind me!
-                                </h4>
-                                <p>Get Reminder & special offers</p>
+                                <a href="{{ route('get_reminder') }}">
+                                    <h4>
+                                        <img src="{{asset('ws/images/tick_circle.jpg')}}"> Remind me!
+                                    </h4>
+                                    <p>Get Reminder & Special Offers</p>
+                                </a>
                             </div>
+
                             <div class="event_right_top_inner event_white_bg">
                                 <a href="{{ $event->ticket_url }}" target="_blank"><img src="{{asset('ws/images/ticket.jpg')}}"></a>
                             </div>
@@ -150,6 +154,21 @@
                                 <p>{{$event->address->event_location}}</p>
                                 <h5>Start Time</h5>
                                 <p>{{ date('d F Y',strtotime($event->start_date)) }} -   {{ date('h:i A',strtotime($event->start_time)) }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="event_right_bottom_inner">
+                                <h5>Official Festival Links</h5>
+                                <p  class="event_social_links">
+                                    <a href="{{ $event->website_url }}" target="_blank"><img src="{{asset('ws/images/link.png')}}"></a>
+                                    <a href="{{ $event->facebook_id }}" target="_blank"><img src="{{asset('ws/images/facebook.png')}}"></a>
+                                    <a href="{{ $event->twitter_id }}" target="_blank"><img src="{{asset('ws/images/twitter.png')}}"></a>
+                                    <a href="{{ $event->facebook_id }}" target="_blank"><img src="{{asset('ws/images/youtube.png')}}"></a>
+                                    <a href="{{ $event->instagram_id }}" target="_blank"><img src="{{asset('ws/images/instagram.png')}}"></a>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -180,24 +199,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="event_right_bottom_inner">
-                                <h5>Official Festival Links</h5>
-                                <p  class="event_social_links">
-                                    <a href="{{ $event->website_url }}" target="_blank"><img src="{{asset('ws/images/link.png')}}"></a>
-                                    <a href="{{ $event->facebook_id }}" target="_blank"><img src="{{asset('ws/images/facebook.png')}}"></a>
-                                    <a href="{{ $event->twitter_id }}" target="_blank"><img src="{{asset('ws/images/twitter.png')}}"></a>
-                                    <a href="{{ $event->facebook_id }}" target="_blank"><img src="{{asset('ws/images/youtube.png')}}"></a>
-                                    <a href="{{ $event->instagram_id }}" target="_blank"><img src="{{asset('ws/images/instagram.png')}}"></a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
-
 
             </div>
 

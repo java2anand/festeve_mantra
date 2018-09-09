@@ -14,31 +14,14 @@
                     <!-- Swiper -->
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-
-                            <div class="swiper-slide">
-                                <a href="#">
-                                    <img src="{{ asset('ws/images/top_category.jpg')}}">
-                                    <p>Music</p>
-                                </a>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <img src="{{ asset('ws/images/top_category.jpg')}}">
-                                <p>Conference</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="{{ asset('ws/images/top_category.jpg')}}">
-                                <p>Travel</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="{{ asset('ws/images/top_category.jpg')}}">
-                                <p>Sports</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="{{ asset('ws/images/top_category.jpg')}}">
-                                <p>Food</p>
-                            </div>
-
+                            @foreach($popular_category as $pcat)
+                                <div class="swiper-slide">
+                                    <a href="{{ url('event-category/'.$pcat->slug) }}">
+                                        <img src="{{ asset('ws/images/top_category.jpg')}}">
+                                        <p>{{ $pcat->category_name }}</p>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                         <!-- Add Pagination -->
                         <div class="swiper-pagination" style="position:relative"></div>

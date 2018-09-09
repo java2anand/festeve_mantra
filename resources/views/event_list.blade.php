@@ -48,17 +48,17 @@
                                 <ul>
                                     @foreach($arr_category as $k=>$maincat)
                                     <li>
-                                        <input type="checkbox" id="filter_{{$k}}">
-                                        <label for="filter_{{$k}}" class="sub_category_dropdown">{{ $maincat->category_name }} <span><img src="{{asset('ws/images/down_arrow.jpg')}}"></span></label>
+                                        <input type="checkbox" id="filter_{{$k}}" <?= $maincat->slug ==  Request::segment(2) ? 'checked' : ''; ?> onclick='window.location.href = "{{ url('event-category/'.$maincat->slug)}}"'>
+                                        <label for="filter_{{$k}}" class="sub_category_dropdown">{{ $maincat->category_name }} <span><img src="{{ asset('ws/images/down_arrow.jpg')}}"></span></label>
                                         <!-- sub categories  -->
-                                        <ul class="category_sub_outer">
+                                        <!--<ul class="category_sub_outer">
                                             @foreach($maincat->children as $key=>$childcat)
                                             <li>
                                                 <input type="checkbox" id="filters_{{$k.$key}}">
                                                 <label for="filters_{{$k.$key}}">{{ $childcat->category_name }}</label>
                                             </li>
                                             @endforeach
-                                        </ul>
+                                        </ul>-->
                                         <!-- sub categories ends -->
                                     </li>
                                     @endforeach
@@ -99,29 +99,29 @@
                             <!-- Date filter -->
                             <div class="listing_left_sidebar_inner list_filter_spacing">
                                 <h4>DATE</h4>
+                                <?php
+                                $event_date = app('request')->input('event_date');
+                                ?>
+
                                 <ul>
                                     <li>
-                                        <input type="checkbox" id="filter_6">
-                                        <label for="filter_6">All</label>
+                                        <input type="checkbox" id="filter_61" <?= empty($event_date) ||   $event_date == 'all' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=all' }}"'>
+                                        <label for="filter_61">All</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_7">
+                                        <input type="checkbox" id="filter_7" <?= isset($event_date) &&   $event_date == 'today' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=today' }}"'>
                                         <label for="filter_7">Today</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_8">
+                                        <input type="checkbox" id="filter_8" <?= isset($event_date) &&   $event_date == 'this-week' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=this-week' }}"'>
                                         <label for="filter_8">This Week</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_9">
-                                        <label for="filter_9">This Weekend</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="filter_10">
+                                        <input type="checkbox" id="filter_10" <?= isset($event_date) &&   $event_date == 'next-week' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=next-week' }}"'>
                                         <label for="filter_10">Next Week</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_11">
+                                        <input type="checkbox" id="filter_11" <?= isset($event_date) &&   $event_date == 'next-month' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=next-month' }}"'>
                                         <label for="filter_11">Next Month</label>
                                     </li>
                                     <li>

@@ -8,7 +8,7 @@ use App\Model\Event;
 use App\Model\Category;
 use App\Model\Story;
 use App\Model\Newsletter;
-use App\Classes\Common;
+//use App\Classes\Common;
 
 class HomeController extends Controller {
 
@@ -19,7 +19,9 @@ class HomeController extends Controller {
      */
     public function __construct() {
         //$this->middleware('auth');
-        $this->middleware('auth', ['except' => ['index','about_us','categories','event_list','event_detail','save_newsleter','top_hundred','search','stories']]);
+        //$this->middleware('auth', ['except' => ['index','about_us','categories','event_list','event_detail','save_newsleter','top_hundred','search','stories']]);
+        //Common::test();//external class testing
+        //test();//external helper testing
     }
 
     /**
@@ -28,6 +30,7 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
+
         $arr_category = DB::table('categories')->where('parent_id', 0)->where('status', 1)->orderBy('sort_order','asc')->get();
 
         $arr_event = DB::table('events')->orderBy('id', 'desc')->limit(6)->get();
@@ -36,14 +39,10 @@ class HomeController extends Controller {
         return view('home', compact('arr_category','arr_event','arr_story'));
     }
 
-    public function about_us() {
-        return view('about');
-    }
-
-
     public function categories(){
         $arr_category = Category::whereStatus(1)->get();
-        return view('category_list', compact('arr_category'));
+        $popular_category = Category::whereStatus(1)->limit(5)->get();
+        return view('category_list', compact('arr_category','popular_category'));
     }
 
     public function stories(){
@@ -51,20 +50,51 @@ class HomeController extends Controller {
         return view('story_list', compact('arr_story'));
     }
 
-    public function event_list($slug) {
+    public function event_list($slug,Request $request) {
         $category = Category::where('slug', '=', $slug)->first();
         if ($category === null) {
            return redirect('/');
         }
-        $arr_category = Category::where('status','=',1)->where('parent_id','=',0)->get();
 
-        $arrevent = Event::where('event_category','=',$category->id)->paginate(20);
+        $arr_category = Category::where('status','=',1)->where('parent_id','=',0)->get();
+        $event_date = $request->event_date;
+        //enable_query();
+        $arrevent = Event::where('event_category','=',$category->id)
+            ->when($event_date, function ($query) use ($event_date) {
+                switch ($event_date) {
+                    case 'today':
+                        $today = date('Y-m-d');
+                        return $query->where('events.start_date', $today);
+                        break;
+                    case 'this-week':
+                        $today = date('Y-m-d');
+                        $week_last_day = date('Y-m-d',strtotime('+7 days'));
+                        return $query->where('events.start_date','>=', $today)->where('events.start_date','<=', $week_last_day);
+                        break;
+                    case 'next-week':
+                        $next_first_day = date('Y-m-d',strtotime('+7 days'));
+                        $next_week_last_day = date('Y-m-d',strtotime('+14 days'));
+                        return $query->where('events.start_date','>=', $next_first_day)->where('events.start_date','<=', $next_week_last_day);
+                        break;
+                    case 'next-month':
+                        $month_first_day = date('Y-m-d',strtotime('first day of +1 month'));
+                        $month_last_day = date('Y-m-d',strtotime('last day of +1 month'));
+                        return $query->where('events.start_date','>=', $month_first_day)->where('events.start_date','<=', $month_last_day);
+                        break;
+                    case 'custom':
+                        echo "custom";
+                        break;
+                }
+            })->paginate(10);
+            //print_query();
+            //dd($arrevent);
         return view('event_list',compact('arrevent','arr_category','category'));
     }
 
     public function event_detail($slug) {
         $arr_schedule = array();
         $event = Event::where('slug', '=', $slug)->first();
+
         if ($event === null) {
            return redirect('/');
         }
@@ -121,14 +151,11 @@ class HomeController extends Controller {
         dd($arr_events);
     }
 
-
     public function add_event(){
         echo 'add event';
     }
 
-
     public function search(Request $request){
-
         $event_name = $request->event_name;
         $event_date = $request->event_date;
         $event_location = $request->event_location;
@@ -144,4 +171,32 @@ class HomeController extends Controller {
         return view('search',compact('arrevent','arr_category'));
     }
 
+    public function get_reminder(){
+        echo 'get reminder';
+    }
+
+
+    public function about_us() {
+        return view('about');
+    }
+
+    public function our_team() {
+        return view('our_team');
+    }
+
+    public function careers() {
+        return view('careers');
+    }
+
+    public function terms_conditions() {
+        return view('terms_conditions');
+    }
+
+    public function privacy_policy() {
+        return view('privacy_policy');
+    }
+
+    public function contact_us() {
+        return view('contact_us');
+    }
 }

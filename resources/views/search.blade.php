@@ -8,7 +8,11 @@
         <div class="moblie_filter_overlay"></div>
         <div class="container listing_page_width listing_page_top_section">
             <div class="row">
-                <h1 class="col-xs-12 text-center home_section_heading"><span>Search</span></h1>
+                <div class="col-xs-12 text-center">
+                    <form name="listing_search_form" id="listing_search_form">
+                        <input type="text" class="listing_search_input" placeholder="Discover over 18,000 fests and get your favorites coming up!">
+                    </form>
+                </div>
             </div>
             <div class="row mobile_filter_btn_outer">
                 <div class="col-xs-12 text-right"><button class="mobile_filter_btn"><img src="{{asset('ws/images/filter.svg')}}"> Filter</button></div>

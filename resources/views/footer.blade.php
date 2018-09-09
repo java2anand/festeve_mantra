@@ -6,16 +6,15 @@
                 <h3 class="footer_headings">Our Story</h3>
                 <ul>
                     <li><a href="{{ url('about-us')}}">About us</a></li>
-                    <li><a href="#">Our Team</a></li>
-                    <li><a href="#">We are hiring!</a></li>
+                    <li><a href="{{ url('our-team')}}">Our Team</a></li>
+                    <li><a href="{{ url('careers')}}">We are hiring!</a></li>
                 </ul>
             </div>
             <div class="col-sm-3 col-xs-12 footer_items">
                 <h3 class="footer_headings">Get Inspried</h3>
                 <ul>
-                    <li><a href="#">Festeve stories</a></li>
-                    <li><a href="#">Submit your story</a></li>
-                    <li><a href="#">Submit your event</a></li>
+                    <li><a href="{{ url('stories')}}">Festeve stories</a></li>
+                    <li><a href="{{ url('add-event')}}">Submit your event</a></li>
 
                 </ul>
             </div>
@@ -23,9 +22,9 @@
                 <h3 class="footer_headings">policies</h3>
                 <ul>
 
-                    <li><a href="#">T&C </a></li>
-                    <li><a href="#">Privacy policy</a></li>
-                    <li><a href="#">Contact us</a></li>
+                    <li><a href="{{ url('terms-conditions')}}">T&C </a></li>
+                    <li><a href="{{ url('privacy-policy')}}">Privacy Policy</a></li>
+                    <li><a href="{{ url('contact-us')}}">Contact us</a></li>
                 </ul>
             </div>
             <div class="col-sm-3 col-xs-12 footer_items">
