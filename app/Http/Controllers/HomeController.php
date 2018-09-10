@@ -85,7 +85,7 @@ class HomeController extends Controller {
                         echo "custom";
                         break;
                 }
-            })->paginate(10);
+            })->paginate(10)->withPath('?event_date=' . $event_date);
             //print_query();
             //dd($arrevent);
         return view('event_list',compact('arrevent','arr_category','category'));
@@ -146,9 +146,16 @@ class HomeController extends Controller {
         die;
     }
 
-    public function top_hundred(){
-        $arr_events = Event::whereStatus(1)->orderBy('sort_order', 'asc')->select('id','title','slug')->get();
-        dd($arr_events);
+    public function top_hundred(Request $request){
+        $arr_events = Event::whereStatus(1)->orderBy('sort_order', 'asc')->select('id','title','slug','event_image','short_description')->paginate(10);
+    	if ($request->ajax()) {
+            $view = '';
+            if(count($arr_events)>0){
+                $view = view('top_hundred_ajax',compact('arr_events'))->render();
+            }
+            return response()->json(['html'=>$view]);
+        }
+    	return view('top_hundred',compact('arr_events'));
     }
 
     public function add_event(){

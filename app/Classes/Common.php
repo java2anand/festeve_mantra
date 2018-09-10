@@ -13,8 +13,6 @@ class Common {
         $sitedata = SiteSetting::first();
         return $sitedata;
     }
-
-
 }
 
 ?>

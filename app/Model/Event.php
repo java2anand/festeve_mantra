@@ -39,4 +39,8 @@ class Event extends Model{
     /*public function setNameAttribute($value){
         $this->attributes['title'] = strtolower($value);
     }*/
+
+    public function scopeTest(){
+        
+    }
 }
