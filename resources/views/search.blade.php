@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <form name="listing_search_form" id="listing_search_form">
-                        <input type="text" class="listing_search_input" placeholder="Discover over 18,000 fests and get your favorites coming up!">
+                        <input type="text" value="{{ request('event_name')}}" class="listing_search_input" placeholder="">
                     </form>
                 </div>
             </div>
@@ -37,19 +37,23 @@
                             <div class="listing_left_sidebar_inner list_filter_spacing">
                                 <h4>Categories</h4>
                                 <ul>
+                                    <?php
+                                        $full_url = url('search?').'event_name='.request('event_name').'&event_date='.request('event_date').'&event_location='.request('event_location');
+                                    ?>
+
                                     @foreach($arr_category as $k=>$maincat)
                                     <li>
-                                        <input type="checkbox" id="filter_{{$k}}">
-                                        <label for="filter_{{$k}}" class="sub_category_dropdown">{{ $maincat->category_name }} <span><img src="{{asset('ws/images/down_arrow.jpg')}}"></span></label>
+                                        <input type="checkbox" id="filter_{{$k}}" <?= $maincat->slug ==  Request::segment(2) ? 'checked' : ''; ?> onclick="window.location.href = '<?= $full_url. '&event_cat='.$maincat->slug?>'">
+                                        <label for="filter_{{$k}}" class="sub_category_dropdown">{{ $maincat->category_name }} <span><img src="{{ asset('ws/images/down_arrow.jpg')}}"></span></label>
                                         <!-- sub categories  -->
-                                        <ul class="category_sub_outer">
+                                        <!--<ul class="category_sub_outer">
                                             @foreach($maincat->children as $key=>$childcat)
                                             <li>
                                                 <input type="checkbox" id="filters_{{$k.$key}}">
                                                 <label for="filters_{{$k.$key}}">{{ $childcat->category_name }}</label>
                                             </li>
                                             @endforeach
-                                        </ul>
+                                        </ul>-->
                                         <!-- sub categories ends -->
                                     </li>
                                     @endforeach
@@ -62,28 +66,30 @@
                             <div class="listing_left_sidebar_inner list_filter_spacing">
                                 <h4>DATE</h4>
                                 <ul>
+                                    <?php
+                                        $url = url('search?');
+                                        $event_name = 'event_name='.request('event_name');
+                                        $event_location = '&event_location='.request('event_location');
+                                        $event_cat = '&event_cat='.request('event_cat');
+                                    ?>
                                     <li>
-                                        <input type="checkbox" id="filter_6">
-                                        <label for="filter_6">All</label>
+                                        <input type="checkbox" id="filter_61" <?= empty($event_date) ||   $event_date == 'all' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&event_date=all".$event_location.$event_cat ?>' ">
+                                        <label for="filter_61">All</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_7">
+                                        <input type="checkbox" id="filter_7" <?= isset($event_date) &&   $event_date == 'today' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&event_date=today".$event_location.$event_cat ?>' ">
                                         <label for="filter_7">Today</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_8">
+                                        <input type="checkbox" id="filter_8" <?= isset($event_date) &&   $event_date == 'this-week' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&event_date=this-week".$event_location.$event_cat ?>' ">
                                         <label for="filter_8">This Week</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_9">
-                                        <label for="filter_9">This Weekend</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="filter_10">
+                                        <input type="checkbox" id="filter_10" <?= isset($event_date) &&   $event_date == 'next-week' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&event_date=next-week".$event_location.$event_cat ?>' ">
                                         <label for="filter_10">Next Week</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_11">
+                                        <input type="checkbox" id="filter_11" <?= isset($event_date) &&   $event_date == 'next-month' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&event_date=next-month".$event_location.$event_cat ?>' ">
                                         <label for="filter_11">Next Month</label>
                                     </li>
                                     <li>

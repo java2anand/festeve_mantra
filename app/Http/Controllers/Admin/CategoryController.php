@@ -17,11 +17,13 @@ class CategoryController extends Controller {
 
     public function index(request $request) {
         $page = 'category_list';
-        $search_term = $request->search;
-        $arrCategory = Category::orderBy('id', 'DESC')
-                        ->when($search_term, function ($query) use ($search_term) {
-                            return $query->where('categories.category_name', 'like', '%' . $search_term . '%');
-                        })->paginate(10);
+        $search = $request->get('search');
+        $field = $request->get('field') != '' ? $request->get('field') : 'id';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+
+        $arrCategory = Category::orderBy($field, $sort)->where('category_name', 'like', '%' . $search . '%')
+            ->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
+
         return view('admin.category_list', compact('arrCategory', 'page', 'search_term'));
     }
 

@@ -34,22 +34,25 @@
                     <div class="box-body">
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4 pull-left">
-                                    {!! Form::open([
-                                    'url' => ['admin/category_list'],'id' => 'search_form',
-                                    ]) !!}
+                                <div class="col-md-10 pull-left">
 
-                                    <div class="col-md-9">
-                                        <input type="text" name="search" id="search" class="form-control" value="{{ $search_term }}" placeholder="Type and search.." />
+                                    {!! Form::open(['method'=>'get']) !!}
+                                    <div class="row">
+                                        <div class="col-sm-4 form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="search" value="{{ request('search') }}" placeholder="Search name" name="search" type="text" id="search"/>
+                                                <div class="input-group-btn">
+                                                    <button type="submit" class="btn btn-primary"> Search</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" value="{{request('field')}}" name="field"/>
+                                        <input type="hidden" value="{{request('sort')}}" name="sort"/>
                                     </div>
-                                    <div class="col-md-3">
-                                        <button type="submit" class="btn btn-primary">
-                                            Search
-                                        </button>
-                                    </div>
-                                    </form>
+                                    {!! Form::close() !!}
+
                                 </div>
-                                <div class="col-md-2 col-md-offset-6">
+                                <div class="col-md-2">
                                     <a href="{{url('admin/category_add')}}" class="btn btn-primary">Add New</a>
                                 </div>
                             </div>
@@ -61,9 +64,15 @@
                                     <tbody>
                                         <tr>
                                             <th>Sr. No.</th>
-                                            <th>Category Name</th>
+                                            <th>
+                                                <a href="{{url('admin/category_list')}}?search={{request('search')}}&field=category_name&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Category Name</a>
+                                                <i class="fa fa-sort-alpha-{{request('field','category_name')=='category_name'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i>
+                                            </th>
                                             <th>Category Url</th>
-                                            <th>Added Date</th>
+                                            <th>
+                                                <a href="{{url('admin/category_list')}}?search={{request('search')}}&field=created_at&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Added Date</a>
+                                                <i class="fa fa-sort-numeric-{{request('field','created_at')=='created_at'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i>
+                                            </th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>

@@ -147,7 +147,7 @@ class HomeController extends Controller {
     }
 
     public function top_hundred(Request $request){
-        $arr_events = Event::whereStatus(1)->orderBy('sort_order', 'asc')->select('id','title','slug','event_image','short_description')->paginate(10);
+        $arr_events = Event::whereStatus(1)->orderBy('sort_order', 'asc')->select('id','title','slug','event_image','short_description','start_date')->paginate(10);
     	if ($request->ajax()) {
             $view = '';
             if(count($arr_events)>0){
@@ -166,12 +166,12 @@ class HomeController extends Controller {
         $event_name = $request->event_name;
         $event_date = $request->event_date;
         $event_location = $request->event_location;
-
+        $event_cat = isset($request->event_cat) ? $request->event_cat : '';
 
         $arrevent = Event::orderBy('id', 'DESC')
             ->when($event_name, function ($query) use ($event_name) {
                 return $query->where('events.title', 'like', '%' . $event_name . '%');
-            })->paginate(10);
+            })->paginate(10)->withPath('?event_name=' . $event_name . '&event_date=' . $event_date . '&event_location=' . $event_location. '&event_cat=' . $event_cat);
 
         $arr_category = Category::where('status','=',1)->where('parent_id','=',0)->get();
 
