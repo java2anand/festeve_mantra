@@ -15,10 +15,14 @@ class SpeakerController extends Controller {
         $this->middleware('auth:admin');
     }
 
-    public function index() {
+    public function index(Request $request) {
         $page = 'speaker_list';
-        $arrSpeaker = Speaker::orderBy('id', 'DESC')->paginate(10);
-        return view('admin.speaker_list', compact('arrSpeaker','page'));
+        $search = $request->get('search');
+        $field = $request->get('field') != '' ? $request->get('field') : 'id';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+        $arrSpeaker = Speaker::orderBy($field, $sort)->where('speaker_name', 'like', '%' . $search . '%')
+            ->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
+        return view('admin.speaker_list', compact('arrSpeaker','page','search_term'));
     }
 
     public function create($id = false) {

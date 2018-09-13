@@ -17,11 +17,12 @@ class StoryController extends Controller {
 
     public function index(request $request) {
         $page = 'story_list';
-        $search_term = $request->search;
-        $arrStory = Story::orderBy('id', 'DESC')
-                ->when($search_term , function ($query) use ($search_term) {
-                    return $query->where('event_stories.story_name', 'like', '%' . $search_term . '%');
-                })->paginate(10);
+        $search = $request->get('search');
+        $field = $request->get('field') != '' ? $request->get('field') : 'id';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+
+        $arrStory = Story::orderBy($field, $sort)->where('story_name', 'like', '%' . $search . '%')
+            ->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
         return view('admin.story_list', compact('arrStory', 'page','search_term'));
     }
 

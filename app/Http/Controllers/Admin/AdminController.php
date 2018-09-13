@@ -157,10 +157,15 @@ class AdminController extends Controller {
         }
     }
 
-    public function newsletters() {
+    public function newsletters(Request $request) {
         $page = 'newsletter';
-        $arrNewsletter = DB::table('newsletters')->paginate(20);
-        return view('admin.newsletter',compact('arrNewsletter','page'));
+        $search = $request->get('search');
+        $field = $request->get('field') != '' ? $request->get('field') : 'id';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+
+        $arrNewsletter = DB::table('newsletters')->orderBy($field, $sort)->where('email', 'like', '%' . $search . '%')
+            ->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
+        return view('admin.newsletter',compact('arrNewsletter','page','search_term'));
     }
 
     public function destroy_newsletters($id) {

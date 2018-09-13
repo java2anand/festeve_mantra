@@ -6,6 +6,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Welcome to Festeve Mantra</title>
 
+    <meta name="keywords" content="<?= isset($meta_keyword) ? $meta_keyword : '' ?>" />
+    <meta name="description" content="<?= isset($meta_description) ? $meta_description : '' ?>" />
+
     <!-- Bootstrap -->
     <link href="{{asset('ws/css/bootstrap.min.css')}}" rel="stylesheet">
 	<link href="{{asset('ws/css/style.css')}}" rel="stylesheet">

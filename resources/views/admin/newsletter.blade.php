@@ -29,12 +29,36 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-10 pull-left">
+
+                                    {!! Form::open(['method'=>'get']) !!}
+                                    <div class="row">
+                                        <div class="col-sm-4 form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="search" value="{{ request('search') }}" placeholder="Search Email" name="search" type="text" id="search"/>
+                                                <div class="input-group-btn">
+                                                    <button type="submit" class="btn btn-primary"> Search</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" value="{{request('field')}}" name="field"/>
+                                        <input type="hidden" value="{{request('sort')}}" name="sort"/>
+                                    </div>
+                                    {!! Form::close() !!}
+
+                                </div>
+                            </div>
+                        </div>
+
+
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
                                     <th>Sr. No.</th>
-                                    <th>Email</th>
-                                    <th>Added Date</th>
+                                    <th><a href="{{url('admin/newsletter_list')}}?search={{request('search')}}&field=email&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Email &nbsp;<i class="fa fa-sort-alpha-{{request('field','email')=='email'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i></a></th>
+                                    <th><a href="{{url('admin/newsletter_list')}}?search={{request('search')}}&field=created_at&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Added Date &nbsp<i class="fa fa-sort-numeric-{{request('field','created_at')=='created_at'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i></a></th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>

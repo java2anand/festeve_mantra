@@ -40,7 +40,7 @@
                                     <div class="row">
                                         <div class="col-sm-4 form-group">
                                             <div class="input-group">
-                                                <input class="form-control" id="search" value="{{ request('search') }}" placeholder="Search name" name="search" type="text" id="search"/>
+                                                <input class="form-control" id="search" value="{{ request('search') }}" placeholder="Search category" name="search" type="text" id="search"/>
                                                 <div class="input-group-btn">
                                                     <button type="submit" class="btn btn-primary"> Search</button>
                                                 </div>
@@ -65,13 +65,13 @@
                                         <tr>
                                             <th>Sr. No.</th>
                                             <th>
-                                                <a href="{{url('admin/category_list')}}?search={{request('search')}}&field=category_name&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Category Name</a>
-                                                <i class="fa fa-sort-alpha-{{request('field','category_name')=='category_name'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i>
+                                                <a href="{{url('admin/category_list')}}?search={{request('search')}}&field=category_name&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Category Name &nbsp;<i class="fa fa-sort-alpha-{{request('field','category_name')=='category_name'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i></a>
+
                                             </th>
                                             <th>Category Url</th>
                                             <th>
-                                                <a href="{{url('admin/category_list')}}?search={{request('search')}}&field=created_at&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Added Date</a>
-                                                <i class="fa fa-sort-numeric-{{request('field','created_at')=='created_at'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i>
+                                                <a href="{{url('admin/category_list')}}?search={{request('search')}}&field=created_at&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Added Date &nbsp<i class="fa fa-sort-numeric-{{request('field','created_at')=='created_at'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i></a>
+
                                             </th>
                                             <th>Status</th>
                                             <th>Action</th>

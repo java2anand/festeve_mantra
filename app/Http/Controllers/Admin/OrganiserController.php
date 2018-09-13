@@ -14,10 +14,15 @@ class OrganiserController extends Controller {
         $this->middleware('auth:admin');
     }
 
-    public function index() {
+    public function index(Request $request) {
         $page = 'organiser_list';
-        $arrOrganiser = Organiser::orderBy('id', 'DESC')->paginate(10);
-        return view('admin.organiser_list', compact('arrOrganiser', 'page'));
+        $search = $request->get('search');
+        $field = $request->get('field') != '' ? $request->get('field') : 'id';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+
+        $arrOrganiser = Organiser::orderBy($field, $sort)->where('name', 'like', '%' . $search . '%')
+            ->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
+        return view('admin.organiser_list', compact('arrOrganiser', 'page','search_term'));
     }
 
     public function create($id = false) {

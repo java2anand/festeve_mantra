@@ -17,10 +17,15 @@ class EventController extends Controller {
         $this->middleware('auth:admin');
     }
 
-    public function index() {
+    public function index(Request $request) {
         $page = 'event_list';
-        $arrEvent = Event::orderBy('id', 'DESC')->paginate(10);
-        return view('admin.event_list', compact('arrEvent', 'page'));
+        $search = $request->get('search');
+        $field = $request->get('field') != '' ? $request->get('field') : 'id';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+
+        $arrEvent = Event::orderBy($field, $sort)->where('title', 'like', '%' . $search . '%')
+            ->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
+        return view('admin.event_list', compact('arrEvent', 'page','search_term'));
     }
 
     public function create($id = false) {

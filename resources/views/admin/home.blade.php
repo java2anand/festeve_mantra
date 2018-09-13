@@ -106,7 +106,9 @@
                                 <tr>
                                     <th>Sr. No.</th>
                                     <th>Event Name</th>
+                                    <th>Total View</th>
                                     <th>Added Date</th>
+                                    <th>Active/Expired</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -116,7 +118,11 @@
 
                                     <td>{{ $i }}.</td>
                                     <td>{{ $event->title }}</td>
+                                    <td>{{ $event->total_view }}</td>
                                     <td>{{ date('d-m-Y',strtotime($event->created_at)) }}</td>
+                                    <td>
+                                        <?= $event->end_date > date('Y-m-d') ? 'Active' : 'Expired';  ?>
+                                    </td>
                                     <td>
                                         <?= $event->status == 1 ? 'Active' : 'Inactive';  ?>
                                     </td>

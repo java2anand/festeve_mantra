@@ -71,6 +71,8 @@
                                         $event_name = 'event_name='.request('event_name');
                                         $event_location = '&event_location='.request('event_location');
                                         $event_cat = '&event_cat='.request('event_cat');
+
+                                        $event_date = request('event_date');
                                     ?>
                                     <li>
                                         <input type="checkbox" id="filter_61" <?= empty($event_date) ||   $event_date == 'all' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&event_date=all".$event_location.$event_cat ?>' ">

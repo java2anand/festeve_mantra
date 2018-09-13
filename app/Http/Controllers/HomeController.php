@@ -88,7 +88,10 @@ class HomeController extends Controller {
             })->paginate(10)->withPath('?event_date=' . $event_date);
             //print_query();
             //dd($arrevent);
-        return view('event_list',compact('arrevent','arr_category','category'));
+
+        $meta_keyword = $category->meta_keyword;
+        $meta_description = $category->meta_description;
+        return view('event_list',compact('arrevent','arr_category','category','meta_keyword','meta_description'));
     }
 
     public function event_detail($slug) {
@@ -121,9 +124,9 @@ class HomeController extends Controller {
         //similar events
         $arr_similar_event = Event::where('event_category', '=', $event->event_category)->where('id', '!=', $event->id)->get();
 
-        return view('event_detail',compact('event','speaker','organiser','arr_schedule','arr_similar_event'));
-
-
+        $meta_keyword = $event->seo->meta_keyword;
+        $meta_description = $event->seo->meta_description;
+        return view('event_detail',compact('event','speaker','organiser','arr_schedule','arr_similar_event','meta_keyword','meta_description'));
     }
 
     public function save_newsleter(Request $request){

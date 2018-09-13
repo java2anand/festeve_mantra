@@ -29,13 +29,41 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-10 pull-left">
+
+                                    {!! Form::open(['method'=>'get']) !!}
+                                    <div class="row">
+                                        <div class="col-sm-4 form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="search" value="{{ request('search') }}" placeholder="Search speaker" name="search" type="text" id="search"/>
+                                                <div class="input-group-btn">
+                                                    <button type="submit" class="btn btn-primary"> Search</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" value="{{request('field')}}" name="field"/>
+                                        <input type="hidden" value="{{request('sort')}}" name="sort"/>
+                                    </div>
+                                    {!! Form::close() !!}
+
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="{{url('admin/speaker_add')}}" class="btn btn-primary">Add New</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
                         <table id="" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>Sr. No.</th>
-                                    <th>Speaker Name</th>
+                                    <th><a href="{{url('admin/speaker_list')}}?search={{request('search')}}&field=speaker_name&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Speaker Name &nbsp;<i class="fa fa-sort-alpha-{{request('field','speaker_name')=='speaker_name'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i></a></th>
                                     <th>Image</th>
-                                    <th>Added Date</th>
+                                    <th><a href="{{url('admin/speaker_list')}}?search={{request('search')}}&field=created_at&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Added Date &nbsp<i class="fa fa-sort-numeric-{{request('field','created_at')=='created_at'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i></a></th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
