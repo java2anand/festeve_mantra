@@ -29,6 +29,7 @@ Route::get('/contact-us', 'HomeController@contact_us')->name('contact-us');
 
 Route::get('/categories', 'HomeController@categories')->name('categories');
 Route::get('/stories', 'HomeController@stories')->name('stories');
+Route::get('/story-detail/{story_slug}', 'HomeController@story_detail')->name('story-detail');
 Route::get('/event-category/{event_slug}', 'HomeController@event_list')->name('event-category');
 Route::get('/event-detail/{event_slug}', 'HomeController@event_detail')->name('event-detail');
 Route::get('/top-100', 'HomeController@top_hundred')->name('top-100');
@@ -46,7 +47,10 @@ Route::prefix('admin')->group(function() {
 
     Route::get('/home', 'Admin\AdminController@index')->name('admin.home');
     Route::any('/profile', 'Admin\AdminController@profile')->name('admin.profile');
-    Route::any('/site_setting/{id?}', 'Admin\AdminController@site_setting')->name('admin.sitesetting');
+    Route::any('/setting_list', 'Admin\AdminController@setting_list')->name('admin.setting_list');
+    Route::any('/site_setting/{id}', 'Admin\AdminController@site_setting')->name('admin.sitesetting');
+    Route::any('/pages_list', 'Admin\AdminController@pages_list')->name('admin.pages_list');
+    Route::any('/page_setting/{id}', 'Admin\AdminController@page_setting')->name('admin.page_setting');
 
     //via ajax
     Route::post('/upload_image', 'Admin\AdminController@upload_image')->name('admin.upload_image');

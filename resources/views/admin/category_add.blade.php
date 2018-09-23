@@ -78,66 +78,130 @@
 
                         </div>
 
-                        <div class="form-group">
-                            <label for="mini_icon">Category Mini Icon<span class="error">* Old Icon must be in width & height less than (100 X 100), format (jpeg,jpg,png) and max_size(2MB)</span> </label>
+                        <div class="form-group row">
+                            <div class='col-md-9'>
+                            <label for="mini_icon">Mini Icon<span class="error">* Mini Icon must be in width & height less than (30 X 30), format (jpeg,jpg,png) and max_size(1MB)</span> </label>
                             <input type="file" class="form-control" id="mini_icon" name="mini_icon" >
                             <span class="error"></span>
                             <input type="hidden" name="old_mini_icon" value="<?= (isset($category->mini_icon) && !empty($category->mini_icon)) ? $category->mini_icon : '' ?>" />
-
+                            </div>
+                            <div class='col-md-3'>
                             <?php
                             $mini_icon = (isset($category->mini_icon) && !empty($category->mini_icon)) ? $category->mini_icon : '';
                             if (isset($mini_icon) && $mini_icon != "" && file_exists(public_path() . '/images/category/mini_icon/' . $mini_icon)) {
                                 ?>
-                                <img src="{{ asset( 'images/category/mini_icon/'.$mini_icon)}}" />
+                                <label>Mini Icon </label><br/>
+                                <img src="{{ asset( 'images/category/mini_icon/'.$mini_icon)}}"  />
 <?php } ?>
+                            </div>
+                            <br />
+                            <span class="error"><?php
+                            if ($errors->has('mini_icon')) {
+                                echo $errors->first('mini_icon');
+                            }
+                            ?></span>
                         </div>
 
-                        <div class="form-group">
-                            <label for="icon">Category Icon</label>
-                            <input type="file" class="form-control" id="icon" name="icon" >
-                            <span class="error"></span>
-                            <input type="hidden" name="old_icon" value="<?= (isset($category->icon) && !empty($category->icon)) ? $category->icon : '' ?>" />
+                        <div style='clear:both;'></div>
 
+                        <div class="form-group row">
+                            <div class='col-md-9'>
+                                <label for="popular_icon">Popular Icon<span class="error">* Popular Icon must be in width & height less than (35 X 35), format (jpeg,jpg,png) and max_size(1MB)</span> </label>
+                                <input type="file" class="form-control" id="popular_icon" name="popular_icon" >
+                                <span class="error"></span>
+                                <input type="hidden" name="old_popular_icon" value="<?= (isset($category->popular_icon) && !empty($category->popular_icon)) ? $category->popular_icon : '' ?>" />
+                            </div>
+                            <div class='col-md-3'>
                             <?php
-                            $icon = (isset($category->icon) && !empty($category->icon)) ? $category->icon : '';
-                            if (isset($icon) && $icon != "" && file_exists(public_path() . '/images/category/thumb/' . $icon)) {
+                            $popular_icon = (isset($category->popular_icon) && !empty($category->popular_icon)) ? $category->popular_icon : '';
+                            if (isset($popular_icon) && $popular_icon != "" && file_exists(public_path() . '/images/category/popular_icon/' . $popular_icon)) {
                                 ?>
-                                <img src="{{ asset( 'images/category/thumb/'.$icon)}}" />
+                                <label>Popular Icon </label><br/>
+                                <img src="{{ asset( 'images/category/popular_icon/'.$popular_icon)}}" width='50px' height='50px' />
 <?php } ?>
+                            </div>
+                            <br />
+                            <span class="error"><?php
+                            if ($errors->has('popular_icon')) {
+                                echo $errors->first('popular_icon');
+                            }
+                            ?></span>
                         </div>
 
-                        <div class="form-group">
-                            <label for="right_banner">Right Banner</label>
-                            <input type="file" class="form-control" id="right_banner" name="right_banner" >
-                            <span class="error"></span>
-                            <input type="hidden" name="old_right_banner" value="<?= (isset($category->right_banner) && !empty($category->right_banner)) ? $category->right_banner : '' ?>" />
+                        <div style='clear:both;'></div>
 
+                        <div class="form-group row">
+                            <div class='col-md-9'>
+                                <label for="image">Category Image</label>
+                                <input type="file" class="form-control" id="image" name="image" >
+                                <span class="error"></span>
+                                <input type="hidden" name="old_image" value="<?= (isset($category->image) && !empty($category->image)) ? $category->image : '' ?>" />
+                            </div>
+                            <div class='col-md-3'>
+                                <?php
+                                $image = (isset($category->image) && !empty($category->image)) ? $category->image : '';
+                                if (isset($image) && $image != "" && file_exists(public_path() . '/images/category/image/' . $image)) { ?>
+                                <label>Image </label><br/>
+                                <img src="{{ asset( 'images/category/image/'.$image)}}" width='100px' height='50px'/>
+    <?php } ?>
+                            </div>
+                            <br />
+                            <span class="error"><?php
+                            if ($errors->has('image')) {
+                                echo $errors->first('image');
+                            }
+                            ?></span>
+                        </div>
+                        <div style='clear:both;'></div>
+                        <div class="form-group row">
+                            <div class='col-md-9'>
+                                <label for="right_banner">Right Banner<span class="error">* Right Banner must be in width & height less than (200 X 620), format (jpeg,jpg,png) and max_size(1MB)</span></label>
+                                <input type="file" class="form-control" id="right_banner" name="right_banner" >
+                                <span class="error"></span>
+                                <input type="hidden" name="old_right_banner" value="<?= (isset($category->right_banner) && !empty($category->right_banner)) ? $category->right_banner : '' ?>" />
+                            </div>
+                            <div class='col-md-3'>
                             <?php
                             $right_banner = (isset($category->right_banner) && !empty($category->right_banner)) ? $category->right_banner : '';
                             if (isset($right_banner) && $right_banner != "" && file_exists(public_path() . '/images/category/right_banner/' . $right_banner)) {
                                 ?>
+                                <label>Right Banner </label><br/>
                                 <img src="{{ asset( 'images/category/right_banner/'.$right_banner)}}"  height='50px;'/>
 <?php } ?>
+                            </div>
+                            <br />
+                            <span class="error"><?php
+                            if ($errors->has('right_banner')) {
+                                echo $errors->first('right_banner');
+                            }
+                            ?></span>
                         </div>
-
-                        <div class="form-group">
-                            <label for="top_banner">Top Banner<span class="error">* Banner must be in width & height less than (1400 X 450), format (jpeg,jpg,png) and max_size(3MB)</span> </label>
-                            <input type="file" class="form-control" id="top_banner" name="top_banner" >
-                            <span class="error"></span>
-                            <input type="hidden" name="old_top_banner" value="<?= (isset($category->top_banner) && !empty($category->top_banner)) ? $category->top_banner : '' ?>" />
-
+                        <div style='clear:both;'></div>
+                        <div class="form-group row">
+                            <div class='col-md-9'>
+                                <label for="top_banner">Top Banner<span class="error">* Banner must be in width & height less than (1400 X 450), format (jpeg,jpg,png) and max_size(3MB)</span> </label>
+                                <input type="file" class="form-control" id="top_banner" name="top_banner" >
+                                <span class="error"></span>
+                                <input type="hidden" name="old_top_banner" value="<?= (isset($category->top_banner) && !empty($category->top_banner)) ? $category->top_banner : '' ?>" />
+                            </div>
+                            <div class='col-md-3'>
                             <?php
                             $top_banner = (isset($category->top_banner) && !empty($category->top_banner)) ? $category->top_banner : '';
                             if (isset($top_banner) && $top_banner != "" && file_exists(public_path() . '/images/category/top_banner/' . $top_banner)) {
                                 ?>
+                                <label>Right Banner </label><br/>
                                 <img src="{{ asset( 'images/category/top_banner/'.$top_banner)}}"  height='50px;'/>
-                            <?php } ?> <br />
+                            <?php } ?>
+                            </div>
+                            <br />
                             <span class="error"><?php
                             if ($errors->has('top_banner')) {
                                 echo $errors->first('top_banner');
                             }
                             ?></span>
                         </div>
+
+                        <div style='clear:both;'></div>
 
                         <div class="form-group">
                             <label for="meta_title">Meta Title</label>

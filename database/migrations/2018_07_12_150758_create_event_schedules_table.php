@@ -16,6 +16,7 @@ class CreateEventSchedulesTable extends Migration {
             $table->increments('id');
             $table->integer('event_id');
             $table->string('title');
+            $table->text('address');
             $table->date('date');
             $table->time('from_time');
             $table->time('to_time');

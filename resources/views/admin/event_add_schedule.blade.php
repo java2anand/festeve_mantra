@@ -66,6 +66,18 @@
                                     </select>
                                 </div>
 
+                                <div class="form-group col-sm-12">
+                                    <label for="address[]">Event Address*</label>
+                                    <input type="text" class="form-control address" id="address" name="address[]" placeholder="Enter Address" value="<?= (isset($schedule->address) && !empty($schedule->address)) ? $schedule->address : old('address') ?>">
+                                    <span class="error"><?php
+                                        if ($errors->has('address')) {
+                                            echo $errors->first('address');
+                                        }
+                                        ?></span>
+                                </div>
+
+
+
                                 <div style="clear:both;"></div>
 
                                 <div class="form-group col-sm-3">
@@ -164,6 +176,18 @@
                                 </select>
                             </div>
 
+                            <div class="form-group col-sm-12">
+                                <label for="address[]">Event Address*</label>
+                                <input type="text" class="form-control address" id="address" name="address[]" placeholder="Enter Address" value="">
+                                <span class="error"><?php
+                                    if ($errors->has('address')) {
+                                        echo $errors->first('address');
+                                    }
+                                    ?></span>
+                            </div>
+
+
+
                             <div style="clear:both;"></div>
 
                             <div class="form-group col-sm-3">
@@ -247,7 +271,7 @@
                     <div class="box-footer">
                         <a href="{{ route('admin.event_add',$event_id) }}" class="btn btn-danger">Back</a>
                         <button type="submit" class="btn btn-primary">Save</button>
-                        <button type="submit" name='submit' value='go' class="btn btn-primary">Save & Go To Schedule</button>
+                        <button type="submit" name='submit' value='go' class="btn btn-primary">Save & Go To Social</button>
                         <a href="{{ route('admin.event_list') }}" class="btn btn-danger">Cancel</a>
 
                     </div>
@@ -330,6 +354,7 @@ $(document).ready(function () {
         });
 
         newdiv.find('.title').val('');
+        newdiv.find('.address').val('');
         newdiv.find('.schedule_id').val('');
         newdiv.find('.event_date').val('');
         newdiv.find('.from_time').val('');

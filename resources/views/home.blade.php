@@ -2,6 +2,8 @@
 <html lang="en">
     <!-- Head Section -->
     @include('head')
+
+    <link rel="stylesheet" href="{{asset('ws/plugins/datepicker/bootstrap-datepicker.min.css') }}">
     <!-- //Head Section -->
     <body>
         <!-- header -->
@@ -38,16 +40,8 @@
                 <div class="col-xs-12 text-center">
                     <ul>
                         @foreach($arr_category as $cat)
-                            <li><a href="{{url('event-category/'.$cat->slug)}}">{{$cat->category_name}}</a></li>
+                            <li><a style='background-image:url("{{ asset( 'images/category/mini_icon/'.$cat->mini_icon) }}")' href="{{url('event-category/'.$cat->slug)}}">{{$cat->category_name}}</a></li>
                         @endforeach
-                        <!--<li><a href="{{url('event-category/music')}}">Music</a></li>
-                        <li><a href="{{url('event-category/sports')}}">Sports</a></li>
-                        <li><a href="{{url('event-category/conference')}}">Conference</a></li>
-                        <li><a href="{{url('event-category/food')}}">Food</a></li>
-                        <li><a href="{{url('event-category/travel')}}">Travel</a></li>
-                        <li><a href="{{url('event-category/party')}}">Party</a></li>
-                        <li><a href="{{url('event-category/skill-development')}}">Skill Development</a></li>-->
-
                     </ul>
                 </div>
             </div><!-- search bottom links ends -->
@@ -67,7 +61,13 @@
                         <div class="col-sm-4 col-xs-12 upcoming_events_items"><!-- upcoming event -->
                             <div class="upcoming_item_container">
                                 <div class="upcoming_item_image">
-                                    <a href="{{ url('event-detail/'.$event->slug)}}"><img src="{{ asset( 'images/event/'.$event->event_image)}}" alt="event banner"></a>
+                                    <a href="{{ url('event-detail/'.$event->slug)}}">
+                                        @if(isset($event->event_image) && !empty($event->event_image) && file_exists(public_path() . '/images/event/' . $event->event_image))
+                                        <img src="{{ asset( 'images/event/'.$event->event_image)}}" alt="event banner">
+                                        @else
+                                        <img src="{{ asset( 'ws/images/no-image.jpg')}}" alt="event banner">
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="upcoming_item_info">
                                     <span class="event_type_icon"><img src="{{asset('ws/images/uc_bg.jpg')}}"></span>
@@ -96,7 +96,7 @@
                                     <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
                                         <div class="upcoming_item_container">
                                             <div class="upcoming_item_image">
-                                                <a href="#"><img src="{{ asset( 'images/story/'.$story->image)}}" alt="event banner"></a>
+                                                <a href="{{ url('story-detail/'.$story->slug)}}"><img src="{{ asset( 'images/story/'.$story->image)}}" alt="event banner"></a>
                                             </div>
                                             <div class="upcoming_item_info">
                                                 <p class="uc_event_name"><a href="#">{{$story->story_name}}</a></p>
@@ -135,27 +135,27 @@
                 <div class="col-md-9 col-sm-8 col-xs-12 f_padding_right">
                     <div class="row text-center"><!-- left top categories -->
                         <div class="col-sm-7 col-xs-12 f_padding_right">
-                            <a href="{{url('event-category/music')}}">
+                            <a href="{{url('event-category/Music-events')}}">
                                 <div class="cat_left_item left_cat1">
-                                    <p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>Music</p>
+                                    <p><span><img src="{{asset('ws/images/snew_icon1.png')}}"></span>Music</p>
                                 </div>
                             </a>
                         </div>
                         <div class="col-sm-5 col-xs-12">
-                            <a href="{{url('event-category/sports')}}"><div class="cat_left_item left_cat2"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>sports</p></div></a>
+                            <a href="{{url('event-category/sports-events')}}"><div class="cat_left_item left_cat2"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>sports</p></div></a>
                         </div>
                     </div><!-- left top categories -->
                     <div class="row text-center"><!-- left middle categories -->
                         <div class="col-sm-5 col-xs-12 f_padding_right">
-                            <a href="{{url('event-category/food')}}"><div class="cat_left_item left_cat3"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>food</p></div></a>
+                            <a href="{{url('event-category/food-festivals')}}"><div class="cat_left_item left_cat3"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>food</p></div></a>
                         </div>
                         <div class="col-sm-7 col-xs-12">
-                            <a href="{{url('event-category/travel')}}"><div class="cat_left_item left_cat4"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>travel</p></div></a>
+                            <a href="{{url('event-category/travel-packages')}}"><div class="cat_left_item left_cat4"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>travel</p></div></a>
                         </div>
                     </div><!-- left middle categories -->
                     <div class="row text-center"><!-- left bottom categories -->
                         <div class="col-sm-12 col-xs-12 ">
-                            <a href="{{url('event-category/dj-party')}}"><div class="cat_left_item left_cat5"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>DJ Party</p></div></a>
+                            <a href="{{url('event-category/dj-party-events')}}"><div class="cat_left_item left_cat5"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>DJ Party</p></div></a>
                         </div>
                     </div><!-- left bottom categories -->
 
@@ -163,12 +163,12 @@
                 <div class="col-md-3 col-sm-4 col-xs-12">
                     <div class="row text-center"><!-- right top categories -->
                         <div class="col-sm-12 col-xs-12">
-                            <a href="{{url('event-category/conference')}}"><div class="cat_right_item1 right_cat1"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span><br>Conference</p></div></a>
+                            <a href="{{url('event-category/conference-events')}}"><div class="cat_right_item1 right_cat1"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span><br>Conference</p></div></a>
                         </div>
                     </div> <!-- ends -->
                     <div class="row text-center"><!-- right bottom categories -->
                         <div class="col-sm-12 col-xs-12">
-                            <a href="{{url('event-category/skill-development')}}"><div class="cat_right_item2 right_cat2"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span><br>Skill Development</p></div></a>
+                            <a href="{{url('event-category/skill-development-events')}}"><div class="cat_right_item2 right_cat2"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span><br>Skill Development</p></div></a>
                         </div>
                     </div> <!-- ends -->
 
@@ -183,11 +183,12 @@
         <!-- get more buttons -->
         <div class="container-fluid home_more_button">
             <div class="row">
-                <h3 class="home_section_heading text-center">Get more with no surprises</h3>
+                <h3 class="home_section_heading text-center">INSPIRE THE FESTIVAL COMMUNITY
+TO GROW</h3>
                 <p class="text-center heading_seprator"><span></span></p>
                 <div class="col-xs-12 text-center">
-                    <a href="{{ url('/add-event')}}" class="orange_btn">Create Event</a>
-                    <a href="#" class="black_btn">Find Event</a>
+                    <a href="{{ url('/add-event')}}" class="orange_btn">Submit Event</a>
+                    <a href="#" class="black_btn">Submit Story</a>
                 </div>
             </div>
         </div>
@@ -199,14 +200,14 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <h3>
-                            <small>get our latest updates</small>
-                            SUBSCRIBE NEWSLETTER
+                            <small>NEVER MISS THE NEXT UPCOMING</small>
+                            EVENT AND FESTIVAL
                         </h3>
                     </div>
                     <div class="col-sm-6">
                         <form name="newsletter_form" id="newsletter_form">
                             <div class="input-group">
-                                <input type="email" class="form-control" name="newsletter_email" id="newsletter_email">
+                                <input type="email" placeholder='Enter your email address' class="form-control" name="newsletter_email" id="newsletter_email">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="submit" name="newsletter_button" id="newsletter_button">Subscribe</button>
                                 </span>
@@ -219,9 +220,10 @@
         </div>
         <!-- newsletter section -->
         <!-- footer -->
-        @include('footer');
+        @include('footer')
         <!-- footer ends -->
 
+        <script src="{{asset('ws/plugins/datepicker/bootstrap-datepicker.min.js') }}"></script>
         <!-- Initialize Swiper -->
         <script>
             if ($(window).width() > 766) {
@@ -247,7 +249,6 @@
 
 
             $(document).ready(function () {
-
                 $('.mobile_nav_section button').click(function () {
                     $('.nav_desktop').addClass('listing_page_sidebar_active');
                     $('body').removeClass('body_overflow');
@@ -283,7 +284,18 @@
                         });
                     }
                 });
-            })
+
+                var date = new Date();
+                var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+                $("#event_date").datepicker({
+                    format: "dd-mm-yyyy",
+                    todayHighlight: true,
+                    startDate: today,
+                    //endDate: end,
+                    autoclose: true
+                });
+
+            });
         </script>
     </body>
 </html>

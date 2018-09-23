@@ -1,8 +1,8 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> 2.4.0
+        
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2018-{{ date('Y') }} <a href="www.festevemantra.com" target="_blank">Festeve Mantra</a>.</strong> All rights
     reserved.
 </footer>
 

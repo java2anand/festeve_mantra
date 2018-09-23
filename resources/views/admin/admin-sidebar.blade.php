@@ -133,9 +133,18 @@
                 </a>
             </li>
 
-            <li class="<?= ($pages == 'site_setting') ? 'active' : ''; ?>">
-                <a href="{{ route('admin.sitesetting') }}">
+            <li class="<?= ($pages == 'setting_list') || ($pages == 'site_setting') ? 'active' : ''; ?>">
+                <a href="{{ route('admin.setting_list') }}">
                     <i class="fa fa-cog"></i> <span>Sitesettings</span>
+                    <span class="pull-right-container">
+
+                    </span>
+                </a>
+            </li>
+
+            <li class="<?= ($pages == 'pages_list') || ($pages == 'page_setting') ? 'active' : ''; ?>">
+                <a href="{{ route('admin.pages_list') }}">
+                    <i class="fa fa-file-text-o"></i> <span>Static Pages</span>
                     <span class="pull-right-container">
 
                     </span>

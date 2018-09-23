@@ -196,54 +196,81 @@ class AdminController extends Controller {
         return redirect()->route('admin.newsletter_list')->with('alert-success', 'Saved successfully!');
     }
 
-    public function site_setting(Request $request, $id=false) {
+    public function setting_list(Request $request){
+        $page = 'setting_list';
+        $search = $request->get('search');
+        $field = $request->get('field') != '' ? $request->get('field') : 'id';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+
+        $arr_setting = DB::table('site_settings')->select('id','var_name','var_title','var_value')->orderBy($field, $sort)->where('var_title', 'like', '%' . $search . '%')->paginate(20)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
+        return view('admin.setting_list', compact('arr_setting', 'page','search_term'));
+    }
+
+    public function site_setting(Request $request, $id) {
+        if(!$id){
+            return redirect()->route('admin.setting_list');
+        }
         $page = 'site_setting';
-        $site_setting = DB::table('site_settings')->first();
+        $site_setting = DB::table('site_settings')->select('id','var_name','var_title','var_value')->where('id',$id)->first();
 
         if ($request->isMethod('post')) {
             $update_array = array(
-                'company_title'     => (!empty($request->company_title)) ? $request->company_title : '',
-                'address'     => (!empty($request->address)) ? $request->address : '',
-                'phone_number'     => (!empty($request->phone_number)) ? $request->phone_number : '',
-                'mobile_number'     => (!empty($request->mobile_number)) ? $request->mobile_number : '',
-                'contact_email'     => (!empty($request->contact_email)) ? $request->contact_email : '',
-                'facebook_id'     => (!empty($request->facebook_id)) ? $request->facebook_id : '',
-                'twitter_id'     => (!empty($request->twitter_id)) ? $request->twitter_id : '',
-                'linked_id'     => (!empty($request->linked_id)) ? $request->linked_id : '',
-                'instagram_id'     => (!empty($request->instagram_id)) ? $request->instagram_id : '',
-                'googleplus_id'     => (!empty($request->googleplus_id)) ? $request->googleplus_id : '',
+                'var_title'     => (!empty($request->var_title)) ? $request->var_title : '',
+                'var_value'     => (!empty($request->var_value)) ? $request->var_value : '',
             );
 
-
-            if($request->hasFile('logo')) {
+            /*if($request->hasFile('logo')) {
                 $file = $request->file('logo');
                 $imagename = time().'.'.$file->getClientOriginalExtension();
-                $destinationPath = public_path('/images/logo/thumb');
-                $thumb_img = Image::make($file->getRealPath())->resize(100, 100);
-                $thumb_img->save($destinationPath.'/'.$imagename,80);
-
                 $destinationPath = public_path('/images/logo');
                 if($file->move($destinationPath, $imagename)){
                     $prev_image_origi = public_path('images/logo').'/'.$request->old_logo;
-                    $prev_image_thumb = public_path('images/logo/thumb').'/'.$request->old_logo;
-
                     @unlink($prev_image_origi);
-                    @unlink($prev_image_thumb);
                 }
                 $update_array['logo']  = $imagename;
 
             }else{
                 $update_array['logo'] = (!empty($request->old_logo)) ? $request->old_logo : '';
-            }
-
-            $save = DB::table('site_settings')
-                ->where('id', $id)
-                ->update($update_array);
+            }*/
+            $save = DB::table('site_settings')->where('id',$id)->update($update_array);
             $request->session()->flash('alert-success', 'Site setting updated successfully.');
-            return redirect('admin/site_setting');
+            return redirect('admin/setting_list');
         }
-
         return view('admin.site_setting',compact('site_setting','page'));
+    }
+
+
+    public function pages_list(Request $request){
+        $page = 'pages_list';
+        $search = $request->get('search');
+        $field = $request->get('field') != '' ? $request->get('field') : 'id';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+
+        $arr_pages = DB::table('pages')->orderBy($field, $sort)->where('title', 'like', '%' . $search . '%')->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
+        return view('admin.pages_list', compact('arr_pages', 'page','search_term'));
+    }
+
+    public function page_setting(Request $request, $id) {
+        if(!$id){
+            return redirect()->route('admin.pages_list');
+        }
+        $page = 'page_setting';
+        $page_data = DB::table('pages')->where('id',$id)->first();
+
+        if ($request->isMethod('post')) {
+            $update_array = array(
+                'title'     => (!empty($request->title)) ? $request->title : '',
+                'content'     => (!empty($request->content)) ? $request->content : '',
+                'page_title'     => (!empty($request->page_title)) ? $request->page_title : '',
+                'meta_keyword'     => (!empty($request->meta_keyword)) ? $request->meta_keyword : '',
+                'meta_description'     => (!empty($request->meta_description)) ? $request->meta_description : '',
+            );
+
+            $save = DB::table('pages')->where('id',$id)->update($update_array);
+            $request->session()->flash('alert-success', 'Pages content updated successfully.');
+            return redirect('admin/pages_list');
+        }
+        return view('admin.page_setting',compact('page_data','page'));
     }
 
 

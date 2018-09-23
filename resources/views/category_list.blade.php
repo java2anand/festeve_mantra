@@ -17,7 +17,7 @@
                             @foreach($popular_category as $pcat)
                                 <div class="swiper-slide">
                                     <a href="{{ url('event-category/'.$pcat->slug) }}">
-                                        <img src="{{ asset('ws/images/top_category.jpg')}}">
+                                        <img src="{{ asset('images/category/popular_icon/'.$pcat->popular_icon)}}">
                                         <p>{{ $pcat->category_name }}</p>
                                     </a>
                                 </div>
@@ -40,9 +40,17 @@
                     <p>Find your interets by browsing our festeve categories</p>
                     <ul>
                         @foreach($arr_category as $cat)
-                        <li>
+                        <?php
+                            $image='';
+                            if(isset($cat->image) && !empty($cat->image) && file_exists(public_path() . '/images/category/image/' . $cat->image)){
+                                $image = asset( 'images/category/image/'.$cat->image);
+                            }else{
+                                $image = asset( 'ws/images/no-category-image.jpg');
+                            }
+                        ?>
+                        <li style="background-image: url('{{ $image }}')">
                             <a href="{{ url('event-category/'.$cat->slug) }}">
-                                <img src="{{ asset('ws/images/new_icon1.png')}}"><br>
+                                <img src="{{ asset('images/category/mini_icon/'.$cat->mini_icon)}}"><br>
                                 {{ $cat->category_name }}
                             </a>
                         </li>

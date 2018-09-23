@@ -14,17 +14,9 @@ class CreateSiteSettingsTable extends Migration {
     public function up() {
         Schema::create('site_settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('company_title');
-            $table->string('logo');
-            $table->string('address');
-            $table->bigInteger('phone_number');
-            $table->bigInteger('mobile_number');
-            $table->string('contact_email');
-            $table->string('facebook_id');
-            $table->string('twitter_id');
-            $table->string('linked_id');
-            $table->string('instagram_id');
-            $table->string('googleplus_id');
+            $table->text('var_name');
+            $table->text('var_title');
+            $table->text('var_value');
             $table->timestamps();
         });
     }

@@ -9,12 +9,20 @@
         <!-- header ends -->
 
         <!-- evnt page content section -->
-        <div class="event1_top_bg_section" style="background-image: url('{{ asset( 'images/event/top_banner/'.$event->event_top_banner )}}')">
+        <?php
+            if(isset($event->event_top_banner) && !empty($event->event_top_banner) && file_exists(public_path() . '/images/event/top_banner/' . $event->event_top_banner)){
+                $image = asset( 'images/event/top_banner/'.$event->event_top_banner);
+            }else{
+                $image = asset( 'ws/images/no_top_banner.jpg');
+            }
+        ?>
+
+        <div class="event1_top_bg_section" style="background-image: url('{{ $image }}')">
             <div class="container event_2_container">
                 <div class="event_topbanner_info">
                     <h3>{{ $event->title }}</h3>
                     <p class="event_topbanner_info_text"> {{ date('dS F',strtotime($event->start_date)) }} - {{ date('dS F',strtotime($event->end_date)) }},   {{ date('h:i A',strtotime($event->start_time)) }} </p>
-                    <p class="event_topbanner_info_text">{{$event->address->event_location}}</p>
+                    <p class="event_topbanner_info_text">{{ !empty($event->address->event_location) ? $event->address->event_location : '' }}</p>
                     <div>
                         <ul class="event_follow_ul">
                             <!--<li><input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="4"></li>-->
@@ -93,6 +101,12 @@
                                                             {{ date('h:iA',strtotime($date->from_time)).' - '. date('h:iA',strtotime($date->to_time))}}
                                                             </span>
                                                             <span class="sec_right_section">{{$date->title }}</span>
+                                                            @if(isset($date->address) && !empty($date->address))
+                                                            <span class="sec_left_section">
+                                                                Location:
+                                                            </span>
+                                                            <span class="sec_right_section">{{ $date->address }}</span>
+                                                            @endif
                                                         </li>
                                                         @endforeach
                                                     </ul>
@@ -133,11 +147,11 @@
                         <div class="col-xs-12 text-center">
 
                             <div class="event_right_top_inner event_filled_bg">
-                                <a href="{{ route('get_reminder') }}">
+                                <a href="#">
                                     <h4>
                                         <img src="{{asset('ws/images/tick_circle.jpg')}}"> Remind me!
                                     </h4>
-                                    <p>Get Reminder & Special Offers</p>
+                                    <p>Get Updates & Reminder in your Inbox</p>
                                 </a>
                             </div>
 
@@ -151,7 +165,7 @@
                         <div class="col-xs-12">
                             <div class="event_right_bottom_inner">
                                 <h5>Location</h5>
-                                <p>{{$event->address->event_location}}</p>
+                                <p>{{ isset($event->address->event_location) && !empty($event->address->event_location) ? $event->address->event_location : '' }}</p>
                                 <h5>Start Time</h5>
                                 <p>{{ date('d F Y',strtotime($event->start_date)) }} -   {{ date('h:i A',strtotime($event->start_time)) }}</p>
                             </div>
@@ -177,7 +191,7 @@
                         <div class="col-xs-12">
                             <div class="event_right_bottom_inner event_page_ads">
                                 <a href="#">
-                                    <img src="{{ asset( 'images/event/'.$event->event_image )}}" class="img-responsive" alt="adsvertise banner">
+                                    <img src="{{ $image }}" class="img-responsive" alt="adsvertise banner">
                                 </a>
                             </div>
                         </div>

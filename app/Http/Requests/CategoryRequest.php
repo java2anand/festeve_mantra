@@ -27,8 +27,10 @@ class CategoryRequest extends FormRequest
         return [
             'category_name'=>'required|unique:categories,category_name,'.$id,
             'slug'=>'required|unique:categories,slug,'.$id,
-            'mini_icon' => 'mimes:jpeg,jpg,png | max:2048 |dimensions:max_width=100,max_height=100',
+            'mini_icon' => 'mimes:jpeg,jpg,png | max:2048 |dimensions:max_width=30,max_height=30',
+            'popular_icon' => 'mimes:jpeg,jpg,png | max:2048 |dimensions:max_width=40,max_height=40',
             'top_banner' => 'mimes:jpeg,jpg,png | max:3072 |dimensions:max_width=1400,max_height=450',
+            'right_banner' => 'mimes:jpeg,jpg,png | max:3072 |dimensions:max_width=200,max_height=620',
             'status'=>'required'
         ];
     }

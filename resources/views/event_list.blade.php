@@ -153,12 +153,20 @@
                             @if(count($arrevent)>0)
                                 @foreach($arrevent as $event)
                                 <div class="listing_page_mid_section_outer">
-                                    <div class="listing_page_mid_section_left" style="background-image:url('{{ asset( 'images/event/'.$event->event_image )}}')">
+                                    <?php
+                                        if(isset($event->event_image) && !empty($event->event_image) && file_exists(public_path() . '/images/event/' . $event->event_image)){
+                                            $image = asset( 'images/event/'.$event->event_image);
+                                        }else{
+                                            $image = asset( 'ws/images/no-image.jpg');
+                                        }
+                                    ?>
+
+                                    <div class="listing_page_mid_section_left" style="background-image:url('{{ asset($image )}}')">
                                         <a href="{{ url('event-detail/'.$event->slug )}}"></a>
                                     </div>
                                     <div class="listing_page_mid_section_right">
                                         <p class="listing_mid_category_date">
-                                            <a href="{{ url('event-category/'.$event->category->slug )}}"><span class="listing_mid_category_span1">{{ $event->category->category_name }}</span></a>
+                                            <a href="{{ url('event-category/'.$event->category->slug )}}"><span class="listing_mid_category_span1" style="background-image: url('{{asset( 'images/category/mini_icon/'.$event->category->mini_icon)}}')">{{ $event->category->category_name }}</span></a>
                                             <span class="text-right">{{ date('F dS, Y',strtotime($event->start_date)) }} | Delhi</span>
                                         </p>
                                         <h3><a href="{{ url('event-detail/'.$event->slug )}}">{{ $event->title }}</a></h3>

@@ -13,8 +13,8 @@ class AddNarratorToEventStories extends Migration {
      */
     public function up() {
         Schema::table('event_stories', function($table) {
-            $table->string('narrator_name')->after('image');
-            $table->string('narrator_image')->after('narrator_name');
+            //$table->string('narrator_name')->after('image');
+            //$table->string('narrator_image')->after('narrator_name');
         });
     }
 
@@ -25,8 +25,8 @@ class AddNarratorToEventStories extends Migration {
      */
     public function down() {
         Schema::table('event_stories', function($table) {
-            $table->dropColumn('narrator_name');
-            $table->dropColumn('narrator_image');
+            //$table->dropColumn('narrator_name');
+            //$table->dropColumn('narrator_image');
         });
     }
 

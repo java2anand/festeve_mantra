@@ -3,14 +3,30 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/head.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/public/ws/css/style.css</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/footer.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/database/migrations/2018_08_24_095248_create_categories_table.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/event_detail.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/terms_conditions.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/about.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/our_team.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/top_hundred.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Requests/CategoryRequest.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/top_hundred_ajax.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/category_add.blade.php</file>
             <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/Admin/CategoryController.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Console/Kernel.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/category_list.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/careers.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/category_list.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/event_add.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/contact_us.blade.php</file>
             <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/search.blade.php</file>
             <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/home.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Kernel.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/privacy_policy.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Requests/EventRequest.php</file>
             <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/event_list.blade.php</file>
             <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/HomeController.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/Admin/EventController.php</file>
         </group>
     </open-files>
 </project-private>

@@ -21,8 +21,7 @@ class CategoryController extends Controller {
         $field = $request->get('field') != '' ? $request->get('field') : 'id';
         $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
 
-        $arrCategory = Category::orderBy($field, $sort)->where('category_name', 'like', '%' . $search . '%')
-            ->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
+        $arrCategory = Category::orderBy($field, $sort)->where('category_name', 'like', '%' . $search . '%')->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
 
         return view('admin.category_list', compact('arrCategory', 'page', 'search_term'));
     }
@@ -58,69 +57,79 @@ class CategoryController extends Controller {
 
         /* For Mini Icon */
         if ($request->hasFile('mini_icon')) {
-            $file = $request->file('mini_icon');
-            $imagename = time() . '.' . $file->getClientOriginalExtension();
+            $file_icon = $request->file('mini_icon');
+            $mini_icon = time() . '.' . $file_icon->getClientOriginalExtension();
             $destinationPath = public_path('/images/category/mini_icon');
-            $thumb_img = Image::make($file->getRealPath())->resize(20, 25);
+            //$thumb_img = Image::make($file->getRealPath())->resize(20, 25);
 
             //$destinationPath = public_path('/images/category/mini_icon');
-            //if ($file->move($destinationPath, $imagename)) {
-            if ($thumb_img->save($destinationPath . '/' . $imagename, 80)) {
-                $prev_image_origi = public_path('images/category/mini_icon') . '/' . $request->old_icon;
-                @unlink($prev_image_origi);
+            if ($file_icon->move($destinationPath, $mini_icon)) {
+            //if ($thumb_img->save($destinationPath . '/' . $imagename, 80)) {
+                $old_icon = public_path('images/category/mini_icon') . '/' . $request->old_icon;
+                @unlink($old_icon);
             }
-            $category->mini_icon = $imagename;
+            $category->mini_icon = $mini_icon;
         } else {
-            $category->mini_icon = (!empty($request->old_icon)) ? $request->old_icon : '';
+            $category->mini_icon = (!empty($request->old_mini_icon)) ? $request->old_mini_icon : '';
         }
 
-        /*         * **** icon + thumbnail ******** */
-        if ($request->hasFile('icon')) {
-            $file = $request->file('icon');
-            $imagename = time() . '.' . $file->getClientOriginalExtension();
-            $destinationPath = public_path('/images/category/thumb');
-            $thumb_img = Image::make($file->getRealPath())->resize(35, 34);
-            $thumb_img->save($destinationPath . '/' . $imagename, 80);
 
-            $destinationPath = public_path('/images/category/icon');
-            if ($file->move($destinationPath, $imagename)) {
-                $prev_image_origi = public_path('images/category/icon') . '/' . $request->old_icon;
-                $prev_image_thumb = public_path('images/category/thumb') . '/' . $request->old_icon;
-
-                @unlink($prev_image_origi);
-                @unlink($prev_image_thumb);
+        /* For Popular Icon */
+        if ($request->hasFile('popular_icon')) {
+            $file_popular_icon = $request->file('popular_icon');
+            $popular_icon = time() . '.' . $file_popular_icon->getClientOriginalExtension();
+            $destinationPath = public_path('/images/category/popular_icon');
+            if ($file_popular_icon->move($destinationPath, $popular_icon)) {
+                $old_popular_icon = public_path('images/category/popular_icon') . '/' . $request->old_popular_icon;
+                @unlink($old_popular_icon);
             }
-            $category->icon = $imagename;
-            $category->thumbnail = $imagename;
+            $category->popular_icon = $popular_icon;
         } else {
-            $category->icon = (!empty($request->old_icon)) ? $request->old_icon : '';
-            $category->thumbnail = (!empty($request->old_icon)) ? $request->old_icon : '';
+            $category->popular_icon = (!empty($request->old_popular_icon)) ? $request->old_popular_icon : '';
+        }
+
+        /*         * **** image ******** */
+        if ($request->hasFile('image')) {
+            $file_image = $request->file('image');
+            $image = time() . '.' . $file_image->getClientOriginalExtension();
+            //$destinationPath = public_path('/images/category/thumb');
+            //$thumb_img = Image::make($file->getRealPath())->resize(35, 34);
+            //$thumb_img->save($destinationPath . '/' . $imagename, 80);
+
+            $destinationPath = public_path('/images/category/image');
+            if ($file_image->move($destinationPath, $image)) {
+                $prev_image = public_path('images/category/image') . '/' . $request->old_image;
+                @unlink($prev_image);
+            }
+            $category->image = $image;
+        } else {
+            $category->image = (!empty($request->old_image)) ? $request->old_image : '';
         }
 
         /*         * **** top_banner ******** */
         if ($request->hasFile('top_banner')) {
-            $file = $request->file('top_banner');
-            $imagename = time() . '.' . $file->getClientOriginalExtension();
+            $file_tb = $request->file('top_banner');
+            $top_banner = time() . '.' . $file_tb->getClientOriginalExtension();
             $destinationPath = public_path('/images/category/top_banner');
-            if ($file->move($destinationPath, $imagename)) {
-                $prev_image_thumb = public_path('images/category/top_banner') . '/' . $request->old_top_banner;
-                @unlink($prev_image_thumb);
+            if ($file_tb->move($destinationPath, $top_banner)) {
+                $prev_top_banner = public_path('images/category/top_banner') . '/' . $request->old_top_banner;
+                @unlink($prev_top_banner);
             }
-            $category->top_banner = $imagename;
+            $category->top_banner = $top_banner;
         } else {
             $category->top_banner = (!empty($request->old_top_banner)) ? $request->old_top_banner : '';
         }
 
         /*         * **** right_banner ******** */
         if ($request->hasFile('right_banner')) {
-            $file = $request->file('right_banner');
-            $imagename = time() . '.' . $file->getClientOriginalExtension();
+            $file_rb = $request->file('right_banner');
+            $right_banner = time() . '.' . $file_rb->getClientOriginalExtension();
             $destinationPath = public_path('/images/category/right_banner');
-            if ($file->move($destinationPath, $imagename)) {
-                $prev_image_thumb = public_path('images/category/right_banner') . '/' . $request->old_right_banner;
-                @unlink($prev_image_thumb);
+            if ($file_rb->move($destinationPath, $right_banner)) {
+                $prev_right_banner = public_path('images/category/right_banner') . '/' . $request->old_right_banner;
+                @unlink($prev_right_banner);
             }
-            $category->right_banner = $imagename;
+            $category->right_banner = $right_banner;
         } else {
             $category->right_banner = (!empty($request->old_right_banner)) ? $request->old_right_banner : '';
         }

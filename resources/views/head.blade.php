@@ -3,11 +3,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="_token" content="{!! csrf_token() !!}"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('ws/images/favicon.ico')}}" />
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Welcome to Festeve Mantra</title>
-
-    <meta name="keywords" content="<?= isset($meta_keyword) ? $meta_keyword : '' ?>" />
-    <meta name="description" content="<?= isset($meta_description) ? $meta_description : '' ?>" />
+    <title><?= isset($page_title) && !empty($page_title) ? $page_title : $sitedata['page_title'] ?></title>
+    <meta name="keywords" content="<?= isset($meta_keyword) ? $meta_keyword : $sitedata['meta_keyword'] ?>" />
+    <meta name="description" content="<?= isset($meta_description) ? $meta_description : $sitedata['meta_description'] ?>" />
 
     <!-- Bootstrap -->
     <link href="{{asset('ws/css/bootstrap.min.css')}}" rel="stylesheet">

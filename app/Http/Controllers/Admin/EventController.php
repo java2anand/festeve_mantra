@@ -116,9 +116,10 @@ class EventController extends Controller {
         $event->save();
         $save_event_id = (isset($event_id) && !empty($event_id)) ? $event_id : $event->id;
 
+        //dd($request);
         /*         * ********** save speaker id will change logic after sometime********* */
         $delete = DB::table('event_speakers')->where('event_id', $save_event_id)->delete();
-        if(count($request->speaker)>0){
+        if(isset($request->speaker) && count($request->speaker)>0){
             foreach($request->speaker as $v){
                 $event_speaker = new EventSpeaker;
                 $event_speaker->event_id = $save_event_id;
@@ -152,13 +153,13 @@ class EventController extends Controller {
                 $save_array = array(
                     'event_id' => $event_id,
                     'title' => (!empty($request->title[$i])) ? $request->title[$i] : '',
+                    'address' => (!empty($request->address[$i])) ? $request->address[$i] : '',
                     'date' => (!empty($request->event_date[$i])) ? date('Y-m-d', strtotime($request->event_date[$i])) : '',
-                    'from_time' => (!empty($request->from_time[$i])) ? $request->from_time[$i] : '',
-                    'to_time' => (!empty($request->to_time[$i])) ? $request->to_time[$i] : '',
+                    'from_time' => (!empty($request->from_time[$i])) ? date("H:i:s", strtotime($request->from_time[$i])) : '',
+                    'to_time' => (!empty($request->to_time[$i])) ? date("H:i:s", strtotime($request->to_time[$i])) : '',
                     'status' => (!empty($request->status[$i])) ? $request->status[$i] : '',
                     'activity' => (!empty($request->activity[$i])) ? $request->activity[$i] : '',
                 );
-
 
                 if ($request->schedule_id[$i] == null) {
                     $save = DB::table('event_schedules')->insert($save_array);
