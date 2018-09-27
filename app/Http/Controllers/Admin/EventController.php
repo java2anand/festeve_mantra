@@ -70,6 +70,7 @@ class EventController extends Controller {
         $event->short_description = !empty($request->short_description) ? $request->short_description : '';
         $event->description = !empty($request->description) ? $request->description : '';
         $event->organiser_id = !empty($request->organiser_id) ? $request->organiser_id : '';
+        $event->speaker_title = !empty($request->speaker_title) ? $request->speaker_title : '';
         $event->status = $request->status;
 
         /* Event Top Banner */
@@ -187,7 +188,7 @@ class EventController extends Controller {
             return redirect()->route('admin.event_list')->with('alert-danger', 'Event not found!');
         } else {
             $event = array();
-            $event = DB::table('events')->select('id', 'ticket_url', 'website_url', 'facebook_id', 'twitter_id', 'linked_id', 'instagram_id', 'googleplus_id')->where('id', $event_id)->first();
+            $event = DB::table('events')->select('id', 'ticket_url', 'website_url', 'facebook_id', 'twitter_id', 'linked_id', 'instagram_id', 'googleplus_id','youtube_id')->where('id', $event_id)->first();
             if ($event == null) {
                 return redirect()->route('admin.event_list')->with('alert-danger', 'Event not found!');
             }
@@ -209,6 +210,7 @@ class EventController extends Controller {
                 'linked_id' => (!empty($request->linked_id)) ? $request->linked_id : '',
                 'instagram_id' => (!empty($request->instagram_id)) ? $request->instagram_id : '',
                 'googleplus_id' => (!empty($request->googleplus_id)) ? $request->googleplus_id : '',
+                'youtube_id' => (!empty($request->youtube_id)) ? $request->youtube_id : '',
             );
 
             $save = DB::table('events')->where('id', $event_id)->update($update_array);
@@ -223,21 +225,37 @@ class EventController extends Controller {
         return view('admin.event_add_social', compact('event', 'page', 'current_tab'));
     }
 
-    public function save_address(Request $request, $event_id = false) {
+    public function save_address(Request $request, $event_id = false,$address_id=false) {
         $page = 'add_event';
         $current_tab = 'event_address';
+        //get all address saved in db
+
 
         if (!$event_id) {
             return redirect()->route('admin.event_list')->with('alert-danger', 'Event not found!');
         } else {
-            $event = array();
             $event = Event::find($event_id);
             if ($event == null) {
                 return redirect()->route('admin.event_list')->with('alert-danger', 'Event not found!');
+            }else{
+                $event_address = array();
+                if($address_id){
+                    $event_address = EventAddress::where('id',$address_id)->where('event_id',$event_id)->first();
+                    if(empty($event_address)){
+                        return redirect()->route('admin.event_add_address',$event_id)->with('alert-danger', 'Event address not found!');
+                    }
+                }
             }
         }
 
+
+
         if ($request->isMethod('post')) {
+            //update all address if primary_address is 1
+            if($request->primary_address == 1){
+                DB::table('event_addresses')->where('event_id', $event_id)->update(array('primary_address'=>0));
+            }
+
             $save_array = array(
                 'event_id' => $event_id,
                 'event_location' => (!empty($request->event_location)) ? $request->event_location : '',
@@ -247,6 +265,7 @@ class EventController extends Controller {
                 'postal_code' => (!empty($request->postal_code)) ? $request->postal_code : '',
                 'latitude' => (!empty($request->latitude)) ? $request->latitude : '',
                 'longitude' => (!empty($request->longitude)) ? $request->longitude : '',
+                'primary_address' => $request->primary_address,
             );
 
             if ($request->address_id == null) {
@@ -263,7 +282,7 @@ class EventController extends Controller {
                 return redirect('admin/event_add_address/' . $event_id);
             }
         }
-        return view('admin.event_add_address', compact('event', 'page', 'current_tab','event_id'));
+        return view('admin.event_add_address', compact('event', 'page', 'current_tab','event_id','event_address'));
     }
 
 
@@ -284,11 +303,9 @@ class EventController extends Controller {
         if ($request->isMethod('post')) {
             $save_array = array(
                 'event_id' => $event_id,
-                'meta_title' => (!empty($request->meta_title)) ? $request->meta_title : '',
                 'meta_keyword' => (!empty($request->meta_keyword)) ? $request->meta_keyword : '',
                 'meta_description' => (!empty($request->meta_description)) ? $request->meta_description : '',
                 'page_title' => (!empty($request->page_title)) ? $request->page_title : '',
-                'page_description' => (!empty($request->page_description)) ? $request->page_description : '',
             );
 
             if ($request->seo_id == null) {
@@ -317,6 +334,19 @@ class EventController extends Controller {
     public function delete_schedule(Request $request) {
         $row_id = $request->row_id;
         $delete = DB::table('event_schedules')->where('id', $row_id)->delete();
+        if ($delete) {
+            $result = json_encode(array('status' => 1, 'msg' => 'deleted successfully!'));
+        } else {
+            $result = json_encode(array('status' => 1, 'msg' => 'some error occurred!'));
+        }
+        header('Content-Type: application/x-json; charset=utf-8');
+        echo $result;
+        die;
+    }
+
+    public function delete_address(Request $request) {
+        $row_id = $request->row_id;
+        $delete = DB::table('event_addresses')->where('id', $row_id)->delete();
         if ($delete) {
             $result = json_encode(array('status' => 1, 'msg' => 'deleted successfully!'));
         } else {

@@ -17,6 +17,7 @@ class CreateSiteSettingsTable extends Migration {
             $table->text('var_name');
             $table->text('var_title');
             $table->text('var_value');
+            $table->enum('type', ['content', 'image']);
             $table->timestamps();
         });
     }

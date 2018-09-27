@@ -16,11 +16,9 @@ class CreateEventSeosTable extends Migration
         Schema::create('event_seos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('event_id');
-            $table->text('meta_title');
             $table->text('meta_keyword');
             $table->text('meta_description');
             $table->text('page_title');
-            $table->text('page_description');
             $table->timestamps();
         });
     }

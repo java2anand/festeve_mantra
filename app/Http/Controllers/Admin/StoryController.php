@@ -35,7 +35,8 @@ class StoryController extends Controller {
                 return redirect()->route('admin.story_list')->with('alert-danger', 'Story not found!');
             }
         }
-        return view('admin.story_add', compact('story','page'));
+        $arrCategory = DB::table('categories')->where('status', 1)->get();
+        return view('admin.story_add', compact('story','page','arrCategory'));
     }
 
     public function save_story(StoryRequest $request, $id = false) {
@@ -54,7 +55,7 @@ class StoryController extends Controller {
             $file = $request->file('image');
             $imagename = time().'.'.$file->getClientOriginalExtension();
             $destinationPath = public_path('/images/story');
-            $img = Image::make($file->getRealPath())->resize(1000, 700);
+            $img = Image::make($file->getRealPath());
 
             if($img->save($destinationPath.'/'.$imagename,80)){
                 $prev_image = public_path('images/story').'/'.$request->old_image;
@@ -70,7 +71,7 @@ class StoryController extends Controller {
             $file = $request->file('narrator_image');
             $nimagename = time().'.'.$file->getClientOriginalExtension();
             $destinationPath = public_path('/images/story/narrator');
-            $img = Image::make($file->getRealPath())->resize(50, 50);
+            $img = Image::make($file->getRealPath());
 
             if($img->save($destinationPath.'/'.$nimagename,80)){
                 $prev_narrator_image = public_path('images/story/narrator').'/'.$request->old_narrator_image;

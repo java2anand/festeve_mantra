@@ -35,52 +35,60 @@
                         ]) !!}
 
                             <div class="box-body">
-                                <div class="form-group">
-                                    <label for="speaker_name">Speaker Name*</label>
-                                    <input type="text" class="form-control" id="speaker_name" name="speaker_name" placeholder="Enter Event Speaker name" value="<?= (isset($speaker->speaker_name) && !empty($speaker->speaker_name)) ? $speaker->speaker_name: old('speaker_name') ?>">
-                                    <span class="error"><?php if ($errors->has('speaker_name')){ echo $errors->first('speaker_name'); } ?></span>
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="speaker_name">Speaker Name*</label>
+                                        <input type="text" class="form-control" id="speaker_name" name="speaker_name" placeholder="Enter Event Speaker name" value="<?= (isset($speaker->speaker_name) && !empty($speaker->speaker_name)) ? $speaker->speaker_name: old('speaker_name') ?>">
+                                        <span class="error"><?php if ($errors->has('speaker_name')){ echo $errors->first('speaker_name'); } ?></span>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="title">Title</label>
+                                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" value="<?= (isset($speaker->title) && !empty($speaker->title)) ? $speaker->title: old('title') ?>">
+                                        <span class="error"><?php if ($errors->has('title')){ echo $errors->first('title'); } ?></span>
+                                    </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="title">Title</label>
-                                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" value="<?= (isset($speaker->title) && !empty($speaker->title)) ? $speaker->title: old('title') ?>">
-                                    <span class="error"><?php if ($errors->has('title')){ echo $errors->first('title'); } ?></span>
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="tag_line">Tag Line</label>
+                                        <input type="text" class="form-control" id="tag_line" name="tag_line" placeholder="Enter Tag Line" value="<?= (isset($speaker->tag_line) && !empty($speaker->tag_line)) ? $speaker->tag_line: old('tag_line') ?>">
+                                        <span class="error"><?php if ($errors->has('tag_line')){ echo $errors->first('tag_line'); } ?></span>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="facebook_id">Facebook Id</label>
+                                        <input type="text" class="form-control" id="facebook_id" name="facebook_id" placeholder="Enter facebook id" value="<?= (isset($speaker->facebook_id) && !empty($speaker->facebook_id)) ? $speaker->facebook_id: old('facebook_id') ?>">
+                                        <span class="error"><?php if ($errors->has('facebook_id')){ echo $errors->first('facebook_id'); } ?></span>
+                                    </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="tag_line">Tag Line</label>
-                                    <input type="text" class="form-control" id="tag_line" name="tag_line" placeholder="Enter Tag Line" value="<?= (isset($speaker->tag_line) && !empty($speaker->tag_line)) ? $speaker->tag_line: old('tag_line') ?>">
-                                    <span class="error"><?php if ($errors->has('tag_line')){ echo $errors->first('tag_line'); } ?></span>
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="twitter_id">Twitter Id</label>
+                                        <input type="text" class="form-control" id="twitter_id" name="twitter_id" placeholder="Enter Twitter Id" value="<?= (isset($speaker->twitter_id) && !empty($speaker->twitter_id)) ? $speaker->twitter_id: old('twitter_id') ?>">
+                                        <span class="error"><?php if ($errors->has('twitter_id')){ echo $errors->first('twitter_id'); } ?></span>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="linked_id">Linked Id</label>
+                                        <input type="text" class="form-control" id="linked_id" name="linked_id" placeholder="Enter LinkedIn Id" value="<?= (isset($speaker->linked_id) && !empty($speaker->linked_id)) ? $speaker->linked_id: old('linked_id') ?>">
+                                        <span class="error"><?php if ($errors->has('linked_id')){ echo $errors->first('linked_id'); } ?></span>
+                                    </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="facebook_id">Facebook Id</label>
-                                    <input type="text" class="form-control" id="facebook_id" name="facebook_id" placeholder="Enter facebook id" value="<?= (isset($speaker->facebook_id) && !empty($speaker->facebook_id)) ? $speaker->facebook_id: old('facebook_id') ?>">
-                                    <span class="error"><?php if ($errors->has('facebook_id')){ echo $errors->first('facebook_id'); } ?></span>
-                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="instagram_id">Instagram Id</label>
+                                        <input type="text" class="form-control" id="instagram_id" name="instagram_id" placeholder="Enter Instagram Id" value="<?= (isset($speaker->instagram_id) && !empty($speaker->instagram_id)) ? $speaker->instagram_id: old('instagram_id') ?>">
+                                        <span class="error"><?php if ($errors->has('instagram_id')){ echo $errors->first('instagram_id'); } ?></span>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="twitter_id">Twitter Id</label>
-                                    <input type="text" class="form-control" id="twitter_id" name="twitter_id" placeholder="Enter Twitter Id" value="<?= (isset($speaker->twitter_id) && !empty($speaker->twitter_id)) ? $speaker->twitter_id: old('twitter_id') ?>">
-                                    <span class="error"><?php if ($errors->has('twitter_id')){ echo $errors->first('twitter_id'); } ?></span>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="linked_id">Linked Id</label>
-                                    <input type="text" class="form-control" id="linked_id" name="linked_id" placeholder="Enter LinkedIn Id" value="<?= (isset($speaker->linked_id) && !empty($speaker->linked_id)) ? $speaker->linked_id: old('linked_id') ?>">
-                                    <span class="error"><?php if ($errors->has('linked_id')){ echo $errors->first('linked_id'); } ?></span>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="instagram_id">Instagram Id</label>
-                                    <input type="text" class="form-control" id="instagram_id" name="instagram_id" placeholder="Enter Instagram Id" value="<?= (isset($speaker->instagram_id) && !empty($speaker->instagram_id)) ? $speaker->instagram_id: old('instagram_id') ?>">
-                                    <span class="error"><?php if ($errors->has('instagram_id')){ echo $errors->first('instagram_id'); } ?></span>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="googleplus_id">Googleplus Id</label>
-                                    <input type="text" class="form-control" id="googleplus_id" name="googleplus_id" placeholder="Enter Google Plus Id" value="<?= (isset($speaker->googleplus_id) && !empty($speaker->googleplus_id)) ? $speaker->googleplus_id: old('googleplus_id') ?>">
-                                    <span class="error"><?php if ($errors->has('descgoogleplus_idription')){ echo $errors->first('googleplus_id'); } ?></span>
+                                    <div class="col-md-6">
+                                        <label for="googleplus_id">Googleplus Id</label>
+                                        <input type="text" class="form-control" id="googleplus_id" name="googleplus_id" placeholder="Enter Google Plus Id" value="<?= (isset($speaker->googleplus_id) && !empty($speaker->googleplus_id)) ? $speaker->googleplus_id: old('googleplus_id') ?>">
+                                        <span class="error"><?php if ($errors->has('descgoogleplus_idription')){ echo $errors->first('googleplus_id'); } ?></span>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -90,15 +98,15 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="image">Speaker Image</label>
+                                    <label for="image">Speaker Image<span class="error">* Image must be in width & height less than (200 X 200), format (jpeg,jpg,png) and max_size(3MB)</span></label>
                                     <input type="file" class="form-control" id="image" name="image" >
                                     <span class="error"></span>
                                     <input type="hidden" name="old_image" value="<?= (isset($speaker->image) && !empty($speaker->image)) ? $speaker->image: '' ?>" />
 
                                     <?php
                                     $image = (isset($speaker->image) && !empty($speaker->image)) ? $speaker->image: '';
-                                        if (file_exists( public_path() . '/images/speaker/thumb/' . $image)) {?>
-                                            <img src="{{ asset( 'images/speaker/thumb/'.$image)}}" />
+                                    if ( !empty($image) && file_exists( public_path() . '/images/speaker/' . $image)) {?>
+                                            <img src="{{ asset( 'images/speaker/thumb/'.$image)}}" width="200px" height="100px"/>
                                     <?php }?>
                                 </div>
 

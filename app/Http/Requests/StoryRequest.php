@@ -26,6 +26,8 @@ class StoryRequest extends FormRequest
         $id = $this->route('id');
         return [
             'story_name'=>'required',
+            'image' => 'mimes:jpeg,jpg,png| max:3072 |dimensions:max_width=360,max_height=210',
+            'narrator_image' => 'mimes:jpeg,jpg,png| max:2048 |dimensions:max_width=150,max_height=150',
             'status'=>'required'
         ];
     }

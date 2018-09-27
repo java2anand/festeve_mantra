@@ -45,14 +45,6 @@
                     <div class="box-body">
 
                         <div class="form-group col-sm-12">
-                            <label for="meta_title">Meta Title</label>
-                            <input type="text" class="form-control" id="meta_title" name="meta_title"  value="<?= (isset($event->seo->meta_title) && !empty($event->seo->meta_title)) ? $event->seo->meta_title : old('meta_title') ?>">
-                            <span class="error"><?php if ($errors->has('meta_title')) {
-    echo $errors->first('meta_title');
-} ?></span>
-                        </div>
-
-                        <div class="form-group col-sm-12">
                             <label for="meta_keyword">Meta Keyword</label>
                             <input type="text" class="form-control" id="meta_keyword" name="meta_keyword"  value="<?= (isset($event->seo->meta_keyword) && !empty($event->seo->meta_keyword)) ? $event->seo->meta_keyword : old('meta_keyword') ?>">
                             <span class="error"><?php if ($errors->has('meta_keyword')) {
@@ -75,15 +67,6 @@
 
                             <span class="error"><?php if ($errors->has('page_title')) {
     echo $errors->first('page_title');
-} ?></span>
-                        </div>
-
-                        <div class="form-group col-sm-12">
-                            <label for="page_description">Page Description</label>
-                            <input type="text" class="form-control" id="page_description" name="page_description"  value="<?= (isset($event->seo->page_description) && !empty($event->seo->page_description)) ? $event->seo->page_description : old('page_description') ?>">
-
-                            <span class="error"><?php if ($errors->has('page_description')) {
-    echo $errors->first('page_description');
 } ?></span>
                         </div>
 

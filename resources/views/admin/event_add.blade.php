@@ -102,6 +102,16 @@
                             </select>
                         </div>
 
+                        <div class="form-group col-sm-12">
+                            <label for="speaker_title">Write About Speaker/Artist</label>
+                            <input type="text" class="form-control" id="speaker_title" name="speaker_title" placeholder="Write About Speaker/Artist" value="<?= (isset($event->speaker_title) && !empty($event->speaker_title)) ? $event->speaker_title : old('speaker_title') ?>">
+                            <span class="error"><?php
+                                if ($errors->has('speaker_title')) {
+                                    echo $errors->first('speaker_title');
+                                }
+                                ?></span>
+                        </div>
+
                         <div class="form-group col-sm-3">
                             <div class="form-group">
                                 <label for="start_date">Start Date*</label>

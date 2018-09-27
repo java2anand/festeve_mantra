@@ -46,7 +46,7 @@
                                   <i class="fa fa-ellipsis-v"></i>
                                   </div>
                                 </td>
-                                <td>{{ $cat->category_name }}</td>
+                                <td>{{ ($cat->parent_id == 0) ? ($cat->category_name) : '>>'.$cat->category_name }}</td>
                               </tr>
                               @endforeach
                             </tbody>

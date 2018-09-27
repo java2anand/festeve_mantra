@@ -61,6 +61,9 @@
                                     <th>
                                         <a href="{{url('admin/pages_list')}}?search={{request('search')}}&field=title&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Page Title &nbsp;<i class="fa fa-sort-alpha-{{request('field','title')=='title'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i></a>
                                     </th>
+                                    <th>
+                                        Page Slug
+                                    </th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -71,6 +74,7 @@
 
                                     <td>{{ $i }}.</td>
                                     <td>{{ $page->title }}</td>
+                                    <td>{{ $page->slug }}</td>
                                     <td width="10%">
                                         <div class="btn-group">
                                             <a href="{{ url('admin/page_setting',$page->id) }}" data-toggle="tooltip" title="" class="btn btn-sm btn-success" data-original-title="Edit"><i class="fa fa-pencil"></i></a>

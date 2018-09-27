@@ -70,7 +70,7 @@
                                     </a>
                                 </div>
                                 <div class="upcoming_item_info">
-                                    <span class="event_type_icon"><img src="{{asset('ws/images/uc_bg.jpg')}}"></span>
+                                    <span class="event_type_icon"><img src="{{asset('images/category/event_image/'.$event->category->event_image)}}"></span>
                                     <p class="uc_event_name"><a href="{{ url('event-detail/'.$event->slug)}}">{{$event->title}}</a></p>
                                     <p class="uc_event_date">{{date('F d, Y', strtotime($event->start_date))}}</p>
 
@@ -99,14 +99,14 @@
                                                 <a href="{{ url('story-detail/'.$story->slug)}}"><img src="{{ asset( 'images/story/'.$story->image)}}" alt="event banner"></a>
                                             </div>
                                             <div class="upcoming_item_info">
-                                                <p class="uc_event_name"><a href="#">{{$story->story_name}}</a></p>
+                                                <p class="uc_event_name"><a href="{{ url('story-detail/'.$story->slug)}}">{{$story->story_name}}</a></p>
                                                 <div class="media">
                                                     <div class="media-left">
-                                                        <img src="{{ asset( 'images/story/narrator/'.$story->narrator_image)}}" class="media-object">
+                                                        <img src="{{ asset( 'images/story/narrator/'.$story->narrator_image)}}" class="media-object" width="50px" height="50px">
                                                     </div>
                                                     <div class="media-body">
                                                         <h4 class="media-heading"><span>by</span> {{$story->narrator_name}}</h4>
-                                                        <p>{!! substr($story->short_desc,0,50) !!}</p>
+                                                        <p>{!! substr($story->short_desc,0,50).'...' !!}</p>
                                                     </div>
                                                 </div>
 
@@ -135,27 +135,29 @@
                 <div class="col-md-9 col-sm-8 col-xs-12 f_padding_right">
                     <div class="row text-center"><!-- left top categories -->
                         <div class="col-sm-7 col-xs-12 f_padding_right">
-                            <a href="{{url('event-category/Music-events')}}">
-                                <div class="cat_left_item left_cat1">
-                                    <p><span><img src="{{asset('ws/images/snew_icon1.png')}}"></span>Music</p>
+                            <a href="{{url('event-category/'.$arr_top_cat[0]->slug)}}">
+                                <div class="cat_left_item left_cat1" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[0]->image)}}');">
+                                    <p><span><img src="{{asset('images/category/mini_icon/'.$arr_top_cat[0]->mini_icon)}}"></span>Music</p>
                                 </div>
                             </a>
                         </div>
                         <div class="col-sm-5 col-xs-12">
-                            <a href="{{url('event-category/sports-events')}}"><div class="cat_left_item left_cat2"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>sports</p></div></a>
+                            <a href="{{url('event-category/'.$arr_top_cat[1]->slug)}}"><div class="cat_left_item left_cat2" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[1]->image)}}');"><p><span><img src="{{asset('images/category/mini_icon/'.$arr_top_cat[1]->mini_icon)}}"></span>sports</p></div></a>
                         </div>
                     </div><!-- left top categories -->
                     <div class="row text-center"><!-- left middle categories -->
                         <div class="col-sm-5 col-xs-12 f_padding_right">
-                            <a href="{{url('event-category/food-festivals')}}"><div class="cat_left_item left_cat3"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>food</p></div></a>
+                            <a href="{{url('event-category/'.$arr_top_cat[2]->slug)}}">
+                                <div class="cat_left_item left_cat3" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[2]->image)}}');"><p><span><img src="{{asset('images/category/mini_icon/'.$arr_top_cat[2]->mini_icon)}}"></span>food</p></div></a>
                         </div>
                         <div class="col-sm-7 col-xs-12">
-                            <a href="{{url('event-category/travel-packages')}}"><div class="cat_left_item left_cat4"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>travel</p></div></a>
+                            <a href="{{url('event-category/'.$arr_top_cat[3]->slug)}}"><div class="cat_left_item left_cat4" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[3]->image)}}');"><p><span><img src="{{asset('images/category/mini_icon/'.$arr_top_cat[3]->mini_icon)}}"></span>travel</p></div></a>
                         </div>
                     </div><!-- left middle categories -->
                     <div class="row text-center"><!-- left bottom categories -->
                         <div class="col-sm-12 col-xs-12 ">
-                            <a href="{{url('event-category/dj-party-events')}}"><div class="cat_left_item left_cat5"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span>DJ Party</p></div></a>
+                            <a href="{{url('event-category/'.$arr_top_cat[4]->slug)}}">
+                                <div class="cat_left_item left_cat5" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[4]->image)}}');"><p><span><img src="{{asset('images/category/mini_icon/'.$arr_top_cat[4]->mini_icon)}}"></span>DJ Party</p></div></a>
                         </div>
                     </div><!-- left bottom categories -->
 
@@ -163,12 +165,14 @@
                 <div class="col-md-3 col-sm-4 col-xs-12">
                     <div class="row text-center"><!-- right top categories -->
                         <div class="col-sm-12 col-xs-12">
-                            <a href="{{url('event-category/conference-events')}}"><div class="cat_right_item1 right_cat1"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span><br>Conference</p></div></a>
+                            <a href="{{url('event-category/'.$arr_top_cat[5]->slug)}}">
+                                <div class="cat_right_item1 right_cat1" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[5]->image)}}');"><p><span><img src="{{asset('images/category/mini_icon/'.$arr_top_cat[5]->mini_icon)}}"></span><br>Conference</p></div></a>
                         </div>
                     </div> <!-- ends -->
                     <div class="row text-center"><!-- right bottom categories -->
                         <div class="col-sm-12 col-xs-12">
-                            <a href="{{url('event-category/skill-development-events')}}"><div class="cat_right_item2 right_cat2"><p><span><img src="{{asset('ws/images/new_icon1.png')}}"></span><br>Skill Development</p></div></a>
+                            <a href="{{url('event-category/'.$arr_top_cat[6]->slug)}}">
+                                <div class="cat_right_item2 right_cat2" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[6]->image)}}');"><p><span><img src="{{asset('images/category/mini_icon/'.$arr_top_cat[6]->mini_icon)}}"></span><br>Skill Development</p></div></a>
                         </div>
                     </div> <!-- ends -->
 

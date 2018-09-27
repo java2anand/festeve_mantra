@@ -46,9 +46,9 @@ class SpeakerController extends Controller {
         if($request->hasFile('image')) {
             $file = $request->file('image');
             $imagename = time().'.'.$file->getClientOriginalExtension();
-            $destinationPath = public_path('/images/speaker/thumb');
-            $thumb_img = Image::make($file->getRealPath())->resize(100, 100);
-            $thumb_img->save($destinationPath.'/'.$imagename,80);
+            //$destinationPath = public_path('/images/speaker/thumb');
+            //$thumb_img = Image::make($file->getRealPath())->resize(100, 100);
+            //$thumb_img->save($destinationPath.'/'.$imagename,80);
 
             $destinationPath = public_path('/images/speaker');
             if($file->move($destinationPath, $imagename)){
@@ -56,7 +56,7 @@ class SpeakerController extends Controller {
                 $prev_image_thumb = public_path('images/speaker/thumb').'/'.$request->old_image;
 
                 @unlink($prev_image_origi);
-                @unlink($prev_image_thumb);
+                //@unlink($prev_image_thumb);
             }
             $speaker->image  = $imagename;
 

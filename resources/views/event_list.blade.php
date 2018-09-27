@@ -8,7 +8,7 @@
         <div class="moblie_filter_overlay"></div>
         <div class="container listing_page_width listing_page_top_section">
             <div class="row">
-                <h1 class="col-xs-12 text-center home_section_heading"><span>{{$category->category_name}}</span></h1>
+                <h1 class="col-xs-12 text-center home_section_heading"><span>{{$category->category_title}}</span></h1>
                 <!--<div class="col-xs-12 text-center">
                     <form name="listing_search_form" id="listing_search_form">
                         <input type="text" class="listing_search_input" placeholder="Discover over 18,000 fests and get your favorites coming up!">
@@ -49,7 +49,7 @@
                                     @foreach($arr_category as $k=>$maincat)
                                     <li>
                                         <input type="checkbox" id="filter_{{$k}}" <?= $maincat->slug ==  Request::segment(2) ? 'checked' : ''; ?> onclick='window.location.href = "{{ url('event-category/'.$maincat->slug)}}"'>
-                                        <label for="filter_{{$k}}" class="sub_category_dropdown">{{ $maincat->category_name }} <span><img src="{{ asset('ws/images/down_arrow.jpg')}}"></span></label>
+                                        <label for="filter_{{$k}}" class="sub_category_dropdown">{{ $maincat->category_name }} <span><!--<img src="{{ asset('ws/images/down_arrow.jpg')}}">--></span></label>
                                         <!-- sub categories  -->
                                         <!--<ul class="category_sub_outer">
                                             @foreach($maincat->children as $key=>$childcat)

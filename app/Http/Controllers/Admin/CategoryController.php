@@ -45,15 +45,14 @@ class CategoryController extends Controller {
             $category = Category::find($id);
         }
         $category->category_name = $request->category_name;
+        $category->category_title = !empty($request->category_title)?$request->category_title:'';
         $category->slug = $request->slug;
         $category->description = !empty($request->description) ? $request->description : '';
         $category->parent_id = $request->parent_id;
         $category->status = $request->status;
-        $category->meta_title = !empty($request->meta_title) ? $request->meta_title : '';
         $category->meta_keyword = !empty($request->meta_keyword) ? $request->meta_keyword : '';
         $category->meta_description = !empty($request->meta_description) ? $request->meta_description : '';
         $category->page_title = !empty($request->page_title) ? $request->page_title : '';
-        $category->page_description = !empty($request->page_description) ? $request->page_description : '';
 
         /* For Mini Icon */
         if ($request->hasFile('mini_icon')) {
@@ -106,6 +105,21 @@ class CategoryController extends Controller {
             $category->image = (!empty($request->old_image)) ? $request->old_image : '';
         }
 
+        /*         * **** image ******** */
+        if ($request->hasFile('event_image')) {
+            $file_event_image = $request->file('event_image');
+            $event_image = time() . '.' . $file_event_image->getClientOriginalExtension();
+
+            $destinationPath = public_path('/images/category/event_image');
+            if ($file_event_image->move($destinationPath, $event_image)) {
+                $prev_event_image = public_path('images/category/event_image') . '/' . $request->old_event_image;
+                @unlink($prev_event_image);
+            }
+            $category->event_image = $event_image;
+        } else {
+            $category->event_image = (!empty($request->old_event_image)) ? $request->old_event_image : '';
+        }
+
         /*         * **** top_banner ******** */
         if ($request->hasFile('top_banner')) {
             $file_tb = $request->file('top_banner');
@@ -146,7 +160,7 @@ class CategoryController extends Controller {
 
     public function category_sorting(){
         $page = 'category-sorting';
-        $arr_category = Category::orderBy('sort_order','ASC')->select('id','category_name')->where('status',1)->where('parent_id',0)->get();
+        $arr_category = Category::orderBy('sort_order','ASC')->select('id','parent_id','category_name')->where('status',1)->get();
 
         return view('admin.category_sorting', compact('arr_category', 'page'));
     }

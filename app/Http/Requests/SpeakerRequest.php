@@ -26,8 +26,8 @@ class SpeakerRequest extends FormRequest
         $id = $this->route('id');
         return [
             'speaker_name'=>'required|unique:speakers,speaker_name,'.$id,
-            /*'image'=>'required',
-            'title'=>'required',
+            'image' => 'mimes:jpeg,jpg,png| max:3072 |dimensions:max_width=200,max_height=200',
+            /*'title'=>'required',
             'tag_line'=>'required',
             'description'=>'required',
             'facebook_id'=>'required',

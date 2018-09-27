@@ -23,7 +23,7 @@ class Event extends Model{
     }
 
     public function address(){
-        return $this->belongsTo('App\Model\EventAddress', 'id','event_id');
+        return $this->hasMany('App\Model\EventAddress', 'event_id','id');
     }
 
     public function seo(){
@@ -41,6 +41,6 @@ class Event extends Model{
     }*/
 
     public function scopeTest(){
-        
+
     }
 }

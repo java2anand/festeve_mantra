@@ -24,74 +24,24 @@
                     <ul class="story_list_outer_ul">
                         <li class="story_list_outer_ul_left">
                             <div class="row">
+
+                                @foreach($arr_story as $story)
                                 <div class="col-sm-6 text-center">
                                     <div class="list_story_item">
-                                        <a href="#"><img src="{{ asset('ws/images/img_story.jpg')}}" class="img-responsive" alt="banner"></a>
-                                        <p class="list_cat"><a href="#">Music</a></p>
-                                        <p class="list_cat_title"><a href="#">What is Lorem Ipsum?</a></p>
-                                        <p class="list_cat_by">By <span>Kapil</span> on <span>27-july-2018</span></p>
-                                        <p class="list_cat_desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                        <p class="list_cat_readmore"><a href="#">Read More</a></p>
+                                        <a href="{{ url('story-detail/'.$story->slug)}}"><img src="{{ asset('images/story/'.$story->image)}}" class="img-responsive" alt="banner"></a>
+                                        <p class="list_cat"><a href="{{url('event-category/'.$story->category->slug)}}">{{$story->category->category_name}}</a></p>
+                                        <p class="list_cat_title"><a href="{{ url('story-detail/'.$story->slug)}}">{{$story->story_name}}</a></p>
+                                        <p class="list_cat_by">By <span>{{$story->narrator_name}}</span> on <span>{{date('d-F-Y',strtotime($story->created_at))}}</span></p>
+                                        <p class="list_cat_desc">{!!$story->short_desc!!}</p>
+                                        <p class="list_cat_readmore"><a href="{{ url('story-detail/'.$story->slug)}}">Read More</a></p>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 text-center">
-                                    <div class="list_story_item">
-                                        <a href="#"><img src="{{ asset('ws/images/img_story.jpg')}}" class="img-responsive" alt="banner"></a>
-                                        <p class="list_cat"><a href="#">Music</a></p>
-                                        <p class="list_cat_title"><a href="#">What is Lorem Ipsum?</a></p>
-                                        <p class="list_cat_by">By <span>Kapil</span> on <span>27-july-2018</span></p>
-                                        <p class="list_cat_desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                        <p class="list_cat_readmore"><a href="#">Read More</a></p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 text-center">
-                                    <div class="list_story_item">
-                                        <a href="#"><img src="{{ asset('ws/images/img_story.jpg')}}" class="img-responsive" alt="banner"></a>
-                                        <p class="list_cat"><a href="#">Music</a></p>
-                                        <p class="list_cat_title"><a href="#">What is Lorem Ipsum?</a></p>
-                                        <p class="list_cat_by">By <span>Kapil</span> on <span>27-july-2018</span></p>
-                                        <p class="list_cat_desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                        <p class="list_cat_readmore"><a href="#">Read More</a></p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 text-center">
-                                    <div class="list_story_item">
-                                        <a href="#"><img src="{{ asset('ws/images/img_story.jpg')}}" class="img-responsive" alt="banner"></a>
-                                        <p class="list_cat"><a href="#">Music</a></p>
-                                        <p class="list_cat_title"><a href="#">What is Lorem Ipsum?</a></p>
-                                        <p class="list_cat_by">By <span>Kapil</span> on <span>27-july-2018</span></p>
-                                        <p class="list_cat_desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                        <p class="list_cat_readmore"><a href="#">Read More</a></p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 text-center">
-                                    <div class="list_story_item">
-                                        <a href="#"><img src="{{ asset('ws/images/img_story.jpg')}}" class="img-responsive" alt="banner"></a>
-                                        <p class="list_cat"><a href="#">Music</a></p>
-                                        <p class="list_cat_title"><a href="#">What is Lorem Ipsum?</a></p>
-                                        <p class="list_cat_by">By <span>Kapil</span> on <span>27-july-2018</span></p>
-                                        <p class="list_cat_desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                        <p class="list_cat_readmore"><a href="#">Read More</a></p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 text-center">
-                                    <div class="list_story_item">
-                                        <a href="#"><img src="{{ asset('ws/images/img_story.jpg')}}" class="img-responsive" alt="banner"></a>
-                                        <p class="list_cat"><a href="#">Music</a></p>
-                                        <p class="list_cat_title"><a href="#">What is Lorem Ipsum?</a></p>
-                                        <p class="list_cat_by">By <span>Kapil</span> on <span>27-july-2018</span></p>
-                                        <p class="list_cat_desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                        <p class="list_cat_readmore"><a href="#">Read More</a></p>
-                                    </div>
-                                </div>
+                                @endforeach
+
+
                                 <div class="col-xs-12 text-center list_pager_outer"><!-- pager section -->
-                                    <nav> <ul class="pagination"> <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li> <li><a href="#">2</a></li> <li><a href="#">3</a></li> <li><a href="#">4</a></li> <li><a href="#">5</a></li> <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li> </ul> </nav>
+                                    {{ $arr_story->links() }}
+                                    <!--<nav> <ul class="pagination"> <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li> <li><a href="#">2</a></li> <li><a href="#">3</a></li> <li><a href="#">4</a></li> <li><a href="#">5</a></li> <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li> </ul> </nav>-->
                                 </div><!-- pager section ends -->
                             </div>
                         </li>
@@ -100,66 +50,12 @@
                             <div class="listing_left_sidebar_inner list_filter_spacing">
                                 <h4>Categories</h4>
                                 <ul>
-                                    <li>
-                                        <input type="checkbox" id="filter_1">
-                                        <label for="filter_1">All Event Types</label>
-                                        <!-- sub categories  -->
-                                        <ul class="category_sub_outer">
-                                            <li>
-                                                <input type="checkbox" id="filter_21">
-                                                <label for="filter_21">Sub category1</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="filter_31">
-                                                <label for="filter_31">Sub category2</label>
-                                            </li>
-
-                                        </ul>
-                                        <!-- sub categories ends -->
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="filter_2">
-                                        <label for="filter_2" class="sub_category_dropdown">Music <span><img src="{{ asset('ws/images/down_arrow.jpg')}}"></span></label>
-                                        <!-- sub categories  -->
-                                        <ul class="category_sub_outer">
-                                            <li>
-                                                <input type="checkbox" id="filter_211">
-                                                <label for="filter_211">Sub category1</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="filter_311">
-                                                <label for="filter_311">Sub category2</label>
-                                            </li>
-
-                                        </ul>
-                                        <!-- sub categories ends -->
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="filter_3">
-                                        <label for="filter_3">Exhibition & Trade Fair</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="filter_4">
-                                        <label for="filter_4" class="sub_category_dropdown">All Event Types <span><img src="{{ asset('ws/images/down_arrow.jpg')}}"></span></label>
-                                        <!-- sub categories  -->
-                                        <ul class="category_sub_outer">
-                                            <li>
-                                                <input type="checkbox" id="filter_212">
-                                                <label for="filter_212">Sub category1</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="filter_312">
-                                                <label for="filter_312">Sub category2</label>
-                                            </li>
-
-                                        </ul>
-                                        <!-- sub categories ends -->
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="filter_5">
-                                        <label for="filter_5">Music & DJ Parties</label>
-                                    </li>
-
+                                    @foreach($arr_category as $k=>$cat)
+                                        <li>
+                                            <input type="checkbox" id="filter_5">
+                                            <label for="filter_{{$k}}">{{$cat->category_name}}</label>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <!-- category filter ends -->

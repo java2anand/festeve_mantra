@@ -37,34 +37,48 @@
                     'id' => 'category_form',
                     ]) !!}
                     <div class="box-body">
-                        <div class="form-group">
-                            <label for="category_name">Category Name*</label>
-                            <input type="text" class="form-control" id="category_name" name="category_name" placeholder="Enter Event Category name" value="<?= (isset($category->category_name) && !empty($category->category_name)) ? $category->category_name : old('category_name') ?>">
-                            <span class="error"><?php
-                                if ($errors->has('category_name')) {
-                                    echo $errors->first('category_name');
-                                }
-                                ?></span>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="category_name">Category Name*</label>
+                                <input type="text" class="form-control" id="category_name" name="category_name" placeholder="Enter Event Category name" value="<?= (isset($category->category_name) && !empty($category->category_name)) ? $category->category_name : old('category_name') ?>">
+                                <span class="error"><?php
+                                    if ($errors->has('category_name')) {
+                                        echo $errors->first('category_name');
+                                    }
+                                    ?></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="category_title">Category Title*</label>
+                                <input type="text" class="form-control" id="category_title" name="category_title" placeholder="Enter Event Category Title" value="<?= (isset($category->category_title) && !empty($category->category_title)) ? $category->category_title : old('category_title') ?>">
+                                <span class="error"><?php
+                                    if ($errors->has('category_title')) {
+                                        echo $errors->first('category_title');
+                                    }
+                                    ?></span>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="category_name">Category Slug*</label>
-                            <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter Slug" value="<?= (isset($category->slug) && !empty($category->slug)) ? $category->slug : old('slug') ?>">
-                            <span class="error"><?php
-                                if ($errors->has('slug')) {
-                                    echo $errors->first('slug');
-                                }
-                                ?></span>
-                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="category_name">Category Slug*</label>
+                                <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter Slug" value="<?= (isset($category->slug) && !empty($category->slug)) ? $category->slug : old('slug') ?>">
+                                <span class="error"><?php
+                                    if ($errors->has('slug')) {
+                                        echo $errors->first('slug');
+                                    }
+                                    ?></span>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="parent_id">Select Parent Category</label>
-                            <select class="form-control" id="status" name="parent_id">
-                                <option value="0" >Parent Category</option>
-                                <?php foreach ($arrCategory as $k => $v) { ?>
-                                    <option value="<?= $v->id ?>" <?= (!empty($category->parent_id) && ($v->id == $category->parent_id)) ? 'selected' : ''; ?>><?= $v->category_name ?></option>
-                                <?php } ?>
-                            </select>
+                            <div class="col-md-6">
+                                <label for="parent_id">Select Parent Category</label>
+                                <select class="form-control" id="status" name="parent_id">
+                                    <option value="0" >Parent Category</option>
+                                    <?php foreach ($arrCategory as $k => $v) { ?>
+                                        <option value="<?= $v->id ?>" <?= (!empty($category->parent_id) && ($v->id == $category->parent_id)) ? 'selected' : ''; ?>><?= $v->category_name ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -106,7 +120,7 @@
 
                         <div class="form-group row">
                             <div class='col-md-9'>
-                                <label for="popular_icon">Popular Icon<span class="error">* Popular Icon must be in width & height less than (35 X 35), format (jpeg,jpg,png) and max_size(1MB)</span> </label>
+                                <label for="popular_icon">Popular Icon<span class="error">* Popular Icon must be in width & height less than (120 X 120), format (jpeg,jpg,png) and max_size(1MB)</span> </label>
                                 <input type="file" class="form-control" id="popular_icon" name="popular_icon" >
                                 <span class="error"></span>
                                 <input type="hidden" name="old_popular_icon" value="<?= (isset($category->popular_icon) && !empty($category->popular_icon)) ? $category->popular_icon : '' ?>" />
@@ -153,6 +167,31 @@
                             ?></span>
                         </div>
                         <div style='clear:both;'></div>
+
+                        <div class="form-group row">
+                            <div class='col-md-9'>
+                                <label for="event_image">Category Event Image<span class="error">* Image must be in width & height less than (50 X 50), format (jpeg,jpg,png) and max_size(1MB)</span></label>
+                                <input type="file" class="form-control" id="event_image" name="event_image" >
+                                <span class="error"></span>
+                                <input type="hidden" name="old_event_image" value="<?= (isset($category->event_image) && !empty($category->event_image)) ? $category->event_image : '' ?>" />
+                            </div>
+                            <div class='col-md-3'>
+                                <?php
+                                $event_image = (isset($category->event_image) && !empty($category->event_image)) ? $category->event_image : '';
+                                if (isset($event_image) && $event_image != "" && file_exists(public_path() . '/images/category/event_image/' . $event_image)) { ?>
+                                <label>Image </label><br/>
+                                <img src="{{ asset( 'images/category/event_image/'.$event_image)}}" width='100px' height='50px'/>
+    <?php } ?>
+                            </div>
+                            <br />
+                            <span class="error"><?php
+                            if ($errors->has('event_image')) {
+                                echo $errors->first('event_image');
+                            }
+                            ?></span>
+                        </div>
+                        <div style='clear:both;'></div>
+
                         <div class="form-group row">
                             <div class='col-md-9'>
                                 <label for="right_banner">Right Banner<span class="error">* Right Banner must be in width & height less than (200 X 620), format (jpeg,jpg,png) and max_size(1MB)</span></label>
@@ -203,15 +242,7 @@
 
                         <div style='clear:both;'></div>
 
-                        <div class="form-group">
-                            <label for="meta_title">Meta Title</label>
-                            <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="" value="<?= (isset($category->meta_title) && !empty($category->meta_title)) ? $category->meta_title : old('meta_title') ?>">
-                            <span class="error"><?php
-                                if ($errors->has('meta_title')) {
-                                    echo $errors->first('meta_title');
-                                }
-                                ?></span>
-                        </div>
+
 
                         <div class="form-group">
                             <label for="meta_keyword">Meta Keyword</label>
@@ -239,16 +270,6 @@
                             <span class="error"><?php
                                 if ($errors->has('page_title')) {
                                     echo $errors->first('page_title');
-                                }
-                                ?></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="page_description">Page Description</label>
-                            <input type="text" class="form-control" id="page_description" name="page_description" placeholder="" value="<?= (isset($category->page_description) && !empty($category->page_description)) ? $category->page_description : old('page_description') ?>">
-                            <span class="error"><?php
-                                if ($errors->has('page_description')) {
-                                    echo $errors->first('page_description');
                                 }
                                 ?></span>
                         </div>

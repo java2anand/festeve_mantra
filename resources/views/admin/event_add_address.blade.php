@@ -38,15 +38,15 @@
                     'id' => 'event_add_address_form',
                     ]) !!}
 
-                    <input type="hidden" name="latitude" id="latitude" value="<?= (isset($event->address->latitude) && !empty($event->address->latitude)) ? $event->address->latitude : old('latitude') ?>" />
-                    <input type="hidden" name="longitude" id="longitude" value="<?= (isset($event->address->longitude) && !empty($event->address->longitude)) ? $event->address->longitude : old('longitude') ?>"  />
-                    <input type="hidden" name="address_id"  value="<?= (isset($event->address->id) && !empty($event->address->id)) ? $event->address->id : '' ?>"  />
+                    <input type="hidden" name="latitude" id="latitude" value="<?= (isset($event_address->latitude) && !empty($event_address->latitude)) ? $event_address->latitude : old('latitude') ?>" />
+                    <input type="hidden" name="longitude" id="longitude" value="<?= (isset($event_address->longitude) && !empty($event_address->longitude)) ? $event_address->longitude : old('longitude') ?>"  />
+                    <input type="hidden" name="address_id"  value="<?= (isset($event_address->id) && !empty($event_address->id)) ? $event_address->id : '' ?>"  />
 
 
                     <div class="box-body">
                         <div class="form-group col-sm-12">
                             <label for="event_location	">Event Location</label>
-                            <input type="text" name="event_location" class="form-control input-md" onFocus="geolocate()" id="autocomplete" placeholder="Type location.."  value="<?= (isset($event->address->event_location) && !empty($event->address->event_location)) ? $event->address->event_location : old('event_location') ?>" />
+                            <input type="text" name="event_location" class="form-control input-md" onFocus="geolocate()" id="autocomplete" placeholder="Type location.."  value="<?= (isset($event_address->event_location) && !empty($event_address->event_location)) ? $event_address->event_location : old('event_location') ?>" />
 
                             <span class="error"><?php if ($errors->has('event_location')) { echo $errors->first('event_location'); } ?></span>
                         </div>
@@ -56,7 +56,7 @@
 
                         <div class="form-group col-sm-6">
                             <label for="city">Event City</label>
-                            <input type="text" class="form-control" id="locality" name="city"  value="<?= (isset($event->address->city) && !empty($event->address->city)) ? $event->address->city : old('city') ?>">
+                            <input type="text" class="form-control" id="locality" name="city"  value="<?= (isset($event_address->city) && !empty($event_address->city)) ? $event_address->city : old('city') ?>">
                             <span class="error"><?php if ($errors->has('city')) {
     echo $errors->first('city');
 } ?></span>
@@ -65,7 +65,7 @@
 
                         <div class="form-group col-sm-6">
                             <label for="state">Event State</label>
-                            <input type="text" class="form-control" id="administrative_area_level_1" name="state"  value="<?= (isset($event->address->state) && !empty($event->address->state)) ? $event->address->state : old('state') ?>">
+                            <input type="text" class="form-control" id="administrative_area_level_1" name="state"  value="<?= (isset($event_address->state) && !empty($event_address->state)) ? $event_address->state : old('state') ?>">
                             <span class="error"><?php if ($errors->has('state')) { echo $errors->first('state'); } ?></span>
                         </div>
 
@@ -73,7 +73,7 @@
 
                         <div class="form-group col-sm-6">
                             <label for="country">Event Country</label>
-                            <input type="text" class="form-control" id="country" name="country"  value="<?= (isset($event->address->country) && !empty($event->address->country)) ? $event->address->country : old('country') ?>">
+                            <input type="text" class="form-control" id="country" name="country"  value="<?= (isset($event_address->country) && !empty($event_address->country)) ? $event_address->country : old('country') ?>">
 
                             <span class="error"><?php if ($errors->has('country')) {
     echo $errors->first('country');
@@ -82,11 +82,19 @@
 
                         <div class="form-group col-sm-6">
                             <label for="postal_code">Postal Code</label>
-                            <input type="text" class="form-control" id="postal_code" name="postal_code"  value="<?= (isset($event->address->postal_code) && !empty($event->address->postal_code)) ? $event->address->postal_code : old('postal_code') ?>">
+                            <input type="text" class="form-control" id="postal_code" name="postal_code"  value="<?= (isset($event_address->postal_code) && !empty($event_address->postal_code)) ? $event_address->postal_code : old('postal_code') ?>">
 
                             <span class="error"><?php if ($errors->has('postal_code')) {
     echo $errors->first('postal_code');
 } ?></span>
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="primary_address">Primary Address</label>
+                            <select class="form-control" id="primary_address" name="primary_address">
+                                <option value="1" <?= isset($event_address->primary_address) && $event_address->primary_address == '1' ? 'selected' : '' ?>>Yes</option>
+                                <option value="0" <?= isset($event_address->primary_address) && $event_address->primary_address == '0' ? 'selected' : '' ?>>No</option>
+                            </select>
                         </div>
 
                         <div style="clear:both;"></div>
@@ -106,6 +114,51 @@
                 <!-- /.box -->
             </div>
             <!-- /.row -->
+
+            @if(count($event->address)>0)
+            <div class="row box">
+                <h3>Event Address</h3>
+                <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>Sr. No.</th>
+                            <th>Location</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Country</th>
+                            <th>Pincode</th>
+                            <th>Primary</th>
+                            <th>Action</th>
+                        </tr>
+                        @php $i = 1; @endphp
+                        @foreach($event->address as $add)
+                        <tr>
+                            <td>{{$i}}</td>
+                            <td>{{$add->event_location}}</td>
+                            <td>{{$add->city}}</td>
+                            <td>{{$add->state}}</td>
+                            <td>{{$add->country}}</td>
+                            <td>{{$add->postal_code}}</td>
+                            <td><?= $add->primary_address == 1 ? 'Yes' : 'No'; ?></td>
+
+                            <td width="10%">
+                                <div class="btn-group">
+                                    <a href="{{ url('admin/event_add_address/'.$add->event_id.'/'.$add->id) }}" data-toggle="tooltip" title="" class="btn btn-sm btn-success" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                                </div>
+                                <div class="btn-group">
+                                    <a href="" data-toggle="tooltip" title="" class="btn btn-sm btn-danger remove" rel_id="<?= $add->id; ?>" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        @php $i++; @endphp
+                        @endforeach
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            @endif
+
         </div><!-- /.container-fluid -->
     </section>
 
@@ -132,6 +185,31 @@ $(document).ready(function () {
             error.insertAfter(element);
         }
     });
+
+
+    $(document).on("click", ".remove", function () {
+        var relId = $(this).attr('rel_id');
+        if (confirm("Do you want to delete this?")){
+            $.ajax({
+                url: '{{url('admin/delete_event_address/')}}',
+                type: "POST",
+                data: {row_id: relId},
+                success: function (data) {
+                    if (data.status == 1){
+                        $('.save-record').show().html(data.msg);
+                        window.location.reload();
+                        return removeRow;
+                    } else{
+                        $('.save-record').show().html(data.msg);
+                        return false;
+                    }
+                }
+            });
+        } else {
+            return false;
+        }
+    });
+
 });
 
 </script>

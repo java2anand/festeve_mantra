@@ -11,7 +11,7 @@
                 </ul>
             </div>
             <div class="col-sm-3 col-xs-12 footer_items">
-                <h3 class="footer_headings">Get Inspried</h3>
+                <h3 class="footer_headings">Get Inspired</h3>
                 <ul>
                     <li><a href="{{ url('stories')}}">Festeve stories</a></li>
                     <li><a href="#">Submit your event</a></li>
@@ -53,7 +53,6 @@
                     <a href="{{ $sitedata['twitter_id'] }}" target="_blank"><img src="{{ asset('ws/images/tw.jpg')}}"></a>
                     <a href="{{ $sitedata['linked_id'] }}" target="_blank"><img src="{{ asset('ws/images/in.jpg')}}"></a>
                     <a href="{{ $sitedata['instagram_id'] }}" target="_blank"><img src="{{ asset('ws/images/insta.jpg')}}"></a>
-                    <a href="{{ $sitedata['youtube_id'] }}" target="_blank"><img src="{{ asset('ws/images/in.jpg')}}"></a>
 
                 </div>
                 <div class="col-sm-4 col-xs-12 text-center">

@@ -2,11 +2,10 @@
 <html lang="en">
     @include('head')
     <body class="about_page_outer">
-        <link href="{{asset('ws/css/star-rating.min.css')}}" rel="stylesheet">
-
         <!-- header -->
         @include('header')
         <!-- header ends -->
+        <link href="{{asset('ws/css/star-rating.min.css')}}" rel="stylesheet">
 
         <!-- evnt page content section -->
         <?php
@@ -22,7 +21,7 @@
                 <div class="event_topbanner_info">
                     <h3>{{ $event->title }}</h3>
                     <p class="event_topbanner_info_text"> {{ date('dS F',strtotime($event->start_date)) }} - {{ date('dS F',strtotime($event->end_date)) }},   {{ date('h:i A',strtotime($event->start_time)) }} </p>
-                    <p class="event_topbanner_info_text">{{ !empty($event->address->event_location) ? $event->address->event_location : '' }}</p>
+                    <p class="event_topbanner_info_text">{{ !empty($primar_address->event_location) ? $primar_address->event_location : '' }}</p>
                     <div>
                         <ul class="event_follow_ul">
                             <!--<li><input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="4"></li>-->
@@ -43,7 +42,7 @@
 
                         <div class="col-xs-12">
                             <div class="event_inner_section event_text">
-                                <h1 class="home_section_heading"> About Event</h1>
+                                <h3 class="home_section_heading"><span>About</span> Event</h3>
                                 {!! $event->description !!}
 
                             </div>
@@ -55,7 +54,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="event_inner_section">
-                                    <h3 class="home_section_heading"><span>Speakers</span></h3>
+                                    <h3 class="home_section_heading"><span>{{ $event->speaker_title}}</span></h3>
 
                                         @foreach($speaker as $spkr)
                                         <div class="event2_spearkers_outer">
@@ -165,7 +164,16 @@
                         <div class="col-xs-12">
                             <div class="event_right_bottom_inner">
                                 <h5>Location</h5>
-                                <p>{{ isset($event->address->event_location) && !empty($event->address->event_location) ? $event->address->event_location : '' }}</p>
+                                <?php $i=1 ?>
+
+                                @if(count($event->address)>0)
+                                @foreach($event->address as $add)
+
+                                    <p>{{  isset($add->event_location) && !empty($add->event_location) ? $i++.'.'.$add->event_location : '' }}</p>
+
+                                @endforeach
+                                @endif
+
                                 <h5>Start Time</h5>
                                 <p>{{ date('d F Y',strtotime($event->start_date)) }} -   {{ date('h:i A',strtotime($event->start_time)) }}</p>
                             </div>
@@ -180,7 +188,7 @@
                                     <a href="{{ $event->website_url }}" target="_blank"><img src="{{asset('ws/images/link.png')}}"></a>
                                     <a href="{{ $event->facebook_id }}" target="_blank"><img src="{{asset('ws/images/facebook.png')}}"></a>
                                     <a href="{{ $event->twitter_id }}" target="_blank"><img src="{{asset('ws/images/twitter.png')}}"></a>
-                                    <a href="{{ $event->facebook_id }}" target="_blank"><img src="{{asset('ws/images/youtube.png')}}"></a>
+                                    <a href="{{ $event->youtube_id }}" target="_blank"><img src="{{asset('ws/images/youtube.png')}}"></a>
                                     <a href="{{ $event->instagram_id }}" target="_blank"><img src="{{asset('ws/images/instagram.png')}}"></a>
                                 </p>
                             </div>
@@ -238,7 +246,7 @@
                                 <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
                                     <div class="upcoming_item_container">
                                         <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{ asset( 'images/event/'.$s_event->event_image )}}" alt="event banner"></a>
+                                            <a href="{{ url('event-detail/'.$s_event->slug )}}"><img src="{{ asset( 'images/event/'.$s_event->event_image )}}" alt="event banner"></a>
                                         </div>
                                         <div class="upcoming_item_info">
                                             <p class="uc_event_name"><a href="{{ url('event-detail/'.$s_event->slug )}}">{{ $s_event->title }}</a></p>

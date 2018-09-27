@@ -34,6 +34,8 @@ class CreateEventsTable extends Migration {
             $table->string('linked_id');
             $table->string('instagram_id');
             $table->string('googleplus_id');
+            $table->string('youtube_id');
+            $table->string('speaker_title');
             $table->integer('sort_order');
             $table->integer('total_view');
             $table->tinyInteger('status');

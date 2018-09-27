@@ -60,7 +60,7 @@
 
                         <div class="table-responsive">
                             <table class="table table-bordered">
-                                <?php if (count($arrCategory) > 0) { ?>
+                                @if (count($arrCategory) > 0)
                                     <tbody>
                                         <tr>
                                             <th>Sr. No.</th>
@@ -97,14 +97,14 @@
 
 
                                             </td>
-                                            <?php $i++; ?>
+                                            @php $i++; @endphp
                                         </tr>
                                         @endforeach
 
                                     </tbody>
-                                <?php } else { ?>
+                                @else
                                     <p class="text-center">No Category found.</p>
-                                <?php } ?>
+                                @endif
 
                             </table>
                         </div>

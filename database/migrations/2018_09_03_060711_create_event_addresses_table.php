@@ -23,6 +23,7 @@ class CreateEventAddressesTable extends Migration
             $table->string('postal_code');
             $table->string('latitude');
             $table->string('longitude');
+            $table->tinyInteger('primary_address')->comment('1=>primary');
             $table->timestamps();
         });
     }

@@ -9,8 +9,8 @@
         <div class="container listing_page_width listing_page_top_section">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <form name="listing_search_form" id="listing_search_form">
-                        <input type="text" value="{{ request('event_name')}}" class="listing_search_input" placeholder="">
+                    {!! Form::open(['method'=>'get','id'=>'listing_search_form','name'=>'listing_search_form']) !!}
+                        <input type="text" value="{{ request('event_name')}}" class="listing_search_input" placeholder="search event">
                     </form>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                                     @foreach($arr_category as $k=>$maincat)
                                     <li>
                                         <input type="checkbox" id="filter_{{$k}}" <?= $maincat->slug ==  Request::segment(2) ? 'checked' : ''; ?> onclick="window.location.href = '<?= $full_url. '&event_cat='.$maincat->slug?>'">
-                                        <label for="filter_{{$k}}" class="sub_category_dropdown">{{ $maincat->category_name }} <span><img src="{{ asset('ws/images/down_arrow.jpg')}}"></span></label>
+                                        <label for="filter_{{$k}}" class="sub_category_dropdown">{{ $maincat->category_name }} <span><!--<img src="{{ asset('ws/images/down_arrow.jpg')}}">--></span></label>
                                         <!-- sub categories  -->
                                         <!--<ul class="category_sub_outer">
                                             @foreach($maincat->children as $key=>$childcat)

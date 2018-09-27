@@ -30,18 +30,32 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $arr_category = DB::table('categories')->where('parent_id', 0)->where('status', 1)->orderBy('sort_order','asc')->get();
+        $arr_category = DB::table('categories')->where('status', 1)->orderBy('sort_order','asc')->limit(7)->get();
 
-        $arr_event = DB::table('events')->orderBy('id', 'desc')->where('status',1)->where('end_date','>=',date('Y-m-d'))->limit(6)->get();
-        $arr_story = DB::table('event_stories')->orderBy('id', 'desc')->where('status',1)->limit(6)->get();
+        $arr_event = Event::orderBy('id', 'desc')->where('status',1)->where('end_date','>=',date('Y-m-d'))->limit(6)->get();
+        $arr_story = DB::table('stories')->orderBy('id', 'desc')->where('status',1)->limit(6)->get();
 
-        return view('home', compact('arr_category','arr_event','arr_story'));
+        //static category in home page
+        $arr_top_cat = DB::table('categories')->select('mini_icon','image','slug')->whereIn('id',array(1,2,3,4,5,6,7))->get();
+
+
+        //seo data
+        $page_data = DB::table('pages')->where('id',1)->first();
+        $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title: '';
+        $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword: '';
+        $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description: '';
+        return view('home', compact('arr_category','arr_event','arr_story','arr_top_cat','page_title','meta_keyword','meta_description'));
     }
 
     public function categories(){
         $arr_category = Category::whereStatus(1)->get();
         $popular_category = Category::whereStatus(1)->limit(5)->get();
-        return view('category_list', compact('arr_category','popular_category'));
+
+        $page_data = DB::table('pages')->where('slug','categories')->first();
+        $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title: '';
+        $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword: '';
+        $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description: '';
+        return view('category_list', compact('arr_category','popular_category','page_title','meta_keyword','meta_description'));
     }
 
     public function event_list($slug,Request $request) {
@@ -49,7 +63,6 @@ class HomeController extends Controller {
         if ($category === null) {
            return redirect('/');
         }
-
         $arr_category = Category::where('status','=',1)->where('parent_id','=',0)->get();
         $event_date = $request->event_date;
         //enable_query();
@@ -83,9 +96,10 @@ class HomeController extends Controller {
             //print_query();
             //dd($arrevent);
 
+        $page_title = $category->page_title;
         $meta_keyword = $category->meta_keyword;
         $meta_description = $category->meta_description;
-        return view('event_list',compact('arrevent','arr_category','category','meta_keyword','meta_description'));
+        return view('event_list',compact('arrevent','arr_category','category','meta_keyword','meta_description','page_title'));
     }
 
     public function event_detail($slug) {
@@ -118,16 +132,25 @@ class HomeController extends Controller {
         //similar events
         $arr_similar_event = Event::where('event_category', '=', $event->event_category)->where('id', '!=', $event->id)->where('end_date','>=',date('Y-m-d'))->limit(15)->get();
 
+        //event primary address
+        $primar_address = DB::table('event_addresses')->where('event_id', $event->id)->where('primary_address', 1)->first();
+
         $meta_keyword = !empty($event->seo->meta_keyword) ? $event->seo->meta_keyword : '';
         $meta_description = !empty($event->seo->meta_description) ? $event->seo->meta_description : '';
         $page_title = !empty($event->seo->page_title) ? $event->seo->page_title : '';
-        return view('event_detail',compact('event','speaker','organiser','arr_schedule','arr_similar_event','meta_keyword','meta_description','page_title'));
+        return view('event_detail',compact('event','speaker','organiser','arr_schedule','arr_similar_event','meta_keyword','meta_description','page_title','primar_address'));
     }
 
 
     public function stories(){
-        $arr_story = Story::whereStatus(1)->get();
-        return view('story_list', compact('arr_story'));
+        $arr_story = Story::whereStatus(1)->paginate(10);
+        $arr_category = Category::whereStatus(1)->get();
+
+        $page_data = DB::table('pages')->where('slug','stories')->first();
+        $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title: '';
+        $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword: '';
+        $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description: '';
+    	return view('story_list',compact('arr_story','arr_category','page_title','meta_keyword','meta_description'));
     }
 
     public function story_detail($slug) {
@@ -139,7 +162,9 @@ class HomeController extends Controller {
         $meta_keyword = !empty($story->meta_keyword) ? $story->meta_keyword : '';
         $meta_description = !empty($story->meta_description) ? $story->meta_description : '';
         $page_title = !empty($story->page_title) ? $story->page_title : '';
-        return view('story_detail',compact('story','meta_keyword','meta_description','page_title'));
+        //recent top 5 stories
+        $arr_story = Story::whereStatus(1)->where('id','!=',$story->id)->orderBy('id', 'desc')->limit(5)->get();
+        return view('story_detail',compact('story','arr_story','meta_keyword','meta_description','page_title'));
     }
 
     public function save_newsleter(Request $request){
@@ -171,11 +196,23 @@ class HomeController extends Controller {
             }
             return response()->json(['html'=>$view]);
         }
-    	return view('top_hundred',compact('arr_events'));
+
+
+        $page_data = DB::table('pages')->where('slug','top-hundred')->first();
+        $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title: '';
+        $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword: '';
+        $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description: '';
+    	return view('top_hundred',compact('arr_events','page_title','meta_keyword','meta_description'));
     }
 
     public function add_event(){
-        echo 'add event';
+
+        $page_data = DB::table('pages')->where('slug','add_event')->first();
+        $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title: '';
+        $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword: '';
+        $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description: '';
+
+        //return view('about',compact('page_data','page_title','meta_keyword','meta_description'));
     }
 
     public function search(Request $request){

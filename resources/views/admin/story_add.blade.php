@@ -33,7 +33,8 @@
                         'id' => 'story_form',
                     ]) !!}
                         <div class="box-body">
-                            <div class="form-group">
+                            <div class="form-group row">
+                                <div class='col-md-6'>
                                 <label for="story_name">Story Name*</label>
                                 <input type="text" class="form-control" id="story_name" name="story_name" placeholder="Enter Story name" value="<?= (isset($story->story_name) && !empty($story->story_name)) ? $story->story_name : old('story_name') ?>">
                                 <span class="error"><?php
@@ -41,28 +42,27 @@
                                         echo $errors->first('story_name');
                                     }
                                     ?></span>
+
+                                </div>
+                                <div class='col-md-6'>
+                                    <label for="category_id">Select Category</label>
+                                    <select class="form-control" id="category_id" name="category_id">
+
+                                        <?php foreach ($arrCategory as $k => $v) { ?>
+                                            <option value="<?= $v->id ?>" <?= (!empty($event->event_category) && ($v->id == $event->event_category)) ? 'selected' : ''; ?>><?= ($v->parent_id == 0) ? $v->category_name : '>>' . $v->category_name ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="narrator_name">Narrator Name*</label>
+                            <div class='form-group'>
+                                <label for="narrator_name">Story Slug*</label>
                                 <input type="text" class="form-control" id="narrator_name" name="narrator_name" placeholder="Enter Narrator name" value="<?= (isset($story->narrator_name) && !empty($story->narrator_name)) ? $story->narrator_name : old('narrator_name') ?>">
                                 <span class="error"><?php
                                     if ($errors->has('narrator_name')) {
                                         echo $errors->first('narrator_name');
                                     }
                                     ?></span>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="description">Short Description</label>
-                                <textarea rows="6"  class="form-control ckeditor" id="short_desc" name="short_desc" ><?= (isset($story->short_desc) && !empty($story->short_desc)) ? $story->short_desc : old('short_desc') ?></textarea>
-                                <span class="error"><?php
-                                    if ($errors->has('short_desc')) {
-                                        echo $errors->first('short_desc');
-                                    }
-                                    ?></span>
-
                             </div>
 
                             <div class="form-group">
@@ -77,29 +77,124 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="image">Story Image</label>
+                                <label for="image">Story Image<span class="error">* Image must be in width & height less than (360 X 210), format (jpeg,jpg,png) and max_size(3MB)</span></label>
                                 <input type="file" class="form-control" id="image" name="image" >
                                 <span class="error"></span>
                                 <input type="hidden" name="old_image" value="<?= (isset($story->image) && !empty($story->image)) ? $story->image: '' ?>" />
 
                                 <?php
                                     $image = (isset($story->image) && !empty($story->image)) ? $story->image: '';
-                                    if (file_exists( public_path() . '/images/story/' . $image)) {?>
-                                        <img src="{{ asset( 'images/story/'.$image)}}" width="25px;" height="25px;"/>
+                                    if (!empty($image) && file_exists( public_path() . '/images/story/' . $image)) {?>
+                                        <img src="{{ asset( 'images/story/'.$image)}}" width="200px;" height="80px;"/>
                                 <?php }?>
                             </div>
 
+                            <div class="form-group row">
+                                <div class='col-md-6'>
+                                <label for="story_name">Page Title</label>
+                                <input type="text" class="form-control" id="story_name" name="story_name" placeholder="Enter Story name" value="<?= (isset($story->story_name) && !empty($story->story_name)) ? $story->story_name : old('story_name') ?>">
+                                <span class="error"><?php
+                                    if ($errors->has('story_name')) {
+                                        echo $errors->first('story_name');
+                                    }
+                                    ?></span>
+
+                                </div>
+                                <div class='col-md-6'>
+                                    <label for="category_id">Meta Keyword</label>
+                                    <select class="form-control" id="category_id" name="category_id">
+
+                                        <?php foreach ($arrCategory as $k => $v) { ?>
+                                            <option value="<?= $v->id ?>" <?= (!empty($event->event_category) && ($v->id == $event->event_category)) ? 'selected' : ''; ?>><?= ($v->parent_id == 0) ? $v->category_name : '>>' . $v->category_name ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="form-group">
-                                <label for="narrator_image">Narrator Image</label>
+                                <label for="description">Meta Description</label>
+                                <textarea rows="6"  class="form-control" id="description" name="description" ><?= (isset($story->description) && !empty($story->description)) ? $story->description : old('description') ?></textarea>
+                                <span class="error"><?php
+                                    if ($errors->has('description')) {
+                                        echo $errors->first('description');
+                                    }
+                                    ?></span>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <div class='col-md-6'>
+                                    <label for="narrator_name">Narrator Name*</label>
+                                    <input type="text" class="form-control" id="narrator_name" name="narrator_name" placeholder="Enter Narrator name" value="<?= (isset($story->narrator_name) && !empty($story->narrator_name)) ? $story->narrator_name : old('narrator_name') ?>">
+                                    <span class="error"><?php
+                                        if ($errors->has('narrator_name')) {
+                                            echo $errors->first('narrator_name');
+                                        }
+                                        ?></span>
+                                </div>
+                                <div class='col-md-6'>
+                                    <label for="narrator_name">About Narrator*</label>
+                                    <input type="text" class="form-control" id="narrator_name" name="narrator_name" placeholder="Enter Narrator name" value="<?= (isset($story->narrator_name) && !empty($story->narrator_name)) ? $story->narrator_name : old('narrator_name') ?>">
+                                    <span class="error"><?php
+                                        if ($errors->has('narrator_name')) {
+                                            echo $errors->first('narrator_name');
+                                        }
+                                        ?></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class='col-md-6'>
+                                    <label for="narrator_name">Facebook Id*</label>
+                                    <input type="text" class="form-control" id="narrator_name" name="narrator_name" placeholder="Enter Narrator name" value="<?= (isset($story->narrator_name) && !empty($story->narrator_name)) ? $story->narrator_name : old('narrator_name') ?>">
+                                    <span class="error"><?php
+                                        if ($errors->has('narrator_name')) {
+                                            echo $errors->first('narrator_name');
+                                        }
+                                        ?></span>
+                                </div>
+                                <div class='col-md-6'>
+                                    <label for="narrator_name">Twitter Id*</label>
+                                    <input type="text" class="form-control" id="narrator_name" name="narrator_name" placeholder="Enter Narrator name" value="<?= (isset($story->narrator_name) && !empty($story->narrator_name)) ? $story->narrator_name : old('narrator_name') ?>">
+                                    <span class="error"><?php
+                                        if ($errors->has('narrator_name')) {
+                                            echo $errors->first('narrator_name');
+                                        }
+                                        ?></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class='col-md-6'>
+                                    <label for="narrator_name">Linked In Id*</label>
+                                    <input type="text" class="form-control" id="narrator_name" name="narrator_name" placeholder="Enter Narrator name" value="<?= (isset($story->narrator_name) && !empty($story->narrator_name)) ? $story->narrator_name : old('narrator_name') ?>">
+                                    <span class="error"><?php
+                                        if ($errors->has('narrator_name')) {
+                                            echo $errors->first('narrator_name');
+                                        }
+                                        ?></span>
+                                </div>
+                                <div class='col-md-6'>
+                                    <label for="narrator_name">Instagram Id*</label>
+                                    <input type="text" class="form-control" id="narrator_name" name="narrator_name" placeholder="Enter Narrator name" value="<?= (isset($story->narrator_name) && !empty($story->narrator_name)) ? $story->narrator_name : old('narrator_name') ?>">
+                                    <span class="error"><?php
+                                        if ($errors->has('narrator_name')) {
+                                            echo $errors->first('narrator_name');
+                                        }
+                                        ?></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="narrator_image">Narrator Image<span class="error">* Image must be in width & height less than (150 X 150), format (jpeg,jpg,png) and max_size(2MB)</span></label>
                                 <input type="file" class="form-control" id="narrator_image" name="narrator_image" >
                                 <span class="error"></span>
                                 <input type="hidden" name="old_narrator_image" value="<?= (isset($story->narrator_image) && !empty($story->narrator_image)) ? $story->narrator_image: '' ?>" />
 
                                 <?php
                                     $narrator_image = (isset($story->narrator_image) && !empty($story->narrator_image)) ? $story->narrator_image: '';
-                                    if (file_exists( public_path() . '/images/story/narrator/' . $narrator_image)) {?>
-                                        <img src="{{ asset( 'images/story/narrator/'.$narrator_image)}}" width="25px;" height="25px;"/>
+                                    if (!empty($narrator_image) && file_exists( public_path() . '/images/story/narrator/' . $narrator_image)) {?>
+                                        <img src="{{ asset( 'images/story/narrator/'.$narrator_image)}}" width="100px;" height="100px;"/>
                                 <?php }?>
                             </div>
 

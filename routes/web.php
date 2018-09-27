@@ -32,7 +32,7 @@ Route::get('/stories', 'HomeController@stories')->name('stories');
 Route::get('/story-detail/{story_slug}', 'HomeController@story_detail')->name('story-detail');
 Route::get('/event-category/{event_slug}', 'HomeController@event_list')->name('event-category');
 Route::get('/event-detail/{event_slug}', 'HomeController@event_detail')->name('event-detail');
-Route::get('/top-100', 'HomeController@top_hundred')->name('top-100');
+Route::get('/top-hundred', 'HomeController@top_hundred')->name('top-hundred');
 Route::get('/add-event', 'HomeController@add_event')->name('add-event');
 Route::get('/search/{keyword?}', 'HomeController@search')->name('search');
 Route::post('/save_newsleter', 'HomeController@save_newsleter')->name('save_newsleter');
@@ -81,11 +81,12 @@ Route::prefix('admin')->group(function() {
     Route::get('/event_add/{id?}', 'Admin\EventController@create')->name('admin.event_add');
     Route::post('/event_store/{id?}', 'Admin\EventController@save_event')->name('admin.event_store');
     Route::any('/event_add_schedule/{id?}', 'Admin\EventController@save_schedule')->name('admin.event_add_schedule');
-    Route::any('/event_add_address/{id?}', 'Admin\EventController@save_address')->name('admin.event_add_address');
+    Route::any('/event_add_address/{event_id?}/{address_id?}', 'Admin\EventController@save_address')->name('admin.event_add_address');
     Route::any('/event_add_social/{id?}', 'Admin\EventController@save_social')->name('admin.event_add_social');
     Route::any('/event_add_seo/{id?}', 'Admin\EventController@save_seo')->name('admin.event_add_seo');
 
     Route::post('/delete_event_schedule', 'Admin\EventController@delete_schedule')->name('admin.delete_event_schedule');
+    Route::post('/delete_event_address', 'Admin\EventController@delete_address')->name('admin.delete_event_address');
     Route::get('/event_delete/{id}', 'Admin\EventController@destroy')->name('admin.event_delete');
 
     Route::get('/event_top_hundred', 'Admin\EventController@event_top_hundred')->name('admin.event_top_hundred');

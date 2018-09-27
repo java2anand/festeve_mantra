@@ -98,6 +98,14 @@
 } ?></span>
                         </div>
 
+                        <div class="form-group col-sm-6">
+                            <label for="youtube_id">Youtube Id</label>
+                            <input type="text" class="form-control" id="youtube_id" name="youtube_id" placeholder="Enter Youtube Id" value="<?= (isset($event->youtube_id) && !empty($event->youtube_id)) ? $event->youtube_id : old('youtube_id') ?>">
+                            <span class="error"><?php if ($errors->has('youtube_id')) {
+    echo $errors->first('youtube_id');
+} ?></span>
+                        </div>
+
                     </div>
                     <!-- /.card-body -->
 

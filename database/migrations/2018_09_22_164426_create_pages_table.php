@@ -18,7 +18,6 @@ class CreatePagesTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('content');
-            $table->text('meta_title');
             $table->text('meta_keyword');
             $table->text('meta_description');
             $table->text('page_title');

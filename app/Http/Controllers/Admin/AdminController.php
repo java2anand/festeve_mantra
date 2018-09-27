@@ -200,7 +200,7 @@ class AdminController extends Controller {
         $page = 'setting_list';
         $search = $request->get('search');
         $field = $request->get('field') != '' ? $request->get('field') : 'id';
-        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'asc';
 
         $arr_setting = DB::table('site_settings')->select('id','var_name','var_title','var_value')->orderBy($field, $sort)->where('var_title', 'like', '%' . $search . '%')->paginate(20)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
         return view('admin.setting_list', compact('arr_setting', 'page','search_term'));
@@ -244,7 +244,7 @@ class AdminController extends Controller {
         $page = 'pages_list';
         $search = $request->get('search');
         $field = $request->get('field') != '' ? $request->get('field') : 'id';
-        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'asc';
 
         $arr_pages = DB::table('pages')->orderBy($field, $sort)->where('title', 'like', '%' . $search . '%')->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
         return view('admin.pages_list', compact('arr_pages', 'page','search_term'));

@@ -50,44 +50,50 @@
 } ?></span>
                         </div>
 
-                        <div class="form-group">
-                            <label for="facebook_id">Facebook Id</label>
-                            <input type="text" class="form-control" id="facebook_id" name="facebook_id" placeholder="Enter facebook id" value="<?= (isset($organiser->facebook_id) && !empty($organiser->facebook_id)) ? $organiser->facebook_id : old('facebook_id') ?>">
-                            <span class="error"><?php if ($errors->has('facebook_id')) {
-    echo $errors->first('facebook_id');
-} ?></span>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="facebook_id">Facebook Id</label>
+                                <input type="text" class="form-control" id="facebook_id" name="facebook_id" placeholder="Enter facebook id" value="<?= (isset($organiser->facebook_id) && !empty($organiser->facebook_id)) ? $organiser->facebook_id : old('facebook_id') ?>">
+                                <span class="error"><?php if ($errors->has('facebook_id')) {
+        echo $errors->first('facebook_id');
+    } ?></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="twitter_id">Twitter Id</label>
+                                <input type="text" class="form-control" id="twitter_id" name="twitter_id" placeholder="Enter Twitter Id" value="<?= (isset($organiser->twitter_id) && !empty($organiser->twitter_id)) ? $organiser->twitter_id : old('twitter_id') ?>">
+                                <span class="error"><?php if ($errors->has('twitter_id')) {
+        echo $errors->first('twitter_id');
+    } ?></span>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="twitter_id">Twitter Id</label>
-                            <input type="text" class="form-control" id="twitter_id" name="twitter_id" placeholder="Enter Twitter Id" value="<?= (isset($organiser->twitter_id) && !empty($organiser->twitter_id)) ? $organiser->twitter_id : old('twitter_id') ?>">
-                            <span class="error"><?php if ($errors->has('twitter_id')) {
-    echo $errors->first('twitter_id');
-} ?></span>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="linked_id">Linked Id</label>
+                                <input type="text" class="form-control" id="linked_id" name="linked_id" placeholder="Enter LinkedIn Id" value="<?= (isset($organiser->linked_id) && !empty($organiser->linked_id)) ? $organiser->linked_id : old('linked_id') ?>">
+                                <span class="error"><?php if ($errors->has('linked_id')) {
+        echo $errors->first('linked_id');
+    } ?></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="instagram_id">Instagram Id</label>
+                                <input type="text" class="form-control" id="instagram_id" name="instagram_id" placeholder="Enter Instagram Id" value="<?= (isset($organiser->instagram_id) && !empty($organiser->instagram_id)) ? $organiser->instagram_id : old('instagram_id') ?>">
+                                <span class="error"><?php if ($errors->has('instagram_id')) {
+        echo $errors->first('instagram_id');
+    } ?></span>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="linked_id">Linked Id</label>
-                            <input type="text" class="form-control" id="linked_id" name="linked_id" placeholder="Enter LinkedIn Id" value="<?= (isset($organiser->linked_id) && !empty($organiser->linked_id)) ? $organiser->linked_id : old('linked_id') ?>">
-                            <span class="error"><?php if ($errors->has('linked_id')) {
-    echo $errors->first('linked_id');
-} ?></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="instagram_id">Instagram Id</label>
-                            <input type="text" class="form-control" id="instagram_id" name="instagram_id" placeholder="Enter Instagram Id" value="<?= (isset($organiser->instagram_id) && !empty($organiser->instagram_id)) ? $organiser->instagram_id : old('instagram_id') ?>">
-                            <span class="error"><?php if ($errors->has('instagram_id')) {
-    echo $errors->first('instagram_id');
-} ?></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="googleplus_id">Googleplus Id</label>
-                            <input type="text" class="form-control" id="googleplus_id" name="googleplus_id" placeholder="Enter Google Plus Id" value="<?= (isset($organiser->googleplus_id) && !empty($organiser->googleplus_id)) ? $organiser->googleplus_id : old('googleplus_id') ?>">
-                            <span class="error"><?php if ($errors->has('descgoogleplus_idription')) {
-    echo $errors->first('googleplus_id');
-} ?></span>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="googleplus_id">Googleplus Id</label>
+                                <input type="text" class="form-control" id="googleplus_id" name="googleplus_id" placeholder="Enter Google Plus Id" value="<?= (isset($organiser->googleplus_id) && !empty($organiser->googleplus_id)) ? $organiser->googleplus_id : old('googleplus_id') ?>">
+                                <span class="error"><?php if ($errors->has('descgoogleplus_idription')) {
+        echo $errors->first('googleplus_id');
+    } ?></span>
+                            </div>
                         </div>
 
                         <div class="form-group">

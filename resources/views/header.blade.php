@@ -1,3 +1,12 @@
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126265125-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126265125-1');
+</script>
 <div class="moblie_header_overlay"></div>
 <header class="header">
     <div class="container">
@@ -14,7 +23,7 @@
             <div class="col-sm-8 nav_desktop">
                 <ul class="header_navigation">
                     <li><a href="{{ route('add-event') }}">+festeve</a></li>
-                    <li><a href="{{ route('top-100') }}">Top 100</a></li>
+                    <li><a href="{{ route('top-hundred') }}">Top 100</a></li>
                     <li><a href="{{ route('categories') }}">categories</a></li>
 
                     @guest
