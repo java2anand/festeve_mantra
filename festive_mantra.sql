@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2018 at 05:50 PM
+-- Generation Time: Oct 01, 2018 at 07:50 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.0.23
 
@@ -51,7 +51,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `firstname`, `lastname`, `email`, `contact_number`, `address`, `country`, `state`, `city`, `postal_code`, `password`, `profile_img`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Kapil', 'Khandelwal', 'admin@festevemantra.com', 844742, '89857 Kilback Villages Apt. 302\nPort Sharonfort, MA 41632-5354', 99, 18, 274, 55520, '$2y$10$w8PFGGl22h0whbcvci/sWus8Ono9csQgeqSGQaN/yjNLH6Zy/g0p.', '1535112653.jpg', 'GYr8dC8kTArGv68kSkiE84gHq2IpwCXTnanYtuhZsZdWNZllcqXTxXZ4PYLE', '2018-08-24 06:34:43', '2018-08-25 04:03:23'),
+(1, 'Kapil', 'Khandelwal', 'admin@festevemantra.com', 844742, '89857 Kilback Villages Apt. 302\nPort Sharonfort, MA 41632-5354', 99, 18, 274, 55520, '$2y$10$w8PFGGl22h0whbcvci/sWus8Ono9csQgeqSGQaN/yjNLH6Zy/g0p.', '1535112653.jpg', '4iRY4x3noONJEjV4nsqs9kVotaWq10LwMMISH3gJkiKL0gwRCbRxzjH4VcTY', '2018-08-24 06:34:43', '2018-08-25 04:03:23'),
 (2, 'Sherwood', 'Waelchi', 'otillman@example.net', 844, '8299 Farrell Parks Suite 115\nStreichborough, IA 41035', 99, 18, 274, 64969, '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', '', 'poGbimknoZ', '2018-08-24 06:34:44', '2018-08-24 06:34:44'),
 (3, 'Bradford', 'King', 'carlee51@example.net', 844, '4742 Volkman Mills Apt. 280\nJohathantown, DE 05952', 99, 18, 274, 98129, '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', '', 'FLyevet8pw', '2018-08-24 06:34:44', '2018-08-24 06:34:44'),
 (4, 'Corine', 'Heaney', 'yokuneva@example.com', 0, '719 Oma Canyon\nNorth Alba, NM 19007', 99, 18, 274, 2744, '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', '', '4sa1aq9pPd', '2018-08-24 06:34:44', '2018-08-24 06:34:44'),
@@ -65,6 +65,62 @@ INSERT INTO `admins` (`id`, `firstname`, `lastname`, `email`, `contact_number`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `advertisements`
+--
+
+CREATE TABLE `advertisements` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `ad_type` tinyint(4) NOT NULL COMMENT '1=>Top,2=>Right',
+  `ad_location` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ad_url` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ad_image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `event` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `advertisements`
+--
+
+INSERT INTO `advertisements` (`id`, `ad_type`, `ad_location`, `ad_url`, `ad_image`, `category`, `event`, `status`, `created_at`, `updated_at`) VALUES
+(4, 1, 'event', 'https://www.techjockey.com/vendor-portal/vendor/request_category', '1538331666.jpg', '', '6', 1, '2018-09-30 12:34:48', '2018-09-30 12:51:06'),
+(5, 1, 'event', 'https://www.techjockey.com/vendor-portal/vendor/request_category', '1538330688.jpg', '', '8', 1, '2018-09-30 12:48:02', '2018-09-30 12:48:02'),
+(6, 1, 'event', 'https://www.techjockey.com/vendor-portal/vendor/request_category', '1538330688.jpg', '', '6', 1, '2018-09-30 12:49:07', '2018-09-30 12:49:07'),
+(7, 1, 'event', 'https://www.techjockey.com/vendor-portal/vendor/request_category', '1538330688.jpg', '', '15', 1, '2018-09-30 12:50:06', '2018-09-30 12:50:06'),
+(8, 1, 'category', 'https://www.techjockey.com/vendor-portal/vendor/request_category', '1538333508.jpg', '1,3', '', 1, '2018-09-30 13:21:48', '2018-09-30 13:21:48'),
+(9, 2, 'category', 'https://www.techjockey.com/vendor-portal/vendor/request_category', '1538333539.jpg', '1,4', '', 1, '2018-09-30 13:22:19', '2018-09-30 13:22:19'),
+(10, 2, 'category', 'https://www.techjockey.com/vendor-portal/vendor/request_category', '1538333734.jpg', '1', '', 1, '2018-09-30 13:25:34', '2018-09-30 13:25:34'),
+(11, 1, 'category', 'https://www.techjockey.com/vendor-portal/vendor/request_category', '1538334028.jpg', '1', '', 1, '2018-09-30 13:30:28', '2018-09-30 13:30:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `authors`
+--
+
+CREATE TABLE `authors` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `designation` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `about` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `facebook_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `twitter_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `linkedin_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `instagram_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `googleplus_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `youtube_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `categories`
 --
 
@@ -72,19 +128,19 @@ CREATE TABLE `categories` (
   `id` int(10) UNSIGNED NOT NULL,
   `parent_id` int(11) NOT NULL,
   `category_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `icon` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `thumbnail` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mini_icon` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `popular_icon` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `event_image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `top_banner` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `right_banner` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mini_icon` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sort_order` int(11) NOT NULL,
-  `meta_title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_keyword` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `page_title` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `page_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` tinyint(4) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -94,16 +150,15 @@ CREATE TABLE `categories` (
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `parent_id`, `category_name`, `slug`, `description`, `icon`, `thumbnail`, `top_banner`, `right_banner`, `mini_icon`, `sort_order`, `meta_title`, `meta_keyword`, `meta_description`, `page_title`, `page_description`, `status`, `created_at`, `updated_at`) VALUES
-(1, 0, 'Music', 'music', '<p><strong>Music</strong>&nbsp;is an art form and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Culture\" title=\"Culture\">cultural</a>&nbsp;activity whose medium is sound organized in time. The common elements of music are&nbsp;<a href=\"https://en.wikipedia.org/wiki/Pitch_(music)\" title=\"Pitch (music)\">pitch</a>&nbsp;(which governs&nbsp;<a href=\"https://en.wikipedia.org/wiki/Melody\" title=\"Melody\">melody</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Harmony\" title=\"Harmony\">harmony</a>),&nbsp;<a href=\"https://en.wikipedia.org/wiki/Rhythm\" title=\"Rhythm\">rhythm</a>&nbsp;(and its associated concepts&nbsp;<a href=\"https://en.wikipedia.org/wiki/Tempo\" title=\"Tempo\">tempo</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Meter_(music)\" title=\"Meter (music)\">meter</a>, and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Articulation_(music)\" title=\"Articulation (music)\">articulation</a>),&nbsp;<a href=\"https://en.wikipedia.org/wiki/Dynamics_(music)\" title=\"Dynamics (music)\">dynamics</a>&nbsp;(loudness and softness), and the sonic qualities of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Timbre\" title=\"Timbre\">timbre</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Texture_(music)\" title=\"Texture (music)\">texture</a>&nbsp;(which are sometimes termed the &quot;color&quot; of a musical sound). Different&nbsp;<a href=\"https://en.wikipedia.org/wiki/Music_genre\" title=\"Music genre\">styles or types</a>&nbsp;of music may emphasize, de-emphasize or omit some of these elements. Music is performed with a vast range of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Musical_instrument\" title=\"Musical instrument\">instruments</a>&nbsp;and vocal techniques ranging from singing to&nbsp;<a href=\"https://en.wikipedia.org/wiki/Rapping\" title=\"Rapping\">rapping</a>; there are solely&nbsp;<a href=\"https://en.wikipedia.org/wiki/Instrumental_music\" title=\"Instrumental music\">instrumental pieces</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/A_capella\" title=\"A capella\">solely vocal pieces</a>&nbsp;(such as songs without instrumental&nbsp;<a href=\"https://en.wikipedia.org/wiki/Accompaniment\" title=\"Accompaniment\">accompaniment</a>) and pieces that combine singing and instruments. The word derives from&nbsp;<a href=\"https://en.wikipedia.org/wiki/Greek_language\" title=\"Greek language\">Greek</a>&nbsp;<a href=\"https://en.wiktionary.org/wiki/%CE%BC%CE%BF%CF%85%CF%83%CE%B9%CE%BA%CE%AE#Ancient_Greek\" title=\"wikt:μουσική\">&mu;&omicron;&upsilon;&sigma;&iota;&kappa;ή</a>&nbsp;(<em>mousike</em>; &quot;art of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Muse\" title=\"Muse\">Muses</a>&quot;).<sup><a href=\"https://en.wikipedia.org/wiki/Music#cite_note-perseus.tufts.edu-1\">[1]</a></sup>&nbsp;See&nbsp;<a href=\"https://en.wikipedia.org/wiki/Glossary_of_musical_terminology\" title=\"Glossary of musical terminology\">glossary of musical terminology</a>.</p>', '1535113552.jpg', '1535113552.jpg', '1535113647.jpg', '1535113647.jpg', '1535113552.jpg', 0, '', '', '', '', '', 1, '2018-08-24 06:55:52', '2018-08-24 06:57:27'),
-(2, 0, 'Sports', 'sports', '<p>A sport is commonly defined as an athletic activity or skill and involves a degree of competition, such as<strong>tennis</strong>&nbsp;or&nbsp;<strong>basketball</strong>. Some games and many kinds of racing are called sports. A professional at a sport is called an athlete. Many people play sports with their friends.</p>', '1535113758.jpg', '1535113758.jpg', '1535113758.jpg', '1535113758.jpg', '', 0, '', '', '', '', '', 1, '2018-08-24 06:59:18', '2018-08-24 06:59:18'),
-(3, 0, 'Food', 'food', '<p><strong>Food</strong>&nbsp;is any substance<sup><a href=\"https://en.wikipedia.org/wiki/Food#cite_note-1\">[1]</a></sup>&nbsp;consumed to provide nutritional support for an organism. It is usually of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Plant\" title=\"Plant\">plant</a>&nbsp;or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Animal\" title=\"Animal\">animal</a>&nbsp;origin, and contains essential&nbsp;<a href=\"https://en.wikipedia.org/wiki/Nutrient\" title=\"Nutrient\">nutrients</a>, such as&nbsp;<a href=\"https://en.wikipedia.org/wiki/Carbohydrate\" title=\"Carbohydrate\">carbohydrates</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Fat\" title=\"Fat\">fats</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Protein_(nutrient)\" title=\"Protein (nutrient)\">proteins</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Vitamin\" title=\"Vitamin\">vitamins</a>, or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Mineral_(nutrient)\" title=\"Mineral (nutrient)\">minerals</a>. The substance is&nbsp;<a href=\"https://en.wikipedia.org/wiki/Ingestion\" title=\"Ingestion\">ingested</a>&nbsp;by an&nbsp;<a href=\"https://en.wikipedia.org/wiki/Organism\" title=\"Organism\">organism</a>&nbsp;and assimilated by the organism&#39;s&nbsp;<a href=\"https://en.wikipedia.org/wiki/Cell_(biology)\" title=\"Cell (biology)\">cells</a>&nbsp;to provide&nbsp;<a href=\"https://en.wikipedia.org/wiki/Energy\" title=\"Energy\">energy</a>, maintain life, or stimulate growth.</p>\r\n\r\n<p>Historically,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Human\" title=\"Human\">humans</a>&nbsp;secured food through two methods:&nbsp;<a href=\"https://en.wikipedia.org/wiki/Hunter-gatherer\" title=\"Hunter-gatherer\">hunting and gathering</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Agriculture\" title=\"Agriculture\">agriculture</a>. Today, the majority of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Food_energy\" title=\"Food energy\">food energy</a>required by the ever&nbsp;<a href=\"https://en.wikipedia.org/wiki/Population_growth\" title=\"Population growth\">increasing</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/World_population\" title=\"World population\">population of the world</a>&nbsp;is supplied by the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Food_industry\" title=\"Food industry\">food industry</a>.</p>', '1535113998.jpg', '1535113998.jpg', '1535113998.jpg', '1535113998.jpg', '', 0, '', '', '', '', '', 1, '2018-08-24 07:03:18', '2018-08-24 07:03:18'),
-(4, 0, 'Travel', 'travel', '<p>The origin of the word &quot;travel&quot; is most likely lost to history. The term &quot;travel&quot; may originate from the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Old_French\" title=\"Old French\">Old French</a>&nbsp;word&nbsp;<em>travail</em>, which means &#39;work&#39;.<sup><a href=\"https://en.wikipedia.org/wiki/Travel#cite_note-3\">[3]</a></sup>&nbsp;According to the Merriam Webster dictionary, the first known use of the word&nbsp;<em>travel</em>&nbsp;was in the 14th century. It also states that the word comes from Middle English&nbsp;<em>travailen</em>,&nbsp;<em>travelen</em>&nbsp;(which means to torment, labor, strive, journey) and earlier from Old French&nbsp;<em>travailler</em>&nbsp;(which means to work strenuously, toil). In English we still occasionally use the words &quot;travail&quot;, which means struggle. According to Simon Winchester in his book&nbsp;<em>The Best Travelers&#39; Tales (2004)</em>, the words &quot;travel&quot; and &quot;travail&quot; both share an even more ancient root: a Roman instrument of torture called the&nbsp;<em>tripalium</em>&nbsp;(in Latin it means &quot;three stakes&quot;, as in to impale). This link may reflect the extreme difficulty of travel in ancient times. Today, travel may or may not be much easier depending upon the destination you choose (e.g.&nbsp;<a href=\"https://en.wikipedia.org/wiki/Mt._Everest\" title=\"Mt. Everest\">Mt. Everest</a>, the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Amazon_rainforest\" title=\"Amazon rainforest\">Amazon rainforest</a>), how you plan to get there (<a href=\"https://en.wikipedia.org/wiki/Bus\" title=\"Bus\">tour bus</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Cruise_ship\" title=\"Cruise ship\">cruise ship</a>, or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bullock_cart\" title=\"Bullock cart\">oxcart</a>), and whether you decide to &quot;rough it&quot; (see&nbsp;<a href=\"https://en.wikipedia.org/wiki/Extreme_tourism\" title=\"Extreme tourism\">extreme tourism</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Adventure_travel\" title=\"Adventure travel\">adventure travel</a>). &quot;There&#39;s a big difference between simply being a tourist and being a true world traveler&quot;, notes travel writer Michael Kasum. This is, however, a contested distinction as academic work on the cultures and sociology of travel has noted.<sup><a href=\"https://en.wikipedia.org/wiki/Travel#cite_note-4\">[4]</a></sup></p>', '1535114095.jpg', '1535114095.jpg', '1535114095.jpg', '1535114095.jpg', '', 0, '', '', '', '', '', 1, '2018-08-24 07:04:55', '2018-08-24 07:04:55'),
-(5, 0, 'DJ Party', 'dj-party', '<p>A&nbsp;<strong>disc jockey</strong>, often abbreviated as&nbsp;<strong>DJ</strong>, is a person who plays existing recorded&nbsp;<a href=\"https://en.wikipedia.org/wiki/Music\" title=\"Music\">music</a>&nbsp;for a live audience. Most common types of DJs include&nbsp;<a href=\"https://en.wikipedia.org/wiki/Radio_personality\" title=\"Radio personality\">radio DJ</a>, club DJ who performs at a&nbsp;<a href=\"https://en.wikipedia.org/wiki/Nightclub\" title=\"Nightclub\">nightclub</a>&nbsp;or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Music_festival\" title=\"Music festival\">music festival</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Turntablism\" title=\"Turntablism\">turntablist</a>&nbsp;who uses record players, usually&nbsp;<a href=\"https://en.wikipedia.org/wiki/Turntable\" title=\"Turntable\">turntables</a>, to manipulate sounds on&nbsp;<a href=\"https://en.wikipedia.org/wiki/Phonograph_record\" title=\"Phonograph record\">phonograph records</a>. Originally, the disc in disc jockey referred to&nbsp;<a href=\"https://en.wikipedia.org/wiki/Gramophone_record\" title=\"Gramophone record\">gramophone records</a>, but now DJ is used as an all-encompassing term to describe someone who mixes recorded music from any source, including&nbsp;<a href=\"https://en.wikipedia.org/wiki/Compact_cassette\" title=\"Compact cassette\">cassettes</a>,&nbsp;<a href=\"https://en.wikipedia.org/wiki/Compact_disc\" title=\"Compact disc\">CDs</a>&nbsp;or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Digital_audio_file\" title=\"Digital audio file\">digital audio files</a>&nbsp;on a&nbsp;<a href=\"https://en.wikipedia.org/wiki/CDJ\" title=\"CDJ\">CDJ</a>&nbsp;or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Laptop\" title=\"Laptop\">laptop</a>. The title DJ is commonly used by DJs in front of their real names or adopted&nbsp;<a href=\"https://en.wikipedia.org/wiki/Pseudonym\" title=\"Pseudonym\">pseudonyms</a>&nbsp;or&nbsp;<a href=\"https://en.wikipedia.org/wiki/Stage_name\" title=\"Stage name\">stage names</a>.</p>', '1535114178.jpg', '1535114178.jpg', '1535114178.jpg', '1535114178.jpg', '', 0, '', '', '', '', '', 1, '2018-08-24 07:06:18', '2018-08-24 07:06:18'),
-(6, 0, 'Conference', 'conference', '<p>Conferences are usually composed of various&nbsp;<a href=\"https://en.wikipedia.org/wiki/Presentation\" title=\"Presentation\">presentations</a>. They tend to be short and concise, with a time span of about 10 to 30 minutes;&nbsp;<a href=\"https://en.wikipedia.org/wiki/Presentation\" title=\"Presentation\">presentations</a>&nbsp;are usually followed by a&nbsp;<a href=\"https://en.wikipedia.org/wiki/Discussion\" title=\"Discussion\">discussion</a>. The work may be bundled in written form as&nbsp;<a href=\"https://en.wikipedia.org/wiki/Academic_paper\" title=\"Academic paper\">academic papers</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Publish\" title=\"Publish\">published</a>&nbsp;as the conference&nbsp;<a href=\"https://en.wikipedia.org/wiki/Proceedings\" title=\"Proceedings\">proceedings</a>.</p>\r\n\r\n<p>Usually a conference will include&nbsp;<a href=\"https://en.wikipedia.org/wiki/Keynote_speaker\" title=\"Keynote speaker\">keynote speakers</a>&nbsp;(often, scholars of some standing, but sometimes individuals from outside academia). The keynote lecture is often longer, lasting sometimes up to an hour and a half, particularly if there are several keynote speakers on a&nbsp;<a href=\"https://en.wikipedia.org/w/index.php?title=Convention_panel&amp;action=edit&amp;redlink=1\" title=\"Convention panel (page does not exist)\">panel</a>.</p>', '1535114351.jpg', '1535114351.jpg', '1535114351.jpg', '1535114351.jpg', '', 0, '', '', '', '', '', 1, '2018-08-24 07:09:11', '2018-08-24 07:09:11'),
-(7, 0, 'Skill Development', 'skill-development', '<p>Skill Development means developing yourself and your skill sets to add value for the organization and for your own career development. Fostering an attitude of appreciation for lifelong learning is the key to workplace success. Continuously learning and developing one&#39;s skills requires identifying the skills needed for&nbsp;<a href=\"https://hr.berkeley.edu/development/professional-development/uc-berkeley-competencies\">mobility</a>&nbsp;at Cal, and then successfully seeking out trainings or on-the-job opportunities for developing those skills.</p>\r\n\r\n<p>Developing your skills begins with assessing which skills are important for your desired career development. Read about career skills in the&nbsp;<a href=\"https://hr.berkeley.edu/development/career-development/self-assessment\">self-assessment</a>&nbsp;section of this website.&nbsp;<a href=\"https://hr.berkeley.edu/development/career-development/career-management/relationship-building/managing-up\">Speak with your supervisor or manager</a>&nbsp;and other career mentors to identify the types of skills that will help move you forward in your career.</p>', '1535114436.jpg', '1535114436.jpg', '1535114436.jpg', '1535114436.jpg', '', 0, '', '', '', '', '', 1, '2018-08-24 07:10:36', '2018-08-24 07:10:36'),
-(8, 1, 'Soft Music', 'soft-music', '<p>Soft Music</p>', '', '', '', '', '', 0, '', '', '', '', '', 1, '2018-09-03 02:54:46', '2018-09-03 02:54:46'),
-(9, 2, 'Cricket', 'cricket', '', '', '', '', '', '', 0, '', '', '', '', '', 1, '2018-09-03 03:06:46', '2018-09-03 03:06:46');
+INSERT INTO `categories` (`id`, `parent_id`, `category_name`, `category_title`, `slug`, `description`, `mini_icon`, `popular_icon`, `image`, `event_image`, `top_banner`, `right_banner`, `sort_order`, `meta_keyword`, `meta_description`, `page_title`, `status`, `created_at`, `updated_at`) VALUES
+(1, 0, 'Music', 'Enjoy each rhythm at these events', 'Music-events', '<p>Explore the top music festivals of India, choose your favorurite music fest from our curated list. Book tickets Online.</p>', '1537689729.png', '1537691757.png', '1537460682.jpg', '1537689705.png', '1535113647.jpg', '1535113647.jpg', 1, '', 'Explore the top music festivals of India, choose your favorurite music fest from our curated list. Book tickets Online.', 'Top 29 Upcoming Music Festivals, Concerts & Night DJ Parties', 1, '2018-08-24 06:55:52', '2018-09-23 15:35:57'),
+(2, 0, 'Sports', 'Sports & Fitness events to unleash the athlete in you', 'sports-events', '<p>Get better shape without join expensive fitness classes. Explore Sports Events in India - Marathons, Running, Walk Marathon, Sports &amp; Fitness. Register Online Now</p>', '1537689772.png', '1537691781.png', '1535113758.jpg', '1537689751.png', '1535113758.jpg', '1535113758.jpg', 4, '', 'Get better shape without join expensive fitness classes. Explore Sports Events in India - Marathons, Running, Walk Marathon, Sports & Fitness. Register Online Now', 'Discover Top 29 Upcoming Sports & Marathon Events In India: Register Now', 1, '2018-08-24 06:59:18', '2018-09-23 15:36:21'),
+(3, 0, 'Food', 'Munch, Crunch & Slurp the scrumptious cuisines at these fests', 'food-festivals', '<p>Top food &amp; drink festivals happening aound you. Get the close look at the most saught after dishes and recipes by top chefs. Get Discounted Tickets Now</p>', '1537689793.png', '1537691826.png', '1535113998.jpg', '1537690764.png', '1535113998.jpg', '1535113998.jpg', 5, '', 'Top food & drink festivals happening aound you. Get the close look at the most saught after dishes and recipes by top chefs. Get Discounted Tickets Now', 'Pick Top 29 Food & Drink Festivals in India | Don\'t Miss it - Explore Now', 1, '2018-08-24 07:03:18', '2018-09-23 15:37:06'),
+(4, 0, 'Travel', 'Awaken the Gulliver in you to explore beautiful places', 'travel-packages', '<p>Find top destinations and experts to take you to your favorite destination across India. Book Directly with Experts &amp; Save Your Time and Money.</p>', '1537689812.png', '1537691846.png', '1535114095.jpg', '1537689853.png', '1535114095.jpg', '1535114095.jpg', 8, '', 'Find top destinations and experts to take you to your favorite destination across India. Book Directly with Experts & Save Your Time and Money.', 'Customized Travel Packages for Domestic & International | Lowest Prices Guaranteed', 1, '2018-08-24 07:04:55', '2018-09-23 15:37:26'),
+(5, 0, 'DJ Party', 'Ditch the daily doldrums at these parties', 'dj-party-events', '<p>Join happening parties to dance to the music by top DJs and artists. Discover the ever-growing list of most happening parties across India</p>', '1537689824.png', '1535114178.jpg', '1535114178.jpg', '1537690102.png', '1535114178.jpg', '1535114178.jpg', 6, '', 'Join happening parties to dance to the music by top DJs and artists. Discover the ever growing list of most happening parties across India', 'Top 29 Most Happening DJ Parties, Concerts, Pool Party & Nightlife Near you', 1, '2018-08-24 07:06:18', '2018-09-23 15:08:22'),
+(6, 0, 'Conference', 'Great minds create great future. Join them!', 'conference-events', '<p>Learn, absorb and apply knowledge gained by experts of your field at these conferences. Choose from these top conferences, seminars, workshops and meet-ups. Register Now</p>', '1537689834.png', '1537691889.png', '1535114351.jpg', '1537689799.png', '1535114351.jpg', '1535114351.jpg', 3, '', 'Learn, absorb and apply knowledge gained by experts of your field at these conferences. Choose from these top conferences, seminars, workshops and meet-ups. Register Now', 'Find Top 29 Conferences, Meetups & Summits By Experts Of Your Field', 1, '2018-08-24 07:09:11', '2018-09-23 15:38:09'),
+(7, 0, 'Skill Development', 'Join the pros of your domain to climb the', 'skill-development-events', '<p>Add a feather in your career&#39;s cap by participating in these certification, training and skill development courses. Book Your Seat Now.</p>', '1537689845.png', '1535114436.jpg', '1535114436.jpg', '1537690726.png', '1535114436.jpg', '1535114436.jpg', 7, '', 'Add a feather in your career\'s cap by participating in these certification, training and skill development courses. Book Your Seat Now.', 'Top Upcoming Career Oriented & Skill Development Events Near you - Register Now', 1, '2018-08-24 07:10:36', '2018-09-23 15:18:46'),
+(8, 1, 'Test', 'teST TEST', 'testtesttest', '', '', '', '', '', '', '', 2, '', '', '', 1, '2018-09-25 12:09:48', '2018-09-25 12:09:48');
 
 -- --------------------------------------------------------
 
@@ -134,6 +189,8 @@ CREATE TABLE `events` (
   `linked_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `instagram_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `googleplus_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `youtube_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `speaker_title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sort_order` int(11) NOT NULL,
   `total_view` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL,
@@ -145,9 +202,12 @@ CREATE TABLE `events` (
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `title`, `slug`, `event_category`, `event_type`, `short_description`, `description`, `start_date`, `end_date`, `start_time`, `end_time`, `event_image`, `event_top_banner`, `organiser_id`, `event_document`, `ticket_url`, `website_url`, `facebook_id`, `twitter_id`, `linked_id`, `instagram_id`, `googleplus_id`, `sort_order`, `total_view`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'First Music Event', 'first-music-event', 1, 1, '<p>A concert is a live&nbsp;<strong>music</strong>&nbsp;performance in front of an audience. The performance may be by a single musician, sometimes then called a recital, or by a&nbsp;<strong>musical</strong>ensemble, such as an orchestra, choir, or band. ... Concerts often require live<strong>event</strong>&nbsp;support with professional audio equipment.</p>', '<p>A concert is a live&nbsp;<strong>music</strong>&nbsp;performance in front of an audience. The performance may be by a single musician, sometimes then called a recital, or by a&nbsp;<strong>musical</strong>ensemble, such as an orchestra, choir, or band. ... Concerts often require live<strong>event</strong>&nbsp;support with professional audio equipment.</p>', '2018-08-25', '2018-09-08', '15:15:00', '18:15:00', '1535642054.jpg', '1535642054.jpg', 2, '', '', '', '', '', '', '', '', 0, 7, 1, '2018-08-25 04:05:17', '2018-09-03 07:37:57'),
-(2, 'Second Music Event', 'second-music-event', 1, 1, '<p>short</p>', '<p>long</p>', '2018-08-26', '2018-08-30', '01:30:00', '13:30:00', '1535551199.jpg', '1535641658.jpg', 1, '', '', '', '', '', '', '', '', 0, 3, 1, '2018-08-25 14:24:16', '2018-09-03 08:07:01');
+INSERT INTO `events` (`id`, `title`, `slug`, `event_category`, `event_type`, `short_description`, `description`, `start_date`, `end_date`, `start_time`, `end_time`, `event_image`, `event_top_banner`, `organiser_id`, `event_document`, `ticket_url`, `website_url`, `facebook_id`, `twitter_id`, `linked_id`, `instagram_id`, `googleplus_id`, `youtube_id`, `speaker_title`, `sort_order`, `total_view`, `status`, `created_at`, `updated_at`) VALUES
+(6, 'Khariboli Masher: Music, Food & Rain-dance Festival', 'khariboli-masher-2018', 1, 1, '<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">We are back with another dose of fun and entertainment for you all! Over 200 artists from across India and abroad, more than 300 food and Lifestyle stalls, around 100 rides and activities</span></span></p>', '<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\">Will you believe us if we tell you that music, food, art, culture, and entertainment can come together in one place? That you can savor the delicacies from around the world; groove to your favorite beats and footloose in the rain all at once?</span></span></p>\r\n\r\n<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\">Hello, there peeps! We are back with another dose of fun and entertainment for you all! Over 200 artists from across India and abroad, more than 300 food and Lifestyle stalls, around 100 rides and activities and the largest rain dance setup is waiting for you! Can you feel the adrenaline rush already? Well, we certainly can! </span></span></p>\r\n\r\n<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\">&ldquo;The Khariboli Masher&rdquo; is back in town! A festival that celebrates freedom, honesty, and expression. Top musicians, chefs, and artists bring the best only for you and your loved ones.&nbsp; A festival of culinary art and music that honors the Indian heritage for its diverse forms. The Khariboli Masher offers exciting Watermelon Slides, Tomato Fights, Open Mic Sessions with Hasya Kavis and Mother-in-law&#39;s Revenge: a competitive grub fest. An array of stalls offering a large variety of food recipes from all over India; from specialty meats and dishes to handmade confectionary and mouth-watering desserts. This is pure heaven to all the foodies out there!&nbsp; A surprise performance from top artists and live bands amid the musical fountains and electric lights is a sight to behold. Khariboli Masher brings together a concert with both traditional Indian music and artists from western rock, hip-hop, and other genres together. Music lovers, we promise you the time of your lives! </span></span></p>\r\n\r\n<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:18px\"><strong><span style=\"font-family:Calibri,sans-serif\">Date: 28th Sep - 30th Sep 2018</span></strong></span></p>\r\n\r\n<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:18px\"><strong><span style=\"font-family:Calibri,sans-serif\">Time : 11:00 am - 10:30 pm</span></strong></span></p>\r\n\r\n<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:18px\"><strong><span style=\"font-family:Calibri,sans-serif\">Venue: &nbsp;Jawaharlal Nehru Stadium, Pragati Vihar, Delhi, India</span></strong></span></p>\r\n\r\n<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\">Time for you all to let it loose! Come and know what the buzz is about.<span style=\"background-color:white\"> Enjoy a host of fun-filled engagements</span> with an extr<span style=\"background-color:white\">avaganza of mouth-watering delicacies and music. Don&rsquo;t miss out on all fun at the Khariboli Festival guys! Make memories that will last for a lifetime.</span></span></span></p>', '2018-12-22', '2018-12-23', '11:00:00', '22:30:00', '1537375075.jpg', '1537553521.jpg', 2, '', 'https://kharibolimasher.com/', 'https://kharibolimasher.com/', 'https://www.facebook.com/KhariboliMasher', 'https://twitter.com/KhariboliMasher', '', 'https://www.instagram.com/KhariboliMasher/', '', '', '', 1, 186, 1, '2018-08-25 14:24:16', '2018-09-23 21:04:18'),
+(8, 'Parmish Verma live at Big Boyz Lounge', 'parmish-verma-live-big-boyz-lounge-01', 1, 1, '<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><strong><span style=\"font-size:14.0pt\">A shoutout to all you music enthusiasts, &ldquo;aa le chak mai aa gaya&rdquo; ;)</span></strong></span></span></p>', '<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:14px\"><span style=\"font-family:Calibri,sans-serif\">Music expresses that which cannot be said and on which it is impossible to be silent. Music gives wings to the mind and flight to the imagination. Music is love. Music is a therapy. Music is the strongest form of magic. Music is divine. Music is life!! </span></span></p>\r\n\r\n<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:14px\"><span style=\"font-family:Calibri,sans-serif\">All of you music lovers will agree with us on this right? We have a treat for all you music junkies out there! His dashing looks have already won a million hearts. With his music now,&nbsp; he is making his way into a million hearts! Hold your breath and cross your fingers!!!!!!!!!</span></span></p>\r\n\r\n<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:14px\"><strong><span style=\"font-family:Calibri,sans-serif\">Big Boyz Lounge presents our very own Punjabi </span></strong></span><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:14.0pt\"><span style=\"font-size:14px\"><strong>munda</strong></span><span style=\"font-size:14px\"><strong> &ldquo;</strong></span><span style=\"font-size:14px\"><strong>Parmish</strong></span><span style=\"font-size:14px\"><strong> Verma&rdquo; !!!!! Yes, you heard me right! You can get a chance to see him live at The Big Boyz </strong></span><span style=\"font-size:14px\"><strong>Lounge ,</strong></span></span><span style=\"font-size:14px\"><strong> Gurugram. He is ready to make you groove to his hit Punjabi numbers while you sip on glassfuls of your </strong></span><span style=\"font-size:14.0pt\"><span style=\"font-size:14px\"><strong>favourites</strong></span><span style=\"font-size:14px\"><strong> and </strong></span><span style=\"font-size:14px\"><strong>savour</strong></span><span style=\"font-size:14px\"><strong> delectable grub! &ldquo;Taur Nal Chhada&rdquo;, &ldquo;Gaal Ni Kadni&rdquo;, &ldquo;Aa Le Chak Main Aa </strong></span><span style=\"font-size:14px\"><strong>Gya</strong></span><span style=\"font-size:14px\"><strong>&rdquo; and many more songs live, only for you Gurugram </strong></span><span style=\"font-size:14px\"><strong>vasiyo</strong></span></span></span></span><span style=\"font-size:14px\"><strong><span style=\"font-family:Calibri,sans-serif\">! </span></strong></span></p>\r\n\r\n<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:14px\"><span style=\"font-family:Calibri,sans-serif\">Don&rsquo;t miss the chance to catch the youth sensation live at the Big Boyz Lounge, Sector 29, Gurugram on September 15 from 9:00 pm onwards. Save the date!</span></span></p>\r\n\r\n<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:14px\"><span style=\"font-family:Calibri,sans-serif\">Haven&rsquo;t booked your tickets yet? No problem, hurry and get reservations for the concert now! Bring your gangs to enjoy this crazy night full of loads of music, dancing </span></span><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:14.0pt\"><span style=\"font-size:14px\">and</span></span></span></span><span style=\"font-size:14px\"><span style=\"font-family:Calibri,sans-serif\"> fun! </span></span></p>\r\n\r\n<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:14px\"><span style=\"font-family:Calibri,sans-serif\">See you all at the venue!</span></span></p>', '2018-09-20', '2018-09-22', '01:30:00', '13:30:00', '1537375611.jpg', '1537375611.jpg', 1, '', 'https://www.facebook.com/bigboyzlounge/', 'https://www.facebook.com/bigboyzlounge/', 'https://www.facebook.com/bigboyzlounge/', '', '', '', '', '', '', 1, 43, 1, '2018-08-25 14:24:16', '2018-09-20 00:16:47'),
+(13, 'Sunburn City Festival 2018: Delhi NCR, Mumbai & Bengaluru', 'sunburn-city-festival', 1, 0, '<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">Get ready to electrify yourself through dance music as 2018&rsquo;s most awaited EDM festival is coming! With its exclusive line-up of artists, the top EDM festival of India has ranked itself among the top five EDM festivals of the world.</span></span></p>', '<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\">Get ready to electrify yourself through dance music as 2018&rsquo;s most awaited EDM festival is coming! With its exclusive line-up of artists, the top EDM festival of India has ranked itself among the top five EDM festivals of the world. Sunburn city festival is all scheduled to take place in the month of October. Sunburn Music Festival being the sole EDM festival to start the trend in India has now gathered millions of fans following. People belonging to working class, business class and movie-tv stars now wait for this </span></span><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:16px\">breadth</span><span style=\"font-size:16px\"> taking </span><span style=\"font-size:16px\">event</span></span></span><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"> to happen and participate in it with their close ones. </span></span></p>\r\n\r\n<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\">If Sunburn Music Festival has been in your travel list, then there&rsquo;s a surprise for all of you! For the very first time, Sunburn Music Festival will happen in New Delhi along with Bengaluru and Mumbai. It will be a weekend full of music, dance </span></span><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:16px\">and</span></span></span><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"> food. To garnish this better, you will also witness several shopping places nearby. Flock together with your gang to your city or the nearest city near you to attend this year&rsquo;s Sunburn City Festival. Owing to have millions of fans following, Sunburn Music Festival will happen during weekends in the 3 different cities, before the start of the main event in Pune.</span></span></p>\r\n\r\n<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:16px\"><strong><span style=\"font-family:Calibri,sans-serif\">Sunburn City Festival will happen simultaneously on 6<sup>th</sup> and 7<sup>th</sup> October in New Delhi and Mumbai, and on 5<sup>th</sup> October in Bengaluru. With the artist line-up having Above &amp; Beyond, Yellow Claw, </span></strong></span><strong><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:16px\">Malaa</span><span style=\"font-size:16px\">, Moksi </span><span style=\"font-size:16px\">and</span></span></span></strong><span style=\"font-size:16px\"><strong><span style=\"font-family:Calibri,sans-serif\"> Kristian Nairn with the ticket price starting INR 1500 onwards.</span></strong></span></p>\r\n\r\n<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:16px\"><em><strong>City wise artist line-up and schedule:</strong></em></span></p>\r\n\r\n<ul>\r\n	<li><span style=\"font-size:16px\"><strong>Bengaluru</strong>: <em>5th October</em> - Above &amp; Beyond, Yellow Claw, </span><span style=\"font-size:16px\">Malaa</span><span style=\"font-size:16px\">, Moksi</span></li>\r\n	<li><span style=\"font-size:16px\"><strong>Mumbai</strong>: <em>6th October</em> - Yellow Claw and Moksi; <em>7th October</em> - Above &amp; Beyond, </span><span style=\"font-size:16px\">Malaa</span><span style=\"font-size:16px\"> and Kristian Nairn</span></li>\r\n	<li><span style=\"font-size:16px\"><strong>Delhi NCR</strong>: <em>6th October</em> - Above &amp; Beyond, </span><span style=\"font-size:16px\">Malaa</span><span style=\"font-size:16px\"> and Kristian Nairn; <em>7th October</em> - Yellow Claw and Moksi</span></li>\r\n</ul>\r\n\r\n<p style=\"margin-left:0in; margin-right:0in\"><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\">We are sure you don&rsquo;t wanna miss this one!</span></span></p>\r\n\r\n<figure class=\"easyimage easyimage-full\"><img alt=\"\" src=\"blob:http://www.festevemantra.com/8a3f8140-58fb-4ba9-ab81-f91821751fe0\" style=\"width:800px\" />\r\n<figcaption></figcaption>\r\n</figure>\r\n\r\n<figure class=\"easyimage easyimage-full\"><img alt=\"\" src=\"blob:http://www.festevemantra.com/1157a125-cafd-455a-87bb-6fc1656e7765\" style=\"width:800px\" />\r\n<figcaption></figcaption>\r\n</figure>\r\n\r\n<p>&nbsp;</p>', '2018-10-05', '2018-10-07', '15:00:00', '22:30:00', '1537376345.jpg', '1537553192.jpg', 1, '', 'https://in.bookmyshow.com/events/sunburn-city-festival/ET00082184', 'http://sunburn.in/', 'https://www.facebook.com/pg/SunburnFestival/', 'https://twitter.com/SunburnFestival', '', 'https://www.instagram.com/SunburnFestival/', '', '', '', 0, 126, 1, '2018-09-19 23:49:21', '2018-09-23 15:33:14'),
+(15, 'India Affiliate Summit 2018: Leela Ambience, Gurugram', 'india-affiliate-summit-2018', 6, 0, '<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">The 4<sup>th</sup> edition of India Affiliate Summit is all set to awe-inspire you on 11<sup>th</sup> and 12<sup>th</sup> of October. Initiated in 2015 with an idea to gather the thought leaders of affiliate marketing at one place. </span></span></p>', '<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\">Are you an affiliate marketing pro and looking to even widen your knowledge and skills? Here&rsquo;s the greatest news for you.<strong> The 4<sup>th</sup> edition of India Affiliate Summit is all set to awe-inspire you on 11<sup>th</sup> and 12<sup>th</sup> of October. </strong>Initiated in 2015 with an idea to gather the thought leaders of affiliate marketing at one place. The primary objective of the summit is to share knowledge, giving affiliate giants an opportunity to showcase their success mantra through presentations and networking opportunities at their one-stop &lsquo;Affiliate Street&rsquo;.</span></span></p>\r\n\r\n<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\">What all &lsquo;Affiliate Street&rsquo; has to offer you? Grab this once in a year opportunity collaborate with other affiliate networks. Induce </span></span><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:16px\">advices</span><span style=\"font-size:16px\"> from the experts and get your business to the next level.<strong> The street is open to all affiliate publishers, marketers, brands, agencies, ad networks, bloggers and much more. Based on the traditional concept of a marketplace filled with merchants, vendors </strong></span></span></span><strong><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:16px\"><strong>and</strong></span></span></span><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"> buyers, there will be 2500+ delegates, 350+ companies and 70+ exhibitors.</span></span></strong></p>\r\n\r\n<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\">Who should attend and why to attend the India Affiliate Summit 2018? IAS18 being the premier affiliate event of India, it brings 2500+ delegates from all over India and the world. Growing networks/agencies will learn from the grown giants of the arena. Joining the affiliate pact will help you:</span></span></p>\r\n\r\n<ul>\r\n	<li><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"><strong>Grow</strong>: Every business&rsquo;s prime goal is to grow. With </span></span><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:16px\">huge</span><span style=\"font-size:16px\"> number of brands joining you on the big day will give you </span><span style=\"font-size:16px\">the grand</span></span></span><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"> opportunity to network and grow.</span></span></li>\r\n	<li><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"><strong>Establish</strong>: Lay the foundation of your empire by collaborating with affiliate networks and publishers.</span></span></li>\r\n	<li><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"><strong>Explore</strong>: Various opportunities are </span></span><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:16px\">awaiting</span></span></span><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"> to be unveiled at this summit.</span></span></li>\r\n	<li><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"><strong>Increase</strong>: Become a hustle by reaching more and more affiliate marketers opening a way to increase opportunities.</span></span></li>\r\n	<li><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"><strong>Position</strong>: Growth is an ongoing process and you could make this day you&rsquo;re the day of reaching a distinct position.</span></span></li>\r\n	<li><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"><strong>Capture</strong>: Hit the perfect shot by capturing your prospects while climbing the ladder of corporate profiling.</span></span></li>\r\n	<li><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"><strong>Network</strong>: Learn from </span></span><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:16px\">experienced</span></span></span><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"> by networking with the giants of affiliate marketing.</span></span></li>\r\n	<li><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"><strong>Innovative</strong>: Ignite your innovation mind to create new opportunities </span></span><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:16px\">for</span><span style=\"font-size:16px\"> growth, expansion, </span><span style=\"font-size:16px\">and</span></span></span><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"> learning.</span></span></li>\r\n	<li><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"><strong>Develop</strong>: Building </span></span><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:16px\">a relationship</span></span></span><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"> with your prospects is the key to growth. Develop networks with your peers at this mega event.</span></span></li>\r\n	<li><span style=\"font-size:16px\"><span style=\"font-family:Calibri,sans-serif\"><strong>Build</strong>: Bridge the gap between different stakeholders.</span></span></li>\r\n</ul>', '2018-10-11', '2018-10-12', '08:30:00', '20:15:00', '1537628903.jpg', '1537628903.jpg', 3, '', 'https://www.indiaaffiliatesummit.in/', 'https://www.indiaaffiliatesummit.in/', 'https://www.facebook.com/InternetAndMobileAssociationIndia/', 'https://twitter.com/IAMAIForum', 'https://www.linkedin.com/in/iamai-forum-75a35943/?originalSubdomain=in', '', '', '', '', 0, 121, 1, '2018-09-22 22:08:23', '2018-09-23 21:09:51'),
+(16, 'Airtel Delhi Half Marathon 2018 | Delhi NCR|', 'airtel-delhi-halfmarathon-2018', 2, 0, '<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">Delhi&rsquo;s most awaited running event has pinned the calendar on 20<sup>th</sup> October 2018. Time has come to get your running shoes ready for that great day when you will participate in Airtel Delhi Half Marathon!</span></span></p>', '<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">Delhi&rsquo;s most awaited running event has pinned the calendar on 20<sup>th</sup> October 2018. Time has come to get your running shoes ready for that great day when you will participate in Airtel Delhi Half Marathon! It all started in the year 2005, when Hutchison sponsored the event and was then taken over by Airtel. Airtel has sponsored the mega running event since 2008. Running events have always drawn the attraction of fitness freaks and runners to run for a charity. Airtel Delhi Half marathon spreads the message of &ldquo;Run for a Cause&rdquo;. Their philanthropy partner is &ldquo;India cares Foundation&rdquo;. </span></span></p>\r\n\r\n<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">With the number of participants increasing every year, <strong>Airtel Delhi Half Marathon</strong> has the list of elite runners along with mass participants running through the track. The best marathoners like Eliud Kipchoge who has been Rio Olympics marathon champion and is the fastest marathon runner, Sir Richard Hadlee, Cathy Freeman, Daley Thompson and Alan Border are few to name when we recall the Airtel Delhi Half Marathon participants&rsquo; list from past editions. To flaunt your running moments, the organizers also provide you with Facebook finisher video and photos. </span></span></p>\r\n\r\n<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">So, what&rsquo;s the wait for? Start practicing and register yourself in this mega running event of Delhi. Run in the heart of the capital city with your fellow runners and create memory of a lifetime. Be a philanthropist and a runner at the same time. Join the Airtel Half Marathon to &ldquo;Run for a Cause&rdquo;. </span></span></p>\r\n\r\n<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">You can participate in in any of the 5 categories:</span></span></p>\r\n\r\n<ul>\r\n	<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">Half Marathon &ndash; Distance 21.097 KM, Age Eligibility: Minimum 18yrs and above as on race day.</span></span></li>\r\n</ul>\r\n\r\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Application Date: 10<sup>th</sup> August till 7<sup>th</sup> September</span></span></p>\r\n\r\n<ul>\r\n	<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">Open 10K Run &ndash; Distance 10 KM, Age Eligibility: Minimum 15yrs and above as on race day.</span></span></li>\r\n</ul>\r\n\r\n<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Application Date: 10<sup>th</sup> August till 7<sup>th</sup> September</span></span></p>\r\n\r\n<ul>\r\n	<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">Great Delhi Run: Distance 6 KM, Age Eligibility: Minimum 12yrs and above as on race day.</span></span></li>\r\n</ul>\r\n\r\n<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Application Date: 10<sup>th</sup> August till 28<sup>th</sup> September</span></span></p>\r\n\r\n<ul>\r\n	<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">Senior Citizens&rsquo; Run: Distance 4 KM, Age Eligibility: Minimum 60yrs as on race day.</span></span></li>\r\n</ul>\r\n\r\n<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Application Date: 10<sup>th</sup> August till 28<sup>th</sup> September</span></span></p>\r\n\r\n<ul>\r\n	<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">Champions With Disability: Distance 2.3 KM, Age Eligibility: Minimum 12yrs as on race day.</span></span></li>\r\n</ul>\r\n\r\n<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,sans-serif\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Application Date: 10<sup>th</sup> Augist till 29<sup>th</sup> September</span></span></p>\r\n\r\n<p style=\"margin-left:0cm; margin-right:0cm\">&nbsp;</p>', '2018-10-21', '2018-10-21', '06:30:00', '09:30:00', '1537685046.jpg', '1537638313.jpg', 4, '', 'https://registration.procamrunning.in/adhm/registration.php', 'https://adhm.procamrunning.in/', 'https://www.facebook.com/runadhm', 'https://twitter.com/runadhm/', '', 'https://www.instagram.com/runadhm/', '', '', '', 0, 85, 1, '2018-09-22 22:59:06', '2018-09-25 00:01:37');
 
 -- --------------------------------------------------------
 
@@ -165,6 +225,7 @@ CREATE TABLE `event_addresses` (
   `postal_code` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `latitude` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `longitude` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `primary_address` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1=>primary',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -173,9 +234,16 @@ CREATE TABLE `event_addresses` (
 -- Dumping data for table `event_addresses`
 --
 
-INSERT INTO `event_addresses` (`id`, `event_id`, `event_location`, `city`, `state`, `country`, `postal_code`, `latitude`, `longitude`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Fortis Hospital, Rasoolpur Nawada, Industrial Area, Sector 62, Noida, Uttar Pradesh', 'Noida', 'Uttar Pradesh', 'India', '201309', '28.6179555', '77.36994759999993', NULL, NULL),
-(2, 1, 'Keshavpur Vegetable Market, Block WZ, Chaukhandi, Vishnu Garden, Delhi, India', 'Delhi', 'Delhi', 'India', '110018', '28.6518809', '77.0888228', NULL, NULL);
+INSERT INTO `event_addresses` (`id`, `event_id`, `event_location`, `city`, `state`, `country`, `postal_code`, `latitude`, `longitude`, `primary_address`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Fortis Hospital, Rasoolpur Nawada, Industrial Area, Sector 62, Noida, Uttar Pradesh', 'Noida', 'Uttar Pradesh', 'India', '201309', '28.6179555', '77.36994759999993', 0, NULL, NULL),
+(2, 1, 'Keshavpur Vegetable Market, Block WZ, Chaukhandi, Vishnu Garden, Delhi, India', 'Delhi', 'Delhi', 'India', '110018', '28.6518809', '77.0888228', 1, NULL, NULL),
+(3, 8, 'Sector 29, Gurugram, Haryana, India', 'Gurugram', 'Haryana', 'India', '122022', '28.4669448', '77.06651999999997', 0, NULL, NULL),
+(4, 6, 'Jawaharlal Nehru Stadium, Pragati Vihar, New Delhi, Delhi, India', 'New Delhi', 'Delhi', 'India', '', '28.5833047', '77.2333304', 0, NULL, NULL),
+(6, 15, 'Leela Ambience, Gurugram', 'Gurugram', 'Haryana', 'India', '122002', '', '', 0, NULL, NULL),
+(7, 16, 'DLF Phase 2, Heritage City, Sector 25, Sarhol, Haryana, India', 'Gurugram', 'Haryana', 'India', '122022', '28.4810486', '77.07538539999996', 0, NULL, NULL),
+(8, 16, 'Jawaharlal Nehru Stadium, CGO Complex, Pragati Vihar, New Delhi, Delhi, India', 'New Delhi', 'Delhi', 'India', '110003', '28.589363', '77.233562', 0, NULL, NULL),
+(9, 16, 'Keshtopur Bus Stand, Kazi Nazrul Islam Avenue, Rabindrapally, Kestopur, Kolkata, West Bengal, India', 'Kolkata', 'West Bengal', 'India', '700101', '22.6032795', '88.42329560000007', 1, NULL, NULL),
+(11, 13, 'Heritage City, DLF Phase 2, Sector 25, Sarhol, Haryana, India', 'Gurugram', 'Haryana', 'India', '122022', '28.4829659', '77.08718099999999', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -187,6 +255,7 @@ CREATE TABLE `event_schedules` (
   `id` int(10) UNSIGNED NOT NULL,
   `event_id` int(11) NOT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `date` date NOT NULL,
   `from_time` time NOT NULL,
   `to_time` time NOT NULL,
@@ -200,14 +269,44 @@ CREATE TABLE `event_schedules` (
 -- Dumping data for table `event_schedules`
 --
 
-INSERT INTO `event_schedules` (`id`, `event_id`, `title`, `date`, `from_time`, `to_time`, `activity`, `status`, `created_at`, `updated_at`) VALUES
-(7, 2, 'First Day Morning', '2018-08-25', '09:00:00', '12:00:00', '', 1, NULL, NULL),
-(8, 2, 'First Day AfterNoon', '2018-08-25', '01:00:00', '04:00:00', '', 1, NULL, NULL),
-(9, 2, 'First Day Night', '2018-08-25', '06:00:00', '09:00:00', '', 1, NULL, NULL),
-(10, 2, 'Second Day Morning', '2018-08-26', '09:00:00', '12:00:00', '', 1, NULL, NULL),
-(11, 2, 'Second Day AfterNoon', '2018-08-26', '01:00:00', '04:00:00', '', 1, NULL, NULL),
-(12, 2, 'Second Day Night', '2018-08-26', '06:00:00', '09:00:00', '', 1, NULL, NULL),
-(13, 2, 'Third Day Morning', '2018-08-28', '10:45:00', '11:30:00', '', 1, NULL, NULL);
+INSERT INTO `event_schedules` (`id`, `event_id`, `title`, `address`, `date`, `from_time`, `to_time`, `activity`, `status`, `created_at`, `updated_at`) VALUES
+(7, 2, 'First Day Morning', '', '2018-08-25', '09:00:00', '12:00:00', '', 1, NULL, NULL),
+(8, 2, 'First Day AfterNoon', '', '2018-08-25', '01:00:00', '04:00:00', '', 1, NULL, NULL),
+(9, 2, 'First Day Night', '', '2018-08-25', '06:00:00', '09:00:00', '', 1, NULL, NULL),
+(10, 2, 'Second Day Morning', '', '2018-08-26', '09:00:00', '12:00:00', '', 1, NULL, NULL),
+(11, 2, 'Second Day AfterNoon', '', '2018-08-26', '01:00:00', '04:00:00', '', 1, NULL, NULL),
+(12, 2, 'Second Day Night', '', '2018-08-26', '06:00:00', '09:00:00', '', 1, NULL, NULL),
+(13, 2, 'Third Day Morning', '', '2018-08-28', '10:45:00', '11:30:00', '', 1, NULL, NULL),
+(14, 8, 'Parmish Verma live at The Big Boyz Lounge, Gurugram', '', '2018-09-19', '10:15:00', '10:15:00', '', 1, NULL, NULL),
+(15, 6, 'Khariboli Masher: Biggest Music, Food & Rain-dance Festival', '', '2018-12-22', '11:30:00', '22:30:00', '', 1, NULL, NULL),
+(16, 13, 'Sunburn Festival', 'Bengaluru - Manpho Convention Centre, Veeranna Palya', '2018-10-05', '15:00:00', '22:00:00', '', 1, NULL, NULL),
+(17, 13, 'Sunburn Festival', 'Mumbai - JioGarden, BKC', '2018-10-06', '15:00:00', '22:00:00', '', 1, NULL, NULL),
+(18, 13, 'Sunburn Festival', 'Delhi NCR - Leisure valley HUDA Ground, Gurgaon', '2018-10-06', '15:00:00', '22:00:00', '', 1, NULL, NULL),
+(19, 13, 'Sunburn Festival', 'Mumbai - JioGarden, BKC', '2018-10-07', '15:00:00', '22:00:00', '', 1, NULL, NULL),
+(20, 13, 'Sunburn Festival', 'Delhi NCR - Leisure valley HUDA Ground, Gurgaon', '2018-10-07', '15:00:00', '22:00:00', '', 1, NULL, NULL),
+(21, 15, 'Collection Of Badges', '', '2018-10-11', '08:30:00', '09:45:00', '', 1, NULL, NULL),
+(22, 15, 'Inaugural Session', '', '2018-10-11', '09:45:00', '10:45:00', '', 1, NULL, NULL),
+(23, 15, 'Networking Break (Visit Affiliate Street)', '', '2018-10-11', '10:45:00', '11:00:00', '', 1, NULL, NULL),
+(24, 16, 'Airtel Delhi Half Marathon 2018 | Delhi NCR|', 'Jawaharlal Nehru Stadium, Delhi', '2018-10-21', '06:30:00', '21:30:00', '', 1, NULL, NULL),
+(25, 15, 'Plenary Session 1 |  The Rise of Influencers: Measuring Values and Promising Results', '', '2018-10-11', '11:00:00', '12:00:00', '', 1, NULL, NULL),
+(26, 15, 'Special Address 1', '', '2018-10-11', '12:00:00', '12:45:00', '', 1, NULL, NULL),
+(27, 15, 'Plenary Session 2 | Programmatic Advertising & Tracking a Customer Journey Across Devices', '', '2018-10-11', '12:45:00', '13:45:00', '', 1, NULL, NULL),
+(28, 15, 'Lunch', '', '2018-10-11', '13:45:00', '14:30:00', '', 1, NULL, NULL),
+(29, 15, 'Special Address', '', '2018-10-11', '14:30:00', '15:00:00', '', 1, NULL, NULL),
+(30, 15, 'Plenary Session 3 | Marketing in the Machine Age: Adopting Technology Into Your Affiliate Marketing', '', '2018-10-11', '15:00:00', '16:00:00', '', 1, NULL, NULL),
+(31, 15, 'Lead Talk 2', '', '2018-10-11', '16:00:00', '16:30:00', '', 1, NULL, NULL),
+(32, 15, 'Networking Break (Visit Affiliate Street)', '', '2018-10-11', '16:45:00', '17:00:00', '', 1, NULL, NULL),
+(33, 15, 'Plenary Session 4 | The Video revolution: Getting Massive Consumer Engagement', '', '2018-10-11', '17:00:00', '18:00:00', '', 1, NULL, NULL),
+(34, 15, 'Collection of Badges', '', '2018-10-12', '08:30:00', '10:00:00', '', 1, NULL, NULL),
+(35, 15, 'Lead Talk 3', '', '2018-10-12', '10:00:00', '10:30:00', '', 1, NULL, NULL),
+(36, 15, 'PLenary Session 5 |  How to Leverage True Power of Affiliate Marketing?', '', '2018-10-12', '10:30:00', '11:30:00', '', 1, NULL, NULL),
+(37, 15, 'Networking Break (Visit Affiliate Street)', '', '2018-10-12', '11:30:00', '12:00:00', '', 1, NULL, NULL),
+(38, 15, 'Plenary Session 6 | Turn Your regular Customers into Brand Advocates', '', '2018-10-12', '12:00:00', '13:00:00', '', 1, NULL, NULL),
+(39, 15, 'Plenary Session 7 | The Skill Gaming industry in India', '', '2018-10-12', '13:00:00', '14:00:00', '', 1, NULL, NULL),
+(40, 15, 'Lunch', '', '2018-10-12', '14:00:00', '15:00:00', '', 1, NULL, NULL),
+(41, 15, 'Plenary Session 8 | Changing World of Content Consumption - Emergence of Virtual Assistants, Streaming Apps and More.', '', '2018-10-12', '15:00:00', '16:00:00', '', 1, NULL, NULL),
+(42, 15, 'Networking Break (Visit Affiliate Street)', '', '2018-10-12', '16:45:00', '16:15:00', '', 1, NULL, NULL),
+(43, 15, 'Plenary Session 9 | Engagement Models for Affiliates - Cost per Action (CPA) vs. Cost Per Sale (CPS)', '', '2018-10-12', '16:15:00', '17:15:00', '', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -218,11 +317,9 @@ INSERT INTO `event_schedules` (`id`, `event_id`, `title`, `date`, `from_time`, `
 CREATE TABLE `event_seos` (
   `id` int(10) UNSIGNED NOT NULL,
   `event_id` int(11) NOT NULL,
-  `meta_title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_keyword` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `page_title` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `page_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -231,9 +328,14 @@ CREATE TABLE `event_seos` (
 -- Dumping data for table `event_seos`
 --
 
-INSERT INTO `event_seos` (`id`, `event_id`, `meta_title`, `meta_keyword`, `meta_description`, `page_title`, `page_description`, `created_at`, `updated_at`) VALUES
-(1, 2, '', 'Second Keyword', 'Second Keyword', 'Second Keyword', 'Second Keyword', NULL, NULL),
-(2, 1, '', 'FirstKeyword', 'FirstKeyword', 'FirstKeyword', 'FirstKeyword', NULL, NULL);
+INSERT INTO `event_seos` (`id`, `event_id`, `meta_keyword`, `meta_description`, `page_title`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Second Keyword', 'Second Keyword', 'Second Keyword', NULL, NULL),
+(2, 1, 'FirstKeyword', 'FirstKeyword', 'FirstKeyword', NULL, NULL),
+(3, 8, '', '', '', NULL, NULL),
+(4, 6, 'Upcoming event in delhi, Rain dance event in delhi, khariboli masher event, Music Event, Food festival 2018, rain dance festivals, khariboli masher 2018, Khariboli Masher in delhi, Cultural Events in Delhi, Biggest Raindance Festival , Greatest Raindance Festival , Best Raindance Festival in India , Top Raindance Festivals in the World , Growthjack , Growthjack Events , Khariboli Masher , Khariboli Raindance Festival , Khariboli Food and Music Festival , Growthjack Khariboli Masher', 'Over 200 artists from across India and abroad, more than 300 food and Lifestyle stalls, around 100 rides and activities. Book Tickets Online.', 'The Largest Rain Dance Festival: Khariboli Masher 2018 - Get Tickets', NULL, NULL),
+(5, 13, 'Sunburn festival, Sunburn in delhi,  Sunburn in mumbai, Sunburn in bengaluru, Sunburn festival 2018', 'Get 🌟star struck in your \'CITY\' this October as Sunburn City Festival is all set to make you fly with the rhythm!', 'Sunburn City Festival 2018: Delhi NCR, Mumbai & Bengaluru', NULL, NULL),
+(6, 16, 'Airtel Delhi Half Marathon, Airtel Marathon, Delhi Half marathon, Ruuning Event airtel, Upcoming Marathon event in delhi', 'Time has come to get your running shoes ready for that great day when you will participate in Airtel Delhi Half Marathon!', 'Airtel Delhi Half Marathon 2018 to be held on 21th Oct: Register Now', NULL, NULL),
+(7, 15, 'India Affiliate Summit 2018, Digital Marketing event, Upcoming marketing event, Affiliate summit, Upcoming conference event, Affiliate Summit in gurgaon', 'The 4th edition of India Affiliate Summit is all set to awe-inspire you on 11th and 12th of October. Initiated in 2015 with an idea to gather the thought leaders of affiliate marketing at one place.', 'India Affiliate Summit 2018 to be held on 11th Oct: Register Now', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -254,34 +356,15 @@ CREATE TABLE `event_speakers` (
 --
 
 INSERT INTO `event_speakers` (`id`, `event_id`, `speaker_id`, `created_at`, `updated_at`) VALUES
-(1, 2, 1, '2018-09-03 08:07:01', '2018-09-03 08:07:01');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `event_stories`
---
-
-CREATE TABLE `event_stories` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `story_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `short_desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `narrator_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `narrator_image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` tinyint(4) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `event_stories`
---
-
-INSERT INTO `event_stories` (`id`, `story_name`, `short_desc`, `description`, `image`, `narrator_name`, `narrator_image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Story 1', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '1535548452.jpg', 'Story Teller 2', '1535962720.jpg', 1, '2018-08-24 07:40:53', '2018-09-03 02:48:41'),
-(2, 'Story 2', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '1535548431.jpg', 'Story Teller 1', '1535962708.jpg', 1, '2018-08-24 23:44:01', '2018-09-03 02:48:28');
+(1, 2, 1, '2018-09-03 08:07:01', '2018-09-03 08:07:01'),
+(2, 2, 2, '2018-09-03 08:07:01', '2018-09-03 08:07:01'),
+(14, 8, 1, '2018-09-20 00:16:47', '2018-09-20 00:16:47'),
+(41, 15, 4, '2018-09-23 21:09:51', '2018-09-23 21:09:51'),
+(42, 15, 5, '2018-09-23 21:09:51', '2018-09-23 21:09:51'),
+(43, 15, 6, '2018-09-23 21:09:51', '2018-09-23 21:09:51'),
+(44, 15, 7, '2018-09-23 21:09:51', '2018-09-23 21:09:51'),
+(45, 15, 8, '2018-09-23 21:09:51', '2018-09-23 21:09:51'),
+(46, 15, 9, '2018-09-23 21:09:51', '2018-09-23 21:09:51');
 
 -- --------------------------------------------------------
 
@@ -332,17 +415,19 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2018_07_12_150215_create_site_settings_table', 1),
 (6, '2018_07_12_150758_create_event_schedules_table', 1),
 (7, '2018_07_12_151833_create_event_types_table', 1),
-(8, '2018_07_12_152036_create_event_stories_table', 1),
+(8, '2018_07_12_152036_create_stories_table', 1),
 (9, '2018_07_12_152350_create_events_table', 1),
 (10, '2018_08_24_095248_create_categories_table', 1),
 (11, '2018_08_24_095711_create_speakers_table', 1),
 (12, '2018_08_24_100031_create_organisers_table', 1),
 (18, '2018_08_25_052337_drop_user_table', 2),
-(19, '2018_08_25_052840_add_narrator_to_event_stories', 2),
 (20, '2018_08_25_060625_add_organiser_to_events', 2),
 (21, '2018_08_25_061133_create_event_speakers_table', 2),
 (22, '2018_09_03_060711_create_event_addresses_table', 2),
-(25, '2018_09_03_084443_create_event_seos_table', 3);
+(25, '2018_09_03_084443_create_event_seos_table', 3),
+(26, '2018_09_22_164426_create_pages_table', 4),
+(27, '2018_09_27_192420_create_authors_table', 5),
+(28, '2018_09_27_192612_create_advertisements_table', 5);
 
 -- --------------------------------------------------------
 
@@ -363,13 +448,14 @@ CREATE TABLE `newsletters` (
 --
 
 INSERT INTO `newsletters` (`id`, `email`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'sd@sdf.cin', 0, '2018-08-27 08:41:32', '2018-08-27 08:41:32'),
+(1, 'sd@sdf.cin', 1, '2018-08-27 08:41:32', '2018-09-13 12:29:55'),
 (2, 'asda@sdc.sds', 0, '2018-08-27 08:45:03', '2018-08-27 08:45:03'),
 (3, 'ads@sdf.dscsd', 0, '2018-08-27 08:56:09', '2018-08-27 08:56:09'),
 (4, 'dsd@dfx.gtrdtf', 0, '2018-08-27 08:56:30', '2018-08-27 08:56:30'),
 (5, 'as@sdfs.sdfd', 0, '2018-08-28 01:41:46', '2018-08-28 01:41:46'),
 (6, 'arvind@tech.dfg', 0, '2018-08-28 01:42:09', '2018-08-28 01:42:09'),
-(7, 'abhishek.anand@gmail.com', 0, '2018-08-30 09:46:27', '2018-08-30 09:46:27');
+(7, 'abhishek.anand@gmail.com', 0, '2018-08-30 09:46:27', '2018-08-30 09:46:27'),
+(8, 'qe@dgf.fdgdfg', 0, '2018-09-30 07:34:03', '2018-09-30 07:34:03');
 
 -- --------------------------------------------------------
 
@@ -397,8 +483,45 @@ CREATE TABLE `organisers` (
 --
 
 INSERT INTO `organisers` (`id`, `organiser_title`, `name`, `description`, `facebook_id`, `twitter_id`, `linked_id`, `instagram_id`, `googleplus_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Organiser 1', 'Organiser 1', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '', '', '', '', '', 1, '2018-08-24 07:37:21', '2018-08-24 07:37:21'),
-(2, 'Organiser 2', 'Organiser 2', '<p>Reed Exhibitions Japan strive to provide the most effective platform for exhibitors showcasing the latest technologies, products and services to meet professionals from around the world who seek such exhibits. Through organising the show, Reed Exhibitions Japan is fully committed to aid the expansion of the industries.</p>', '', '', '', '', '', 1, '2018-08-25 13:40:44', '2018-08-25 13:44:34');
+(1, 'Sunburn City Festival', 'Sunburn - Electronic Music Festival', '<p>Sunburn Festival is India&#39;s premier electronic music festival hosting Asia&#39;s largest &lsquo;4-day&rsquo; Electronic Music Festival. We started our journey in 2007 and it still continues. Our first event festival was held in Goa, India in 2007 with the world&rsquo;s biggest artists. We are pleased to get artists like Martin Garrix, Dimitri Vegas and Like Mike, Afrojack, Tiesto, DJ Snake, KSHMR, Hardwell, Nicky Romero, Nervo and many more to India.</p>', 'https://www.facebook.com/SunburnFestival/', 'https://twitter.com/SunburnFestival', 'http://www.sunburn.in/', 'https://www.instagram.com/SunburnFestival/', '', 1, '2018-08-24 07:37:21', '2018-09-22 00:59:57'),
+(2, 'The Khariboli Masher', 'The Khariboli Masher', '<p>Khariboli Masher is a festival to fuse culinary arts and music, celebrating the Indian heritage in its fabulously diverse avatars and forms. The festival promises food from every part of India blended with some great performances from top artists and live bands. The Khariboli Masher festival offers exciting Watermelon Slides, Tomato Fights, Open Mic Sessions with Hasya Kavis and Mother-in-law&#39;s Revenge.</p>', 'https://www.facebook.com/KhariboliMasher/', 'https://twitter.com/kharibolimasher/', '', 'https://www.instagram.com/kharibolimasher/', '', 1, '2018-08-25 13:40:44', '2018-09-22 01:27:07'),
+(3, 'INDIA AFFILIATE SUMMIT', 'Internet and Mobile Association of India (IAMAI)', '<p>India Affiliate Summit&nbsp;organized by the Internet and Mobile Association of India(IAMAI), has been the premier meeting point for thought leaders from the affiliate marketing space. Here is where the key stakeholders and influencers in the industry discuss innovations, dissect implications and dwell upon the substantial potential of this booming industry.</p>', 'https://www.facebook.com/InternetAndMobileAssociationIndia/', 'https://twitter.com/IAMAIForum', 'https://www.linkedin.com/in/iamai-forum-75a35943/?originalSubdomain=in', '', '', 1, '2018-09-22 21:38:18', '2018-09-22 21:38:18'),
+(4, 'Airtel Delhi Half Marathon', 'Airtel Delhi Half Marathon', '<p>Buoyed by the success of the opening edition of the Standard Chartered Mumbai Marathon, Procam zeroed in on the capital city of India, New Delhi, and thus started the journey of the Delhi Half Marathon in 2005. Rio Olympics marathon champion and the fastest marathoner in the world, Eliud Kipchoge, chose to participate in and won the Airtel Delhi Half Marathon 2016. Daley Thompson, Jackie-Joyner Kersee, Sir Richard Hadlee, Alan Border and Cathy Freeman have been the event ambassadors of the world&rsquo;s most prestigious IAAF Gold Label half-marathon.</p>', 'https://www.facebook.com/runadhm', 'https://twitter.com/runadhm/', '', 'https://www.instagram.com/runadhm/', '', 1, '2018-09-22 21:41:39', '2018-09-22 21:41:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pages`
+--
+
+CREATE TABLE `pages` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `page_title` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pages`
+--
+
+INSERT INTO `pages` (`id`, `title`, `slug`, `content`, `meta_keyword`, `meta_description`, `page_title`, `created_at`, `updated_at`) VALUES
+(1, 'Home', 'home', '', 'meta_keyword', 'Explore most happening concerts, parties, conferences, sports & recreational events near you. Festeve Mantra lets you buy tickets of any Event & Festival.', 'Festeve Mantra: Enter the happening world | Explore Top Upcoming Events & Festivals', '2018-09-22 01:30:00', '2018-09-24 01:30:00'),
+(2, 'Our Team', 'our-team', '<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a line in section 1.10.32.</p>\r\n\r\n<p>ey College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a line in section 1.10.32.</p>', 'our team meta keyword', 'Meet and socialize with the Co-founders and other team members of Festeve Mantra here!', 'Our Team - The People Behind Festeve Mantra', '2018-09-22 01:30:00', '2018-09-24 01:30:00'),
+(3, 'Careers', 'careers', '<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,\r\n                        making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more\r\n                        obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered\r\n                        the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and\r\n                        Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line\r\n                        of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\r\n                    </p>\r\n                    <p>ey College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the\r\n                        cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de\r\n                        Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics,\r\n                        very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\r\n                    </p>', 'our team meta keyword', 'our team meta description', 'our team page title', '2018-09-22 01:30:00', '2018-09-24 01:30:00'),
+(4, 'TERMS & CONDITIONS', 'terms-conditions', '<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,\r\n                        making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more\r\n                        obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered\r\n                        the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and\r\n                        Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line\r\n                        of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\r\n                    </p>\r\n                    <p>ey College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the\r\n                        cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de\r\n                        Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics,\r\n                        very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\r\n                    </p>', 'our team meta keyword', 'our team meta description', 'our team page title', '2018-09-22 01:30:00', '2018-09-24 01:30:00'),
+(5, 'PRIVACY POLICY', 'privacy-policy', '<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,\r\n                        making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more\r\n                        obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered\r\n                        the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and\r\n                        Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line\r\n                        of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\r\n                    </p>\r\n                    <p>ey College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the\r\n                        cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de\r\n                        Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics,\r\n                        very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\r\n                    </p>', 'our team meta keyword', 'our team meta description', 'our team page title', '2018-09-22 01:30:00', '2018-09-24 01:30:00'),
+(6, 'Contact Us', 'contact-us', '<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,\r\n                        making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more\r\n                        obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered\r\n                        the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and\r\n                        Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line\r\n                        of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\r\n                    </p>\r\n                    <p>ey College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the\r\n                        cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de\r\n                        Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics,\r\n                        very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\r\n                    </p>', 'our team meta keyword', 'our team meta description', 'our team page title', '2018-09-22 01:30:00', '2018-09-24 01:30:00'),
+(7, 'Top Hundred', 'top-hundred', '', 'Top 10 upcoming Travel events, Top 10 upcoming Skill Development events, Top 10 upcoming Music concerts, Top 10 upcoming Sports events, Top 10 upcoming Conference events, Top 10 upcoming Food festivals, Top 10 upcoming DJ Party events, Top 10 upcoming Seminars & Meetups events, Top 10 upcoming Yoga, Meditation & Spirituality events, Top 10 upcoming Theme parks events, Top 10 upcoming Entertainment events, Top 10 upcoming Adventure & Outdoors events, Top 10 upcoming Profesional training events, Top 10 upcoming Campus events, Top 10 upcoming Tradeshows events, Top 10 upcoming Trade fair', 'You will find here India\'s top 100 Upcoming premium events & festivals like music concert, DJ party, conference, trade show, food festivals at one roof.', 'Top 100 Upcoming Premium Events & Festivals near you: Explore Now', '2018-09-22 01:30:00', '2018-09-24 01:30:00'),
+(8, 'Categories', 'categories', '', 'upcoming Travel event, upcoming Skill Development event, upcoming Music concerts, upcoming Sports events, upcoming Conference events, upcoming Food festivals, upcoming DJ Party events, upcoming Seminars & Meetups, upcoming Yoga, Meditation & Spirituality events, upcoming Theme parks event, upcoming Entertainment events, upcoming Adventure & Outdoors events, upcoming Profesional training events, upcoming Campus events, upcoming college festivals, upcoming Tradeshows events, upcoming Trade fair, all event categories', 'Find your interest based event & festival by browsing our festeve categories, covering events of all genres and locations.', 'Browse List of All Upcoming Events & Festivals | Festeve Mnatra', '2018-09-22 01:30:00', '2018-09-24 01:30:00'),
+(9, 'Stories', 'stories', '', 'submit story, share your story, where to submit short stories for money, submit event story, submit festivals story, share event experince, food festival stories. events stories, festival-event story', 'Had amazing experience at your last event visit or have a review to share? Submit your festival-event story with our readers and make it last forever.', 'Want to share your Event & Festival experience? Submit Your Story Now', '2018-09-22 01:30:00', '2018-09-24 01:30:00'),
+(10, 'Add Event', 'add-event', '', 'submit your event, submit an event, event submission sites in india, Free Event Submission Sites, event promotion websites in india, online event registration india, online event ticket booking, sell event tickets online free, event ticket booking website, mera events, event ticketing platforms in india, goeventz, townscript, 10times, explara, book my show, eventbrite', 'Adding more interested audience in your event is always a perk! And we make it happen through our event and festival discovery platform. Submit your event today!', 'Want your Event to reach right audience? Submit Your Event Now', '2018-09-22 01:30:00', '2018-09-24 01:30:00'),
+(11, 'About Us', 'about-us', '<p>Festeve Mantra is the confluence of festivals and events happening across the globe. For all the festival fanatics, discover the goodness arranged by people for the like-minded festival and event goers. We are the messengers offering our platform to know all the what, where, who and whys of the festivals and events of your favorite genre.&nbsp;</p>\r\n\r\n<p>Join us to explore the beauty of celebrations, gatherings, communities, excitement and all the thrill that you seek for. Ranging from luscious cuisine to gallons of delicious drinks, from dance to music, thons to keep you fit, exploring creativity to showcasing your talent and even gathering knowledge and wisdom to develop your skills.</p>\r\n\r\n<p><strong>Find all at one place - Festeve Mantra!</strong></p>', 'festivals, events, conference, seminar, dj party, concerts, Upcoming events in delhi, New year party events', 'Festeve Mantra is the confluence of festivals and events happening across the globe. A platform by festival fanatics for the festival community.', 'About Us - Festeve Mantra', '2018-09-22 01:30:00', '2018-09-24 01:30:00');
 
 -- --------------------------------------------------------
 
@@ -420,17 +543,10 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `site_settings` (
   `id` int(10) UNSIGNED NOT NULL,
-  `company_title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `logo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone_number` bigint(20) NOT NULL,
-  `mobile_number` bigint(20) NOT NULL,
-  `contact_email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `facebook_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `twitter_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `linked_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `instagram_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `googleplus_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `var_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `var_title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `var_value` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` enum('content','image') COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -439,8 +555,25 @@ CREATE TABLE `site_settings` (
 -- Dumping data for table `site_settings`
 --
 
-INSERT INTO `site_settings` (`id`, `company_title`, `logo`, `address`, `phone_number`, `mobile_number`, `contact_email`, `facebook_id`, `twitter_id`, `linked_id`, `instagram_id`, `googleplus_id`, `created_at`, `updated_at`) VALUES
-(1, 'Festeve Mantra', '', '', 0, 0, '', '', '', '', '', '', NULL, NULL);
+INSERT INTO `site_settings` (`id`, `var_name`, `var_title`, `var_value`, `type`, `created_at`, `updated_at`) VALUES
+(1, 'site_name', 'SITE NAME', 'Festeve Mantra', 'content', '2018-09-19 18:30:00', '2018-09-19 18:30:00'),
+(2, 'logo', 'SITE LOGO', 'logo.jpg', 'image', '2018-09-19 18:30:00', '2018-09-19 18:30:00'),
+(3, 'address', 'ADDRESS', 'Tower 4B, DLF Corporate Park, Gurgaon , Haryana 122001', 'content', '2018-09-19 18:30:00', '2018-09-19 18:30:00'),
+(4, 'phone_number', 'PHONE NUMBER', '9650311009', 'content', '2018-09-19 18:30:00', '2018-09-19 18:30:00'),
+(5, 'mobile_number', 'MOBILE NUMBER', '9650311009', 'content', '2018-09-19 18:30:00', '2018-09-19 18:30:00'),
+(6, 'contact_email', 'CONTACT EMAIL', 'info@festevemantra.com', 'content', '2018-09-19 18:30:00', '2018-09-19 18:30:00'),
+(7, 'facebook_id', 'FACEBOOK ID', 'https://www.facebook.com/festevemantra/', 'content', '2018-09-19 18:30:00', '2018-09-19 18:30:00'),
+(8, 'twitter_id', 'TWITTER ID', 'https://twitter.com/festevemantra', 'content', '2018-09-19 18:30:00', '2018-09-19 18:30:00'),
+(9, 'linked_id', 'LINKEDIN ID', 'https://www.linkedin.com/company/digitalbeginner/', 'content', '2018-09-19 18:30:00', '2018-09-19 18:30:00'),
+(10, 'instagram_id', 'INSTAGRAM ID', 'https://www.instagram.com/festevemantra/', 'content', '2018-09-19 18:30:00', '2018-09-19 18:30:00'),
+(11, 'googleplus_id', 'GOOGLEPLUS ID', '', 'content', '2018-09-19 18:30:00', '2018-09-19 18:30:00'),
+(12, 'page_title', 'PAGE TITLE', 'Festeve Mantra: Enter the happening world | Explore Top Upcoming Events & Festivals', 'content', '2018-09-19 18:30:00', '2018-09-19 18:30:00'),
+(13, 'meta_title', 'META TITLE', 'Festeve Mantra: Enter the happening world | Explore Top Upcoming Events & Festivals', 'content', '2018-09-19 18:30:00', '2018-09-19 18:30:00'),
+(14, 'meta_keyword', 'META KEYWORD', 'META KEYWORD', 'content', '2018-09-19 18:30:00', '2018-09-19 18:30:00'),
+(15, 'meta_description', 'META DESCRIPTION', 'Explore most happening concerts, parties, conferences, sports & recreational events near you. Festeve Mantra lets you buy tickets of any Event & Festival.', 'content', '2018-09-19 18:30:00', '2018-09-19 18:30:00'),
+(16, 'company_title', 'COMPANY NAME', 'Festeve Mantra', 'content', NULL, NULL),
+(17, 'youtube_id', 'COMPANY NAME', 'Festeve Mantra', 'content', NULL, NULL),
+(18, 'favicon', 'FAVICON', '', 'content', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -472,7 +605,44 @@ CREATE TABLE `speakers` (
 INSERT INTO `speakers` (`id`, `speaker_name`, `image`, `title`, `tag_line`, `description`, `facebook_id`, `twitter_id`, `linked_id`, `instagram_id`, `googleplus_id`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Kapil Khandelwal', '1535217792.jpg', 'Hello', '', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '', '', '', '', '', 1, '2018-08-24 07:22:50', '2018-08-25 11:53:12'),
 (2, 'Dharmveer Kaushik', '1535217781.jpg', 'Tech Lead', '', '<p>A&nbsp;<strong>tutor</strong>&nbsp;is a person who provides assistance or tutelage to one or more people on certain subject areas or skills. The tutor spends a few hours on a daily, weekly, or monthly basis to transfer their expertise on the topic or skill to the student. Tutoring can take place in different settings, such as a classroom, a formal tutoring center, or the home of the tutor/learner. As a teaching-learning method, tutoring is characterized by how it differs from formal teaching methods on the basis of the (in)formality of the setting as well as the flexibility in pedagogical methods in terms of duration, pace of teaching, evaluation and tutor-tutee rapport.</p>', '', '', '', '', '', 1, '2018-08-25 11:53:01', '2018-08-25 11:53:01'),
-(3, 'Sandeep Yadav', '1535217811.jpg', 'Frontend Developer', '', '<p>A&nbsp;<strong>tutor</strong>&nbsp;is a person who provides assistance or tutelage to one or more people on certain subject areas or skills. The tutor spends a few hours on a daily, weekly, or monthly basis to transfer their expertise on the topic or skill to the student. Tutoring can take place in different settings, such as a classroom, a formal tutoring center, or the home of the tutor/learner. As a teaching-learning method, tutoring is characterized by how it differs from formal teaching methods on the basis of the (in)formality of the setting as well as the flexibility in pedagogical methods in terms of duration, pace of teaching, evaluation and tutor-tutee rapport.</p>', '', '', '', '', '', 1, '2018-08-25 11:53:31', '2018-08-25 11:53:31');
+(3, 'Sandeep Yadav', '1535217811.jpg', 'Frontend Developer', '', '<p>A&nbsp;<strong>tutor</strong>&nbsp;is a person who provides assistance or tutelage to one or more people on certain subject areas or skills. The tutor spends a few hours on a daily, weekly, or monthly basis to transfer their expertise on the topic or skill to the student. Tutoring can take place in different settings, such as a classroom, a formal tutoring center, or the home of the tutor/learner. As a teaching-learning method, tutoring is characterized by how it differs from formal teaching methods on the basis of the (in)formality of the setting as well as the flexibility in pedagogical methods in terms of duration, pace of teaching, evaluation and tutor-tutee rapport.</p>', '', '', '', '', '', 1, '2018-08-25 11:53:31', '2018-08-25 11:53:31'),
+(4, 'Aline Couto', '1537630037.jpg', 'Partner - Offerpay', '', '<p>Aline co-founded her first company at 21 and has spoken at major Brazilian digital marketing events.&nbsp;After her presentation at Affiliates Brazil, she and her associates shifted their business from digital to affiliate marketing to explore the various opportunities of this new and growing industry in the fifth most populous country in the world.</p>', '', 'https://twitter.com/alineideias', 'https://www.linkedin.com/in/alineideias', '', '', 1, '2018-09-22 22:27:17', '2018-09-22 22:27:17'),
+(5, 'Anurag Gupta', '1537630268.jpg', 'CEO, SVG Media', '', '<p>Anurag Gupta, CEO, SVG Media has over 20 years of experience across diverse industries &ndash; FMCG, Office Automation, Stock Broking, and Media &amp; Internet</p>', 'https://www.facebook.com/anurag.gupta.delhi', 'https://twitter.com/anurag_gupta', 'https://www.linkedin.com/in/anuraggupta', '', '', 1, '2018-09-22 22:30:24', '2018-09-22 22:31:08'),
+(6, 'Brett Kaufman', '1537630474.jpg', 'COO - Workbook6', '', '<p>Brett Kaufman is the COO of WorkBook6, an Arizona based company, where he oversees all media/finance/technology operations. WorkBook6 is a business development, customer acquisition and affinity marketing services&nbsp;firm.</p>', '', 'https://twitter.com/brettmkaufman', 'https://www.linkedin.com/in/brettmkaufman/', '', '', 1, '2018-09-22 22:34:34', '2018-09-22 22:34:34'),
+(7, 'Nick Peroni', '1537630662.jpg', 'Owner & Creator - Ecom Empires', '', '<p>Nick is one of the leading thought leaders in social ecommerce right now. He is the creator of Ecom Empires, where he actively leads over 61,000 entrepreneurs from all around the world and have helped thousands of people find success in their online business.</p>', 'https://www.facebook.com/nick.peroni', '', 'https://www.linkedin.com/in/nickperoni', '', '', 1, '2018-09-22 22:37:42', '2018-09-22 22:37:42'),
+(8, 'Parul Bhargava', '1537631080.png', 'CEO, vCommission', '', '<p>Parul is a charismatic leader and one of the most refined women entrepreneurs in the field of digital and performance marketing today.</p>', '', '', 'https://in.linkedin.com/in/vcommission', '', '', 1, '2018-09-22 22:44:40', '2018-09-22 22:44:40'),
+(9, 'Stephen Rumbelow', '1537631230.jpg', 'Group CEO, Optimise', '', '<p>Stephen has a degree in Marketing from the Chartered Institute of Marketing, combined with a wealth of Advertiser and Publisher- side experience spanning Retail, Mobile and Finance, working for high-profile Brands like Aviva, Virgin and Hiscox.</p>', '', 'https://twitter.com/OptimiseMedia', 'https://www.linkedin.com/in/stephenrumbelow/', '', '', 1, '2018-09-22 22:47:10', '2018-09-22 22:47:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stories`
+--
+
+CREATE TABLE `stories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `story_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `sort_order` int(11) NOT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `page_title` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `stories`
+--
+
+INSERT INTO `stories` (`id`, `category_id`, `author_id`, `story_name`, `slug`, `description`, `image`, `status`, `sort_order`, `meta_keyword`, `meta_description`, `page_title`, `created_at`, `updated_at`) VALUES
+(1, 1, 0, 'Story 1', 'story-1', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '1537982319.jpg', 0, 1, '', '', '', '2018-08-24 07:40:53', '2018-09-26 11:48:39'),
+(2, 2, 0, 'Story 2', 'story-2', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '1537982223.jpg', 0, 1, '', '', '', '2018-08-24 23:44:01', '2018-09-26 12:05:14');
 
 -- --------------------------------------------------------
 
@@ -1485,6 +1655,18 @@ ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `advertisements`
+--
+ALTER TABLE `advertisements`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `authors`
+--
+ALTER TABLE `authors`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
@@ -1521,12 +1703,6 @@ ALTER TABLE `event_speakers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `event_stories`
---
-ALTER TABLE `event_stories`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `event_types`
 --
 ALTER TABLE `event_types`
@@ -1551,6 +1727,12 @@ ALTER TABLE `organisers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -1566,6 +1748,12 @@ ALTER TABLE `site_settings`
 -- Indexes for table `speakers`
 --
 ALTER TABLE `speakers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stories`
+--
+ALTER TABLE `stories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1597,46 +1785,52 @@ ALTER TABLE `admins`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `advertisements`
+--
+ALTER TABLE `advertisements`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `authors`
+--
+ALTER TABLE `authors`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `event_addresses`
 --
 ALTER TABLE `event_addresses`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `event_schedules`
 --
 ALTER TABLE `event_schedules`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `event_seos`
 --
 ALTER TABLE `event_seos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `event_speakers`
 --
 ALTER TABLE `event_speakers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `event_stories`
---
-ALTER TABLE `event_stories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `event_types`
@@ -1648,31 +1842,43 @@ ALTER TABLE `event_types`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `newsletters`
 --
 ALTER TABLE `newsletters`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `organisers`
 --
 ALTER TABLE `organisers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `site_settings`
 --
 ALTER TABLE `site_settings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `speakers`
 --
 ALTER TABLE `speakers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `stories`
+--
+ALTER TABLE `stories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_city`

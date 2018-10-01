@@ -14,11 +14,20 @@
                         <input type="text" class="listing_search_input" placeholder="Discover over 18,000 fests and get your favorites coming up!">
                     </form>
                 </div>-->
+                @if(!empty($arr_top_ad))
+                    <?php
+                        if(isset($arr_top_ad->ad_image) && !empty($arr_top_ad->ad_image) && file_exists(public_path() . '/images/advertisement/' . $arr_top_ad->ad_image)){
+                            $adimage = asset( 'images/advertisement/'.$arr_top_ad->ad_image);?>
 
+                        <div class="col-xs-12 listing_top_banner">
+                            <a href="{{ $arr_top_ad->ad_url }}"><img src="{{ $adimage }}"" alt="banner"></a>
+                        </div>
+                    <?php    }
+                    ?>
 
-                @if(isset($category->top_banner) && !empty($category->top_banner) && file_exists(public_path() . '/images/category/top_banner/' . $category->top_banner))
+                @elseif(isset($category->top_banner) && !empty($category->top_banner) && file_exists(public_path() . '/images/category/top_banner/' . $category->top_banner))
                     <div class="col-xs-12 listing_top_banner">
-                        <a href="#"><img src="{{ asset( 'images/category/top_banner/'.$category->top_banner )}}" alt="banner"></a>
+                        <a href="javascript:void(0);"><img src="{{ asset( 'images/category/top_banner/'.$category->top_banner )}}" alt="banner"></a>
                     </div>
                 @endif
 
@@ -190,7 +199,19 @@
                         </li>
                         <!-- list ends -->
                         <!-- right sidebar -->
-                        <li class="listing_page_right_sidebar"><a href="#"><img src="{{asset('ws/images/sidebar_ads.jpg')}}" alt="ads banner"></a></li>
+                        <li class="listing_page_right_sidebar">
+                            @if(count($arr_right_ad)>0)
+                                @foreach($arr_right_ad as $ad)
+                                    <?php
+                                        if(isset($ad->ad_image) && !empty($ad->ad_image) && file_exists(public_path() . '/images/advertisement/' . $ad->ad_image)){
+                                            $adimage = asset( 'images/advertisement/'.$ad->ad_image);?>
+                                            <a href="{{ $ad->ad_url }}"><img src="{{ $adimage }}" alt="ads banner"></a><br />
+                                    <?php    }
+                                    ?>
+
+                                @endforeach
+                            @endif
+                        </li>
                         <!-- right sidebar ends -->
                     </ul>
                 </div>

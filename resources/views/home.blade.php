@@ -52,7 +52,7 @@
         @if(count($arr_event)>0)
             <div class="container home_section upcoming_events">
                 <div class="row">
-                    <h3 class="home_section_heading text-center">UPCOMING <span>EVENT</span></h3>
+                    <h3 class="home_section_heading text-center">UPCOMING <span>EVENTS</span></h3>
                     <p class="text-center heading_seprator">
                         <span></span>
                     </p>
@@ -269,11 +269,14 @@ TO GROW</h3>
 
                 $("#newsletter_form").validate({
                     errorElement: 'span',
+                    errorPlacement: function (error, element) {
+                        error.insertAfter($("#newsletter_form .input-group"));
+                    },
                     rules: {
-                        newsletter_email: "required",
+                        newsletter_email: "required"
                     },
                     messages: {
-                        newsletter_email: "Enter email.",
+                        newsletter_email: "enter email!"
                     },
                     submitHandler: function (form) {
                         $.ajax({

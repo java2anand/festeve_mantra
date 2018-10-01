@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Model\Newsletter;
+use App\Model\Advertisement;
 use Auth;
 use Image;
 use Hash;
@@ -273,6 +274,107 @@ class AdminController extends Controller {
         return view('admin.page_setting',compact('page_data','page'));
     }
 
+
+    public function advertisement_list(Request $request){
+        $page = 'advertisement_list';
+        $search = $request->get('search');
+        $field = $request->get('field') != '' ? $request->get('field') : 'id';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+
+        $arr_advertisements = Advertisement::orderBy($field, $sort)->where('ad_type', 'like', '%' . $search . '%')->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
+
+        $arr_categories = DB::table('categories')->select('id','category_name')->where('status', 1)->get();
+        $arr_events = DB::table('events')->select('id','title')->where('status', 1)->where('end_date','>=', date('Y-m-d'))->get();
+
+        return view('admin.advertisement_list', compact('arr_advertisements','arr_categories','arr_events','page','search_term'));
+    }
+
+    public function add_advertisement(Request $request){
+        if (!empty($request->ad_id)) {
+            $ad = Advertisement::find($request->ad_id);
+        }else{
+            $ad = new Advertisement;
+        }
+
+        $ad->ad_type = $request->ad_type;
+        $ad->ad_location = $request->ad_location;
+        $ad->ad_url = $request->link_to;
+        $ad->status = $request->status;
+
+        $category = $request->category;
+        $ad->category = isset($category) && !empty($category) ? implode(',',$category) : '';
+
+        $event =  $request->events;
+        $ad->event = isset($event) && !empty($event) ? implode(',',$event)  : '';
+
+        /*         * **** banner ******** */
+        if ($request->hasFile('upload_banner')) {
+            $file_image = $request->file('upload_banner');
+            $image = time() . '.' . $file_image->getClientOriginalExtension();
+
+            $destinationPath = public_path('/images/advertisement/');
+            if ($file_image->move($destinationPath, $image)) {
+                $prev_image = public_path('images/advertisement') . '/' . $request->old_advertisement;
+                @unlink($prev_image);
+            }
+            $ad->ad_image = $image;
+        } else {
+            $ad->ad_image = (!empty($request->old_advertisement)) ? $request->old_advertisement : '';
+        }
+
+        $result['success'] = 1;
+        $result['msg'] = 'Advertisement saved successfully!';
+        $ad->save();
+        echo json_encode($result);
+        die;
+    }
+
+
+    public function advertisement_info(Request $request) {
+        $ad_id = $request->adv_id;
+        $data['page_title'] = "Advertisement List";
+
+        $result['cat'] = '';
+        $result['event'] = '';
+        $banners = DB::table('advertisements')->where('id',$ad_id)->first();;
+        if ($banners->category != '') {
+            $result['cat'] = explode(',', $banners->category);
+        }
+        if ($banners->event != '') {
+            $result['event'] = explode(',', $banners->event);
+        }
+        $result['banners'] = $banners;
+        $result['success'] = '1';
+        echo json_encode($result);
+        die;
+
+    }
+
+    function delete_ad(Request $request) {
+        $result = array();
+        $ad_id = $request->ad_id;
+        $ad_image = $request->ad_image;
+        if ($ad_id) {
+
+            $ad = Advertisement::find($ad_id);
+            if ($ad->delete()) {
+                if ($ad_image != '' && file_exists(public_path() . '/images/advertisement/' . $ad_image)) {
+                    $del_img = public_path('images/advertisement/') . $ad_image;
+                    unlink($del_img);
+                }
+                $result['status'] = true;
+                $result['message'] = 'Deleted Successfully';
+            } else {
+                $result['status'] = false;
+                $result['message'] = 'Unable to Delete the record from database';
+            }
+        } else {
+            $result['status'] = false;
+            $result['message'] = 'Banner Id not found';
+        }
+        echo json_encode($result);
+        die;
+    }
 
     public function getCityByState(Request $request){
         $state_id = $request->state_id;

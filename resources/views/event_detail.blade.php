@@ -197,11 +197,28 @@
 
                     <div class="row"> <!-- new ads section -->
                         <div class="col-xs-12">
+                            @if(count($arr_ad)>0)
+                                @foreach($arr_ad as $ad)
+                                    <?php
+                                        if(isset($ad->ad_image) && !empty($ad->ad_image) && file_exists(public_path() . '/images/advertisement/' . $ad->ad_image)){
+                                            $adimage = asset( 'images/advertisement/'.$ad->ad_image);?>
+                                            <div class="event_right_bottom_inner event_page_ads">
+                                                <a href="{{ $ad->ad_url }}">
+                                                    <img src="{{ $adimage }}" class="img-responsive" alt="adsvertise banner">
+                                                </a>
+                                            </div>
+                                    <?php    }
+                                    ?>
+
+                                @endforeach
+                            @else
                             <div class="event_right_bottom_inner event_page_ads">
-                                <a href="#">
+                                <a href="javascript:void(0)">
                                     <img src="{{ $image }}" class="img-responsive" alt="adsvertise banner">
                                 </a>
                             </div>
+                            @endif
+
                         </div>
                     </div> <!-- ads section ends -->
 

@@ -10,4 +10,8 @@ class Story extends Model {
     public function category(){
         return $this->hasOne('App\Model\Category', 'id' ,'category_id');
     }
+
+    public function author(){
+        return $this->hasOne('App\Model\Author', 'id' ,'author_id');
+    }
 }

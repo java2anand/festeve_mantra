@@ -151,6 +151,15 @@
                 </a>
             </li>
 
+            <li class="<?= ($pages == 'advertisement_list') ? 'active' : ''; ?>">
+                <a href="{{ route('admin.advertisement_list') }}">
+                    <i class="fa fa-buysellads"></i> <span>Advertisements</span>
+                    <span class="pull-right-container">
+
+                    </span>
+                </a>
+            </li>
+
 
         </ul>
     </section>

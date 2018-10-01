@@ -51,6 +51,10 @@ Route::prefix('admin')->group(function() {
     Route::any('/site_setting/{id}', 'Admin\AdminController@site_setting')->name('admin.sitesetting');
     Route::any('/pages_list', 'Admin\AdminController@pages_list')->name('admin.pages_list');
     Route::any('/page_setting/{id}', 'Admin\AdminController@page_setting')->name('admin.page_setting');
+    Route::any('/advertisement_list', 'Admin\AdminController@advertisement_list')->name('admin.advertisement_list');
+    Route::post('/add_advertisement/', 'Admin\AdminController@add_advertisement')->name('admin.add_advertisement');
+    Route::post('/advertisement_info/', 'Admin\AdminController@advertisement_info')->name('admin.advertisement_info');
+    Route::post('/delete_ad/', 'Admin\AdminController@delete_ad')->name('admin.delete_ad');
 
     //via ajax
     Route::post('/upload_image', 'Admin\AdminController@upload_image')->name('admin.upload_image');

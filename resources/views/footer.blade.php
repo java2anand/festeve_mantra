@@ -37,7 +37,7 @@
             </div>
             <div class="col-sm-3 col-xs-12 footer_items">
                 <img src="{{ asset('ws/images/logo-white.png')}}" alt="footer logo" class="footer_logo">
-                <ul class="footer_address"><li class="add_icon"><a href="#">{{ $sitedata['address'] }}</a></li></ul>
+                <ul class="footer_address"><li class="add_icon" style="background-image: url({{ asset('ws/images/add_location.png')}});"><a href="#">{{ $sitedata['address'] }}</a></li></ul>
             </div>
 
 
@@ -56,10 +56,10 @@
 
                 </div>
                 <div class="col-sm-4 col-xs-12 text-center">
-                    <img src="{{ asset('ws/images/add_phone.jpg')}}"> <a href="tel:{{$sitedata['mobile_number']}}">{{ '+91-'.$sitedata['phone_number'].', +91-'.$sitedata['mobile_number']}}</a>
+                    <img src="{{ asset('ws/images/add_phone.png')}}"> <a href="tel:{{$sitedata['mobile_number']}}">{{ '+91-'.$sitedata['phone_number'].', +91-'.$sitedata['mobile_number']}}</a>
                 </div>
                 <div class="col-sm-4 col-xs-12 text-right">
-                    <img src="{{ asset('ws/images/add_email.jpg')}}"> <a href="mailto:{{$sitedata['contact_email']}}">{{$sitedata['contact_email']}}</a>
+                    <img src="{{ asset('ws/images/add_email.png')}}"> <a href="mailto:{{$sitedata['contact_email']}}">{{$sitedata['contact_email']}}</a>
                 </div>
             </div>
         </div>

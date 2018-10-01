@@ -408,7 +408,7 @@ a{
     background-position: left;
     margin-bottom:15px !important;
 }
-.footer_address li.add_icon{
+/*.footer_address li.add_icon{
     background-image: url(../images/add_location.jpg);
 }
 .footer_address li.phone_icon{
@@ -416,7 +416,7 @@ a{
 }
 .footer_address li.mail_icon{
     background-image: url(../images/add_email.jpg);
-}
+}*/
 .footer_social_icons{
     margin-bottom:25px !important;
 }
