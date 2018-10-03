@@ -53,10 +53,7 @@ class SpeakerController extends Controller {
             $destinationPath = public_path('/images/speaker');
             if($file->move($destinationPath, $imagename)){
                 $prev_image_origi = public_path('images/speaker').'/'.$request->old_image;
-                $prev_image_thumb = public_path('images/speaker/thumb').'/'.$request->old_image;
-
                 @unlink($prev_image_origi);
-                //@unlink($prev_image_thumb);
             }
             $speaker->image  = $imagename;
 

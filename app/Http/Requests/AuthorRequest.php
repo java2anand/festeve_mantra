@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoryRequest extends FormRequest
+class AuthorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,8 @@ class StoryRequest extends FormRequest
     {
         $id = $this->route('id');
         return [
-            'story_name'=>'required',
-            'slug'=>'required|unique:stories,slug,'.$id,
-            'image' => 'mimes:jpeg,jpg,png| max:3072 |dimensions:max_width=360,max_height=210',
+            'name'=>'required|unique:authors,name,'.$id,
+            'image' => 'mimes:jpeg,jpg,png| max:3072 |dimensions:max_width=200,max_height=200',
             'status'=>'required'
         ];
     }

@@ -16,7 +16,7 @@
                             <div class="event_inner_section event_text">
                                 <img src="{{ asset('images/story/'.$story->image) }}" class="img-responsive" style="width:100%;height:210px;">
                                 <h1 class="story_detail_heading text-center">{{ $story->story_name}}</h1>
-                                <p class="list_cat_by text-center">By <span>{{$story->narrator_name}}</span> on <span>{{date('d-F-Y',strtotime($story->created_at))}}</span></p>
+                                <p class="list_cat_by text-center">By <span>{{$story->author->name}}</span> on <span>{{date('d-F-Y',strtotime($story->created_at))}}</span></p>
                                 <p>
                                     {!! $story->description !!}
                                 </p>
@@ -31,17 +31,17 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="event_right_bottom_inner mt_0">
-                                <p class="s_writter_img text-center"><img src="{{ asset('images/story/narrator/'.$story->narrator_image) }}"></p>
-                                <h5 class="s_writter_name text-center">{{ $story->narrator_name}}
-                                    <small>{{ $story->narrator_about}}</small>
+                                <p class="s_writter_img text-center"><img src="{{ asset('images/author/'.$story->author->image) }}"></p>
+                                <h5 class="s_writter_name text-center">{{ $story->author->name}}
+                                    <small>{{ $story->author->designation}}</small>
                                 </h5>
 
-                                <p>{!! $story->narrator_description !!}</p>
+                                <p>{!! $story->author->description !!}</p>
                                 <p  class="event_social_links text-center">
-                                    <a href="{{ $story->facebook_id}}"><img src="{{ asset('ws/images/facebook.png') }}"></a>
-                                    <a href="{{ $story->twitter_id}}"><img src="{{ asset('ws/images/twitter.png') }}"></a>
-                                    <a href="{{ $story->youtube_id}}"><img src="{{ asset('ws/images/youtube.png') }}"></a>
-                                    <a href="{{ $story->instagram_id}}"><img src="{{ asset('ws/images/instagram.png') }}"></a>
+                                    <a href="{{ $story->author->facebook_id}}"><img src="{{ asset('ws/images/facebook.png') }}"></a>
+                                    <a href="{{ $story->author->twitter_id}}"><img src="{{ asset('ws/images/twitter.png') }}"></a>
+                                    <a href="{{ $story->author->youtube_id}}"><img src="{{ asset('ws/images/youtube.png') }}"></a>
+                                    <a href="{{ $story->author->instagram_id}}"><img src="{{ asset('ws/images/instagram.png') }}"></a>
                                 </p>
                             </div>
                         </div>

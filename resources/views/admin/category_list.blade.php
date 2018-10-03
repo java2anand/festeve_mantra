@@ -16,11 +16,7 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                @if(Session::has('alert-' . $msg))
-                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-                @endif
-                @endforeach
+                @include('admin.admin-error')
             </div>
             <div class="col-md-12">
                 <div class="box">

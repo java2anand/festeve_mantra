@@ -110,6 +110,20 @@
             </li>
 
 
+            <li class="treeview <?= ($pages == 'add_author' || $pages == 'author_list') ? 'menu-open active' : ''; ?>">
+                <a href="#">
+                    <i class="fa fa-user"></i> <span>Authors</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="<?= ($pages == 'author_list') ? 'active' : ''; ?>"><a href="{{ route('admin.author_list') }}"><i class="fa fa-circle-o"></i> List</a></li>
+
+                    <li class="<?= ($pages == 'add_author') ? 'active' : ''; ?>"><a href="{{ route('admin.author_add') }}"><i class="fa fa-circle-o"></i> Add</a></li>
+                </ul>
+            </li>
+
             <li class="treeview <?= ($pages == 'add_story' || $pages == 'story_list') ? 'menu-open active' : ''; ?>">
                 <a href="#">
                     <i class="fa fa-book"></i> <span>Stories </span>

@@ -96,17 +96,17 @@
                                     <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
                                         <div class="upcoming_item_container">
                                             <div class="upcoming_item_image">
-                                                <a href="{{ url('story-detail/'.$story->slug)}}"><img src="{{ asset( 'images/story/'.$story->image)}}" alt="event banner"></a>
+                                                <a href="{{ url('story-detail/'.$story->slug)}}"><img src="{{ asset( 'images/story/'.$story->image)}}" alt="Story banner"></a>
                                             </div>
                                             <div class="upcoming_item_info">
                                                 <p class="uc_event_name"><a href="{{ url('story-detail/'.$story->slug)}}">{{$story->story_name}}</a></p>
                                                 <div class="media">
                                                     <div class="media-left">
-                                                        <img src="{{ asset( 'images/story/narrator/'.$story->narrator_image)}}" class="media-object" width="50px" height="50px">
+                                                        <img src="{{ asset( 'images/author/'.$story->author->image)}}" class="media-object" width="50px" height="50px">
                                                     </div>
                                                     <div class="media-body">
-                                                        <h4 class="media-heading"><span>by</span> {{$story->narrator_name}}</h4>
-                                                        <p>{!! substr($story->short_desc,0,50).'...' !!}</p>
+                                                        <h4 class="media-heading"><span>by</span> {{$story->author->name}}</h4>
+                                                        <p>{!! substr($story->description,0,50).'...' !!}</p>
                                                     </div>
                                                 </div>
 

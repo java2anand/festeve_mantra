@@ -30,13 +30,14 @@ class StoryController extends Controller {
         $page = 'add_story';
         $story = array();
         if ($id) {
-            $story = DB::table('event_stories')->where('id', $id)->first();
+            $story = DB::table('stories')->where('id', $id)->first();
             if ($story == null) {
                 return redirect()->route('admin.story_list')->with('alert-danger', 'Story not found!');
             }
         }
         $arrCategory = DB::table('categories')->where('status', 1)->get();
-        return view('admin.story_add', compact('story','page','arrCategory'));
+        $arrAuthor = DB::table('authors')->where('status', 1)->get();
+        return view('admin.story_add', compact('story','page','arrCategory','arrAuthor'));
     }
 
     public function save_story(StoryRequest $request, $id = false) {
@@ -45,9 +46,13 @@ class StoryController extends Controller {
             $story = Story::find($id);
         }
         $story->story_name = $request->story_name;
-        $story->narrator_name = $request->narrator_name;
-        $story->short_desc = !empty($request->short_desc) ? $request->short_desc : '';
+        $story->category_id = $request->category_id;
+        $story->author_id = $request->author_id;
+        $story->slug = $request->slug;
         $story->description = !empty($request->description) ? $request->description : '';
+        $story->meta_keyword = !empty($request->meta_keyword) ? $request->meta_keyword : '';
+        $story->meta_description = !empty($request->meta_description) ? $request->meta_description : '';
+        $story->page_title = !empty($request->page_title) ? $request->page_title : '';
         $story->status = $request->status;
 
         /****** image *********/
@@ -64,22 +69,6 @@ class StoryController extends Controller {
             $story->image  = $imagename;
         }else{
             $story->image  = (!empty($request->old_image)) ? $request->old_image : '';
-        }
-
-        /****** narrator image *********/
-        if($request->hasFile('narrator_image')) {
-            $file = $request->file('narrator_image');
-            $nimagename = time().'.'.$file->getClientOriginalExtension();
-            $destinationPath = public_path('/images/story/narrator');
-            $img = Image::make($file->getRealPath());
-
-            if($img->save($destinationPath.'/'.$nimagename,80)){
-                $prev_narrator_image = public_path('images/story/narrator').'/'.$request->old_narrator_image;
-                @unlink($prev_narrator_image);
-            }
-            $story->narrator_image  = $nimagename;
-        }else{
-            $story->narrator_image  = (!empty($request->old_narrator_image)) ? $request->old_narrator_image : '';
         }
 
         $story->save();

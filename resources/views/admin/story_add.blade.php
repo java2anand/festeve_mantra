@@ -19,11 +19,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="col-md-12">
-                        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                            @if(Session::has('alert-' . $msg))
-                                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-                            @endif
-                        @endforeach
+                        @include('admin.admin-error')
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -35,34 +31,46 @@
                         <div class="box-body">
                             <div class="form-group row">
                                 <div class='col-md-6'>
-                                <label for="story_name">Story Name*</label>
-                                <input type="text" class="form-control" id="story_name" name="story_name" placeholder="Enter Story name" value="<?= (isset($story->story_name) && !empty($story->story_name)) ? $story->story_name : old('story_name') ?>">
-                                <span class="error"><?php
-                                    if ($errors->has('story_name')) {
-                                        echo $errors->first('story_name');
-                                    }
-                                    ?></span>
-
+                                    <label for="story_name">Story Name*</label>
+                                    <input type="text" class="form-control" id="story_name" name="story_name" placeholder="Enter Story name" value="<?= (isset($story->story_name) && !empty($story->story_name)) ? $story->story_name : old('story_name') ?>">
+                                    <span class="error"><?php
+                                        if ($errors->has('story_name')) {
+                                            echo $errors->first('story_name');
+                                        }
+                                        ?>
+                                    </span>
                                 </div>
+
+                                <div class='col-md-6'>
+                                    <label for="slug">Story Slug*</label>
+                                    <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter Slug" value="<?= (isset($story->slug) && !empty($story->slug)) ? $story->slug : old('slug') ?>">
+                                    <span class="error"><?php
+                                        if ($errors->has('slug')) {
+                                            echo $errors->first('slug');
+                                        }
+                                        ?></span>
+                                </div>
+                            </div>
+
+                            <div class='form-group row'>
                                 <div class='col-md-6'>
                                     <label for="category_id">Select Category</label>
                                     <select class="form-control" id="category_id" name="category_id">
 
-                                        <?php foreach ($arrCategory as $k => $v) { ?>
-                                            <option value="<?= $v->id ?>" <?= (!empty($event->event_category) && ($v->id == $event->event_category)) ? 'selected' : ''; ?>><?= ($v->parent_id == 0) ? $v->category_name : '>>' . $v->category_name ?></option>
+                                        <?php foreach ($arrCategory as $k => $c) { ?>
+                                            <option value="<?= $c->id ?>" <?= (!empty($story->category_id) && ($c->id == $story->category_id)) ? 'selected' : ''; ?>><?= $c->category_name ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
-                            </div>
+                                <div class='col-md-6'>
+                                    <label for="author_id">Select Author</label>
+                                    <select class="form-control" id="author_id" name="author_id">
 
-                            <div class='form-group'>
-                                <label for="narrator_name">Story Slug*</label>
-                                <input type="text" class="form-control" id="narrator_name" name="narrator_name" placeholder="Enter Narrator name" value="<?= (isset($story->narrator_name) && !empty($story->narrator_name)) ? $story->narrator_name : old('narrator_name') ?>">
-                                <span class="error"><?php
-                                    if ($errors->has('narrator_name')) {
-                                        echo $errors->first('narrator_name');
-                                    }
-                                    ?></span>
+                                        <?php foreach ($arrAuthor as $k => $a) { ?>
+                                            <option value="<?= $a->id ?>" <?= (!empty($story->author_id) && ($a->id == $story->author_id)) ? 'selected' : ''; ?>><?= $a->name ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -89,37 +97,37 @@
                                 <?php }?>
                             </div>
 
-                            <div class="form-group row">
-                                <div class='col-md-6'>
-                                <label for="story_name">Page Title</label>
-                                <input type="text" class="form-control" id="story_name" name="story_name" placeholder="Enter Story name" value="<?= (isset($story->story_name) && !empty($story->story_name)) ? $story->story_name : old('story_name') ?>">
+                            <div class="form-group">
+
+                                <label for="page_title">Page Title</label>
+                                <input type="text" class="form-control" id="page_title" name="page_title" placeholder="Enter Page Title" value="<?= (isset($story->page_title) && !empty($story->page_title)) ? $story->page_title : old('page_title') ?>">
                                 <span class="error"><?php
-                                    if ($errors->has('story_name')) {
-                                        echo $errors->first('story_name');
+                                    if ($errors->has('page_title')) {
+                                        echo $errors->first('page_title');
                                     }
                                     ?></span>
 
-                                </div>
-                                <div class='col-md-6'>
-                                    <label for="category_id">Meta Keyword</label>
-                                    <select class="form-control" id="category_id" name="category_id">
 
-                                        <?php foreach ($arrCategory as $k => $v) { ?>
-                                            <option value="<?= $v->id ?>" <?= (!empty($event->event_category) && ($v->id == $event->event_category)) ? 'selected' : ''; ?>><?= ($v->parent_id == 0) ? $v->category_name : '>>' . $v->category_name ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="description">Meta Description</label>
-                                <textarea rows="6"  class="form-control" id="description" name="description" ><?= (isset($story->description) && !empty($story->description)) ? $story->description : old('description') ?></textarea>
+                                <label for="meta_keyword">Meta Keyword</label>
+                                <input type="text" class="form-control" id="meta_keyword" name="meta_keyword" placeholder="Enter Meta Keyword" value="<?= (isset($story->meta_keyword) && !empty($story->meta_keyword)) ? $story->meta_keyword : old('meta_keyword') ?>">
                                 <span class="error"><?php
-                                    if ($errors->has('description')) {
-                                        echo $errors->first('description');
+                                    if ($errors->has('meta_keyword')) {
+                                        echo $errors->first('meta_keyword');
                                     }
                                     ?></span>
+                            </div>
 
+                            <div class="form-group">
+                                <label for="meta_description">Meta Description</label>
+                                <input type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Enter Meta Description" value="<?= (isset($story->meta_description) && !empty($story->meta_description)) ? $story->meta_description : old('meta_description') ?>">
+                                <span class="error"><?php
+                                    if ($errors->has('meta_description')) {
+                                        echo $errors->first('meta_description');
+                                    }
+                                    ?></span>
                             </div>
 
                             <div class="form-group">

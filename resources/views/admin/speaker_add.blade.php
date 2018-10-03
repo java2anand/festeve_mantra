@@ -19,11 +19,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="col-md-12">
-                        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                        @if(Session::has('alert-' . $msg))
-                        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-                        @endif
-                        @endforeach
+                        @include('admin.admin-error')
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -106,8 +102,9 @@
                                     <?php
                                     $image = (isset($speaker->image) && !empty($speaker->image)) ? $speaker->image: '';
                                     if ( !empty($image) && file_exists( public_path() . '/images/speaker/' . $image)) {?>
-                                            <img src="{{ asset( 'images/speaker/thumb/'.$image)}}" width="200px" height="100px"/>
+                                            <img src="{{ asset( 'images/speaker/'.$image)}}" width="100px" height="100px"/>
                                     <?php }?>
+                                    <span class="error"><?php if ($errors->has('image')){ echo $errors->first('image'); } ?></span>
                                 </div>
 
                                 <div class="form-group">

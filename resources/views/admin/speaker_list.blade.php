@@ -16,11 +16,7 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                    @if(Session::has('alert-' . $msg))
-                        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-                    @endif
-                @endforeach
+                @include('admin.admin-error')
             </div>
             <div class="col-md-12">
                 <div class="box">
@@ -85,7 +81,7 @@
                                             <a href="{{ url('admin/speaker_add',$speaker->id) }}" data-toggle="tooltip" title="" class="btn btn-sm btn-success" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
                                         </div>
                                         <div class="btn-group">
-                                            <a href="{{ url('admin/eventspeaker_delete',$speaker->id) }}" data-toggle="tooltip" title="" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete? ')" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                                            <a href="{{ url('admin/speaker_delete',$speaker->id) }}" data-toggle="tooltip" title="" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete? ')" data-original-title="Delete"><i class="fa fa-times"></i></a>
                                         </div>
 
 

@@ -102,6 +102,12 @@ Route::prefix('admin')->group(function() {
     Route::post('/speaker_store/{id?}', 'Admin\SpeakerController@save_speaker')->name('admin.speaker_store');
     Route::get('/speaker_delete/{id}', 'Admin\SpeakerController@destroy')->name('admin.speaker_delete');
 
+    /*     * ********speaker routes ******************* */
+    Route::get('/author_list', 'Admin\AuthorController@index')->name('admin.author_list');
+    Route::get('/author_add/{id?}', 'Admin\AuthorController@create')->name('admin.author_add');
+    Route::post('/author_store/{id?}', 'Admin\AuthorController@save_author')->name('admin.author_store');
+    Route::get('/author_delete/{id}', 'Admin\AuthorController@destroy')->name('admin.author_delete');
+
     /*     * ********organisers routes ******************* */
     Route::get('/organiser_list', 'Admin\OrganiserController@index')->name('admin.organiser_list');
     Route::get('/organiser_add/{id?}', 'Admin\OrganiserController@create')->name('admin.organiser_add');

@@ -33,8 +33,8 @@ class HomeController extends Controller {
     public function index() {
         $arr_category = DB::table('categories')->where('status', 1)->orderBy('sort_order', 'asc')->limit(7)->get();
 
-        $arr_event = Event::orderBy('id', 'desc')->where('status', 1)->where('end_date', '>=', date('Y-m-d'))->limit(9)->get();
-        $arr_story = DB::table('stories')->orderBy('id', 'desc')->where('status', 1)->limit(6)->get();
+        $arr_event = Event::orderBy('start_date', 'asc')->where('status', 1)->where('end_date', '>=', date('Y-m-d'))->limit(9)->get();
+        $arr_story = Story::orderBy('id', 'desc')->where('status', 1)->limit(6)->get();
 
         //static category in home page
         $arr_top_cat = DB::table('categories')->select('mini_icon', 'image', 'slug')->whereIn('id', array(1, 2, 3, 4, 5, 6, 7))->get();
