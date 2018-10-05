@@ -14,7 +14,7 @@
                 <h3 class="footer_headings">Get Inspired</h3>
                 <ul>
                     <li><a href="{{ url('stories')}}">Festeve stories</a></li>
-                    <li><a href="#">Submit your event</a></li>
+                    <li><a href="{{ url('coming-soon')}}">Submit your event</a></li>
 
                 </ul>
             </div>
@@ -30,9 +30,9 @@
             <div class="col-sm-3 col-xs-12 footer_items">
                 <h3 class="footer_headings">More</h3>
                 <ul>
-                    <li><a href="#">Advertise with us</a></li>
-                    <li><a href="#">Fest job seeks</a></li>
-                    <li><a href="#">Organizers</a></li>
+                    <li><a href="{{ url('coming-soon')}}">Advertise with us</a></li>
+                    <li><a href="{{ url('coming-soon')}}">Fest job seeks</a></li>
+                    <li><a href="{{ url('coming-soon')}}">Organizers</a></li>
                 </ul>
             </div>
             <div class="col-sm-3 col-xs-12 footer_items">

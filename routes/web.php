@@ -37,6 +37,7 @@ Route::get('/add-event', 'HomeController@add_event')->name('add-event');
 Route::get('/search/{keyword?}', 'HomeController@search')->name('search');
 Route::post('/save_newsleter', 'HomeController@save_newsleter')->name('save_newsleter');
 Route::get('/get_reminder', 'HomeController@get_reminder')->name('get_reminder');
+Route::get('/coming-soon', 'HomeController@coming_soon')->name('coming-soon');
 
 /* * ***********Admin Panel ******************* */
 Route::prefix('admin')->group(function() {

@@ -39,7 +39,36 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        if ($this->isHttpException($exception)) {
+            switch ($exception->getStatusCode()) {
+
+                // not authorized/permission denied
+                case '403':
+                    return \Response::view('not_found', array(), 403);
+                    break;
+
+                //url not found
+                case '404':
+                    return \Response::view('not_found', array(), 404);
+                    break;
+
+                // internal error
+                case '500':
+                    return \Response::view('not_found', array(), 500);
+                    break;
+
+                // down for maintaince
+                case '503':
+                    return \Response::view('not_found', array(), 503);
+                    break;
+
+                default:
+                    return $this->renderHttpException($exception);
+                    break;
+            }
+        } else {
+            return parent::render($request, $exception);
+        }
     }
     /**
      * Convert an authentication exception into an unauthenticated response.

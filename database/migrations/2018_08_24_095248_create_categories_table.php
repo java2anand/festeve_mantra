@@ -31,6 +31,7 @@ class CreateCategoriesTable extends Migration
             $table->text('meta_description');
             $table->text('page_title');
             $table->tinyInteger('status');
+            $table->tinyInteger('popular')->default(0);
             $table->timestamps();
         });
     }

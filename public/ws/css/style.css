@@ -1686,6 +1686,521 @@ a{
     color:#333;
 }
 /* story detail page ends */
+/* css for static pages */
+.static_pages{
+}
+.static_top_banner{
+    min-height: 300px;
+    background-color: #fff;
+    background-image: url(../images/not_found_top_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.static_top_banner h1{
+    color: #fff;
+    text-transform: uppercase;
+    font-family: OpenSans_Bold;
+    font-size: 60px;
+    letter-spacing: .5px;
+    margin-top: 115px;
+    margin-bottom: 0px;
+}
+.not_found_content{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 990px;
+    background-image: url(../images/notfound.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height:580px;
+    padding-left:150px;
+    padding-top:90px;
+}
+.not_found_content h3{
+    font-family: OpenSans_Bold;
+    font-size: 60px;
+    letter-spacing: .5px;
+    color:#000;
+}
+.not_found_content p{
+    font-size: 16px;
+    letter-spacing: .3px;
+    margin-top: 15px;
+    margin-bottom: 40px;
+}
+.not_found_content a{
+    display: inline-block;
+    background-color: #eb7a40;
+    width: 175px;
+    color: #fff !important;
+    line-height: 45px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: OpenSans_Semibold;
+    letter-spacing: .3px;
+    text-align: center;
+}
+
+.job_page_content{
+    background-color:#fff;
+    margin-top:20px;
+    margin-bottom:20px;
+    max-width:1000px;
+    padding:30px 50px;
+}
+.job_page_content h3{
+    font-family: OpenSans_Bold;
+    color:#ef7336;
+    font-size:30px;
+    letter-spacing:.3px;
+    margin-top:0px;
+    margin-bottom:30px;
+}
+.job_page_content .panel-group .panel+.panel{
+    margin-top:10px;
+}
+.job_page_content .panel-group .panel{
+    border-radius:2px;
+}
+.job_page_content .panel-title {
+    font-size: 18px;
+    font-family: OpenSans_Semibold;
+    color: #444444;
+}
+.job_page_content .panel-title span{
+    color:#888888;
+    font-family: OpenSans;
+}
+
+.job_page_content .active_title{
+    background-color:#ff6f33;
+}
+.job_page_content .active_title .panel-title,
+.job_page_content .active_title .panel-title span
+{
+    color:#fff;
+}
+.job_page_content .panel-body{
+    background-color:#f5f5f5 !important;
+    font-size:16px;
+    line-height:26px;
+}
+
+.job_page_content .job_titles{
+    font-family: OpenSans_Semibold;
+}
+.job_page_content .add_cv_input{
+    display:none !important;
+}
+.job_page_content form{
+    margin-top:15px;
+    margin-bottom:10px;
+    display:inline-block;
+    width:100%;
+}
+.add_cv{
+    cursor:pointer;
+    background-image: url(../images/attachment.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 24px;
+    padding-left: 30px;
+}
+.job_page_content form .form-control{
+    width: 100%;
+    border-radius: 2px;
+    border: 1px solid #fff;
+    box-shadow: none;
+    height: 40px;
+    font-size: 16px;
+    color: #444;
+    outline: none;
+}
+.job_page_content form label{
+    font-weight:normal;
+}
+.job_page_content form button{
+    background-color: #eb7a40 !important;
+    color: #fff !important;
+    border-radius: 2px;
+    font-size: 16px;
+    letter-spacing: .3px;
+    text-align: center;
+    height: 40px;
+    border: 1px solid #eb7a40 !important;
+    width: 100%;
+}
+
+.team_subheading{
+    color: #fff;
+    letter-spacing: .3px;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.team_top_banner h1{
+    margin-top:100px;
+}
+.team_page_content{
+    margin-top:20px;
+    margin-bottom:20px;
+    max-width:1060px;
+    background-color:#fff;
+}
+.team_section1{
+    background-color:#fafafa;
+    padding:40px 50px;
+}
+.team_section1 .home_section_heading{
+    margin-top:30px;
+    text-transform: initial;
+}
+.team_section1 p{
+    font-size:16px;
+    line-height:24px;
+}
+.team_section1 .cont_info img{
+    max-width:20px;
+}
+.team_section1 .cont_info a{
+    color:#333;
+    font-family: OpenSans_Semibold;
+}
+.team_section2{
+    padding:50px;
+    background-color:#fff;
+}
+.team_section2 .home_section_heading{
+    margin-bottom:50px;
+}
+.team_section2 .founder_name{
+    font-size:26px;
+    margin-bottom:5px;
+}
+.team_section2 .founder_designation{
+    font-size:16px;
+}
+.team_section2 .left_no_padding{
+    padding-left:0px;
+}
+.team_social_links{
+    margin-bottom:0px;
+    margin-top:10px;
+}
+.team_social_links img{
+    max-width:16px;
+}
+.team_social_links a{
+    display:inline-block;
+    width:20px;
+    text-align:center;
+}
+.core_team_section{
+    padding-top:0px;
+}
+.core_team_section .founder_name{
+    font-size:18px;
+}
+.core_team_section .founder_designation{
+    font-size:14px;
+}
+.core_team_section .team_social_links{
+    margin-top:0px;
+}
+.core_team_section .seprator_colored_line span{
+    height:2px;
+}
+.core_team_section .core_member{
+    min-height:120px;
+}
+.team_section4{
+    padding:50px 50px;
+    background-color:#ff6f34;
+}
+.team_section4 .home_section_heading{
+    color:#fff;
+}
+.team_section4 p{
+    margin-bottom:0px;
+    font-size:22px;
+    color:#fff;
+    letter-spacing:.3px;
+
+    margin-top:20px;
+}
+.team_section4 p a{
+    background-color: #2f3942 !important;
+    color: #fff !important;
+    display: inline-block;
+    border: 1px solid #2f3942 !important;
+    box-shadow: none;
+    line-height: 40px;
+    width: 140px;
+    border-radius: 6px;
+    outline: none;
+    margin-left: 10px;
+    font-size:16px;
+}
+
+.contact_us_content{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.contact_form_section{
+    background-color:#fff;
+    padding:50px;
+}
+.contact_form_section .form-heading{
+    margin-bottom:0px;
+    font-size:16px;
+}
+.contact_form_section form{
+    margin-top:20px;
+    display:inline-block;
+    width:100%;
+    margin-bottom: 50px;
+}
+.contact_form_section form .form-control{
+    border-radius:2px;
+    background-color:#f5f5f5;
+    min-height:40px;
+    box-shadow:none;
+    border:1px solid #f5f5f5;
+    font-size:16px;
+    letter-spacing:.3px;
+    color:#444444;
+}
+.contact_form_section form .form-control::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #444444;
+}
+.contact_form_section form .form-control::-moz-placeholder { /* Firefox 19+ */
+    color: #444444;
+}
+.contact_form_section form .form-control:-ms-input-placeholder { /* IE 10+ */
+    color: #444444;
+}
+.contact_form_section form .form-control:-moz-placeholder { /* Firefox 18- */
+    color: #444444;
+}
+
+.contact_form_section form button{
+    display: inline-block;
+    background-color: #eb7a40 !important;
+    border:1px solid #eb7a40 !important;
+    width: 175px;
+    color: #fff !important;
+    height:40px;
+    border-radius: 2px;
+    font-size: 16px;
+    font-family: OpenSans_Semibold;
+    letter-spacing: .3px;
+    text-align: center;
+}
+.contact_info_sections{
+    background-color:#fff;
+    padding:30px;
+    margin-bottom:15px;
+    border-radius:4px;
+}
+.contact_info_sections h3{
+    margin-top:0px;
+    margin-bottom:0px;
+    color:#ff6f33;
+    font-size:20px;
+    font-family: OpenSans_Bold;
+}
+.contact_info_sections .contact_info_text{
+    font-size:16px;
+    letter-spacing:.3px;
+    margin-top:10px;
+}
+.contact_info_links a{
+    display: inline-block;
+    background-color: #eb7a40 !important;
+    border:1px solid #eb7a40 !important;
+    width: 70%;
+    color: #fff !important;
+    line-height:40px;
+    border-radius: 2px;
+    font-size: 16px;
+    font-family: OpenSans_Semibold;
+    letter-spacing: .3px;
+    margin-top:10px;
+}
+.ct_new_text{
+    font-size:16px;
+    margin-bottom:0px;
+}
+.contact_mail_phone img{
+    max-width:20px;
+    margin-right:8px;
+}
+.contact_mail_phone a{
+    color:#444444;
+}
+.cont_newsletter_heading{
+    font-size:24px;
+    font-family: OpenSans_Bold;
+    margin-top:0px;
+    color:#ff6f33;
+}
+.cont_newsletter_subheading{
+    text-align:center;
+    font-size:18px;
+}
+.contact_form_section #newsletter_form{
+    max-width: 500px;
+    margin: 30px auto;
+    display: inherit;
+    margin-bottom:0px;
+}
+.contact_form_section #newsletter_form button{
+    background-color:#514a47 !important;
+    border:1px solid #514a47 !important;
+}
+.comming_soon_content{
+    position:relative;
+    margin-top:-150px;
+    margin-bottom:70px;
+}
+.comming_soon_content img{
+    max-width:100%;
+    height:auto;
+}
+/* css ends */
+
+/* login css */
+#login_register_popup{
+}
+#login_register_popup .modal-dialog{
+    width:760px;
+}
+#login_register_popup .modal-body{
+    padding-top:0px;
+    padding-bottom:0px;
+}
+#login_register_popup  .modal-content{
+    border-radius:0px;
+}
+.lr_left_section{
+    height:560px;
+    background-image:url(../images/lr_left_bg.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+}
+.lr_right_section{
+    height:560px;
+    padding:25px 40px;
+    overflow-y: auto;
+    position:relative;
+}
+.lr_close_btn{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+.lr_mail_heading{
+    font-size:22px;
+    color:#333;
+    font-family: OpenSans_Bold;
+}
+.lr_mail_heading span{
+    color:#9e9e9e;
+}
+.lr_social_buttons button{
+    border:transparent;
+    background-color: #fff;
+    box-shadow: none;
+    outline: none;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 0px;
+}
+.lr_social_buttons button img{
+    width:100%;
+}
+.lr_divider{
+    position:relative;
+}
+.lr_divider  hr{
+    margin-top:10px;
+    margin-bottom:15px;
+}
+.lr_divider span{
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -12px;
+    margin-top: -13px;
+    color: #ddd;
+    font-size: 16px;
+    background-color: #fff;
+    text-align: center;
+}
+.lr_custom_forms p{
+    font-size:16px;
+}
+.lr_custom_forms .form-group{
+    margin-bottom:10px;
+}
+.lr_custom_forms .form-control{
+    border: 1px solid #5681dd;
+    border-radius: 2px;
+    height: 44px;
+    box-shadow: none;
+    background-color: #fff;
+    font-size: 16px;
+}
+.lr_tc_label{
+    font-size: 13px;
+    color: #999;
+    letter-spacing: .3px;
+}
+.lr_primary_btn{
+    background-color:#5681dd !important;
+    border:1px solid #5681dd !important;
+    color:#fff !important;
+    box-shadow:none;
+    outline:none;
+    width:100%;
+    height:44px;
+    border-radius:2px;
+    font-family: OpenSans_Bold;
+    letter-spacing:.3px;
+    font-size:16px;
+}
+.lr_secondary_btns{
+    border: transparent;
+    background-color: #fff;
+    color: #333;
+    margin-top: 20px;
+    font-size: 15px;
+    outline: none;
+    box-shadow: none;
+    font-family: OpenSans_Semibold;
+}
+.lr_forgot_pass{
+    border:transparent;
+    background-color:#fff;
+    box-shadow:none;
+    outline:none;
+    float:right;
+}
+.lr_login_outer{
+    margin-top:30px;
+    display:none;
+}
+.lr_forgot_pass_outer{
+    margin-top:120px;
+    display:none;
+}
+/* login css ends */
+
+
 
 
 
@@ -1892,6 +2407,43 @@ a{
         font-size:14px;
     }
 
+    /* static pages */
+    .not_found_content{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        max-width: 96%;
+        padding-left:100px;
+        padding-top:90px;
+    }
+    .job_page_content, .team_page_content, .contact_us_content{
+        max-width:96%;
+    }
+    .job_input_fileds{
+        margin-bottom:15px;
+    }
+    .team_section2,
+    .team_section1,
+    .team_section4
+    {
+        padding-left:15px;
+        padding-right:15px;
+    }
+    .contact_icons{
+        padding:0px;
+    }
+    .contact_info_sections h3{
+        font-size:16px;
+    }
+    .contact_info_sections .contact_info_text,
+    .ct_new_text
+    {
+        font-size:14px;
+        letter-spacing:0px;
+    }
+    .contact_info_links a{
+        width:100%;
+    }
+    /* ends */
 
 }
 
@@ -2276,6 +2828,100 @@ a{
     /* story detail page */
     .story_detail_heading{
         margin-top:20px !important;
+    }
+    /* ends */
+
+    /* static pages */
+    .static_top_banner{
+        min-height:200px;
+    }
+    .not_found_content {
+        padding-left: 18px;
+        padding-top: 50px;
+        min-height: 380px;
+    }
+    .static_top_banner h1 {
+        font-size: 30px;
+        margin-top: 80px;
+    }
+    .job_page_content{
+        padding: 30px 15px;
+    }
+    .job_page_content h3{
+        font-size:24px;
+    }
+    .job_page_content .panel-title{
+        font-size:16px;
+    }
+    .team_section2,
+    .team_section1,
+    .team_section4
+    {
+        padding-left:0px;
+        padding-right:0px;
+    }
+
+    .team_section2 .founder_name{
+        font-size:18px;
+    }
+    .team_section2 .founder_designation{
+        font-size:14px;
+    }
+    .core_team_section .core_member{
+        margin-bottom:10px;
+    }
+    .team_section4 p{
+        font-size:14px;
+        margin-top:10px;
+    }
+    .team_section4 p a{
+        margin-left:0px;
+        margin-top:15px;
+        width:100%;
+    }
+    .team_section4,
+    .team_section1
+    {
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+    .team_subheading{
+        font-size:14px;
+    }
+    .team_top_banner h1{
+        margin-top:60px;
+    }
+    .contact_form_section{
+        padding:25px 15px;
+    }
+    .contact_form_section form{
+        margin-bottom:20px;
+    }
+    .contact_form_section form button{
+        width:100%;
+    }
+    .cont_newsletter_heading{
+        font-size:20px;
+    }
+    .cont_newsletter_subheading{
+        font-size:16px;
+    }
+    .cont_right_section{
+        margin-top:15px;
+        padding:0px;
+    }
+    .comming_soon_content{
+        margin-top:-100px;
+        margin-bottom:50px;
+    }
+    /* ends */
+
+    /* login css */
+    .lr_left_section{
+        display:none;
+    }
+    #login_register_popup .modal-dialog {
+        width: initial;
     }
     /* ends */
 

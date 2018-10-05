@@ -251,7 +251,6 @@ TO GROW</h3>
 
             }
 
-
             $(document).ready(function () {
                 $('.mobile_nav_section button').click(function () {
                     $('.nav_desktop').addClass('listing_page_sidebar_active');
