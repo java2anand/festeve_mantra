@@ -84,35 +84,6 @@
                             </div>
                             <!-- category filter ends -->
 
-                            <!-- EVENT TYPE filter -->
-                            <!--<div class="listing_left_sidebar_inner list_filter_spacing">
-                                <h4>EVENT TYPE</h4>
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" id="filter_1">
-                                        <label for="filter_1">All Event Types</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="filter_2">
-                                        <label for="filter_2">Conference & Seminar</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="filter_3">
-                                        <label for="filter_3">Exhibition & Trade Fair</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="filter_4">
-                                        <label for="filter_4">All Event Types</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="filter_5">
-                                        <label for="filter_5">Music & DJ Parties</label>
-                                    </li>
-
-                                </ul>
-                            </div>-->
-                            <!-- EVENT TYPE ends -->
-
                             <!-- Date filter -->
                             <div class="listing_left_sidebar_inner list_filter_spacing">
                                 <h4>DATE</h4>
@@ -184,7 +155,7 @@
                                 <div class="listing_page_mid_section_right">
                                     <p class="listing_mid_category_date">
                                         <a href="{{ url('event-category/'.$event->category->slug )}}"><span class="listing_mid_category_span1" style="background-image: url('{{asset( 'images/category/mini_icon/'.$event->category->mini_icon)}}')">  {{ $event->category->category_name }}</span></a>
-                                        <span class="text-right">{{  (date('Y-m-d') >= $event->start_date && date('Y-m-d') <= $event->end_date ) ?  date('F d, Y') : date('F d, Y', strtotime($event->start_date))}}</span>
+                                        <span class="text-right">{{  ($event->start_date != $event->end_date ) ?  date('d M', strtotime($event->start_date)).' - '. date('d M', strtotime($event->end_date)).date(', Y')  : date('d M Y', strtotime($event->start_date))}}</span>
                                     </p>
                                     <h3><a href="{{ url('event-detail/'.$event->slug )}}">{{ $event->title }}</a></h3>
                                     {!! $event->short_description !!}

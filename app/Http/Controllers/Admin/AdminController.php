@@ -386,4 +386,15 @@ class AdminController extends Controller {
         die;
     }
 
+    public function queries(Request $request) {
+        $page = 'queries';
+        $search = $request->get('search');
+        $field = $request->get('field') != '' ? $request->get('field') : 'id';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+
+        $arrQueries = DB::table('queries')->orderBy($field, $sort)->where('email', 'like', '%' . $search . '%')
+            ->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
+        return view('admin.queries',compact('arrQueries','page','search_term'));
+    }
+
 }

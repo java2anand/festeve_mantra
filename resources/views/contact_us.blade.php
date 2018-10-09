@@ -21,36 +21,41 @@
 
                     <!-- form -->
                     <div class="row">
-                        <form>
+                        <form name="contact_form" id="contact_form">
                             @php $option_arr = config('constant.contact_us_option'); @endphp
 
                             <div class="form-group col-xs-12">
-                                <select class="form-control">
+                                <select class="form-control" id="contact_title" name="contact_title">
                                     @foreach($option_arr as $k=>$arr)
                                         <option value='{{$k}}'>{{ $arr }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-sm-6 col-xs-12">
-                                <input type="text" class="form-control" placeholder="Name">
+                                <input type="text" id='contact_name' name='contact_name' class="form-control" placeholder="Name" autocomplete="off">
+                            </div>
+
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <input type="text" id='contact_company' id='contact_company' class="form-control" placeholder="Company Name" autocomplete="off">
+                            </div>
+                            <div style="clear:both"></div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <input type="text" id="contact_city" name="contact_city" class="form-control" placeholder="City" autocomplete="off">
                             </div>
                             <div class="form-group col-sm-6 col-xs-12">
-                                <input type="text" class="form-control" placeholder="Company Name">
+                                <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email Id" autocomplete="off">
                             </div>
-                            <div class="form-group col-sm-6 col-xs-12">
-                                <input type="text" class="form-control" placeholder="City">
-                            </div>
-                            <div class="form-group col-sm-6 col-xs-12">
-                                <input type="email" class="form-control" placeholder="Email Id">
+                            <div style="clear:both"></div>
+                            <div class="form-group col-xs-12">
+                                <input type="text" id="contact_phone" name="contact_phone" class="form-control" placeholder="Mobile No." autocomplete="off">
                             </div>
                             <div class="form-group col-xs-12">
-                                <input type="text" class="form-control" placeholder="Mobile No.">
+                                <textarea name="contact_message" name="contact_message" class="form-control" rows="3" placeholder="Message"></textarea>
                             </div>
+                            <div style="clear:both"></div>
                             <div class="form-group col-xs-12">
-                                <textarea class="form-control" rows="3" placeholder="Message"></textarea>
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <button type="submit" class="btn btn-default">Submit</button>
+                                <button type="submit" id="contact_button" class="btn btn-default">Submit</button>
+                                <div id="contact_return_msg"></div>
                             </div>
                         </form>
                     </div>
@@ -65,9 +70,11 @@
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="submit" name="newsletter_button" id="newsletter_button">Subscribe</button>
                             </span>
+
                         </div><!-- /input-group -->
-                        <div id="msg"></div>
+
                     </form>
+                    <div id="newsletter_return_msg" class="col-md-6 col-md-offset-2"></div>
 
                     <!-- ends -->
 
@@ -131,7 +138,71 @@
 
         <!-- footer -->
         @include('footer')
-
+        <script>
+            $(document).ready(function(){
+                /******* Contact us start **********/
+                $("#contact_form").validate({
+                    errorElement: 'label',
+                    rules: {
+                        contact_name: {
+                            required:true,
+                        },
+                        contact_city: {
+                            required:true,
+                        },
+                        contact_email: {
+                            required:true,
+                            email:true
+                        },
+                        contact_phone: {
+                            required:true,
+                            number:true,
+                            maxlength:10,
+                            minlength:10
+                        },
+                        contact_message: {
+                            required:true
+                        }
+                    },
+                    messages: {
+                        contact_name: {
+                            required:'Enter your name!',
+                        },
+                        contact_city: {
+                            required:'Enter your current city!',
+                        },
+                        contact_email: {
+                            required:"Enter your email id!",
+                            email:"Enter valid email id!"
+                        },
+                        contact_phone: {
+                            required:'Enter your mobile number!',
+                            number:'Enter only number!'
+                        },
+                        contact_message: {
+                            required:'Enetr your requirement message!'
+                        }
+                    },
+                    submitHandler: function (form) {
+                        $("#contact_form #contact_button").html('please wait..').attr('disabled',true);
+                        $.ajax({
+                            url: "{{ URL::route('save_enquiry') }}",
+                            crossDomain: true,
+                            type: "POST",
+                            data: $('#contact_form').serialize(),
+                            dataType: 'json',
+                            success: function (response) {
+                                $("#contact_form #contact_return_msg").html(response.msg);
+                                setTimeout(function (){
+                                    location.reload();
+                                },2000);
+                            }
+                        });
+                    }
+                });
+                /******* Contact us end **********/
+            });
+        </script>
         <!-- footer ends -->
     </body>
 </html>

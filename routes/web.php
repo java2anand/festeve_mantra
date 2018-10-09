@@ -28,6 +28,7 @@ Route::get('/event-detail/{event_slug}', 'HomeController@event_detail')->name('e
 Route::get('/top-hundred', 'HomeController@top_hundred')->name('top-hundred');
 Route::get('/search/{keyword?}', 'HomeController@search')->name('search');
 Route::post('/save_newsleter', 'HomeController@save_newsleter')->name('save_newsleter');
+Route::post('/save_enquiry', 'HomeController@save_enquiry')->name('save_enquiry');
 
 Route::get('/about-us', 'CommonController@about_us')->name('about');
 Route::get('/our-team', 'CommonController@our_team')->name('our-team');
@@ -60,6 +61,7 @@ Route::prefix('admin')->group(function() {
     Route::post('/add_advertisement/', 'Admin\AdminController@add_advertisement')->name('admin.add_advertisement');
     Route::post('/advertisement_info/', 'Admin\AdminController@advertisement_info')->name('admin.advertisement_info');
     Route::post('/delete_ad/', 'Admin\AdminController@delete_ad')->name('admin.delete_ad');
+    Route::get('/queries_list', 'Admin\AdminController@queries')->name('admin.queries_list');
 
     //via ajax
     Route::post('/upload_image', 'Admin\AdminController@upload_image')->name('admin.upload_image');

@@ -170,6 +170,15 @@
                 </ul>
             </li>
 
+            <li class="<?= ($pages == 'queries') ? 'active' : ''; ?>">
+                <a href="{{ route('admin.queries_list') }}">
+                    <i class="fa fa-phone"></i> <span>Contact Us</span>
+                    <span class="pull-right-container">
+
+                    </span>
+                </a>
+            </li>
+
             <li class="<?= ($pages == 'newsletter') ? 'active' : ''; ?>">
                 <a href="{{ route('admin.newsletter_list') }}">
                     <i class="fa fa fa-envelope"></i> <span>Newsletters</span>

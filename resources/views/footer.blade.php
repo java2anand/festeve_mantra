@@ -97,7 +97,7 @@
                         <p>Create an account with Email</p>
                         <form>
                           <div class="form-group">
-                                <input type="email" class="form-control" id="" placeholder="Enter Your Email">
+                                <input type="email" class="form-control" placeholder="Enter Your Email">
                           </div>
                           <div class="form-group">
                                 <input type="password" class="form-control" placeholder="Password">
@@ -129,7 +129,7 @@
                         <p>Login using your email address</p>
                         <form>
                           <div class="form-group">
-                                <input type="email" class="form-control" id="" placeholder="Enter Your Email">
+                                <input type="email" class="form-control"  placeholder="Enter Your Email">
                           </div>
                           <div class="form-group">
                                 <input type="password" class="form-control" placeholder="Password">
@@ -203,6 +203,12 @@
             $('.moblie_header_overlay').hide();
 
         });
+        $('.remove_mobile_navigation').click(function () {
+            $('.nav_desktop').removeClass('listing_page_sidebar_active');
+            $('body').removeClass('body_overflow');
+            $('.moblie_header_overlay').hide();
+
+        });
         /******mobile sidebar end**********/
 
 
@@ -250,7 +256,7 @@
                     data: {'email': $("#newsletter_email").val()},
                     dataType: 'json',
                     success: function (response) {
-                        $("#msg").html(response.msg);
+                        $("#newsletter_return_msg").html(response.msg);
                     }
                 });
             }

@@ -13,11 +13,14 @@
         <div class="new_search_outer">
             <div class="container">
                 <div class="row">
-                    <h1 class="text-center">enter<br> the happening world</h1>
-                    <form>
+                    <h1 class="text-center">Enter the world<br> of happening</h1>
+                    {!! Form::open([
+                        'url' => ['search?'],
+                        'method' => 'get'
+                    ]) !!}
                         <input type="text" class="form-control" name="event_name" id="event_name" placeholder="Search all the upcoming events...">
                         <button type="submit" class="btn btn-default frm_button"><img src="{{ asset( 'ws/images/new_search.png')}}" alt="search icon"></button>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
@@ -26,63 +29,15 @@
                 <div class="row">
                     <div class="col-xs-12 text-center">
                         <ul>
-                            <li><a href="#">Music</a></li>
-                            <li><a href="#">Sports</a></li>
-                            <li><a href="#">Conference</a></li>
-                            <li><a href="#">Food</a></li>
-                            <li><a href="#">Travel</a></li>
-                            <li><a href="#">Party</a></li>
-                            <li><a href="#">Skill Development</a></li>
+                            @foreach($arr_category as $cat)
+                                <li><a style='background-image:url("{{ asset( 'images/category/mini_icon/'.$cat->mini_icon) }}")' href="{{url('event-category/'.$cat->slug)}}">{{$cat->category_name}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- new search ends -->
-
-        <!-- top banner section -->
-        <!--<div class="container-fluid top_banner_section">
-            <div class="row">
-                <img src="{{asset('ws/images/top_banner.jpg')}}" alt="banner">
-            </div>
-        </div>-->
-        <!-- top banner ends -->
-
-        <!-- search sectrion -->
-        <!--<div class="container home_search_outer">
-            <div class="row search_first_section">
-                <div class="col-xs-12 text-center">
-                    <form class="form-inline" action="{{ url('search/')}}">
-                        <div class="form-group frm_event_name">
-                            <input type="text" class="form-control" name="event_name" id="event_name" placeholder="Event...">
-                        </div>
-                        <div class="form-group frm_date">
-                            <input type="text" class="form-control" name="event_date" id="event_date" placeholder="Date">
-                        </div>
-                        <div class="form-group frm_location">
-                            <input type="text" class="form-control" name="event_location" id="event_location" placeholder="Location">
-                        </div>
-                        <button type="submit" class="btn btn-default frm_button">Search</button>
-                    </form>
-
-                </div>
-            </div>
-
-            <div class="row search_bottom_section">
-                <div class="col-xs-12 text-center">
-                    <ul>
-                        @foreach($arr_category as $cat)
-                            <li><a style='background-image:url("{{ asset( 'images/category/mini_icon/'.$cat->mini_icon) }}")' href="{{url('event-category/'.$cat->slug)}}">{{$cat->category_name}}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-
-
-        </div>-->
-        <!-- search section ends -->
-
 
         @if(count($arr_event)>0)
         <div class="container home_section upcoming_events">
@@ -253,7 +208,7 @@
                             </div><!-- /input-group -->
                         </form>
                     </div>
-                    <div id="msg" class="col-md-6"></div>
+                    <div id="newsletter_return_msg" class="col-md-6"></div>
                 </div>
             </div>
         </div>
@@ -287,15 +242,6 @@ if ($(window).width() > 766) {
 }
 
 $(document).ready(function () {
-    var date = new Date();
-    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    $("#event_date").datepicker({
-        format: "dd-mm-yyyy",
-        todayHighlight: true,
-        startDate: today,
-        //endDate: end,
-        autoclose: true
-    });
 
 });
         </script>

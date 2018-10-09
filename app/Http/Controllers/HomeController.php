@@ -8,6 +8,7 @@ use App\Model\Event;
 use App\Model\Category;
 use App\Model\Story;
 use App\Model\Newsletter;
+use App\Model\Query;
 
 //use App\Classes\Common;
 
@@ -195,6 +196,25 @@ class HomeController extends Controller {
         die;
     }
 
+    public function save_enquiry(Request $request) {
+
+        $query = new Query;
+        $query->title_id    = $request->contact_title;
+        $query->name        = $request->contact_name;
+        $query->city        = $request->contact_city;
+        $query->company_name = !empty($request->contact_company) ? : '';
+        $query->email       = $request->contact_email;
+        $query->mobile      = $request->contact_phone;
+        $query->message     = $request->contact_message;
+        $query->save();
+
+        $msg = '<span class="text-success">Our team will contact you soon!.</span>';
+        header('Content-Type: application/x-json; charset=utf-8');
+        $result = json_encode(array('success' => true, 'msg' => $msg));
+        echo $result;
+        die;
+    }
+
     public function top_hundred(Request $request) {
         $arr_events = Event::whereStatus(1)->orderBy('sort_order', 'asc')->select('id', 'title', 'slug', 'event_image', 'short_description', 'start_date','end_date')->where('end_date', '>=', date('Y-m-d'))->where('top_hundred',1)->paginate(10);
         if ($request->ajax()) {
@@ -219,7 +239,7 @@ class HomeController extends Controller {
         $event_location = $request->event_location;
         $event_cat = isset($request->event_cat) ? $request->event_cat : '';
 
-        $arrevent = Event::orderBy('id', 'DESC')
+        $arrevent = Event::orderBy('start_date', 'ASC')
                         ->when($event_name, function ($query) use ($event_name) {
                             return $query->where('events.title', 'like', '%' . $event_name . '%');
                         })->where('end_date', '>=', date('Y-m-d'))->paginate(10)->withPath('?event_name=' . $event_name . '&event_date=' . $event_date . '&event_location=' . $event_location . '&event_cat=' . $event_cat);
