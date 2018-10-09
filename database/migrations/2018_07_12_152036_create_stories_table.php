@@ -25,6 +25,7 @@ class CreateStoriesTable extends Migration {
             $table->text('meta_keyword');
             $table->text('meta_description');
             $table->text('page_title');
+            $table->tinyInteger('home_story')->default(0);
             $table->timestamps();
         });
     }

@@ -45,7 +45,7 @@
                                 ?></span>
                         </div>
 
-                        <div class="form-group col-sm-12">
+                        <div class="form-group col-sm-6">
                             <label for="slug">Slug*</label>
                             <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter Slug" value="<?= (isset($event->slug) && !empty($event->slug)) ? $event->slug : old('slug') ?>">
                             <span class="error"><?php
@@ -55,7 +55,7 @@
                                 ?></span>
                         </div>
 
-                        <div class="form-group col-sm-12">
+                        <div class="form-group col-sm-6">
                             <label for="category_id">Select Category</label>
                             <select class="form-control" id="category_id" name="category_id">
 
@@ -104,6 +104,38 @@
                                     echo $errors->first('speaker_title');
                                 }
                                 ?></span>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+                            <label for="status">Status*</label>
+                            <select class="form-control" id="status" name="status">
+                                <option value="1" <?= (isset($event->status) && ($event->status == 1)) ? 'selected' : '' ?>>Active</option>
+                                <option value="0" <?= (isset($event->status) && ($event->status == 0)) ? 'selected' : '' ?>>Inactive</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+                            <label for="top_hundred">Top Hundred*</label>
+                            <select class="form-control" id="top_hundred" name="top_hundred">
+                                <option value="0" <?= (isset($event->top_hundred) && ($event->top_hundred == 0)) ? 'selected' : '' ?>>No</option>
+                                <option value="1" <?= (isset($event->top_hundred) && ($event->top_hundred == 1)) ? 'selected' : '' ?>>Yes</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+                            <label for="home_event">Home Event*</label>
+                            <select class="form-control" id="home_event" name="home_event">
+                                <option value="0" <?= (isset($event->home_event) && ($event->home_event == 0)) ? 'selected' : '' ?>>No</option>
+                                <option value="1" <?= (isset($event->home_event) && ($event->home_event == 1)) ? 'selected' : '' ?>>Yes</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+                            <label for="premium">Premium*</label>
+                            <select class="form-control" id="premium" name="premium">
+                                <option value="0" <?= (isset($event->premium) && ($event->premium == 0)) ? 'selected' : '' ?>>No</option>
+                                <option value="1" <?= (isset($event->premium) && ($event->premium == 1)) ? 'selected' : '' ?>>Yes</option>
+                            </select>
                         </div>
 
                         <div class="form-group col-sm-3">
@@ -245,15 +277,6 @@
                                 ?></span>
 
                         </div>
-
-
-                        <div class="form-group col-sm-12">
-                            <label for="category_slug">Status*</label>
-                            <select class="form-control" id="status" name="status">
-                                <option value="1" <?= (isset($eventtype->status) && ($eventtype->status == 1)) ? 'selected' : '' ?>>Active</option>
-                                <option value="0" <?= (isset($eventtype->status) && ($eventtype->status == 0)) ? 'selected' : '' ?>>Inactive</option>
-                            </select>
-                        </div>
                     </div>
                     <!-- /.card-body -->
 
@@ -309,11 +332,10 @@ $(document).ready(function () {
         todayHighlight: true,
         startDate: today,
         autoclose: true
-    })
-            .on('changeDate', function (selected) {
-                var minDate = new Date(selected.date.valueOf());
-                $('#start_date').datepicker('setEndDate', minDate);
-            });
+    }).on('changeDate', function (selected) {
+        var minDate = new Date(selected.date.valueOf());
+        $('#start_date').datepicker('setEndDate', minDate);
+    });
 
 
     $("#event_form").validate({

@@ -25,9 +25,9 @@
                     </p>
                     <h3 class="home_section_heading text-center">Have a <span>Question?</span></h3>
                     <p class="text-center cont_info">Mail us at <img src="{{ asset('ws/images/mail.png')}}">
-                        <a href="mailto:mail@event.com">Mail@event.com</a>
+                        <a href="mailto:{{$sitedata['contact_email']}}">{{$sitedata['contact_email']}}</a>
                         Or Call us at
-                        <img src="{{ asset('ws/images/call.png')}}">  <a href="tel:9999999999">+91-9999999999</a></p>
+                        <img src="{{ asset('ws/images/call.png')}}">  <a href="tel:{{$sitedata['mobile_number']}}">+91-{{$sitedata['mobile_number']}}</a></p>
 
                 </div>
             </div><!-- team section 1 ends -->
@@ -35,117 +35,71 @@
             <div class="row team_section2"> <!-- team section 2 -->
                 <h3 class="home_section_heading text-center col-xs-12">Minds behind<span> festeve mantra</span></h3>
 
-                <div class="col-sm-6">
-                    <div class="row">
-                        <div class="col-sm-5 col-xs-5">
-                            <img src="{{ asset('ws/images/founder.jpg')}}" class="img-responsive">
-                            <p class="team_social_links text-center">
-                                <a href="#"><img src="{{ asset('ws/images/facebook-logo.png')}}"></a>
-                                <a href="#"><img src="{{ asset('ws/images/twitter-logo-silhouette.png')}}"></a>
-                                <a href="#"><img src="{{ asset('ws/images/google-plus.png')}}"></a>
-                                <a href="#"><img src="{{ asset('ws/images/instagram-logo.png')}}"></a>
-                            </p>
-                        </div>
-                        <div class="col-sm-7 col-xs-7 left_no_padding">
-                            <p class="founder_name">Rahul Kapoor</p>
-                            <p class="founder_designation">CEO of Company</p>
-                            <p class="seprator_colored_line"><span></span></p>
-                            <p class="founder_info">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45
-                                BC, making it over 2000 years old.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="row">
-                        <div class="col-sm-5 col-xs-5">
-                            <img src="{{ asset('ws/images/founder.jpg')}}" class="img-responsive">
-                            <p class="team_social_links text-center">
-                                <a href="#"><img src="{{ asset('ws/images/facebook-logo.png')}}"></a>
-                                <a href="#"><img src="{{ asset('ws/images/twitter-logo-silhouette.png')}}"></a>
-                                <a href="#"><img src="{{ asset('ws/images/google-plus.png')}}"></a>
-                                <a href="#"><img src="{{ asset('ws/images/instagram-logo.png')}}"></a>
-                            </p>
-                        </div>
-                        <div class="col-sm-7 col-xs-7 left_no_padding">
-                            <p class="founder_name">Rahul Kapoor</p>
-                            <p class="founder_designation">CEO of Company</p>
-                            <p class="seprator_colored_line"><span></span></p>
-                            <p class="founder_info">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45
-                                BC, making it over 2000 years old.</p>
+                @if(count($arr_ceo)>0)
+                    @foreach($arr_ceo as $ceo)
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-5 col-xs-5">
+                                @if(isset($ceo->image) && !empty($ceo->image) && file_exists(public_path() . '/images/employee/' . $ceo->image))
+                                    <img src="{{ asset( 'images/employee/'.$ceo->image)}}" alt="employee">
+                                @else
+                                    <img src="{{ asset( 'images/employee/no_employee.png')}}" alt="employee">
+                                @endif
+                                <p class="team_social_links text-center">
+                                    <a href="{{$ceo->facebook_id}}"><img src="{{ asset('ws/images/facebook-logo.png')}}"></a>
+                                    <a href="{{$ceo->twitter_id}}"><img src="{{ asset('ws/images/twitter-logo-silhouette.png')}}"></a>
+                                    <a href="{{$ceo->googleplus_id}}"><img src="{{ asset('ws/images/google-plus.png')}}"></a>
+                                    <a href="{{$ceo->instagram_id}}"><img src="{{ asset('ws/images/instagram-logo.png')}}"></a>
+                                </p>
+                            </div>
+                            <div class="col-sm-7 col-xs-7 left_no_padding">
+                                <p class="founder_name">{{$ceo->name}}</p>
+                                <p class="founder_designation">{{$ceo->designation}}</p>
+                                <p class="seprator_colored_line"><span></span></p>
+                                <p class="founder_info">{!! $ceo->about !!}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                    @endforeach
+                @endif
 
             </div><!-- team section 2 ends -->
 
 
             <div class="row team_section2 core_team_section"> <!-- team section 3 -->
                 <h3 class="home_section_heading text-center col-xs-12">Minds behind<span> festeve mantra</span></h3>
-                <div class="col-sm-4 col-xs-12 core_member">
-                    <div class="row">
-                        <div class="col-sm-5 col-xs-5">
-                            <img src="{{ asset('ws/images/founder.jpg')}}" class="img-responsive">
-                        </div>
-                        <div class="col-sm-7 col-xs-7 left_no_padding">
-                            <p class="founder_name">Rahul Kapoor</p>
-                            <p class="founder_designation">CEO of Company</p>
-                            <p class="seprator_colored_line"><span></span></p>
-                            <p class="team_social_links">
-                                <a href="#"><img src="{{ asset('ws/images/facebook-logo.png')}}"></a>
-                                <a href="#"><img src="{{ asset('ws/images/twitter-logo-silhouette.png')}}"></a>
-                                <a href="#"><img src="{{ asset('ws/images/google-plus.png')}}"></a>
-                                <a href="#"><img src="{{ asset('ws/images/instagram-logo.png')}}"></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 col-xs-12 core_member">
-                    <div class="row">
-                        <div class="col-sm-5 col-xs-5">
-                            <img src="{{ asset('ws/images/founder.jpg')}}" class="img-responsive">
-                        </div>
-                        <div class="col-sm-7 col-xs-7 left_no_padding">
-                            <p class="founder_name">Rahul Kapoor</p>
-                            <p class="founder_designation">CEO of Company</p>
-                            <p class="seprator_colored_line"><span></span></p>
-                            <p class="team_social_links">
-                                <a href="#"><img src="{{ asset('ws/images/facebook-logo.png')}}"></a>
-                                <a href="#"><img src="{{ asset('ws/images/twitter-logo-silhouette.png')}}"></a>
-                                <a href="#"><img src="{{ asset('ws/images/google-plus.png')}}"></a>
-                                <a href="#"><img src="{{ asset('ws/images/instagram-logo.png')}}"></a>
-                            </p>
+                @if(count($arr_emp)>0)
+                    @foreach($arr_emp as $emp)
+                    <div class="col-sm-4 col-xs-12 core_member">
+                        <div class="row">
+                            <div class="col-sm-5 col-xs-5">
+                                @if(isset($emp->image) && !empty($emp->image) && file_exists(public_path() . '/images/employee/' . $emp->image))
+                                    <img src="{{ asset( 'images/employee/'.$emp->image)}}" class="img-responsive" alt="employee">
+                                @else
+                                    <img src="{{ asset( 'images/employee/no_employee.png')}}" class="img-responsive" alt="employee">
+                                @endif
+                            </div>
+                            <div class="col-sm-7 col-xs-7 left_no_padding">
+                                <p class="founder_name">{{$emp->name}}</p>
+                                <p class="founder_designation">{{$emp->designation}}</p>
+                                <p class="seprator_colored_line"><span></span></p>
+                                <p class="team_social_links">
+                                    <a href="{{$emp->facebook_id}}"><img src="{{ asset('ws/images/facebook-logo.png')}}"></a>
+                                    <a href="{{$emp->twitter_id}}"><img src="{{ asset('ws/images/twitter-logo-silhouette.png')}}"></a>
+                                    <a href="{{$emp->googleplus_id}}"><img src="{{ asset('ws/images/google-plus.png')}}"></a>
+                                    <a href="{{$emp->instagram_id}}"><img src="{{ asset('ws/images/instagram-logo.png')}}"></a>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-4 col-xs-12 core_member">
-                    <div class="row">
-                        <div class="col-sm-5 col-xs-5">
-                            <img src="{{ asset('ws/images/founder.jpg')}}" class="img-responsive">
-                        </div>
-                        <div class="col-sm-7 col-xs-7 left_no_padding">
-                            <p class="founder_name">Rahul Kapoor</p>
-                            <p class="founder_designation">CEO of Company</p>
-                            <p class="seprator_colored_line"><span></span></p>
-                            <p class="team_social_links">
-                                <a href="#"><img src="{{ asset('ws/images/facebook-logo.png')}}"></a>
-                                <a href="#"><img src="{{ asset('ws/images/twitter-logo-silhouette.png')}}"></a>
-                                <a href="#"><img src="{{ asset('ws/images/google-plus.png')}}"></a>
-                                <a href="#"><img src="{{ asset('ws/images/instagram-logo.png')}}"></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
+                    @endforeach
+                @endif
             </div><!-- team section 3 ends -->
 
             <div class="row team_section4"> <!-- team section 4 -->
                 <div class="col-xs-12 text-center">
                     <h3 class="home_section_heading">Interested to join us</h3>
-                    <p>We need great peoples to work with us <a href="#">Join Now</a></p>
+                    <p>We need great peoples to work with us <a href="{{url('careers')}}">Join Now</a></p>
                 </div>
             </div> <!-- team section 4 ends -->
         </div>
@@ -153,38 +107,6 @@
 
         <!-- footer -->
         @include('footer')
-
         <!-- footer ends -->
-
-        <!-- Initialize Swiper -->
-        <script>
-            var swiper = new Swiper('.swiper-container', {
-                slidesPerView: 3,
-                spaceBetween: 0,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
-
-            $(document).ready(function () {
-
-                $('.mobile_nav_section button').click(function () {
-                    $('.nav_desktop').addClass('listing_page_sidebar_active');
-                    $('body').removeClass('body_overflow');
-                    $('.moblie_header_overlay').show();
-
-                })
-
-                $('.moblie_header_overlay').click(function () {
-                    $('.nav_desktop').removeClass('listing_page_sidebar_active');
-                    $('body').removeClass('body_overflow');
-                    $('.moblie_header_overlay').hide();
-
-                })
-
-
-            })
-        </script>
     </body>
 </html>

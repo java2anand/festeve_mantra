@@ -106,6 +106,12 @@
                                                             </span>
                                                             <span class="sec_right_section">{{ $date->address }}</span>
                                                             @endif
+                                                            @if (isset($date->activity) && !empty($date->activity))
+                                                            <span class="sec_left_section">
+                                                                {{ isset($date->activity_name) && !empty($date->activity_name) ? $date->activity_name : '' }}
+                                                            </span>
+                                                            <span class="sec_right_section">{{ $date->activity }}</span>
+                                                            @endif
                                                         </li>
                                                         @endforeach
                                                     </ul>
@@ -146,7 +152,7 @@
                         <div class="col-xs-12 text-center">
 
                             <div class="event_right_top_inner event_filled_bg">
-                                <a href="#">
+                                <a href="{{ url('coming-soon') }}">
                                     <h4>
                                         <img src="{{asset('ws/images/tick_circle.jpg')}}"> Remind me!
                                     </h4>
@@ -199,17 +205,14 @@
                         <div class="col-xs-12">
                             @if(count($arr_ad)>0)
                                 @foreach($arr_ad as $ad)
-                                    <?php
-                                        if(isset($ad->ad_image) && !empty($ad->ad_image) && file_exists(public_path() . '/images/advertisement/' . $ad->ad_image)){
-                                            $adimage = asset( 'images/advertisement/'.$ad->ad_image);?>
-                                            <div class="event_right_bottom_inner event_page_ads">
-                                                <a href="{{ $ad->ad_url }}">
-                                                    <img src="{{ $adimage }}" class="img-responsive" alt="adsvertise banner">
-                                                </a>
-                                            </div>
-                                    <?php    }
-                                    ?>
-
+                                    @if(isset($ad->ad_image) && !empty($ad->ad_image) && file_exists(public_path() . '/images/advertisement/' . $ad->ad_image))
+                                        <?php $adimage = asset( 'images/advertisement/'.$ad->ad_image); ?>
+                                        <div class="event_right_bottom_inner event_page_ads">
+                                            <a href="{{ $ad->ad_url }}">
+                                                <img src="{{ $adimage }}" class="img-responsive" alt="adsvertise banner">
+                                            </a>
+                                        </div>
+                                    @endif
                                 @endforeach
                             @else
                             <div class="event_right_bottom_inner event_page_ads">
@@ -267,7 +270,7 @@
                                         </div>
                                         <div class="upcoming_item_info">
                                             <p class="uc_event_name"><a href="{{ url('event-detail/'.$s_event->slug )}}">{{ $s_event->title }}</a></p>
-                                            <p class="uc_event_date">{{ date('F dS, Y',strtotime($s_event->start_date)) }}</p>
+                                            <p class="uc_event_date">{{  ($event->start_date != $event->end_date ) ?  date('d M', strtotime($event->start_date)).' - '. date('d M', strtotime($event->end_date)).date(', Y')  : date('d M Y', strtotime($event->start_date)) }}</p>
                                             <p class="uc_event_link"><a href="{{ url('event-detail/'.$s_event->slug )}}">View Event</a></p>
                                         </div>
                                     </div>
@@ -292,45 +295,26 @@
         <script src="{{asset('ws/js/star-rating.min.js')}}"></script>
         <!-- Initialize Swiper -->
         <script>
-    if ($(window).width() > 766) {
-        var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 3,
-            spaceBetween: 0,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-        });
-    } else {
-        var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 1,
-            spaceBetween: 0,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-        });
+            if ($(window).width() > 766) {
+                var swiper = new Swiper('.swiper-container', {
+                    slidesPerView: 3,
+                    spaceBetween: 0,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                });
+            } else {
+                var swiper = new Swiper('.swiper-container', {
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                });
 
-    }
-
-    $(document).ready(function () {
-
-        $('.mobile_nav_section button').click(function () {
-            $('.nav_desktop').addClass('listing_page_sidebar_active');
-            $('body').removeClass('body_overflow');
-            $('.moblie_header_overlay').show();
-
-        })
-
-        $('.moblie_header_overlay').click(function () {
-            $('.nav_desktop').removeClass('listing_page_sidebar_active');
-            $('body').removeClass('body_overflow');
-            $('.moblie_header_overlay').hide();
-
-        })
-
-
-    })
+            }
         </script>
     </body>
 </html>

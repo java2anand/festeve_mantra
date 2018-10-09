@@ -6,7 +6,7 @@
     <div class="listing_page_mid_section_right">
         <p class="listing_mid_category_date">
 
-            <span class="text-left">{{ date('F dS, Y',strtotime($event->start_date)) }} | Delhi</span>
+            <span class="text-left">{{  ($event->start_date != $event->end_date ) ?  date('d M', strtotime($event->start_date)).' - '. date('d M', strtotime($event->end_date)).date(', Y')  : date('d M Y', strtotime($event->start_date))}}</span>
         </p>
         <h3><a href="{{ url('event-detail/'.$event->slug )}}">{{ $event->title }}</a></h3>
         {!! $event->short_description !!}

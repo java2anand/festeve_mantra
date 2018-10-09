@@ -9,7 +9,7 @@
             <div class="row">
                 <div  class="col-xs-12 text-center">
                     <h1>Contact Us</h1>
-                    <p class="team_subheading">Drop us a line, Get in Touch</p>
+                    <p class="team_subheading">We are eager to know what's in your festive mind.Drop us your message!</p>
                 </div>
             </div>
         </div>
@@ -17,13 +17,19 @@
         <div class="container contact_us_content">
             <div class="row">
                 <div class="col-md-8 col-sm-8 col-xs-12 contact_form_section">
-                    <p class="form-heading">Write to us by filling the form below :</p>
+                    <p class="form-heading">The form below is your gateway to Festeve World! Fill in:</p>
 
                     <!-- form -->
                     <div class="row">
                         <form>
+                            @php $option_arr = config('constant.contact_us_option'); @endphp
+
                             <div class="form-group col-xs-12">
-                                <input type="text" class="form-control" placeholder="I want to list my event on festeve mantra">
+                                <select class="form-control">
+                                    @foreach($option_arr as $k=>$arr)
+                                        <option value='{{$k}}'>{{ $arr }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group col-sm-6 col-xs-12">
                                 <input type="text" class="form-control" placeholder="Name">
@@ -51,15 +57,16 @@
                     <!-- form ends -->
 
                     <!-- news letter section -->
-                    <h3 class="text-center cont_newsletter_heading">Subscribe to Our Newsletter</h3>
-                    <p class="cont_newsletter_subheading">Never miss a great event & festivals<br> Get a weekly updates</p>
-                    <form name="newsletter_from" id="newsletter_form">
+                    <h3 class="text-center cont_newsletter_heading">NEVER MISS THE NEXT UPCOMING</h3>
+                    <p class="cont_newsletter_subheading">EVENT AND FESTIVAL</p>
+                    <form name="newsletter_form" id="newsletter_form" novalidate="novalidate">
                         <div class="input-group">
                             <input type="email" class="form-control" name="newsletter_email" id="newsletter_email" placeholder="Enter you email">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button" name="newsletter_button" id="newsletter_button">Subscribe</button>
+                                <button class="btn btn-default" type="submit" name="newsletter_button" id="newsletter_button">Subscribe</button>
                             </span>
                         </div><!-- /input-group -->
+                        <div id="msg"></div>
                     </form>
 
                     <!-- ends -->
@@ -82,7 +89,7 @@
                             <div class="col-xs-12">
                                 <p class="text-center contact_info_text">Market to million looking for
                                     memorable experience</p>
-                                <p class="text-center contact_info_links"><a href="#">Start Promoting</a></p>
+                                <p class="text-center contact_info_links"><a href="{{url('add-advertise')}}">Start Promoting</a></p>
                             </div>
                         </div>
                     </div>
@@ -98,7 +105,7 @@
                             </div>
 
                             <div class="col-xs-12">
-                                <p class="text-center contact_info_links"><a href="#">Get Started</a></p>
+                                <p class="text-center contact_info_links"><a href="{{url('add-event')}}">Get Started</a></p>
                             </div>
                         </div>
                     </div>
@@ -112,8 +119,8 @@
                             </div>
 
                             <div class="col-xs-12 contact_mail_phone">
-                                <p class="contact_info_text"><img src="{{ asset('ws/images/call.png')}}"> <a href="#">0124-22012015, +91-9876543210</a></p>
-                                <p class="contact_info_text"><img src="{{ asset('ws/images/mail.png')}}"> <a href="#">mail@event.com</a></p>
+                                <p class="contact_info_text"><img src="{{ asset('ws/images/call.png')}}"> <a href="tel:{{$sitedata['mobile_number']}}">{{ '+91-'.$sitedata['phone_number'].', +91-'.$sitedata['mobile_number']}}</a></p>
+                                <p class="contact_info_text"><img src="{{ asset('ws/images/mail.png')}}"> <a href="mailto:{{$sitedata['contact_email']}}">{{$sitedata['contact_email']}}</a></p>
                             </div>
                         </div>
                     </div>

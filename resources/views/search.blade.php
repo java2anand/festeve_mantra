@@ -160,7 +160,16 @@
                         </li>
                         <!-- list ends -->
                         <!-- right sidebar -->
-                        <li class="listing_page_right_sidebar"><a href="#"><img src="{{asset('ws/images/sidebar_ads.jpg')}}" alt="ads banner"></a></li>
+                        <li class="listing_page_right_sidebar">
+                            @if(count($arr_right_ad)>0)
+                                @foreach($arr_right_ad as $ad)
+                                    @if(isset($ad->ad_image) && !empty($ad->ad_image) && file_exists(public_path() . '/images/advertisement/' . $ad->ad_image))
+                                    @php $adimage = asset( 'images/advertisement/'.$ad->ad_image); @endphp
+                                        <a href="{{ $ad->ad_url }}"><img src="{{ $adimage }}" alt="ads banner"></a><br />
+                                    @endif
+                                @endforeach
+                            @endif
+                        </li>
                         <!-- right sidebar ends -->
                     </ul>
                 </div>
@@ -172,15 +181,6 @@
 
         <!-- Initialize Swiper -->
         <script>
-            var swiper = new Swiper('.swiper-container', {
-                slidesPerView: 3,
-                spaceBetween: 0,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
-
             $(document).ready(function () {
                 $('.sub_category_dropdown').click(function () { // sub category filter dropdown
                     $(this).next('.category_sub_outer').toggleClass('sub_category_dropdown_active');
@@ -194,27 +194,15 @@
                     $('body').addClass('body_overflow');
                     $('.moblie_filter_overlay').show();
 
-                })
+                });
                 $('.moblie_filter_overlay').click(function () {
                     $('.listing_page_sidebar').removeClass('listing_page_sidebar_active');
                     $('body').removeClass('body_overflow');
                     $('.moblie_filter_overlay').hide();
 
-                })
-                $('.mobile_nav_section button').click(function () {
-                    $('.nav_desktop').addClass('listing_page_sidebar_active');
-                    $('body').removeClass('body_overflow');
-                    $('.moblie_header_overlay').show();
+                });
 
-                })
-
-                $('.moblie_header_overlay').click(function () {
-                    $('.nav_desktop').removeClass('listing_page_sidebar_active');
-                    $('body').removeClass('body_overflow');
-                    $('.moblie_header_overlay').hide();
-
-                })
-            })
+            });
         </script>
     </body>
 </html>

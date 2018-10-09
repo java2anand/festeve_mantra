@@ -38,7 +38,7 @@ class CreateEventsTable extends Migration {
             $table->string('speaker_title');
             $table->integer('sort_order');
             $table->integer('total_view');
-            $table->tinyInteger('home_product')->default(0);
+            $table->tinyInteger('home_event')->default(0);
             $table->tinyInteger('top_hundred')->default(0);
             $table->tinyInteger('premium')->default(0);
             $table->tinyInteger('status');

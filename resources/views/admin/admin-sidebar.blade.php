@@ -64,7 +64,7 @@
                 </ul>
             </li>-->
 
-            <li class="treeview <?= ($pages == 'add_event' || $pages == 'event_list' || $pages == 'event-top-hundred') ? 'menu-open active' : ''; ?>">
+            <li class="treeview <?= ($pages == 'add_event' || $pages == 'event_list' || $pages == 'event-top-hundred' || $pages == 'home_event' || $pages == 'premium_event') ? 'menu-open active' : ''; ?>">
                 <a href="#">
                     <i class="fa fa-calendar-check-o"></i> <span>Events</span>
                     <span class="pull-right-container">
@@ -77,6 +77,10 @@
                     <li class="<?= ($pages == 'add_event') ? 'active' : ''; ?>"><a href="{{ route('admin.event_add') }}"><i class="fa fa-circle-o"></i> Add</a></li>
 
                     <li class="<?= ($pages == 'event-top-hundred') ? 'active' : ''; ?>"><a href="{{ route('admin.event_top_hundred') }}"><i class="fa fa-circle-o"></i> Top 100</a></li>
+
+                    <li class="<?= ($pages == 'home_event') ? 'active' : ''; ?>"><a href="{{ route('admin.home_event') }}"><i class="fa fa-circle-o"></i> Home Event</a></li>
+
+                    <li class="<?= ($pages == 'premium_event') ? 'active' : ''; ?>"><a href="{{ route('admin.premium_event') }}"><i class="fa fa-circle-o"></i> Premium Event</a></li>
                 </ul>
             </li>
 
@@ -138,18 +142,37 @@
                 </ul>
             </li>
 
+            <li class="treeview <?= ($pages == 'employee_add' || $pages == 'employee_list') ? 'menu-open active' : ''; ?>">
+                <a href="#">
+                    <i class="fa fa-user"></i> <span>Our Team</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="<?= ($pages == 'employee_list') ? 'active' : ''; ?>"><a href="{{ route('admin.employee_list') }}"><i class="fa fa-circle-o"></i> List</a></li>
+
+                    <li class="<?= ($pages == 'emoployee_add') ? 'active' : ''; ?>"><a href="{{ route('admin.employee_add') }}"><i class="fa fa-circle-o"></i> Add</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview <?= ($pages == 'add_job' || $pages == 'job_list') ? 'menu-open active' : ''; ?>">
+                <a href="#">
+                    <i class="fa fa-tasks"></i> <span>Jobs / Vacancy</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="<?= ($pages == 'job_list') ? 'active' : ''; ?>"><a href="{{ route('admin.job_list') }}"><i class="fa fa-circle-o"></i> List</a></li>
+
+                    <li class="<?= ($pages == 'add_job') ? 'active' : ''; ?>"><a href="{{ route('admin.job_add') }}"><i class="fa fa-circle-o"></i> Add</a></li>
+                </ul>
+            </li>
+
             <li class="<?= ($pages == 'newsletter') ? 'active' : ''; ?>">
                 <a href="{{ route('admin.newsletter_list') }}">
                     <i class="fa fa fa-envelope"></i> <span>Newsletters</span>
-                    <span class="pull-right-container">
-
-                    </span>
-                </a>
-            </li>
-
-            <li class="<?= ($pages == 'setting_list') || ($pages == 'site_setting') ? 'active' : ''; ?>">
-                <a href="{{ route('admin.setting_list') }}">
-                    <i class="fa fa-cog"></i> <span>Sitesettings</span>
                     <span class="pull-right-container">
 
                     </span>
@@ -174,7 +197,14 @@
                 </a>
             </li>
 
+            <li class="<?= ($pages == 'setting_list') || ($pages == 'site_setting') ? 'active' : ''; ?>">
+                <a href="{{ route('admin.setting_list') }}">
+                    <i class="fa fa-cog"></i> <span>Sitesettings</span>
+                    <span class="pull-right-container">
 
+                    </span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

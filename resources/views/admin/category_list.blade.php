@@ -69,6 +69,7 @@
                                                 <a href="{{url('admin/category_list')}}?search={{request('search')}}&field=created_at&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Added Date &nbsp<i class="fa fa-sort-numeric-{{request('field','created_at')=='created_at'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i></a>
 
                                             </th>
+                                            <th>Popular</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -80,6 +81,9 @@
                                             <td>{{ $cat->category_name}}</td>
                                             <td><a href="{{ url('event-category/'.$cat->slug)}}" target="_blank">Visit Website</a></td>
                                             <td>{{ date('d-m-Y',strtotime($cat->created_at)) }}</td>
+                                            <td>
+                                                <?= $cat->popular == 1 ? 'Yes' : 'No'; ?>
+                                            </td>
                                             <td>
                                                 <?= $cat->status == 1 ? 'Active' : 'Inactive'; ?>
                                             </td>

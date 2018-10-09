@@ -31,9 +31,9 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $arr_category = DB::table('categories')->where('status', 1)->orderBy('sort_order', 'asc')->limit(7)->get();
+        $arr_category = DB::table('categories')->where('status', 1)->where('popular', 1)->orderBy('sort_order', 'asc')->limit(7)->get();
 
-        $arr_event = Event::orderBy('start_date', 'asc')->where('status', 1)->where('end_date', '>=', date('Y-m-d'))->limit(9)->get();
+        $arr_event = Event::orderBy('start_date', 'asc')->where('status', 1)->where('home_event', 1)->where('end_date', '>=', date('Y-m-d'))->limit(9)->get();
         $arr_story = Story::orderBy('id', 'desc')->where('status', 1)->limit(6)->get();
 
         //static category in home page
@@ -50,7 +50,7 @@ class HomeController extends Controller {
 
     public function categories() {
         $arr_category = Category::whereStatus(1)->get();
-        $popular_category = Category::whereStatus(1)->limit(5)->get();
+        $popular_category = Category::whereStatus(1)->where('popular',1)->limit(5)->get();
 
         $page_data = DB::table('pages')->where('slug', 'categories')->first();
         $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title : '';
@@ -93,7 +93,7 @@ class HomeController extends Controller {
                                     echo "custom";
                                     break;
                             }
-                        })->where('end_date', '>=', date('Y-m-d'))->paginate(10)->withPath('?event_date=' . $event_date);
+                        })->where('end_date', '>=', date('Y-m-d'))->orderBy('start_date','asc')->paginate(10)->withPath('?event_date=' . $event_date);
         //print_query();
 
         $page_title = $category->page_title;
@@ -196,7 +196,7 @@ class HomeController extends Controller {
     }
 
     public function top_hundred(Request $request) {
-        $arr_events = Event::whereStatus(1)->orderBy('sort_order', 'asc')->select('id', 'title', 'slug', 'event_image', 'short_description', 'start_date')->where('end_date', '>=', date('Y-m-d'))->paginate(10);
+        $arr_events = Event::whereStatus(1)->orderBy('sort_order', 'asc')->select('id', 'title', 'slug', 'event_image', 'short_description', 'start_date','end_date')->where('end_date', '>=', date('Y-m-d'))->where('top_hundred',1)->paginate(10);
         if ($request->ajax()) {
             $view = '';
             if (count($arr_events) > 0) {
@@ -213,16 +213,6 @@ class HomeController extends Controller {
         return view('top_hundred', compact('arr_events', 'page_title', 'meta_keyword', 'meta_description'));
     }
 
-    public function add_event() {
-
-        $page_data = DB::table('pages')->where('slug', 'add_event')->first();
-        $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title : '';
-        $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword : '';
-        $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description : '';
-
-        //return view('about',compact('page_data','page_title','meta_keyword','meta_description'));
-    }
-
     public function search(Request $request) {
         $event_name = $request->event_name;
         $event_date = $request->event_date;
@@ -236,74 +226,10 @@ class HomeController extends Controller {
 
         $arr_category = Category::where('status', '=', 1)->where('parent_id', '=', 0)->get();
 
-        return view('search', compact('arrevent', 'arr_category'));
-    }
+        /*         * ****** advertisement ************** */
+        $arr_right_ad = DB::table('advertisements')->where('ad_type',2)->where('ad_location','category')->where('status',1)->get();
 
-    public function get_reminder() {
-        echo 'get reminder';
-    }
-
-    public function about_us() {
-        $page_data = DB::table('pages')->where('slug', 'about-us')->first();
-        $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title : '';
-        $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword : '';
-        $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description : '';
-
-        return view('about', compact('page_data', 'page_title', 'meta_keyword', 'meta_description'));
-    }
-
-    public function our_team() {
-        $page_data = DB::table('pages')->where('slug', 'our-team')->first();
-        $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title : '';
-        $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword : '';
-        $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description : '';
-
-        return view('our_team', compact('page_data', 'page_title', 'meta_keyword', 'meta_description'));
-    }
-
-    public function careers() {
-        $page_data = DB::table('pages')->where('slug', 'careers')->first();
-        $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title : '';
-        $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword : '';
-        $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description : '';
-
-        return view('careers', compact('page_data', 'page_title', 'meta_keyword', 'meta_description'));
-    }
-
-    public function terms_conditions() {
-        $page_data = DB::table('pages')->where('slug', 'terms-conditions')->first();
-        $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title : '';
-        $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword : '';
-        $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description : '';
-
-        return view('terms_conditions', compact('page_data', 'page_title', 'meta_keyword', 'meta_description'));
-    }
-
-    public function privacy_policy() {
-        $page_data = DB::table('pages')->where('slug', 'privacy-policy')->first();
-        $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title : '';
-        $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword : '';
-        $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description : '';
-
-        return view('privacy_policy', compact('page_data', 'page_title', 'meta_keyword', 'meta_description'));
-    }
-
-    public function contact_us() {
-        $page_data = DB::table('pages')->where('slug', 'contact-us')->first();
-        $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title : '';
-        $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword : '';
-        $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description : '';
-
-        return view('contact_us', compact('page_data', 'page_title', 'meta_keyword', 'meta_description'));
-    }
-
-    public function coming_soon() {
-        $page_data = DB::table('pages')->where('slug', 'coming-soon')->first();
-        $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title : '';
-        $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword : '';
-        $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description : '';
-
-        return view('coming_soon', compact('page_data', 'page_title', 'meta_keyword', 'meta_description'));
+        return view('search', compact('arrevent', 'arr_category','arr_right_ad'));
     }
 
 }

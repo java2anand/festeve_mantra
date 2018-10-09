@@ -51,52 +51,32 @@
                     </p>
                 </div>
             </div> <!-- section 2 ends -->
-            <div class="row about_page_sections"><!-- section 3 -->
-                <div class="col-xs-12">
-                    <h3 class="home_section_heading text-center">Minds behind <span>festeve mantra ?</span></h3>
-                    <p class="text-center heading_seprator"><span></span></p>
-                </div>
-                <div class="col-xs-12 about_page_text">
-
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-3">
-                            <img src="{{ asset('ws/images/founder.jpg')}}" class="img-responsive">
-                        </div>
-                        <div class="col-sm-9 col-xs-9">
-                            <p class="founder_name">Rahul Kapoor</p>
-                            <p class="founder_designation">CEO of Company</p>
-                            <p class="seprator_colored_line"><span></span></p>
-                            <p class="founder_info">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45
-                                BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the
-                                more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature,
-                                discovered.</p>
-                        </div>
-                    </div>
-
-                    <div class="row founder_last_section">
-                        <div class="col-sm-3 col-xs-3 visible-xs">
-                            <img src="{{ asset('ws/images/founder.jpg')}}" class="img-responsive">
-                        </div>
-                        <div class="col-sm-9 col-xs-9 text-right">
-                            <p class="founder_name">Rahul Kapoor</p>
-                            <p class="founder_designation">CEO of Company</p>
-                            <p  class="seprator_colored_line"><span></span></p>
-                            <p class="founder_info">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45
-                                BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the
-                                more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature,
-                                discovered.</p>
-                        </div>
-                        <div class="col-sm-3 col-xs-3 hidden-xs">
-                            <img src="{{ asset('ws/images/founder.jpg')}}" class="img-responsive">
-                        </div>
-                    </div>
-
-
-                </div>
-            </div> <!-- section 3 ends -->
         </div>	<!-- content section ends -->
 
-        <div class="container-fluid about_form_outer">
+        <div class="home_newsletter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>
+                            <small>NEVER MISS THE NEXT UPCOMING</small>
+                            EVENT AND FESTIVAL
+                        </h3>
+                    </div>
+                    <div class="col-sm-6">
+                        <form name="newsletter_form" id="newsletter_form" novalidate="novalidate">
+                            <div class="input-group">
+                                <input type="email" placeholder="Enter your email address" class="form-control" name="newsletter_email" id="newsletter_email">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit" name="newsletter_button" id="newsletter_button">Subscribe</button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </form>
+                    </div>
+                    <div id="msg" class="col-md-6"></div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="container-fluid about_form_outer">
             <div class="row">
                 <h3 class="col-xs-12 text-center home_section_heading">JOIN US</h3>
                 <div class="col-xs-12 text-center">
@@ -112,42 +92,10 @@
 
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <!-- footer -->
         @include('footer')
-
         <!-- footer ends -->
-
-        <!-- Initialize Swiper -->
-        <script>
-            var swiper = new Swiper('.swiper-container', {
-                slidesPerView: 3,
-                spaceBetween: 0,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
-
-            $(document).ready(function () {
-
-                $('.mobile_nav_section button').click(function () {
-                    $('.nav_desktop').addClass('listing_page_sidebar_active');
-                    $('body').removeClass('body_overflow');
-                    $('.moblie_header_overlay').show();
-
-                })
-
-                $('.moblie_header_overlay').click(function () {
-                    $('.nav_desktop').removeClass('listing_page_sidebar_active');
-                    $('body').removeClass('body_overflow');
-                    $('.moblie_header_overlay').hide();
-
-                })
-
-
-            })
-        </script>
     </body>
 </html>

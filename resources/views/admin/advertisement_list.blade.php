@@ -148,6 +148,8 @@
                                 <option value="">Select your Ad Location</option>
                                 <option value="category">Category List</option>
                                 <option value="event">Eevnts</option>
+                                <option value="search">Search</option>
+                                <option value="story">Story</option>
                             </select>
                             <span class="error"></span>
                         </div>

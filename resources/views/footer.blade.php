@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-sm-3 col-xs-12 footer_items">
+            <div class="col-sm-3 col-xs-12 footer_items new_footer_alignment">
                 <h3 class="footer_headings">Our Story</h3>
                 <ul>
                     <li><a href="{{ url('about-us')}}">About us</a></li>
@@ -10,15 +10,15 @@
                     <li><a href="{{ url('careers')}}">We are hiring!</a></li>
                 </ul>
             </div>
-            <div class="col-sm-3 col-xs-12 footer_items">
+            <div class="col-sm-3 col-xs-12 footer_items new_footer_alignment">
                 <h3 class="footer_headings">Get Inspired</h3>
                 <ul>
                     <li><a href="{{ url('stories')}}">Festeve stories</a></li>
-                    <li><a href="{{ url('coming-soon')}}">Submit your event</a></li>
+                    <li><a href="{{ url('add-event')}}">Submit your event</a></li>
 
                 </ul>
             </div>
-            <div class="col-sm-3 col-xs-12 footer_items">
+            <div class="col-sm-3 col-xs-12 footer_items new_footer_alignment">
                 <h3 class="footer_headings">policies</h3>
                 <ul>
 
@@ -27,16 +27,16 @@
                     <li><a href="{{ url('contact-us')}}">Contact us</a></li>
                 </ul>
             </div>
-            <div class="col-sm-3 col-xs-12 footer_items">
+            <div class="col-sm-3 col-xs-12 footer_items new_footer_alignment">
                 <h3 class="footer_headings">More</h3>
                 <ul>
-                    <li><a href="{{ url('coming-soon')}}">Advertise with us</a></li>
-                    <li><a href="{{ url('coming-soon')}}">Fest job seeks</a></li>
-                    <li><a href="{{ url('coming-soon')}}">Organizers</a></li>
+                    <li><a href="{{ url('add-advertise')}}">Advertise With Us</a></li>
+                    <li><a href="{{ url('apply-job')}}">Fest Job Seekers</a></li>
+                    <li><a href="{{ url('organizers')}}">Organizers</a></li>
                 </ul>
             </div>
             <div class="col-sm-3 col-xs-12 footer_items">
-                <img src="{{ asset('ws/images/logo-white.png')}}" alt="footer logo" class="footer_logo">
+                <img src="{{ asset('ws/images/logo-white.png')}}" alt="footer logo" class="footer_logo" alt="logo-white">
                 <ul class="footer_address"><li class="add_icon" style="background-image: url({{ asset('ws/images/add_location.png')}});"><a href="#">{{ $sitedata['address'] }}</a></li></ul>
             </div>
 
@@ -49,17 +49,17 @@
             <div class="row">
                 <div class="col-sm-4 col-xs-12">
                     <span>CONNECT-<span>
-                    <a href="{{ $sitedata['facebook_id'] }}" target="_blank"><img src="{{ asset('ws/images/fb.jpg')}}"></a>
-                    <a href="{{ $sitedata['twitter_id'] }}" target="_blank"><img src="{{ asset('ws/images/tw.jpg')}}"></a>
-                    <a href="{{ $sitedata['linked_id'] }}" target="_blank"><img src="{{ asset('ws/images/in.jpg')}}"></a>
-                    <a href="{{ $sitedata['instagram_id'] }}" target="_blank"><img src="{{ asset('ws/images/insta.jpg')}}"></a>
+                    <a href="{{ $sitedata['facebook_id'] }}" target="_blank"><img src="{{ asset('ws/images/fb.jpg')}}" alt="facebook"></a>
+                    <a href="{{ $sitedata['twitter_id'] }}" target="_blank"><img src="{{ asset('ws/images/tw.jpg')}}" alt="twitter"></a>
+                    <a href="{{ $sitedata['linked_id'] }}" target="_blank"><img src="{{ asset('ws/images/in.jpg')}}" alt="linkedin"></a>
+                    <a href="{{ $sitedata['instagram_id'] }}" target="_blank"><img src="{{ asset('ws/images/insta.jpg')}}" alt="instagram"></a>
 
                 </div>
                 <div class="col-sm-4 col-xs-12 text-center">
-                    <img src="{{ asset('ws/images/add_phone.png')}}"> <a href="tel:{{$sitedata['mobile_number']}}">{{ '+91-'.$sitedata['phone_number'].', +91-'.$sitedata['mobile_number']}}</a>
+                    <img src="{{ asset('ws/images/add_phone.png')}}" alt="add_phone"> <a href="tel:{{$sitedata['mobile_number']}}">{{ '+91-'.$sitedata['phone_number'].', +91-'.$sitedata['mobile_number']}}</a>
                 </div>
                 <div class="col-sm-4 col-xs-12 text-right">
-                    <img src="{{ asset('ws/images/add_email.png')}}"> <a href="mailto:{{$sitedata['contact_email']}}">{{$sitedata['contact_email']}}</a>
+                    <img src="{{ asset('ws/images/add_email.png')}}" alt="email"> <a href="mailto:{{$sitedata['contact_email']}}">{{$sitedata['contact_email']}}</a>
                 </div>
             </div>
         </div>
@@ -69,6 +69,114 @@
     </div>
 </footer>
 
+
+<!---------- login/Register Popup -------------------->
+<!-- Modal -->
+<div class="modal fade" id="login_register_popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!--<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div> -->
+      <div class="modal-body">
+        <!-- login.register content here -->
+        <div class="row">
+            <div class="col-sm-6 lr_left_section"></div>
+            <div class="col-sm-6 col-xs-12 lr_right_section">
+                <button type="button" class="close lr_close_btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="lr_register_outer"><!-- register form -->
+                    <p class="lr_mail_heading">Sign up <span>Now!</span></p>
+                    <div class="lr_social_buttons">
+                        <button><img src="{{ asset('ws/images/fb_login.jpg')}}" alt="fb_login"></button>
+                        <button><img src="{{ asset('ws/images/g_login.jpg')}}" alt="g_login"></button>
+                        <div class="lr_divider"><hr/><span>or</span></div>
+                    </div>
+
+                    <div class="lr_custom_forms">
+                        <p>Create an account with Email</p>
+                        <form>
+                          <div class="form-group">
+                                <input type="email" class="form-control" id="" placeholder="Enter Your Email">
+                          </div>
+                          <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password">
+                          </div>
+                          <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Confirm Password">
+                          </div>
+                          <div class="checkbox">
+                                <label class="lr_tc_label">
+                                  <input type="checkbox"> I Agree T&C, Privacy Policy.
+                                </label>
+                          </div>
+                          <button type="button" class="btn btn-default lr_primary_btn">Sign up</button>
+                        </form>
+
+                        <button class="lr_secondary_btns open_login_form">Already a member? Login Now</button>
+                    </div>
+                </div><!-- register form ends -->
+
+                <div class="lr_login_outer"><!-- Login form -->
+                    <p class="lr_mail_heading">Login <span>Now!</span></p>
+                    <div class="lr_social_buttons">
+                        <button><img src="{{ asset('ws/images/fb_login.jpg')}}" alt="fb_login"></button>
+                        <button><img src="{{ asset('ws/images/g_login.jpg')}}" alt="g_login"></button>
+                        <div class="lr_divider"><hr/><span>or</span></div>
+                    </div>
+
+                    <div class="lr_custom_forms">
+                        <p>Login using your email address</p>
+                        <form>
+                          <div class="form-group">
+                                <input type="email" class="form-control" id="" placeholder="Enter Your Email">
+                          </div>
+                          <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password">
+                          </div>
+                          <div class="checkbox">
+                                <label class="lr_tc_label">
+                                  <input type="checkbox"> Remember me
+                                </label>
+                                <button type="button" class="lr_tc_label lr_forgot_pass open_forgot_pass_form">Forgot Password?</button>
+                          </div>
+                          <button type="button" class="btn btn-default lr_primary_btn">Login</button>
+                        </form>
+
+                        <button class="lr_secondary_btns open_register_form">Not a member yet? Sign up</button>
+                    </div>
+                </div><!-- login form ends -->
+
+
+                <div class="lr_forgot_pass_outer"><!-- forgot password form -->
+                    <p class="lr_mail_heading">Forgot <span>Password?</span></p>
+
+                    <div class="lr_custom_forms">
+                        <p>Reset password now</p>
+                        <form>
+                          <div class="form-group">
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Your Email">
+                          </div>
+                          <button type="button" class="btn btn-default lr_primary_btn">Reset Password</button>
+                        </form>
+
+                        <button class="lr_secondary_btns open_login_form">Already a member? Login Now</button>
+                    </div>
+                </div><!-- forgot password form ends -->
+
+            </div>
+        </div>
+
+	<!-- content ends -->
+        </div>
+        <!--<div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>-->
+    </div>
+  </div>
+</div>
+<!--------- login/register popup ends ----------------->
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="{{asset('ws/js/jquery.min.js')}}"></script>
@@ -80,4 +188,73 @@
     $.ajaxSetup({
         headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')}
     })
+
+    $(document).ready(function(){
+        /******mobile sidebar **********/
+        $('.mobile_nav_section button').click(function () {
+            $('.nav_desktop').addClass('listing_page_sidebar_active');
+            $('body').removeClass('body_overflow');
+            $('.moblie_header_overlay').show();
+
+        });
+        $('.moblie_header_overlay').click(function () {
+            $('.nav_desktop').removeClass('listing_page_sidebar_active');
+            $('body').removeClass('body_overflow');
+            $('.moblie_header_overlay').hide();
+
+        });
+        /******mobile sidebar end**********/
+
+
+        /****** authenticate popup ***********/
+        $('.open_login_form').click(function(){
+            $('.lr_register_outer').hide();
+            $('.lr_forgot_pass_outer').hide();
+            $('.lr_login_outer').show();
+        })
+
+        $('.open_register_form').click(function(){
+            $('.lr_login_outer').hide();
+            $('.lr_register_outer').show();
+        })
+
+        $('.open_forgot_pass_form').click(function(){
+            $('.lr_login_outer').hide();
+            $('.lr_forgot_pass_outer').show();
+        });
+        /******* authenticate popup end **********/
+
+        /******* newsletter start **********/
+        $("#newsletter_form").validate({
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.insertAfter($("#newsletter_form .input-group"));
+            },
+            rules: {
+                newsletter_email: {
+                    required:true,
+                    email:true
+                }
+            },
+            messages: {
+                newsletter_email:{
+                    required:"Enter your email id!",
+                    email:"Enter valid email id!"
+                }
+            },
+            submitHandler: function (form) {
+                $.ajax({
+                    url: "{{ URL::route('save_newsleter') }}",
+                    crossDomain: true,
+                    type: "POST",
+                    data: {'email': $("#newsletter_email").val()},
+                    dataType: 'json',
+                    success: function (response) {
+                        $("#msg").html(response.msg);
+                    }
+                });
+            }
+        });
+        /******* newsletter end **********/
+    });
 </script>

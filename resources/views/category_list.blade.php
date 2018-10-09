@@ -17,7 +17,7 @@
                             @foreach($popular_category as $pcat)
                                 <div class="swiper-slide">
                                     <a href="{{ url('event-category/'.$pcat->slug) }}">
-                                        <img src="{{ asset('images/category/popular_icon/'.$pcat->popular_icon)}}">
+                                        <img src="{{ asset('images/category/popular_icon/'.$pcat->popular_icon)}}" alt="popular_icon">
                                         <p>{{ $pcat->category_name }}</p>
                                     </a>
                                 </div>
@@ -50,7 +50,7 @@
                         ?>
                         <li style="background-image: url('{{ $image }}')">
                             <a href="{{ url('event-category/'.$cat->slug) }}">
-                                <img src="{{ asset('images/category/mini_icon/'.$cat->mini_icon)}}"><br>
+                                <img src="{{ asset('images/category/mini_icon/'.$cat->mini_icon)}}" alt="mini_icon"><br>
                                 {{ $cat->category_name }}
                             </a>
                         </li>
@@ -66,7 +66,7 @@
         <div class="container cat_list_add_event">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <span>Create Event & Drive more attendees with Festeve Mantra</span> <a href="#">GET STARTED</a>
+                    <span>Create Event & Drive more attendees with Festeve Mantra</span> <a href="{{url('add-event')}}">GET STARTED</a>
                 </div>
             </div>
         </div>
@@ -210,21 +210,6 @@
                     },
                 });
             }
-
-            $(document).ready(function () {
-
-                $('.mobile_nav_section button').click(function () {
-                    $('.nav_desktop').addClass('listing_page_sidebar_active');
-                    $('body').removeClass('body_overflow');
-                    $('.moblie_header_overlay').show();
-                })
-
-                $('.moblie_header_overlay').click(function () {
-                    $('.nav_desktop').removeClass('listing_page_sidebar_active');
-                    $('body').removeClass('body_overflow');
-                    $('.moblie_header_overlay').hide();
-                })
-            })
         </script>
     </body>
 </html>

@@ -20,6 +20,7 @@ class CreateEventSchedulesTable extends Migration {
             $table->date('date');
             $table->time('from_time');
             $table->time('to_time');
+            $table->string('activity_name');
             $table->text('activity');
             $table->tinyInteger('status');
             $table->timestamps();

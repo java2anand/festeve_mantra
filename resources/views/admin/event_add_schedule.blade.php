@@ -61,7 +61,7 @@
                                 </div>
 
                                 <div class="form-group col-sm-12">
-                                    <label for="address[]">Event Address*</label>
+                                    <label for="address[]">Event Address</label>
                                     <input type="text" class="form-control address" id="address" name="address[]" placeholder="Enter Address" value="<?= (isset($schedule->address) && !empty($schedule->address)) ? $schedule->address : old('address') ?>">
                                     <span class="error"><?php
                                         if ($errors->has('address')) {
@@ -70,7 +70,25 @@
                                         ?></span>
                                 </div>
 
+                                <div class="form-group col-sm-3">
+                                    <label for="activity_name[]">Activity Name</label>
+                                    <input type="text" class="form-control activity_name" id="activity_name" name="activity_name[]" placeholder="Enter Activity Name" value="<?= (isset($schedule->activity_name) && !empty($schedule->activity_name)) ? $schedule->activity_name : old('activity_name') ?>">
+                                    <span class="error"><?php
+                                        if ($errors->has('activity_name')) {
+                                            echo $errors->first('activity_name');
+                                        }
+                                        ?></span>
+                                </div>
 
+                                <div class="form-group col-sm-9">
+                                    <label for="activity[]">Event Activity</label>
+                                    <input type="text" class="form-control activity" id="activity" name="activity[]" placeholder="Enter Activity" value="<?= (isset($schedule->activity) && !empty($schedule->activity)) ? $schedule->activity : old('activity') ?>">
+                                    <span class="error"><?php
+                                        if ($errors->has('activity')) {
+                                            echo $errors->first('activity');
+                                        }
+                                        ?></span>
+                                </div>
 
                                 <div style="clear:both;"></div>
 
@@ -171,7 +189,7 @@
                             </div>
 
                             <div class="form-group col-sm-12">
-                                <label for="address[]">Event Address*</label>
+                                <label for="address[]">Event Address</label>
                                 <input type="text" class="form-control address" id="address" name="address[]" placeholder="Enter Address" value="">
                                 <span class="error"><?php
                                     if ($errors->has('address')) {
@@ -180,7 +198,25 @@
                                     ?></span>
                             </div>
 
+                            <div class="form-group col-sm-3">
+                                <label for="activity_name[]">Activity Name</label>
+                                <input type="text" class="form-control activity_name" id="activity_name" name="activity_name[]" placeholder="Enter Activity Name" value="">
+                                <span class="error"><?php
+                                    if ($errors->has('activity_name')) {
+                                        echo $errors->first('activity_name');
+                                    }
+                                    ?></span>
+                            </div>
 
+                            <div class="form-group col-sm-9">
+                                <label for="activity[]">Event Activity</label>
+                                <input type="text" class="form-control activity" id="activity" name="activity[]" placeholder="Enter Activity" value="">
+                                <span class="error"><?php
+                                    if ($errors->has('activity')) {
+                                        echo $errors->first('activity');
+                                    }
+                                    ?></span>
+                            </div>
 
                             <div style="clear:both;"></div>
 
@@ -349,6 +385,7 @@ $(document).ready(function () {
 
         newdiv.find('.title').val('');
         newdiv.find('.address').val('');
+        newdiv.find('.activity').val('');
         newdiv.find('.schedule_id').val('');
         newdiv.find('.event_date').val('');
         newdiv.find('.from_time').val('');

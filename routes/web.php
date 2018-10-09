@@ -15,17 +15,10 @@
     return view('home');
 });
 */
-Auth::routes();
+//Auth::routes();
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::get('/', 'HomeController@index')->name('home');
-
-Route::get('/about-us', 'HomeController@about_us')->name('about');
-Route::get('/our-team', 'HomeController@our_team')->name('our-team');
-Route::get('/careers', 'HomeController@careers')->name('careers');
-Route::get('/terms-conditions', 'HomeController@terms_conditions')->name('terms-conditions');
-Route::get('/privacy-policy', 'HomeController@privacy_policy')->name('privacy-policy');
-Route::get('/contact-us', 'HomeController@contact_us')->name('contact-us');
 
 Route::get('/categories', 'HomeController@categories')->name('categories');
 Route::get('/stories', 'HomeController@stories')->name('stories');
@@ -33,11 +26,22 @@ Route::get('/story-detail/{story_slug}', 'HomeController@story_detail')->name('s
 Route::get('/event-category/{event_slug}', 'HomeController@event_list')->name('event-category');
 Route::get('/event-detail/{event_slug}', 'HomeController@event_detail')->name('event-detail');
 Route::get('/top-hundred', 'HomeController@top_hundred')->name('top-hundred');
-Route::get('/add-event', 'HomeController@add_event')->name('add-event');
 Route::get('/search/{keyword?}', 'HomeController@search')->name('search');
 Route::post('/save_newsleter', 'HomeController@save_newsleter')->name('save_newsleter');
-Route::get('/get_reminder', 'HomeController@get_reminder')->name('get_reminder');
-Route::get('/coming-soon', 'HomeController@coming_soon')->name('coming-soon');
+
+Route::get('/about-us', 'CommonController@about_us')->name('about');
+Route::get('/our-team', 'CommonController@our_team')->name('our-team');
+Route::get('/careers', 'CommonController@careers')->name('careers');
+Route::get('/terms-conditions', 'CommonController@terms_conditions')->name('terms-conditions');
+Route::get('/privacy-policy', 'CommonController@privacy_policy')->name('privacy-policy');
+Route::get('/contact-us', 'CommonController@contact_us')->name('contact-us');
+Route::get('/coming-soon', 'CommonController@coming_soon')->name('coming-soon');
+
+Route::get('/get_reminder', 'UserController@get_reminder')->name('get_reminder');
+Route::get('/add-event', 'UserController@add_event')->name('add-event');
+Route::get('/add-advertise', 'UserController@add_advertise')->name('add-advertise');
+Route::get('/apply-job', 'UserController@apply_job')->name('apply-job');
+Route::get('/organizers', 'UserController@organizers')->name('organizers');
 
 /* * ***********Admin Panel ******************* */
 Route::prefix('admin')->group(function() {
@@ -83,6 +87,9 @@ Route::prefix('admin')->group(function() {
 
     /*     * ********events routes ******************* */
     Route::get('/event_list', 'Admin\EventController@index')->name('admin.event_list');
+    Route::get('/premium_event', 'Admin\EventController@premium_event')->name('admin.premium_event');
+    Route::get('/home_event', 'Admin\EventController@home_event')->name('admin.home_event');
+    Route::get('/event_list', 'Admin\EventController@index')->name('admin.event_list');
     Route::get('/event_add/{id?}', 'Admin\EventController@create')->name('admin.event_add');
     Route::post('/event_store/{id?}', 'Admin\EventController@save_event')->name('admin.event_store');
     Route::any('/event_add_schedule/{id?}', 'Admin\EventController@save_schedule')->name('admin.event_add_schedule');
@@ -120,4 +127,17 @@ Route::prefix('admin')->group(function() {
     Route::get('/newsletter_add/{id?}', 'Admin\AdminController@newsletters_edit')->name('admin.newsletteradd');
     Route::post('/newsletter_store/{id?}', 'Admin\AdminController@save_newsletters')->name('admin.newsletter_store');
     Route::get('/newsletter_delete/{id}', 'Admin\AdminController@destroy_newsletters')->name('admin.newsletter_delete');
+
+    /*     * ********employee routes ******************* */
+    Route::get('/employee_list', 'Admin\EmployeeController@index')->name('admin.employee_list');
+    Route::get('/employee_add/{id?}', 'Admin\EmployeeController@create')->name('admin.employee_add');
+    Route::post('/employee_store/{id?}', 'Admin\EmployeeController@save_employee')->name('admin.employee_store');
+    Route::get('/employee_delete/{id}', 'Admin\EmployeeController@destroy')->name('admin.employee_delete');
+
+    /*     * ********jobs routes ******************* */
+    Route::get('/job_list', 'Admin\JobController@index')->name('admin.job_list');
+    Route::get('/job_add/{id?}', 'Admin\JobController@create')->name('admin.job_add');
+    Route::post('/job_store/{id?}', 'Admin\JobController@save_job')->name('admin.job_store');
+    Route::get('/job_delete/{id}', 'Admin\JobController@destroy')->name('admin.job_delete');
+
 });

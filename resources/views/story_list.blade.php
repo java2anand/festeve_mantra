@@ -66,69 +66,9 @@
             </div>
         </div>
 
-
         <!-- content section ends -->
-
         <!-- footer -->
         @include('footer')
         <!-- footer ends -->
-
-        <!-- Initialize Swiper -->
-        <script>
-            if ($(window).width() > 766) {
-                var swiper = new Swiper('.event_page_latest_list .swiper-container', {
-                    slidesPerView: 3,
-                    spaceBetween: 0,
-                    pagination: {
-                        el: '.event_page_latest_list .swiper-pagination',
-                        clickable: true,
-                    },
-                });
-            } else {
-                var swiper = new Swiper('.event_page_latest_list .swiper-container', {
-                    slidesPerView: 1,
-                    spaceBetween: 0,
-                    pagination: {
-                        el: '.event_page_latest_list .swiper-pagination',
-                        clickable: true,
-                    },
-                });
-            }
-
-            if ($(window).width() > 766) {
-                var swiper = new Swiper('.top_list_categories .swiper-container', {
-                    slidesPerView: 5,
-                    spaceBetween: 10,
-                    pagination: {
-                        el: '.top_list_categories .swiper-pagination',
-                        clickable: true,
-                    },
-                });
-            } else {
-                var swiper = new Swiper('.top_list_categories .swiper-container', {
-                    slidesPerView: 2,
-                    spaceBetween: 0,
-                    pagination: {
-                        el: '.top_list_categories .swiper-pagination',
-                        clickable: true,
-                    },
-                });
-            }
-
-            $(document).ready(function () {
-
-                $('.mobile_nav_section button').click(function () {
-                    $('.nav_desktop').addClass('listing_page_sidebar_active');
-                    $('body').removeClass('body_overflow');
-                    $('.moblie_header_overlay').show();
-                })
-
-                $('.moblie_header_overlay').click(function () {
-                    $('.nav_desktop').removeClass('listing_page_sidebar_active');
-                    $('body').removeClass('body_overflow');
-                    $('.moblie_header_overlay').hide();
-                })
-            })
-        </script>
     </body>
 </html>

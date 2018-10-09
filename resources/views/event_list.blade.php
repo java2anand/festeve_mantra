@@ -15,25 +15,33 @@
                     </form>
                 </div>-->
                 @if(!empty($arr_top_ad))
-                    <?php
-                        if(isset($arr_top_ad->ad_image) && !empty($arr_top_ad->ad_image) && file_exists(public_path() . '/images/advertisement/' . $arr_top_ad->ad_image)){
-                            $adimage = asset( 'images/advertisement/'.$arr_top_ad->ad_image);?>
+                @if(isset($arr_top_ad->ad_image) && !empty($arr_top_ad->ad_image) && file_exists(public_path() . '/images/advertisement/' . $arr_top_ad->ad_image))
+                @php $adimage = asset( 'images/advertisement/'.$arr_top_ad->ad_image); @endphp
 
-                        <div class="col-xs-12 listing_top_banner">
-                            <a href="{{ $arr_top_ad->ad_url }}"><img src="{{ $adimage }}"" alt="banner"></a>
-                        </div>
-                    <?php    }
-                    ?>
-
-                @elseif(isset($category->top_banner) && !empty($category->top_banner) && file_exists(public_path() . '/images/category/top_banner/' . $category->top_banner))
-                    <div class="col-xs-12 listing_top_banner">
-                        <a href="javascript:void(0);"><img src="{{ asset( 'images/category/top_banner/'.$category->top_banner )}}" alt="banner"></a>
-                    </div>
+                <div class="col-xs-12 listing_top_banner">
+                    <a href="{{ $arr_top_ad->ad_url }}"><img src="{{ $adimage }}"" alt="banner"></a>
+                </div>
                 @endif
-
+                @elseif(isset($category->top_banner) && !empty($category->top_banner) && file_exists(public_path() . '/images/category/top_banner/' . $category->top_banner))
+                <div class="col-xs-12 listing_top_banner">
+                    <a href="javascript:void(0);"><img src="{{ asset( 'images/category/top_banner/'.$category->top_banner )}}" alt="banner"></a>
+                </div>
+                @endif
             </div>
-            <div class="row mobile_filter_btn_outer">
+
+
+            <!--<div class="row mobile_filter_btn_outer">
                 <div class="col-xs-12 text-right"><button class="mobile_filter_btn"><img src="{{asset('ws/images/filter.svg')}}"> Filter</button></div>
+            </div>-->
+            <div class="row mobile_filter_btn_outer">
+                <div class="col-xs-6 text-left">
+                    <select name="order_by" class="btn mobile_new_sort">
+                        <option value="">Sort by</option>
+                        <option value="heigh_price">Price: High to Low</option>
+                        <option value="low_price">Price: Low to High</option>
+                    </select>
+                </div>
+                <div class="col-xs-6 text-right"><button class="mobile_filter_btn"><img src="images/filter.svg"> Filter</button></div>
             </div>
         </div>
 
@@ -57,7 +65,7 @@
                                 <ul>
                                     @foreach($arr_category as $k=>$maincat)
                                     <li>
-                                        <input type="checkbox" id="filter_{{$k}}" <?= $maincat->slug ==  Request::segment(2) ? 'checked' : ''; ?> onclick='window.location.href = "{{ url('event-category/'.$maincat->slug)}}"'>
+                                        <input type="checkbox" id="filter_{{$k}}" <?= $maincat->slug == Request::segment(2) ? 'checked' : ''; ?> onclick='window.location.href = "{{ url('event-category/'.$maincat->slug)}}"'>
                                         <label for="filter_{{$k}}" class="sub_category_dropdown">{{ $maincat->category_name }} <span><!--<img src="{{ asset('ws/images/down_arrow.jpg')}}">--></span></label>
                                         <!-- sub categories  -->
                                         <!--<ul class="category_sub_outer">
@@ -114,23 +122,23 @@
 
                                 <ul>
                                     <li>
-                                        <input type="checkbox" id="filter_61" <?= empty($event_date) ||   $event_date == 'all' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=all' }}"'>
+                                        <input type="checkbox" id="filter_61" <?= empty($event_date) || $event_date == 'all' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=all' }}"'>
                                         <label for="filter_61">All</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_7" <?= isset($event_date) &&   $event_date == 'today' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=today' }}"'>
+                                        <input type="checkbox" id="filter_7" <?= isset($event_date) && $event_date == 'today' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=today' }}"'>
                                         <label for="filter_7">Today</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_8" <?= isset($event_date) &&   $event_date == 'this-week' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=this-week' }}"'>
+                                        <input type="checkbox" id="filter_8" <?= isset($event_date) && $event_date == 'this-week' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=this-week' }}"'>
                                         <label for="filter_8">This Week</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_10" <?= isset($event_date) &&   $event_date == 'next-week' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=next-week' }}"'>
+                                        <input type="checkbox" id="filter_10" <?= isset($event_date) && $event_date == 'next-week' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=next-week' }}"'>
                                         <label for="filter_10">Next Week</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_11" <?= isset($event_date) &&   $event_date == 'next-month' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=next-month' }}"'>
+                                        <input type="checkbox" id="filter_11" <?= isset($event_date) && $event_date == 'next-month' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=next-month' }}"'>
                                         <label for="filter_11">Next Month</label>
                                     </li>
                                     <li>
@@ -160,40 +168,40 @@
                         <li class="listing_page_mid_section">
 
                             @if(count($arrevent)>0)
-                                @foreach($arrevent as $event)
-                                <div class="listing_page_mid_section_outer">
-                                    <?php
-                                        if(isset($event->event_image) && !empty($event->event_image) && file_exists(public_path() . '/images/event/' . $event->event_image)){
-                                            $image = asset( 'images/event/'.$event->event_image);
-                                        }else{
-                                            $image = asset( 'ws/images/no-image.jpg');
-                                        }
-                                    ?>
+                            @foreach($arrevent as $event)
+                            <div class="listing_page_mid_section_outer">
+                                <?php
+                                if (isset($event->event_image) && !empty($event->event_image) && file_exists(public_path() . '/images/event/' . $event->event_image)) {
+                                    $image = asset('images/event/' . $event->event_image);
+                                } else {
+                                    $image = asset('ws/images/no-image.jpg');
+                                }
+                                ?>
 
-                                    <div class="listing_page_mid_section_left" style="background-image:url('{{ asset($image )}}')">
-                                        <a href="{{ url('event-detail/'.$event->slug )}}"></a>
-                                    </div>
-                                    <div class="listing_page_mid_section_right">
-                                        <p class="listing_mid_category_date">
-                                            <a href="{{ url('event-category/'.$event->category->slug )}}"><span class="listing_mid_category_span1" style="background-image: url('{{asset( 'images/category/mini_icon/'.$event->category->mini_icon)}}')">  {{ $event->category->category_name }}</span></a>
-                                            <span class="text-right">{{ date('F dS, Y',strtotime($event->start_date)) }}</span>
-                                        </p>
-                                        <h3><a href="{{ url('event-detail/'.$event->slug )}}">{{ $event->title }}</a></h3>
-                                        {!! $event->short_description !!}
-                                        <p class="listing_mid_category_link"><a href="{{ url('event-detail/'.$event->slug )}}">View</a></p>
-                                    </div>
+                                <div class="listing_page_mid_section_left" style="background-image:url('{{ asset($image )}}')">
+                                    <a href="{{ url('event-detail/'.$event->slug )}}"></a>
                                 </div>
-                                @endforeach
-                                <!-- pagignation -->
-                                <div class="text-center list_pager_outer">
-                                    {{ $arrevent->links() }}
-                                    <!--<nav> <ul class="pagination"> <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li> <li><a href="#">2</a></li> <li><a href="#">3</a></li> <li><a href="#">4</a></li> <li><a href="#">5</a></li> <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li> </ul> </nav>-->
+                                <div class="listing_page_mid_section_right">
+                                    <p class="listing_mid_category_date">
+                                        <a href="{{ url('event-category/'.$event->category->slug )}}"><span class="listing_mid_category_span1" style="background-image: url('{{asset( 'images/category/mini_icon/'.$event->category->mini_icon)}}')">  {{ $event->category->category_name }}</span></a>
+                                        <span class="text-right">{{  (date('Y-m-d') >= $event->start_date && date('Y-m-d') <= $event->end_date ) ?  date('F d, Y') : date('F d, Y', strtotime($event->start_date))}}</span>
+                                    </p>
+                                    <h3><a href="{{ url('event-detail/'.$event->slug )}}">{{ $event->title }}</a></h3>
+                                    {!! $event->short_description !!}
+                                    <p class="listing_mid_category_link"><a href="{{ url('event-detail/'.$event->slug )}}">View</a></p>
                                 </div>
-                                <!-- ends -->
+                            </div>
+                            @endforeach
+                            <!-- pagignation -->
+                            <div class="text-center list_pager_outer">
+                                {{ $arrevent->links() }}
+                                <!--<nav> <ul class="pagination"> <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li> <li><a href="#">2</a></li> <li><a href="#">3</a></li> <li><a href="#">4</a></li> <li><a href="#">5</a></li> <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li> </ul> </nav>-->
+                            </div>
+                            <!-- ends -->
                             @else
-                                <div class="listing_page_mid_section_outer">
-                                    <h2 class="text-center">No Event Found.</h2>
-                                </div>
+                            <div class="listing_page_mid_section_outer">
+                                <h2 class="text-center">No Event Found.</h2>
+                            </div>
                             @endif
 
                         </li>
@@ -201,15 +209,12 @@
                         <!-- right sidebar -->
                         <li class="listing_page_right_sidebar">
                             @if(count($arr_right_ad)>0)
-                                @foreach($arr_right_ad as $ad)
-                                    <?php
-                                        if(isset($ad->ad_image) && !empty($ad->ad_image) && file_exists(public_path() . '/images/advertisement/' . $ad->ad_image)){
-                                            $adimage = asset( 'images/advertisement/'.$ad->ad_image);?>
-                                            <a href="{{ $ad->ad_url }}"><img src="{{ $adimage }}" alt="ads banner"></a><br />
-                                    <?php    }
-                                    ?>
-
-                                @endforeach
+                            @foreach($arr_right_ad as $ad)
+                            @if(isset($ad->ad_image) && !empty($ad->ad_image) && file_exists(public_path() . '/images/advertisement/' . $ad->ad_image))
+                            @php $adimage = asset( 'images/advertisement/'.$ad->ad_image); @endphp
+                            <a href="{{ $ad->ad_url }}"><img src="{{ $adimage }}" alt="ads banner"></a><br />
+                            @endif
+                            @endforeach
                             @endif
                         </li>
                         <!-- right sidebar ends -->
@@ -223,49 +228,25 @@
 
         <!-- Initialize Swiper -->
         <script>
-            var swiper = new Swiper('.swiper-container', {
-                slidesPerView: 3,
-                spaceBetween: 0,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
-
             $(document).ready(function () {
-                $('.sub_category_dropdown').click(function () { // sub category filter dropdown
-                    $(this).next('.category_sub_outer').toggleClass('sub_category_dropdown_active');
-                })
-                $('.custom_date_search_form_label').click(function () { // custom date filter form
-                    $('.custom_date_search_form').toggle();
-                })
-
-                $('.mobile_filter_btn').click(function () {
-                    $('.listing_page_sidebar').addClass('listing_page_sidebar_active');
-                    $('body').addClass('body_overflow');
-                    $('.moblie_filter_overlay').show();
-
-                })
-                $('.moblie_filter_overlay').click(function () {
-                    $('.listing_page_sidebar').removeClass('listing_page_sidebar_active');
-                    $('body').removeClass('body_overflow');
-                    $('.moblie_filter_overlay').hide();
-
-                })
-                $('.mobile_nav_section button').click(function () {
-                    $('.nav_desktop').addClass('listing_page_sidebar_active');
-                    $('body').removeClass('body_overflow');
-                    $('.moblie_header_overlay').show();
-
-                })
-
-                $('.moblie_header_overlay').click(function () {
-                    $('.nav_desktop').removeClass('listing_page_sidebar_active');
-                    $('body').removeClass('body_overflow');
-                    $('.moblie_header_overlay').hide();
-
-                })
+            $('.sub_category_dropdown').click(function () { // sub category filter dropdown
+            $(this).next('.category_sub_outer').toggleClass('sub_category_dropdown_active');
             })
+                    $('.custom_date_search_form_label').click(function () { // custom date filter form
+            $('.custom_date_search_form').toggle();
+            })
+
+                    $('.mobile_filter_btn').click(function () {
+            $('.listing_page_sidebar').addClass('listing_page_sidebar_active');
+            $('body').addClass('body_overflow');
+            $('.moblie_filter_overlay').show();
+            })
+                    $('.moblie_filter_overlay').click(function () {
+            $('.listing_page_sidebar').removeClass('listing_page_sidebar_active');
+            $('body').removeClass('body_overflow');
+            $('.moblie_filter_overlay').hide();
+            });
+            });
         </script>
     </body>
 </html>

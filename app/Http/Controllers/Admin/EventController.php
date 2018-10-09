@@ -28,6 +28,26 @@ class EventController extends Controller {
         return view('admin.event_list', compact('arrEvent', 'page','search_term'));
     }
 
+    public function premium_event(Request $request) {
+        $page = 'premium_event';
+        $search = $request->get('search');
+        $field = $request->get('field') != '' ? $request->get('field') : 'id';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+
+        $arrEvent = Event::orderBy($field, $sort)->where('premium',1)->where('title', 'like', '%' . $search . '%')->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
+        return view('admin.event_premium_list', compact('arrEvent', 'page','search_term'));
+    }
+
+    public function home_event(Request $request) {
+        $page = 'home_event';
+        $search = $request->get('search');
+        $field = $request->get('field') != '' ? $request->get('field') : 'id';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+
+        $arrEvent = Event::orderBy($field, $sort)->where('home_event',1)->where('title', 'like', '%' . $search . '%')->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
+        return view('admin.event_home_list', compact('arrEvent', 'page','search_term'));
+    }
+
     public function create($id = false) {
         $page = 'add_event';
         $current_tab = 'event_details';
@@ -72,6 +92,9 @@ class EventController extends Controller {
         $event->organiser_id = !empty($request->organiser_id) ? $request->organiser_id : '';
         $event->speaker_title = !empty($request->speaker_title) ? $request->speaker_title : '';
         $event->status = $request->status;
+        $event->top_hundred = $request->top_hundred;
+        $event->premium = $request->premium;
+        $event->home_event = $request->home_event;
 
         /* Event Top Banner */
         if ($request->hasFile('event_top_banner')) {
@@ -117,17 +140,35 @@ class EventController extends Controller {
         $event->save();
         $save_event_id = (isset($event_id) && !empty($event_id)) ? $event_id : $event->id;
 
-        //dd($request);
-        /*         * ********** save speaker id will change logic after sometime********* */
-        $delete = DB::table('event_speakers')->where('event_id', $save_event_id)->delete();
-        if(isset($request->speaker) && count($request->speaker)>0){
-            foreach($request->speaker as $v){
-                $event_speaker = new EventSpeaker;
-                $event_speaker->event_id = $save_event_id;
-                $event_speaker->speaker_id = $v;
-                $event_speaker->save();
+
+        /*         * ********** save speaker logic start********* */
+        $previous_speaker_arr = DB::table('event_speakers')->where('event_id', $save_event_id)->pluck('speaker_id')->toArray();
+
+        if (isset($request->speaker) && count($request->speaker)>0 && !empty($request->speaker)) {
+            $new_speaker = array_diff($request->speaker,$previous_speaker_arr);
+            $old_speaker = array_diff($previous_speaker_arr,$request->speaker);
+
+            if (!empty($request->speaker) && !empty($new_speaker)) {
+                //insert if new speaker found
+                foreach($new_speaker as $v){
+                    $event_speaker = new EventSpeaker;
+                    $event_speaker->event_id = $save_event_id;
+                    $event_speaker->speaker_id = $v;
+                    $event_speaker->save();
+                }
+            }
+            if (!empty($old_speaker)) {
+                //if old speaker found than delete
+                DB::table('event_speakers')->where('event_id', $save_event_id)->whereIn('speaker_id', $old_speaker)->delete();
+            }
+
+        }else{
+            //delete if speaker is not selected
+            if (!empty($previous_speaker_arr)) {
+                DB::table('event_speakers')->where('event_id', $save_event_id)->delete();
             }
         }
+        /*         * ********** save speaker logic end********* */
 
         $request->session()->flash('alert-success', 'Event saved successfully!');
         if ($request->submit == 'go') {
@@ -159,12 +200,15 @@ class EventController extends Controller {
                     'from_time' => (!empty($request->from_time[$i])) ? date("H:i:s", strtotime($request->from_time[$i])) : '',
                     'to_time' => (!empty($request->to_time[$i])) ? date("H:i:s", strtotime($request->to_time[$i])) : '',
                     'status' => (!empty($request->status[$i])) ? $request->status[$i] : '',
+                    'activity_name' => (!empty($request->activity_name[$i])) ? $request->activity_name[$i] : '',
                     'activity' => (!empty($request->activity[$i])) ? $request->activity[$i] : '',
                 );
 
                 if ($request->schedule_id[$i] == null) {
+                    $save_array['created_at']= date('Y-m-d H:i:s');
                     $save = DB::table('event_schedules')->insert($save_array);
                 } else {
+                    $save_array['updated_at']= date('Y-m-d H:i:s');
                     $save = DB::table('event_schedules')->where('id', $request->schedule_id[$i])->update($save_array);
                 }
             }
@@ -359,7 +403,7 @@ class EventController extends Controller {
 
     public function event_top_hundred(){
         $page = 'event-top-hundred';
-        $arr_event = Event::orderBy('sort_order','ASC')->select('id','title')->where('status',1)->get();
+        $arr_event = Event::orderBy('sort_order','ASC')->select('id','title')->where('status',1)->where('top_hundred',1)->where('end_date','>=',date('Y-m-d'))->get();
 
         return view('admin.event_top_hundred', compact('arr_event', 'page'));
     }

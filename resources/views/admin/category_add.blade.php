@@ -7,12 +7,8 @@
     <section class="content-header">
         <h1><?= $category_id == '' ? 'Add' : 'Edit' ?> Event Category</h1>
         <ol class="breadcrumb">
-            <!--
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Dashboard</li>
-            -->
-            <li>
-                <a href="{{url('admin/category_list')}}" class="btn btn-primary pull-right">Back to List</a></li>
+            <li class="active">Dashboard</li>
         </ol>
     </section>
 
@@ -270,12 +266,22 @@
                                 ?></span>
                         </div>
 
-                        <div class="form-group">
-                            <label for="category_slug">Status*</label>
-                            <select class="form-control" id="status" name="status">
-                                <option value="1" <?= (isset($eventtype->status) && ($eventtype->status == 1)) ? 'selected' : '' ?>>Active</option>
-                                <option value="0" <?= (isset($eventtype->status) && ($eventtype->status == 0)) ? 'selected' : '' ?>>Inactive</option>
-                            </select>
+                        <div class="form-group row">
+                            <div class='col-md-3'>
+                                <label for="category_slug">Status*</label>
+                                <select class="form-control" id="status" name="status">
+                                    <option value="1" <?= (isset($category->status) && ($category->status == 1)) ? 'selected' : '' ?>>Active</option>
+                                    <option value="0" <?= (isset($category->status) && ($category->status == 0)) ? 'selected' : '' ?>>Inactive</option>
+                                </select>
+                            </div>
+                            <div class='col-md-3'>
+                                <label for="popular">Popular Category*</label>
+                                <select class="form-control" id="popular" name="popular">
+                                    <option value="0" <?= (isset($category->popular) && ($category->popular == 0)) ? 'selected' : '' ?>>No</option>
+                                    <option value="1" <?= (isset($category->popular) && ($category->popular == 1)) ? 'selected' : '' ?>>Yes</option>
+
+                                </select>
+                            </div>
                         </div>
 
                     </div>

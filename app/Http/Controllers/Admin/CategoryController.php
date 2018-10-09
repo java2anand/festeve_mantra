@@ -50,6 +50,7 @@ class CategoryController extends Controller {
         $category->description = !empty($request->description) ? $request->description : '';
         $category->parent_id = $request->parent_id;
         $category->status = $request->status;
+        $category->popular = $request->popular;
         $category->meta_keyword = !empty($request->meta_keyword) ? $request->meta_keyword : '';
         $category->meta_description = !empty($request->meta_description) ? $request->meta_description : '';
         $category->page_title = !empty($request->page_title) ? $request->page_title : '';

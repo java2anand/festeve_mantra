@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    //'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => 'mysql',
 
     /*
     |--------------------------------------------------------------------------
@@ -58,7 +59,7 @@ return [
             'driver' => 'mysql',
             'host' => '127.0.0.1',
             'port' => '3306',
-            'database' => 'festive_mantra',
+            'database' => 'festive_mantra_new',
             'username' => 'root',
             'password' => 'pass1234',
             'unix_socket' => env('DB_SOCKET', ''),

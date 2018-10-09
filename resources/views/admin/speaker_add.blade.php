@@ -88,7 +88,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="category_slug">Description</label>
+                                    <label for="description">Description</label>
                                     <textarea rows="6"  class="form-control ckeditor" id="description" name="description" ><?= (isset($speaker->description) && !empty($speaker->description)) ? $speaker->description: old('description') ?></textarea>
                                     <span class="error"><?php if ($errors->has('description')){ echo $errors->first('description'); } ?></span>
                                 </div>
@@ -108,7 +108,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="category_slug">Status*</label>
+                                    <label for="status">Status*</label>
                                     <select class="form-control" id="status" name="status">
                                         <option value="1" <?= (isset($speaker->status) && ($speaker->status == 1)) ? 'selected': '' ?>>Active</option>
                                         <option value="0" <?= (isset($speaker->status) && ($speaker->status == 0)) ? 'selected': '' ?>>Inactive</option>

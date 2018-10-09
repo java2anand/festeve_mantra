@@ -80,7 +80,7 @@
                                             <a href="{{ url('admin/organiser_add',$organiser->id) }}" data-toggle="tooltip" title="" class="btn btn-sm btn-success" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
                                         </div>
                                         <div class="btn-group">
-                                            <a href="{{ url('admin/eventorganiser_delete',$organiser->id) }}" data-toggle="tooltip" title="" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete? ')" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                                            <a href="{{ url('admin/organiser_delete',$organiser->id) }}" data-toggle="tooltip" title="" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete? ')" data-original-title="Delete"><i class="fa fa-times"></i></a>
                                         </div>
 
 

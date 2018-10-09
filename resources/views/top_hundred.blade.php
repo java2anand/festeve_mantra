@@ -17,9 +17,9 @@
             <div class="row">
                 <h1 class="col-xs-12 text-center home_section_heading"><span>TOP HUNDRED EVENTS</span></h1>
             </div>
-            <div class="row mobile_filter_btn_outer">
+            <!--<div class="row mobile_filter_btn_outer">
                 <div class="col-xs-12 text-right"><button class="mobile_filter_btn"><img src="{{asset('ws/images/filter.svg')}}"> Filter</button></div>
-            </div>
+            </div>-->
         </div>
 
         <div class="container listing_page_width listing_page_list_outer">
@@ -46,6 +46,7 @@
 
         <!-- Initialize Swiper -->
         <script type="text/javascript">
+            /******* ajax pagination start********/
             var page = 1;
             $(window).scroll(function () {
                 if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
@@ -74,6 +75,7 @@
                     alert('server not responding...');
                 });
             }
+            /******* ajax pagination end********/
         </script>
     </body>
 </html>
