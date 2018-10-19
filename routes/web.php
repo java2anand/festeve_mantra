@@ -29,8 +29,9 @@ Route::get('/top-hundred', 'HomeController@top_hundred')->name('top-hundred');
 Route::get('/search/{keyword?}', 'HomeController@search')->name('search');
 Route::post('/save_newsleter', 'HomeController@save_newsleter')->name('save_newsleter');
 Route::post('/save_enquiry', 'HomeController@save_enquiry')->name('save_enquiry');
+Route::any('/fetch_result', 'HomeController@fetch_result')->name('fetch_result');
 
-Route::get('/about-us', 'CommonController@about_us')->name('about');
+Route::get('/about-us', 'CommonController@about_us')->name('about-us');
 Route::get('/our-team', 'CommonController@our_team')->name('our-team');
 Route::get('/careers', 'CommonController@careers')->name('careers');
 Route::get('/terms-conditions', 'CommonController@terms_conditions')->name('terms-conditions');

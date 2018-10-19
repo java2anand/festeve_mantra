@@ -15,31 +15,26 @@
         <div class="moblie_filter_overlay"></div>
         <div class="container listing_page_width listing_page_top_section">
             <div class="row">
-                <h1 class="col-xs-12 text-center home_section_heading"><span>TOP HUNDRED EVENTS</span></h1>
+                <!--<h1 class="col-xs-12 text-center home_section_heading"><span>TOP HUNDRED EVENTS</span></h1>-->
+                <div class="col-xs-12 listing_top_banner">
+                    <a href="javascript:void(0);"><img src="{{asset('ws/images/top_hundred.jpg')}}" alt="banner"></a>
+                </div>
             </div>
             <!--<div class="row mobile_filter_btn_outer">
                 <div class="col-xs-12 text-right"><button class="mobile_filter_btn"><img src="{{asset('ws/images/filter.svg')}}"> Filter</button></div>
             </div>-->
         </div>
 
-        <div class="container listing_page_width listing_page_list_outer">
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul>
-
-                        <!-- listing -->
-                        <li class="" id="post-data">
-                            @include('top_hundred_ajax')
-                        </li>
-                        <!-- list ends -->
-                        <div class="listing_page_mid_section_outer ajax-load text-center" style="display:none">
-                            <p><img src="{{asset('ws/images/loader.gif')}}">Loading More Events</p>
-                        </div>
-
-                    </ul>
-                </div>
+        <div class="container home_section upcoming_events">
+            <div class="row" id="post-data">
+                @include('top_hundred_ajax')
+            </div>
+            <div class="ajax-load text-center col-md-12" style="display:none">
+                <p><img src="{{asset('ws/images/loader.gif')}}">Loading More Events</p>
             </div>
         </div>
+
+
         <!-- footer -->
 
         @include('footer')
@@ -63,17 +58,17 @@
                         $('.ajax-load').show();
                     }
                 })
-                .done(function (data) {
-                    if (data.html == "") {
-                        $('.ajax-load').html("No more events found");
-                        return;
-                    }
-                    $('.ajax-load').hide();
-                    $("#post-data").append(data.html);
-                })
-                .fail(function (jqXHR, ajaxOptions, thrownError) {
-                    alert('server not responding...');
-                });
+                        .done(function (data) {
+                            if (data.html == "") {
+                                $('.ajax-load').html("No more events found");
+                                return;
+                            }
+                            $('.ajax-load').hide();
+                            $("#post-data").append(data.html);
+                        })
+                        .fail(function (jqXHR, ajaxOptions, thrownError) {
+                            alert('server not responding...');
+                        });
             }
             /******* ajax pagination end********/
         </script>

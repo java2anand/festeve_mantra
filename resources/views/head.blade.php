@@ -8,6 +8,7 @@
     <title><?= isset($page_title) && !empty($page_title) ? $page_title : $sitedata['page_title'] ?></title>
     <meta name="keywords" content="<?= isset($meta_keyword) ? $meta_keyword : $sitedata['meta_keyword'] ?>" />
     <meta name="description" content="<?= isset($meta_description) ? $meta_description : $sitedata['meta_description'] ?>" />
+    <meta name="google-site-verification" content="Btb3iQae8vGKY94TZNvDTlpcuMMmhJGrt7TqhF5sNhw" />  
 
     <!-- Bootstrap -->
     <link href="{{asset('ws/css/bootstrap.min.css')}}" rel="stylesheet">

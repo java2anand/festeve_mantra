@@ -40,7 +40,7 @@ class CreateEventsTable extends Migration {
             $table->integer('total_view');
             $table->tinyInteger('home_event')->default(0);
             $table->tinyInteger('top_hundred')->default(0);
-            $table->tinyInteger('premium')->default(0);
+            $table->tinyInteger('premium')->default(0)->comment('0=>None,1=>Premium,2=>favourite');
             $table->tinyInteger('status');
             $table->timestamps();
         });

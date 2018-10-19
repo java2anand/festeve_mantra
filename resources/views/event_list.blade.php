@@ -37,11 +37,11 @@
                 <div class="col-xs-6 text-left">
                     <select name="order_by" class="btn mobile_new_sort">
                         <option value="">Sort by</option>
-                        <option value="heigh_price">Price: High to Low</option>
-                        <option value="low_price">Price: Low to High</option>
+                        <option value="heigh_price">Date: Oldest to Newest</option>
+                        <option value="low_price">Date: Newest to Oldest</option>
                     </select>
                 </div>
-                <div class="col-xs-6 text-right"><button class="mobile_filter_btn"><img src="images/filter.svg"> Filter</button></div>
+                <div class="col-xs-6 text-right"><button class="mobile_filter_btn"><img src="{{ asset('ws/images/filter.svg')}}"> Filter</button></div>
             </div>
         </div>
 
@@ -140,7 +140,6 @@
 
                             @if(count($arrevent)>0)
                             @foreach($arrevent as $event)
-                            <div class="listing_page_mid_section_outer">
                                 <?php
                                 if (isset($event->event_image) && !empty($event->event_image) && file_exists(public_path() . '/images/event/' . $event->event_image)) {
                                     $image = asset('images/event/' . $event->event_image);
@@ -148,20 +147,22 @@
                                     $image = asset('ws/images/no-image.jpg');
                                 }
                                 ?>
-
-                                <div class="listing_page_mid_section_left" style="background-image:url('{{ asset($image )}}')">
-                                    <a href="{{ url('event-detail/'.$event->slug )}}"></a>
+                                <div class="listing_page_mid_section_outer">
+                                    <div class="listing_page_mid_section_left">
+                                        <a href="{{ url('event-detail/'.$event->slug )}}"><img src="{{ asset($image )}}"></a>
+                                    </div>
+                                    <div class="listing_page_mid_section_right {{ ($event->premium == 1) ? 'f_premium' : (($event->premium == 2) ? 'f_favourite' : '')  }}">
+                                        <p class="listing_mid_category_date">
+                                            <a href=""><span class="listing_mid_category_span1" style="background-image: url('{{asset( 'images/category/mini_icon/'.$event->category->mini_icon)}}')">  {{ $event->category->category_name }}</span></a>
+                                            <span class="text-right">{{  ($event->start_date != $event->end_date ) ?  date('d M', strtotime($event->start_date)).' - '. date('d M', strtotime($event->end_date)).date(', Y')  : date('d M Y', strtotime($event->start_date))}}</span>
+                                        </p>
+                                        <h3><a href="{{ url('event-detail/'.$event->slug )}}">{{ $event->title }}</a></h3>
+                                        <p class="listing_mid_category_info">
+                                            {!! $event->short_description !!}
+                                        </p>
+                                        <p class="listing_mid_category_link"><a href="{{ url('event-detail/'.$event->slug )}}">View</a></p>
+                                    </div>
                                 </div>
-                                <div class="listing_page_mid_section_right">
-                                    <p class="listing_mid_category_date">
-                                        <a href="{{ url('event-category/'.$event->category->slug )}}"><span class="listing_mid_category_span1" style="background-image: url('{{asset( 'images/category/mini_icon/'.$event->category->mini_icon)}}')">  {{ $event->category->category_name }}</span></a>
-                                        <span class="text-right">{{  ($event->start_date != $event->end_date ) ?  date('d M', strtotime($event->start_date)).' - '. date('d M', strtotime($event->end_date)).date(', Y')  : date('d M Y', strtotime($event->start_date))}}</span>
-                                    </p>
-                                    <h3><a href="{{ url('event-detail/'.$event->slug )}}">{{ $event->title }}</a></h3>
-                                    {!! $event->short_description !!}
-                                    <p class="listing_mid_category_link"><a href="{{ url('event-detail/'.$event->slug )}}">View</a></p>
-                                </div>
-                            </div>
                             @endforeach
                             <!-- pagignation -->
                             <div class="text-center list_pager_outer">

@@ -178,6 +178,39 @@
 </div>
 <!--------- login/register popup ends ----------------->
 
+<!----------------------------- mobile search form popup ------------------------------------->
+<div class="mobile_search_box">
+    <button type="button" class="mobile_search_box_close">X</button>
+    <p class="mobile_search_box_heading">Enter<br> the happening world</p>
+    <form method="get" action="#">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default mobile_search_box_button">Search</button>
+    </form>
+</div>
+<!----------------------------- mobile search form popup ends -------------------------------->
+
+<!---------- fgacebook chat ------------>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+  attribution=setup_tool
+  page_id="1115804248623618"
+  theme_color="#fa3c4c">
+</div>
+<!---------- fgacebook chat End ------------>
+
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="{{asset('ws/js/jquery.min.js')}}"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -229,6 +262,18 @@
             $('.lr_forgot_pass_outer').show();
         });
         /******* authenticate popup end **********/
+
+        // js for mobile search popup
+        $('.mobile_search_button').click(function () {
+            $('.mobile_search_box').show();
+            $('#mobile_search_input').focus();
+            $('body').addClass('body_overflow');
+
+        });
+        $('.mobile_search_box_close').click(function () {
+            $('.mobile_search_box').hide();
+            $('body').removeClass('body_overflow');
+        });
 
         /******* newsletter start **********/
         $("#newsletter_form").validate({

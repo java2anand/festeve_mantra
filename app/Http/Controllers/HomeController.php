@@ -32,7 +32,7 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $arr_category = DB::table('categories')->where('status', 1)->where('popular', 1)->orderBy('sort_order', 'asc')->limit(7)->get();
+        $arr_category = DB::table('categories')->where('status', 1)->where('popular', 1)->orderBy('sort_order', 'asc')->limit(6)->get();
 
         $arr_event = Event::orderBy('start_date', 'asc')->where('status', 1)->where('home_event', 1)->where('end_date', '>=', date('Y-m-d'))->limit(9)->get();
         $arr_story = Story::orderBy('id', 'desc')->where('status', 1)->limit(6)->get();
@@ -51,7 +51,7 @@ class HomeController extends Controller {
 
     public function categories() {
         $arr_category = Category::whereStatus(1)->get();
-        $popular_category = Category::whereStatus(1)->where('popular',1)->limit(5)->get();
+        $popular_category = Category::whereStatus(1)->where('popular', 1)->limit(5)->get();
 
         $page_data = DB::table('pages')->where('slug', 'categories')->first();
         $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title : '';
@@ -94,7 +94,7 @@ class HomeController extends Controller {
                                     echo "custom";
                                     break;
                             }
-                        })->where('end_date', '>=', date('Y-m-d'))->orderBy('start_date','asc')->paginate(10)->withPath('?event_date=' . $event_date);
+                        })->where('end_date', '>=', date('Y-m-d'))->where('status', 1)->orderBy('start_date', 'asc')->paginate(10)->withPath('?event_date=' . $event_date);
         //print_query();
 
         $page_title = $category->page_title;
@@ -102,11 +102,11 @@ class HomeController extends Controller {
         $meta_description = $category->meta_description;
 
         /*         * ****** advertisement ************** */
-        $arr_top_ad = DB::table('advertisements')->where('ad_type',1)->where('ad_location','category')->where('status',1)->whereRaw('FIND_IN_SET(?,category)', [$category->id])->orderBy('updated_at','desc')->first();
+        $arr_top_ad = DB::table('advertisements')->where('ad_type', 1)->where('ad_location', 'category')->where('status', 1)->whereRaw('FIND_IN_SET(?,category)', [$category->id])->orderBy('updated_at', 'desc')->first();
 
-        $arr_right_ad = DB::table('advertisements')->where('ad_type',2)->where('ad_location','category')->where('status',1)->whereRaw('FIND_IN_SET(?,category)', [$category->id])->get();
+        $arr_right_ad = DB::table('advertisements')->where('ad_type', 2)->where('ad_location', 'category')->where('status', 1)->whereRaw('FIND_IN_SET(?,category)', [$category->id])->get();
 
-        return view('event_list', compact('arrevent', 'arr_category', 'category', 'meta_keyword', 'meta_description', 'page_title','arr_top_ad','arr_right_ad'));
+        return view('event_list', compact('arrevent', 'arr_category', 'category', 'meta_keyword', 'meta_description', 'page_title', 'arr_top_ad', 'arr_right_ad'));
     }
 
     public function event_detail($slug) {
@@ -146,9 +146,12 @@ class HomeController extends Controller {
         $meta_description = !empty($event->seo->meta_description) ? $event->seo->meta_description : '';
         $page_title = !empty($event->seo->page_title) ? $event->seo->page_title : '';
 
+        //near by events
+        
+
         /*         * ****** advertisement ************** */
-        $arr_ad = DB::table('advertisements')->where('status',1)->whereRaw('FIND_IN_SET(?,event)', [$event->id])->get();
-        return view('event_detail', compact('event', 'speaker', 'organiser', 'arr_schedule', 'arr_similar_event', 'meta_keyword', 'meta_description', 'page_title', 'primar_address','arr_ad'));
+        $arr_ad = DB::table('advertisements')->where('status', 1)->whereRaw('FIND_IN_SET(?,event)', [$event->id])->get();
+        return view('event_detail', compact('event', 'speaker', 'organiser', 'arr_schedule', 'arr_similar_event', 'meta_keyword', 'meta_description', 'page_title', 'primar_address', 'arr_ad'));
     }
 
     public function stories() {
@@ -199,13 +202,13 @@ class HomeController extends Controller {
     public function save_enquiry(Request $request) {
 
         $query = new Query;
-        $query->title_id    = $request->contact_title;
-        $query->name        = $request->contact_name;
-        $query->city        = $request->contact_city;
-        $query->company_name = !empty($request->contact_company) ? : '';
-        $query->email       = $request->contact_email;
-        $query->mobile      = $request->contact_phone;
-        $query->message     = $request->contact_message;
+        $query->title_id = $request->contact_title;
+        $query->name = $request->contact_name;
+        $query->city = $request->contact_city;
+        $query->company_name = !empty($request->contact_company) ?: '';
+        $query->email = $request->contact_email;
+        $query->mobile = $request->contact_phone;
+        $query->message = $request->contact_message;
         $query->save();
 
         $msg = '<span class="text-success">Our team will contact you soon!.</span>';
@@ -216,7 +219,7 @@ class HomeController extends Controller {
     }
 
     public function top_hundred(Request $request) {
-        $arr_events = Event::whereStatus(1)->orderBy('sort_order', 'asc')->select('id', 'title', 'slug', 'event_image', 'short_description', 'start_date','end_date')->where('end_date', '>=', date('Y-m-d'))->where('top_hundred',1)->paginate(10);
+        $arr_events = Event::whereStatus(1)->orderBy('sort_order', 'asc')->where('end_date', '>=', date('Y-m-d'))->where('top_hundred', 1)->paginate(12);
         if ($request->ajax()) {
             $view = '';
             if (count($arr_events) > 0) {
@@ -224,7 +227,6 @@ class HomeController extends Controller {
             }
             return response()->json(['html' => $view]);
         }
-
 
         $page_data = DB::table('pages')->where('slug', 'top-hundred')->first();
         $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title : '';
@@ -247,9 +249,49 @@ class HomeController extends Controller {
         $arr_category = Category::where('status', '=', 1)->where('parent_id', '=', 0)->get();
 
         /*         * ****** advertisement ************** */
-        $arr_right_ad = DB::table('advertisements')->where('ad_type',2)->where('ad_location','category')->where('status',1)->get();
+        $arr_right_ad = DB::table('advertisements')->where('ad_type', 2)->where('ad_location', 'category')->where('status', 1)->get();
 
-        return view('search', compact('arrevent', 'arr_category','arr_right_ad'));
+        return view('search', compact('arrevent', 'arr_category', 'arr_right_ad'));
+    }
+
+    public function fetch_result(Request $request) {
+        $keyword = $request['query'];
+        $search_keyword = addslashes($keyword);
+        $results = array();
+        $counter = 0;
+        $results_array = array();
+        $data_array = array();
+
+        $event_array = Event::select('title', 'slug')->where('end_date', '>=', date('Y-m-d'))->where('status', 1)->where('title', 'like', '%' . $search_keyword . '%')->limit(10)->get();
+
+        $category_array = Category::select('category_name', 'slug')->where('status',1)->where('category_name', 'like', '%' . $search_keyword . '%')->limit(10)->get();
+
+
+        if (count($category_array) > 0) {
+            $results_array[] = "<span class='btitles'>In Category</span>";
+            $data_array[] = "";
+            $counter++;
+            foreach ($category_array as $row) {
+                $results_array[$counter] = "<span style='padding:10px!important;font-size:11px;float:left'>" . $row->category_name . "</span>";
+                $data_array[$counter] = "category-" . $row->slug;
+                $counter++;
+            }
+        }
+
+        if (count($event_array) > 0) {
+            $results_array[] = "<span class='btitles'>In Event</span>";
+            $data_array[] = "";
+            $counter++;
+            foreach ($event_array as $event) {
+                $results_array[] = "<span style='padding:10px;display:inline-block'>" . $event->title . "</span>";
+                $data_array[] = $event->slug;
+            }
+        }
+
+        $results['suggestions'] = $results_array;
+        $results['data'] = $data_array;
+        $results['query'] = $keyword;
+        echo @json_encode($results);
     }
 
 }

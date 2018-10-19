@@ -131,10 +131,11 @@
                         </div>
 
                         <div class="form-group col-sm-3">
-                            <label for="premium">Premium*</label>
+                            <label for="premium">Premium / Favourite*</label>
                             <select class="form-control" id="premium" name="premium">
                                 <option value="0" <?= (isset($event->premium) && ($event->premium == 0)) ? 'selected' : '' ?>>No</option>
-                                <option value="1" <?= (isset($event->premium) && ($event->premium == 1)) ? 'selected' : '' ?>>Yes</option>
+                                <option value="1" <?= (isset($event->premium) && ($event->premium == 1)) ? 'selected' : '' ?>>Premium</option>
+                                <option value="2" <?= (isset($event->premium) && ($event->premium == 2)) ? 'selected' : '' ?>>Favourite</option>
                             </select>
                         </div>
 

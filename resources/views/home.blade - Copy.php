@@ -81,7 +81,7 @@
                                 @endif
                             </a>
                         </div>
-                        <div class="upcoming_item_info {{ ($event->premium == 1) ? 'f_premium' : (($event->premium == 2) ? 'f_favourite' : '')  }}">
+                        <div class="upcoming_item_info">
                             <span class="event_type_icon"><img src="{{asset('images/category/event_image/'.$event->category->event_image)}}"></span>
                             <p class="uc_event_name"><a href="{{ url('event-detail/'.$event->slug)}}">{{$event->title}}</a></p>
                             <p class="uc_event_date">{{  ($event->start_date != $event->end_date ) ?  date('d M', strtotime($event->start_date)).' - '. date('d M', strtotime($event->end_date)).date(', Y')  : date('d M Y', strtotime($event->start_date))}}</p>

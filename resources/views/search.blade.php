@@ -122,25 +122,26 @@
 
                             @if(count($arrevent)>0)
                                 @foreach($arrevent as $event)
+                                <?php
+                                if (isset($event->event_image) && !empty($event->event_image) && file_exists(public_path() . '/images/event/' . $event->event_image)) {
+                                    $image = asset('images/event/' . $event->event_image);
+                                } else {
+                                    $image = asset('ws/images/no-image.jpg');
+                                }
+                                ?>
                                 <div class="listing_page_mid_section_outer">
-                                    <?php
-                                        if(isset($event->event_image) && !empty($event->event_image) && file_exists(public_path() . '/images/event/' . $event->event_image)){
-                                            $image = asset( 'images/event/'.$event->event_image);
-                                        }else{
-                                            $image = asset( 'ws/images/no-image.jpg');
-                                        }
-                                    ?>
-
-                                    <div class="listing_page_mid_section_left" style="background-image:url('{{ asset( $image )}}')">
-                                        <a href="{{ url('event-detail/'.$event->slug )}}"></a>
+                                    <div class="listing_page_mid_section_left">
+                                        <a href="{{ url('event-detail/'.$event->slug )}}"><img src="{{ asset($image )}}"></a>
                                     </div>
-                                    <div class="listing_page_mid_section_right">
+                                    <div class="listing_page_mid_section_right {{ ($event->premium == 1) ? 'f_premium' : (($event->premium == 2) ? 'f_favourite' : '')  }}">
                                         <p class="listing_mid_category_date">
-                                            <a href="{{ url('event-category/'.$event->category->slug )}}"><span class="listing_mid_category_span1" style="background-image: url('{{asset( 'images/category/mini_icon/'.$event->category->mini_icon)}}')">{{ $event->category->category_name }}</span></a>
+                                            <a href=""><span class="listing_mid_category_span1" style="background-image: url('{{asset( 'images/category/mini_icon/'.$event->category->mini_icon)}}')">  {{ $event->category->category_name }}</span></a>
                                             <span class="text-right">{{  ($event->start_date != $event->end_date ) ?  date('d M', strtotime($event->start_date)).' - '. date('d M', strtotime($event->end_date)).date(', Y')  : date('d M Y', strtotime($event->start_date))}}</span>
                                         </p>
                                         <h3><a href="{{ url('event-detail/'.$event->slug )}}">{{ $event->title }}</a></h3>
-                                        {!! $event->short_description !!}
+                                        <p class="listing_mid_category_info">
+                                            {!! $event->short_description !!}
+                                        </p>
                                         <p class="listing_mid_category_link"><a href="{{ url('event-detail/'.$event->slug )}}">View</a></p>
                                     </div>
                                 </div>

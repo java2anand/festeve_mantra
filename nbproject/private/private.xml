@@ -3,56 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/database/migrations/2018_08_25_061133_create_event_speakers_table.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/routes/web.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Model/Organiser.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Providers/AppServiceProvider.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/speaker_list.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/storage/framework/views/4e96c1f822213cc8d8333e91c4815bf2520bc031.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/storage/framework/views/a5804970541f064314a804b9300cb6ea3a3edc9d.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/top_hundred.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/admin-sidebar.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/config/app.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/Admin/SpeakerController.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/Admin/OrganiserController.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/database/migrations/2018_09_03_060711_create_event_addresses_table.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/config/database.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/database/migrations/2018_10_07_193811_create_employees_table.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/CommonController.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/Admin/JobController.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Requests/EmployeeRequest.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/job_list.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Requests/SpeakerRequest.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/our_team.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/database/migrations/2018_09_27_192420_create_authors_table.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/category_add.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/careers.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/employee_list.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Requests/OrganiserRequest.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/event_add.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/config/backup.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/HomeController.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/Admin/EmployeeController.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/head.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/public/ws/css/style.css</file>
             <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/footer.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/about.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Requests/JobRequest.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/category_list.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/organiser_add.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/employee_add.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Exceptions/Handler.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/database/migrations/2018_10_07_194451_create_jobs_table.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Model/Job.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/config/auth.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/speaker_add.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/organiser_list.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/job_add.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/top_hundred.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/html%20files/Listing_Page.html</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/event_add_address.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/header.blade.php</file>
             <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/top_hundred_ajax.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/config/constant.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/database/migrations/2018_09_03_084443_create_event_seos_table.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/contact_us.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/public/ws/css/style_new.css</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/admin/event_add.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/search.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/database/migrations/2018_09_03_060711_create_event_addresses_table.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/database/migrations/2018_07_12_152350_create_events_table.php</file>
             <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/home.blade.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/config/broadcasting.php</file>
-            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/Admin/EventController.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/apply_job.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/resources/views/event_list.blade.php</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/html%20files/index.html</file>
+            <file>file:/C:/xampp/htdocs/festeve_mantra/app/Http/Controllers/HomeController.php</file>
         </group>
     </open-files>
 </project-private>
