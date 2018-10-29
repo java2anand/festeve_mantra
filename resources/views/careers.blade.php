@@ -8,7 +8,7 @@
         <div class="container-fluid static_top_banner">
             <div class="row">
                 <div  class="col-xs-12 text-center">
-                    <h1>WE ARE HIRING!</h1>
+                    <h1>Kickstart Your Happening Carrer With Us</h1>
                 </div>
             </div>
         </div>
@@ -24,13 +24,13 @@
                     @if(count($arr_openings)>0)
                         @foreach($arr_openings as $opening)
                         <div class="panel panel-default">
-                            <div class="panel-heading active_title" role="tab" id="heading{{$i}}">
-                                <h4 class="panel-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$i}}" aria-expanded="true" aria-controls="collapse{{$i}}">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$i}}" aria-expanded="true" aria-controls="collapse{{$i}}">
+                                <div class="panel-heading active_title" role="tab" id="heading{{$i}}">
+                                    <h4 class="panel-title">
                                         {{ $opening->position.' ('.$opening->total_opening.')' }}
-                                    </a>
-                                </h4>
-                            </div>
+                                    </h4>
+                                </div>
+                            </a>
                             <div id="collapse{{$i}}" class="panel-collapse collapse {{ $i==0 ? 'in': ''}}" role="tabpanel" aria-labelledby="heading{{$i}}">
                                 <div class="panel-body">
 

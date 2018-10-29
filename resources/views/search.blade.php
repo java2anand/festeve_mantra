@@ -8,11 +8,15 @@
         <div class="moblie_filter_overlay"></div>
         <div class="container listing_page_width listing_page_top_section">
             <div class="row">
-                <div class="col-xs-12 text-center">
-                    {!! Form::open(['method'=>'get','id'=>'listing_search_form','name'=>'listing_search_form']) !!}
-                        <input type="text" value="{{ request('event_name')}}" class="listing_search_input" placeholder="search event">
-                    </form>
+                <div class="col-xs-12">
+                    <h1 class="text-center home_section_heading" style='margin-bottom:20px !important;'><span>Discover Festivals & Events </span></h1>
+                    <h4 class="text-center" style='margin-bottom:20px !important;'><span>Find more than thousands of festivals and events of all genres near you and across india. </span></h4>
                 </div>
+                <!--<div class="col-xs-12 text-center">
+                    {!! Form::open(['search','method'=>'get','id'=>'listing_search_form','name'=>'listing_search_form']) !!}
+                    <input type="text" name='keyword' value="{{ request('keyword')}}" class="listing_search_input" placeholder="search event" autocomplete="off">
+                    </form>
+                </div>-->
             </div>
             <div class="row mobile_filter_btn_outer">
                 <div class="col-xs-12 text-right"><button class="mobile_filter_btn"><img src="{{asset('ws/images/filter.svg')}}"> Filter</button></div>
@@ -38,12 +42,12 @@
                                 <h4>Categories</h4>
                                 <ul>
                                     <?php
-                                        $full_url = url('search?').'event_name='.request('event_name').'&event_date='.request('event_date').'&event_location='.request('event_location');
+                                        $full_url = url('search?').'keyword='.request('keyword').'&date='.request('date').'&location='.request('location');
                                     ?>
 
                                     @foreach($arr_category as $k=>$maincat)
                                     <li>
-                                        <input type="checkbox" id="filter_{{$k}}" <?= $maincat->slug ==  Request::segment(2) ? 'checked' : ''; ?> onclick="window.location.href = '<?= $full_url. '&event_cat='.$maincat->slug?>'">
+                                        <input type="checkbox" id="filter_{{$k}}" <?= $maincat->id ==  request('cat') ? 'checked' : ''; ?> onclick="window.location.href = '<?= $full_url. '&cat='.$maincat->id?>'">
                                         <label for="filter_{{$k}}" class="sub_category_dropdown">{{ $maincat->category_name }} <span><!--<img src="{{ asset('ws/images/down_arrow.jpg')}}">--></span></label>
                                         <!-- sub categories  -->
                                         <!--<ul class="category_sub_outer">
@@ -68,35 +72,35 @@
                                 <ul>
                                     <?php
                                         $url = url('search?');
-                                        $event_name = 'event_name='.request('event_name');
-                                        $event_location = '&event_location='.request('event_location');
-                                        $event_cat = '&event_cat='.request('event_cat');
+                                        $event_name = 'keyword='.request('keyword');
+                                        $event_location = '&location='.request('location');
+                                        $event_cat = '&cat='.request('cat');
 
-                                        $event_date = request('event_date');
+                                        $event_date = request('date');
                                     ?>
                                     <li>
-                                        <input type="checkbox" id="filter_61" <?= empty($event_date) ||   $event_date == 'all' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&event_date=all".$event_location.$event_cat ?>' ">
+                                        <input type="checkbox" id="filter_61" <?= empty($event_date) ||   $event_date == 'all' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&date=all".$event_location.$event_cat ?>' ">
                                         <label for="filter_61">All</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_7" <?= isset($event_date) &&   $event_date == 'today' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&event_date=today".$event_location.$event_cat ?>' ">
-                                        <label for="filter_7">Today</label>
+                                        <input type="checkbox" id="filter_71" <?= isset($event_date) &&   $event_date == 'today' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&date=today".$event_location.$event_cat ?>' ">
+                                        <label for="filter_71">Today</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_8" <?= isset($event_date) &&   $event_date == 'this-week' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&event_date=this-week".$event_location.$event_cat ?>' ">
-                                        <label for="filter_8">This Week</label>
+                                        <input type="checkbox" id="filter_81" <?= isset($event_date) &&   $event_date == 'this-week' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&date=this-week".$event_location.$event_cat ?>' ">
+                                        <label for="filter_81">This Week</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_10" <?= isset($event_date) &&   $event_date == 'next-week' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&event_date=next-week".$event_location.$event_cat ?>' ">
-                                        <label for="filter_10">Next Week</label>
+                                        <input type="checkbox" id="filter_101" <?= isset($event_date) &&   $event_date == 'next-week' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&date=next-week".$event_location.$event_cat ?>' ">
+                                        <label for="filter_101">Next Week</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_11" <?= isset($event_date) &&   $event_date == 'next-month' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&event_date=next-month".$event_location.$event_cat ?>' ">
-                                        <label for="filter_11">Next Month</label>
+                                        <input type="checkbox" id="filter_111" <?= isset($event_date) &&   $event_date == 'next-month' ? 'checked' : ''; ?> onclick="window.location.href = '<?= $url.$event_name."&date=next-month".$event_location.$event_cat ?>' ">
+                                        <label for="filter_111">Next Month</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_12">
-                                        <label for="filter_12" class="custom_date_search_form_label">Custom Date</label>
+                                        <input type="checkbox" id="filter_121">
+                                        <label for="filter_121" class="custom_date_search_form_label">Custom Date</label>
                                     </li>
 
                                     <li class="custom_date_search_form">
@@ -140,7 +144,7 @@
                                         </p>
                                         <h3><a href="{{ url('event-detail/'.$event->slug )}}">{{ $event->title }}</a></h3>
                                         <p class="listing_mid_category_info">
-                                            {!! $event->short_description !!}
+                                            {!! substr($event->short_description,0,180).'..' !!}
                                         </p>
                                         <p class="listing_mid_category_link"><a href="{{ url('event-detail/'.$event->slug )}}">View</a></p>
                                     </div>

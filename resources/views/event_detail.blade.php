@@ -140,9 +140,17 @@
                                 <h3 class="home_section_heading"><span>About</span> the Organiser</h3>
                                 {!! $organiser->description !!}
 
+                                <h3 class="organiser_social home_section_heading"><span>Connect with</span> the Organiser</h3>
+                                <p  class="event_social_links">
+                                    <a href="{{ $organiser->facebook_id }}" target="_blank"><img src="{{asset('ws/images/facebook.png')}}"></a>
+                                    <a href="{{ $organiser->twitter_id }}" target="_blank"><img src="{{asset('ws/images/twitter.png')}}"></a>
+                                    <a href="{{ $organiser->youtube_id }}" target="_blank"><img src="{{asset('ws/images/youtube.png')}}"></a>
+                                    <a href="{{ $organiser->instagram_id }}" target="_blank"><img src="{{asset('ws/images/instagram.png')}}"></a>
+                                </p>
                             </div>
                         </div>
                     </div> <!-- about organisers ends -->
+
                     @endif
                     <!-- new section ends -->
 
@@ -175,7 +183,7 @@
                                 @if(count($event->address)>0)
                                 @foreach($event->address as $add)
 
-                                    <p>{{  isset($add->event_location) && !empty($add->event_location) ? $i++.'.'.$add->event_location : '' }}</p>
+                                    <p>{{  isset($add->event_location) && !empty($add->event_location) ? (count($event->address) > 1 ? $i++.'.' :  '').$add->event_location : '' }}</p>
 
                                 @endforeach
                                 @endif
@@ -230,12 +238,11 @@
                             <div class="event_right_bottom_inner">
                                 <h5>Nearby Festivals</h5>
                                 <p class="event_near_by_festivals">
-                                    <a href="#">Philadelphia</a>
-                                    <a href="#">Brooklyn</a>
-                                    <a href="#">New York</a>
-                                    <a href="#">Baltimore</a>
-                                    <a href="#">Delhi</a>
-                                    <a href="#"> Washington</a>
+                                    @if(count($arr_near)>0)
+                                    @foreach($arr_near as $near)
+                                        <a href="{{ url('event-detail/'.$near->slug )}}" target="_blank">{{$near->title}}</a>
+                                    @endforeach
+                                    @endif
                                 </p>
                             </div>
                         </div>

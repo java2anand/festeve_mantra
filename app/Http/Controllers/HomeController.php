@@ -69,32 +69,32 @@ class HomeController extends Controller {
         $event_date = $request->event_date;
         //enable_query();
         $arrevent = Event::where('event_category', '=', $category->id)
-                        ->when($event_date, function ($query) use ($event_date) {
-                            switch ($event_date) {
-                                case 'today':
-                                    $today = date('Y-m-d');
-                                    return $query->where('events.start_date', $today);
-                                    break;
-                                case 'this-week':
-                                    $today = date('Y-m-d');
-                                    $week_last_day = date('Y-m-d', strtotime('+7 days'));
-                                    return $query->where('events.start_date', '>=', $today)->where('events.start_date', '<=', $week_last_day);
-                                    break;
-                                case 'next-week':
-                                    $next_first_day = date('Y-m-d', strtotime('+7 days'));
-                                    $next_week_last_day = date('Y-m-d', strtotime('+14 days'));
-                                    return $query->where('events.start_date', '>=', $next_first_day)->where('events.start_date', '<=', $next_week_last_day);
-                                    break;
-                                case 'next-month':
-                                    $month_first_day = date('Y-m-d', strtotime('first day of +1 month'));
-                                    $month_last_day = date('Y-m-d', strtotime('last day of +1 month'));
-                                    return $query->where('events.start_date', '>=', $month_first_day)->where('events.start_date', '<=', $month_last_day);
-                                    break;
-                                case 'custom':
-                                    echo "custom";
-                                    break;
-                            }
-                        })->where('end_date', '>=', date('Y-m-d'))->where('status', 1)->orderBy('start_date', 'asc')->paginate(10)->withPath('?event_date=' . $event_date);
+            ->when($event_date, function ($query) use ($event_date) {
+                switch ($event_date) {
+                    case 'today':
+                        $today = date('Y-m-d');
+                        return $query->where('events.start_date', $today);
+                        break;
+                    case 'this-week':
+                        $today = date('Y-m-d');
+                        $week_last_day = date('Y-m-d', strtotime('+7 days'));
+                        return $query->where('events.start_date', '>=', $today)->where('events.start_date', '<=', $week_last_day);
+                        break;
+                    case 'next-week':
+                        $next_first_day = date('Y-m-d', strtotime('+7 days'));
+                        $next_week_last_day = date('Y-m-d', strtotime('+14 days'));
+                        return $query->where('events.start_date', '>=', $next_first_day)->where('events.start_date', '<=', $next_week_last_day);
+                        break;
+                    case 'next-month':
+                        $month_first_day = date('Y-m-d', strtotime('first day of +1 month'));
+                        $month_last_day = date('Y-m-d', strtotime('last day of +1 month'));
+                        return $query->where('events.start_date', '>=', $month_first_day)->where('events.start_date', '<=', $month_last_day);
+                        break;
+                    case 'custom':
+                        echo "custom";
+                        break;
+                }
+            })->where('end_date', '>=', date('Y-m-d'))->where('status', 1)->orderBy('start_date', 'asc')->paginate(10)->withPath('?event_date=' . $event_date);
         //print_query();
 
         $page_title = $category->page_title;
@@ -122,8 +122,8 @@ class HomeController extends Controller {
 
         //event speaker
         $speaker = DB::table('event_speakers')->where('event_id', $event->id)
-                        ->join('speakers as spkr', 'spkr.id', '=', 'event_speakers.speaker_id')
-                        ->select("spkr.id", "spkr.speaker_name", "spkr.image", "spkr.description", 'spkr.title')->get();
+            ->join('speakers as spkr', 'spkr.id', '=', 'event_speakers.speaker_id')
+            ->select("spkr.id", "spkr.speaker_name", "spkr.image", "spkr.description", 'spkr.title')->get();
 
         //event organiser
         $organiser = $event->organiser;
@@ -137,7 +137,7 @@ class HomeController extends Controller {
         }
 
         //similar events
-        $arr_similar_event = Event::where('event_category', '=', $event->event_category)->where('id', '!=', $event->id)->where('end_date', '>=', date('Y-m-d'))->limit(15)->get();
+        $arr_similar_event = Event::where('event_category', '=', $event->event_category)->where('id', '!=', $event->id)->where('end_date', '>=', date('Y-m-d'))->where('status',1)->limit(15)->get();
 
         //event primary address
         $primar_address = DB::table('event_addresses')->where('event_id', $event->id)->where('primary_address', 1)->first();
@@ -146,12 +146,19 @@ class HomeController extends Controller {
         $meta_description = !empty($event->seo->meta_description) ? $event->seo->meta_description : '';
         $page_title = !empty($event->seo->page_title) ? $event->seo->page_title : '';
 
-        //near by events
-        
-
+        //near by events by events primary address
+        $arr_near = array();
+        if(!empty($primar_address->latitude) && !empty($primar_address->longitude)){
+            $arr_near = DB::table('event_addresses')
+                ->select(DB::raw('events.title,events.slug,event_id, ( 6367 * acos( cos( radians('.$primar_address->latitude.') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('.$primar_address->longitude.') ) + sin( radians('.$primar_address->latitude.') ) * sin( radians( latitude ) ) ) ) AS distance'))
+                ->join('events', 'events.id', '=', 'event_addresses.event_id')
+                ->where('events.end_date', '>=', date('Y-m-d'))->where('events.status',1)
+                ->where('events.slug','!=',$slug)
+                ->having('distance', '<', 100)->orderBy('distance')->limit(25)->get();
+        }
         /*         * ****** advertisement ************** */
         $arr_ad = DB::table('advertisements')->where('status', 1)->whereRaw('FIND_IN_SET(?,event)', [$event->id])->get();
-        return view('event_detail', compact('event', 'speaker', 'organiser', 'arr_schedule', 'arr_similar_event', 'meta_keyword', 'meta_description', 'page_title', 'primar_address', 'arr_ad'));
+        return view('event_detail', compact('event', 'speaker', 'organiser', 'arr_schedule', 'arr_similar_event', 'meta_keyword', 'meta_description', 'page_title', 'primar_address', 'arr_ad','arr_near'));
     }
 
     public function stories() {
@@ -236,18 +243,44 @@ class HomeController extends Controller {
     }
 
     public function search(Request $request) {
-        $event_name = $request->event_name;
-        $event_date = $request->event_date;
-        $event_location = $request->event_location;
-        $event_cat = isset($request->event_cat) ? $request->event_cat : '';
+        $event_name     = $request->keyword;
+        $event_date     = $request->date;
+        $event_location = $request->location;
+        $event_cat      = $request->cat;
 
         $arrevent = Event::orderBy('start_date', 'ASC')
-                        ->when($event_name, function ($query) use ($event_name) {
-                            return $query->where('events.title', 'like', '%' . $event_name . '%');
-                        })->where('end_date', '>=', date('Y-m-d'))->paginate(10)->withPath('?event_name=' . $event_name . '&event_date=' . $event_date . '&event_location=' . $event_location . '&event_cat=' . $event_cat);
+            ->when($event_name, function ($query) use ($event_name) {
+                return $query->where('events.title', 'like', '%' . $event_name . '%');
+            })->when($event_cat, function ($query) use ($event_cat) {
+                return $query->where('events.event_category', $event_cat);
+            })->when($event_date, function ($query) use ($event_date) {
+                switch ($event_date) {
+                    case 'today':
+                        $today = date('Y-m-d');
+                        return $query->where('events.start_date', $today);
+                        break;
+                    case 'this-week':
+                        $today = date('Y-m-d');
+                        $week_last_day = date('Y-m-d', strtotime('+7 days'));
+                        return $query->where('events.start_date', '>=', $today)->where('events.start_date', '<=', $week_last_day);
+                        break;
+                    case 'next-week':
+                        $next_first_day = date('Y-m-d', strtotime('+7 days'));
+                        $next_week_last_day = date('Y-m-d', strtotime('+14 days'));
+                        return $query->where('events.start_date', '>=', $next_first_day)->where('events.start_date', '<=', $next_week_last_day);
+                        break;
+                    case 'next-month':
+                        $month_first_day = date('Y-m-d', strtotime('first day of +1 month'));
+                        $month_last_day = date('Y-m-d', strtotime('last day of +1 month'));
+                        return $query->where('events.start_date', '>=', $month_first_day)->where('events.start_date', '<=', $month_last_day);
+                        break;
+                    case 'custom':
+                        echo "custom";
+                        break;
+                }
+            })->where('end_date', '>=', date('Y-m-d'))->paginate(10)->withPath('?keyword=' . $event_name . '&date=' . $event_date . '&location=' . $event_location . '&cat=' . $event_cat);
 
         $arr_category = Category::where('status', '=', 1)->where('parent_id', '=', 0)->get();
-
         /*         * ****** advertisement ************** */
         $arr_right_ad = DB::table('advertisements')->where('ad_type', 2)->where('ad_location', 'category')->where('status', 1)->get();
 

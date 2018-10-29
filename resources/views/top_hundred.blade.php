@@ -13,7 +13,7 @@
         @include('header')
         <!-- header ends -->
         <div class="moblie_filter_overlay"></div>
-        <div class="container listing_page_width listing_page_top_section">
+        <div class="container listing_page_width listing_page_top_section top_hundered_outer">
             <div class="row">
                 <!--<h1 class="col-xs-12 text-center home_section_heading"><span>TOP HUNDRED EVENTS</span></h1>-->
                 <div class="col-xs-12 listing_top_banner">
@@ -25,7 +25,7 @@
             </div>-->
         </div>
 
-        <div class="container home_section upcoming_events">
+        <div class="container home_section upcoming_events top_hundered_outer_new">
             <div class="row" id="post-data">
                 @include('top_hundred_ajax')
             </div>

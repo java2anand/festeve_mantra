@@ -97,24 +97,24 @@
                                         <label for="filter_61">All</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_7" <?= isset($event_date) && $event_date == 'today' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=today' }}"'>
-                                        <label for="filter_7">Today</label>
+                                        <input type="checkbox" id="filter_71" <?= isset($event_date) && $event_date == 'today' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=today' }}"'>
+                                        <label for="filter_71">Today</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_8" <?= isset($event_date) && $event_date == 'this-week' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=this-week' }}"'>
-                                        <label for="filter_8">This Week</label>
+                                        <input type="checkbox" id="filter_81" <?= isset($event_date) && $event_date == 'this-week' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=this-week' }}"'>
+                                        <label for="filter_81">This Week</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_10" <?= isset($event_date) && $event_date == 'next-week' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=next-week' }}"'>
-                                        <label for="filter_10">Next Week</label>
+                                        <input type="checkbox" id="filter_101" <?= isset($event_date) && $event_date == 'next-week' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=next-week' }}"'>
+                                        <label for="filter_101">Next Week</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_11" <?= isset($event_date) && $event_date == 'next-month' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=next-month' }}"'>
-                                        <label for="filter_11">Next Month</label>
+                                        <input type="checkbox" id="filter_111" <?= isset($event_date) && $event_date == 'next-month' ? 'checked' : ''; ?> onclick='window.location.href = "{{ url()->current().'?event_date=next-month' }}"'>
+                                        <label for="filter_111">Next Month</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="filter_12">
-                                        <label for="filter_12" class="custom_date_search_form_label">Custom Date</label>
+                                        <input type="checkbox" id="filter_121">
+                                        <label for="filter_121" class="custom_date_search_form_label">Custom Date</label>
                                     </li>
 
                                     <li class="custom_date_search_form">
@@ -158,7 +158,7 @@
                                         </p>
                                         <h3><a href="{{ url('event-detail/'.$event->slug )}}">{{ $event->title }}</a></h3>
                                         <p class="listing_mid_category_info">
-                                            {!! $event->short_description !!}
+                                            {!! substr($event->short_description,0,180).'..' !!}
                                         </p>
                                         <p class="listing_mid_category_link"><a href="{{ url('event-detail/'.$event->slug )}}">View</a></p>
                                     </div>

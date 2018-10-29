@@ -83,7 +83,6 @@
                     <!-- Swiper -->
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-
                             <div class="swiper-slide">
                                 <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
                                     <div class="upcoming_item_container">
@@ -98,64 +97,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="swiper-slide">
-                                <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
-                                    <div class="upcoming_item_container">
-                                        <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{ asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
-                                        </div>
-                                        <div class="upcoming_item_info">
-                                            <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
-                                            <p class="uc_event_date">Sep 12th 2018</p>
-                                            <p class="uc_event_link"><a href="#">Read More</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
-                                    <div class="upcoming_item_container">
-                                        <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{ asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
-                                        </div>
-                                        <div class="upcoming_item_info">
-                                            <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
-                                            <p class="uc_event_date">Sep 12th 2018</p>
-                                            <p class="uc_event_link"><a href="#">Read More</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
-                                    <div class="upcoming_item_container">
-                                        <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{ asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
-                                        </div>
-                                        <div class="upcoming_item_info">
-                                            <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
-                                            <p class="uc_event_date">Sep 12th 2018</p>
-                                            <p class="uc_event_link"><a href="#">Read More</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
-                                    <div class="upcoming_item_container">
-                                        <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{ asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
-                                        </div>
-                                        <div class="upcoming_item_info">
-                                            <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
-                                            <p class="uc_event_date">Sep 12th 2018</p>
-                                            <p class="uc_event_link"><a href="#">Read More</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                         <!-- Add Pagination -->
                         <div class="swiper-pagination" style="position:relative"></div>
@@ -210,6 +151,32 @@
                     },
                 });
             }
+        </script>
+        <script>
+        /*$(document).ready(function(){
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(showLocation);
+            }else{
+                $('#location').html('Geolocation is not supported by this browser.');
+            }
+        });
+        function showLocation(position){
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            alert(latitude);
+            $.ajax({
+                type:'POST',
+                url:'getLocation.php',
+                data:'latitude='+latitude+'&longitude='+longitude,
+                success:function(msg){
+                    if(msg){
+                       $("#location").html(msg);
+                    }else{
+                        $("#location").html('Not Available');
+                    }
+                }
+            });
+        }*/
         </script>
     </body>
 </html>

@@ -281,7 +281,7 @@
                 minChars: 2,
                 delimiter: /(,|;)\s*/,
                 maxHeight: 400,
-                width: $('#keyword_main').css('width'),
+                width: $('.new_search_outer form').css('width'),
                 zIndex: 9999,
                 deferRequestBy: 0,
                 noCache: false,

@@ -85,6 +85,19 @@ a{
 .home_section_heading span{
     color:#f07336;
 }
+
+.organiser_social.home_section_heading{
+    margin-top: 0px;
+    margin-bottom:10px;
+    font-size: 15px;
+    font-family: OpenSans_Bold;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+}
+.organiser_social.home_section_heading span{
+    color:#f07336;
+}
+
 .heading_seprator{
     /*margin-bottom:30px;*/
 }
@@ -178,13 +191,13 @@ a{
     margin-bottom:0px;
 }
 .uc_event_link a{
-    color:#444444;
+    color:#ef7a40;
     font-size: 14px;
     font-family: OpenSans_SemiBold;
     display:inline-block;
     width:100px;
     line-height: 30px;
-    border:1px solid #444444;
+    border:1px solid #ef7a40;
     border-radius:4px;
     text-align: center;
     margin-top:5px;
@@ -563,7 +576,7 @@ a{
     color: #fff !important;
 }
 .search_bottom_section{
-    background-color:#ef7a40;
+    background-color:#e4cdcd;
 }
 .search_bottom_section ul{
     margin:0px;
@@ -577,6 +590,7 @@ a{
     border-radius:2px;
     overflow: hidden;
     /*box-shadow: 0px 1px 5px #ddd;*/
+    border-radius:25px;
 }
 .search_bottom_section ul li a{
     float:left;
@@ -644,7 +658,7 @@ a{
     position: relative;
     z-index: 1;
     font-family: OpenSans_Bold;
-    font-size: 60px;
+    font-size: 40px;
     letter-spacing: .5px;
     margin-top: 80px;
     margin-bottom: 0px;
@@ -848,7 +862,7 @@ a{
 }
 .event_page_latest_list .uc_event_link a{
     color:#fff;
-    background-color:#444444;
+    background-color:#ef7a40;
 }
 .event_page_latest_list .uc_event_link a:hover{
     background-color:#f1763a;
@@ -1358,7 +1372,7 @@ background-size:100% 100%;
     font-family: OpenSans_Semibold;
     letter-spacing: .5px;
     text-transform: uppercase;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .moblie_filter_overlay, .moblie_header_overlay{
     position: fixed;
@@ -1735,7 +1749,7 @@ background-size:100% 100%;
     color: #fff;
     text-transform: uppercase;
     font-family: OpenSans_Bold;
-    font-size: 60px;
+    font-size: 40px;
     letter-spacing: .5px;
     margin-top: 115px;
     margin-bottom: 0px;
@@ -2321,7 +2335,7 @@ background-size:100% 100%;
     outline: none !important;
     text-transform: uppercase;
     letter-spacing: .3px;
-    margin-top: 20px;
+    margin-top: 10px;
     font-family: OpenSans_Semibold;
     box-shadow:none !important;
 }
@@ -2416,6 +2430,7 @@ background-size:100% 100%;
     /* home page */
     .search_bottom_section ul li a{
         font-size:14px;
+        border-radius: 25px;
     }
     .footer_logo{
         max-width:100%;
@@ -2471,6 +2486,7 @@ background-size:100% 100%;
     .search_bottom_section ul li{
         margin-left:2px;
         margin-right:2px;
+        border-radius: 25px;
     }
     .search_bottom_section ul li a{
         line-height:40px;
@@ -3193,6 +3209,19 @@ background-size:100% 100%;
     }
     .nav_m_show{
         display:block;
+    }
+    .listing_page_top_section{
+        padding-top:20px;
+        padding-bottom:10px;
+    }
+    .listing_top_banner {
+        margin-top: 20px;
+    }
+    .top_hundered_outer.listing_page_top_section{
+        padding-top:0px;
+    }
+    .top_hundered_outer_new.upcoming_events{
+        padding-top:10px;
     }
 }
 @media(max-width:360px){

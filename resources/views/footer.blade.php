@@ -182,12 +182,22 @@
 <div class="mobile_search_box">
     <button type="button" class="mobile_search_box_close">X</button>
     <p class="mobile_search_box_heading">Enter<br> the happening world</p>
-    <form method="get" action="#">
+    {!! Form::open([
+    'url' => ['search?'],
+    'method' => 'get'
+    ]) !!}
+        <div class="form-group">
+            <input type="text" class="form-control" name="keyword" placeholder="Search all the upcoming events...">
+        </div>
+        <button type="submit" class="btn btn-default mobile_search_box_button">Search</button>
+    {!! Form::close() !!}
+
+    <!--<form method="get" action="#">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
         </div>
         <button type="submit" class="btn btn-default mobile_search_box_button">Search</button>
-    </form>
+    </form>-->
 </div>
 <!----------------------------- mobile search form popup ends -------------------------------->
 
