@@ -16,6 +16,15 @@ class UserController extends Controller
         return view('add_event',compact('page_data','page_title','meta_keyword','meta_description'));
     }
 
+    public function add_story() {
+        $page_data = DB::table('pages')->where('slug', 'add-story')->first();
+        $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title : '';
+        $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword : '';
+        $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description : '';
+
+        return view('add_story',compact('page_data','page_title','meta_keyword','meta_description'));
+    }
+
     public function get_reminder() {
         echo 'get reminder';
     }

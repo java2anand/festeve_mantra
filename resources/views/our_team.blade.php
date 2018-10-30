@@ -28,7 +28,7 @@
             </div><!-- team section 1 ends -->
 
             <div class="row team_section2"> <!-- team section 2 -->
-                <h3 class="home_section_heading text-center col-xs-12">Minds behind<span> festeve mantra</span> - The FestEventors</h3>
+                <h3 class="home_section_heading text-center col-xs-12">The<span> festEVENTORS</span></h3>
 
                 @if(count($arr_ceo)>0)
                     @foreach($arr_ceo as $ceo)
@@ -62,7 +62,7 @@
 
 
             <div class="row team_section2 core_team_section"> <!-- team section 3 -->
-                <h3 class="home_section_heading text-center col-xs-12">Minds behind<span> festeve mantra</span> - Behind The Scenes</h3>
+                <h3 class="home_section_heading text-center col-xs-12">Behind<span> The Scenes</span></h3>
                 @if(count($arr_emp)>0)
                     @foreach($arr_emp as $emp)
                     <div class="col-sm-4 col-xs-12 core_member">
@@ -93,9 +93,8 @@
 
             <div class="row team_section4"> <!-- team section 4 -->
                 <div class="col-xs-12 text-center">
-                    <h3 class="home_section_heading">Interested to join us</h3>
-                    <p>We need great peoples to work with us</p>
-                    <p>Wish to join the most happening team of eventors?<a href="{{url('careers')}}">Join Now</a></p>
+                    <!--<h3 class="home_section_heading">Interested to join us</h3>-->
+                    <p>Wish to join the most happening team of eventers?<a href="{{url('careers')}}">Jump on the board</a></p>
                 </div>
             </div> <!-- team section 4 ends -->
         </div>

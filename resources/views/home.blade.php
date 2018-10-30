@@ -2,31 +2,8 @@
 <html lang="en">
     <!-- Head Section -->
     @include('head')
-
     <link rel="stylesheet" href="{{asset('ws/plugins/datepicker/bootstrap-datepicker.min.css') }}">
     <!-- //Head Section -->
-    <style>
-        /* autocomplete css */
-        .autocomplete-suggestions{border:1px solid #eee;background:#FFF;cursor:default;overflow:auto}
-        .autocomplete-suggestion{padding:2px 5px;white-space:nowrap;overflow:hidden;font-size:14px!important}
-        .autocomplete-selected{background:#F0F0F0}
-        .autocomplete-suggestions strong{font-weight:400;color:#39F;font-size:14px!important}
-        .autocomplete-w1{position:absolute;top:0;left:0;margin:6px 0 0 2px;width:100%;}
-        .product_detail_page .autocomplete-w1{
-                position: fixed !important;
-            top: inherit !important;
-            left: inherit !important;
-        }
-        .autocomplete{ /*border:1px solid #e5e5e5; */background:#FFF;text-align:left;max-height:350px;overflow:auto;margin:-6px 6px 6px -2px;cursor:pointer;}
-        .autocomplete .selected{background:#F0F0F0}
-        .autocomplete div{border-bottom:1px solid #e5e5e5;white-space:nowrap;overflow:hidden;font-size:14px !important;padding:10px;text-transform:capitalize;font-family:OpenSans_Bold;letter-spacing:.3px;}
-        .autocomplete strong{font-weight:400;color:#5f2487}
-        .autocomplete div span{ font-size:14px !important;}
-        /* autocomplete css ends */
-        /*.new-copyright-text{padding-top: 0px !important;text-align: right !important; font-size:14px; text-transform:capitalize; margin: 0px;} */
-        .new-footer-copyright-section ul{ margin-bottom:0px;}
-        /* autocomplete css ends */
-    </style>
     <body>
         <!-- header -->
         @include('header')
@@ -204,7 +181,7 @@
                 <p class="text-center heading_seprator"><span></span></p>
                 <div class="col-xs-12 text-center">
                     <a href="{{ url('/add-event')}}" class="orange_btn">Submit Event</a>
-                    <a href="#" class="black_btn">Submit Story</a>
+                    <a href="{{ url('/add-story')}}" class="black_btn">Submit Story</a>
                 </div>
             </div>
         </div>
@@ -303,6 +280,28 @@
                 }
             });
         });
+
+        /******** set current lat long of user in session start********/
+        $(document).ready(function(){
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(setLocation);
+            }else{
+                $('#location').html('Geolocation is not supported by this browser.');
+            }
+        });
+        function setLocation(position){
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            $.ajax({
+                type:'POST',
+                url:"{{ URL::route('set_current_location') }}",
+                data:{latitude:latitude,longitude:longitude},
+                success:function(msg){
+                    console.log(msg);
+                }
+            });
+        }
+        /******** set current lat long of user in session end********/
         </script>
     </body>
 </html>

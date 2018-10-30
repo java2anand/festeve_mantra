@@ -342,10 +342,12 @@ $(document).ready(function () {
         });
 
         $('#from_time_'+i).timepicker({
+            minuteStep: 5,
             showInputs: false
         });
 
         $('#to_time_'+i).timepicker({
+            minuteStep: 5,
             showInputs: false
         });
         i++;
@@ -375,11 +377,13 @@ $(document).ready(function () {
 
         newdiv.find('.from_time').attr('id', 'from_time_' + count);
         $("#from_time_"+count).timepicker({
+            minuteStep: 5,
             showInputs: false
         });
 
         newdiv.find('.to_time').attr('id', 'to_time_' + count);
         $("#to_time_"+count).timepicker({
+            minuteStep: 5,
             showInputs: false
         });
 

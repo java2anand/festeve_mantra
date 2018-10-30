@@ -73,30 +73,41 @@
         <!-- add event ends -->
 
 
+        @if(count($arr_near)>0)
         <div class="event_page_latest_list"><!-- stories outer -->
             <div class="container">
                 <div class="row">
-                    <h3 class="home_section_heading text-center"><span>Trending </span>events in Delhi</h3>
+                    <h3 class="home_section_heading text-center"><span>Trending </span>events in {{substr($current_city, 0, strrpos($current_city, ','))}}</h3>
                     <p class="text-center heading_seprator">
                         <span></span>
                     </p>
                     <!-- Swiper -->
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
+
+                            @foreach($arr_near as $event)
                             <div class="swiper-slide">
                                 <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
                                     <div class="upcoming_item_container">
                                         <div class="upcoming_item_image">
-                                            <a href="#"><img src="{{ asset('ws/images/upcoming_event_banner.jpg')}}" alt="event banner"></a>
+                                            <a href="{{ url('event-detail/'.$event->slug)}}">
+                                                @if(isset($event->event_image) && !empty($event->event_image) && file_exists(public_path() . '/images/event/' . $event->event_image))
+                                                <img src="{{ asset( 'images/event/'.$event->event_image)}}" alt="event banner">
+                                                @else
+                                                <img src="{{ asset( 'ws/images/no-image.jpg')}}" alt="event banner">
+                                                @endif
+                                            </a>
                                         </div>
                                         <div class="upcoming_item_info">
-                                            <p class="uc_event_name"><a href="#">Latest Event Show in Jaipur</a></p>
-                                            <p class="uc_event_date">Sep 12th 2018</p>
-                                            <p class="uc_event_link"><a href="#">Read More</a></p>
+                                            <p class="uc_event_name"><a href="{{ url('event-detail/'.$event->slug)}}">{{$event->title}}</a></p>
+                                            <p class="uc_event_date">{{  ($event->start_date != $event->end_date ) ?  date('d M', strtotime($event->start_date)).' - '. date('d M', strtotime($event->end_date)).date(', Y')  : date('d M Y', strtotime($event->start_date))}}</p>
+                                            <p class="uc_event_link"><a href="{{ url('event-detail/'.$event->slug)}}">View</a></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
+
                         </div>
                         <!-- Add Pagination -->
                         <div class="swiper-pagination" style="position:relative"></div>
@@ -105,7 +116,7 @@
                 </div>
             </div>
         </div><!-- stories outer -->
-
+        @endif
         <!-- footer -->
         @include('footer')
         <!-- footer ends -->
@@ -151,32 +162,6 @@
                     },
                 });
             }
-        </script>
-        <script>
-        /*$(document).ready(function(){
-            if(navigator.geolocation){
-                navigator.geolocation.getCurrentPosition(showLocation);
-            }else{
-                $('#location').html('Geolocation is not supported by this browser.');
-            }
-        });
-        function showLocation(position){
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-            alert(latitude);
-            $.ajax({
-                type:'POST',
-                url:'getLocation.php',
-                data:'latitude='+latitude+'&longitude='+longitude,
-                success:function(msg){
-                    if(msg){
-                       $("#location").html(msg);
-                    }else{
-                        $("#location").html('Not Available');
-                    }
-                }
-            });
-        }*/
         </script>
     </body>
 </html>

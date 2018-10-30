@@ -30,6 +30,7 @@ Route::get('/search/{keyword?}', 'HomeController@search')->name('search');
 Route::post('/save_newsleter', 'HomeController@save_newsleter')->name('save_newsleter');
 Route::post('/save_enquiry', 'HomeController@save_enquiry')->name('save_enquiry');
 Route::any('/fetch_result', 'HomeController@fetch_result')->name('fetch_result');
+Route::any('/set_current_location', 'HomeController@set_current_location')->name('set_current_location');
 
 Route::get('/about-us', 'CommonController@about_us')->name('about-us');
 Route::get('/our-team', 'CommonController@our_team')->name('our-team');
@@ -41,6 +42,7 @@ Route::get('/coming-soon', 'CommonController@coming_soon')->name('coming-soon');
 
 Route::get('/get_reminder', 'UserController@get_reminder')->name('get_reminder');
 Route::get('/add-event', 'UserController@add_event')->name('add-event');
+Route::get('/add-story', 'UserController@add_story')->name('add-story');
 Route::get('/add-advertise', 'UserController@add_advertise')->name('add-advertise');
 Route::get('/apply-job', 'UserController@apply_job')->name('apply-job');
 Route::get('/organizers', 'UserController@organizers')->name('organizers');

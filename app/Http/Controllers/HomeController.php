@@ -53,11 +53,29 @@ class HomeController extends Controller {
         $arr_category = Category::whereStatus(1)->get();
         $popular_category = Category::whereStatus(1)->where('popular', 1)->limit(5)->get();
 
+        //get events by user current location
+        $lat_long = session()->get('current_location');
+        $lat = $lat_long['latitude'];
+        $long = $lat_long['longitude'];
+        $geocode=file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDjvjVSrDJA2dCpKqYaf4keThmElDGRSCg&latlng='.$lat.','.$long.'&sensor=false');
+        $output= json_decode($geocode);
+        $current_city = $output->results[7]->formatted_address;
+
+        //get near by events
+        $arr_near = array();
+        if(!empty($lat) && !empty($long)){
+            $arr_near = DB::table('event_addresses')
+                ->select(DB::raw('events.title,events.slug,events.event_image,events.start_date,events.end_date,event_id, ( 6367 * acos( cos( radians('.$lat.') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('.$long.') ) + sin( radians('.$lat.') ) * sin( radians( latitude ) ) ) ) AS distance'))
+                ->join('events', 'events.id', '=', 'event_addresses.event_id')
+                ->where('events.end_date', '>=', date('Y-m-d'))->where('events.status',1)
+                ->having('distance', '<', 100)->orderBy('distance')->limit(25)->get();
+        }
+
         $page_data = DB::table('pages')->where('slug', 'categories')->first();
         $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title : '';
         $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword : '';
         $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description : '';
-        return view('category_list', compact('arr_category', 'popular_category', 'page_title', 'meta_keyword', 'meta_description'));
+        return view('category_list', compact('arr_category', 'popular_category', 'page_title', 'meta_keyword', 'meta_description','current_city','arr_near'));
     }
 
     public function event_list($slug, Request $request) {
@@ -325,6 +343,13 @@ class HomeController extends Controller {
         $results['data'] = $data_array;
         $results['query'] = $keyword;
         echo @json_encode($results);
+    }
+
+    public function set_current_location(Request $request){
+        $session_array['latitude'] = $request->latitude;
+        $session_array['longitude'] = $request->longitude;
+        session()->put('current_location', $session_array);
+        //print_r(session()->get('current_location'));
     }
 
 }

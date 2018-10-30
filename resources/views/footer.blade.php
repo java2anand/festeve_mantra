@@ -15,6 +15,7 @@
                 <ul>
                     <li><a href="{{ url('stories')}}">Festeve stories</a></li>
                     <li><a href="{{ url('add-event')}}">Submit your event</a></li>
+                    <li><a href="{{ url('add-story')}}">Submit your story</a></li>
 
                 </ul>
             </div>
