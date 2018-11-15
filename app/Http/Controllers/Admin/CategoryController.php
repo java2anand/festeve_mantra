@@ -155,6 +155,19 @@ class CategoryController extends Controller {
 
     public function destroy($id) {
         $category = Category::find($id);
+        $event_image = public_path('images/category/event_image') . '/' . $category->event_image;
+        $image = public_path('images/category/image') . '/' . $category->image;
+        $mini_icon = public_path('images/category/mini_icon') . '/' . $category->mini_icon;
+        $popular_icon = public_path('images/category/popular_icon') . '/' . $category->popular_icon;
+        $right_banner = public_path('images/category/right_banner') . '/' . $category->right_banner;
+        $top_banner = public_path('images/category/top_banner') . '/' . $category->top_banner;
+
+        @unlink($event_image);
+        @unlink($image);
+        @unlink($mini_icon);
+        @unlink($popular_icon);
+        @unlink($right_banner);
+        @unlink($top_banner);
         $category->delete();
         return back()->with('alert-success', 'Deleted successfully!');
     }

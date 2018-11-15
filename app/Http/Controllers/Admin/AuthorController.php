@@ -74,6 +74,8 @@ class AuthorController extends Controller
 
     public function destroy($id) {
         $author = Author::find($id);
+        $image = public_path('images/author').'/'.$author->image;
+        @unlink($image);
         $author->delete();
         return back()->with('alert-success', 'Deleted successfully!');
     }

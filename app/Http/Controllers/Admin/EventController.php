@@ -389,7 +389,7 @@ class EventController extends Controller {
         }
         if ($request->isMethod('post')) {
             for ($i = 0; $i < count($request->title); $i++) {
-               
+
                 $save_array = array(
                     'event_id' => $event_id,
                     'title' => (!empty($request->title[$i])) ? $request->title[$i] : '',
@@ -432,6 +432,12 @@ class EventController extends Controller {
 
     public function destroy($id) {
         $event = Event::find($id);
+
+        $image = public_path('images/event').'/'.$event->event_image;
+        $top_banner = public_path('images/event/top_banner').'/'.$event->event_top_banner;
+        @unlink($image);
+        @unlink($top_banner);
+
         $event->delete();
         return back()->with('alert-success', 'Deleted successfully!');
     }

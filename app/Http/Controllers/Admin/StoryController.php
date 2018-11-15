@@ -77,6 +77,8 @@ class StoryController extends Controller {
 
     public function destroy($id) {
         $story = Story::find($id);
+        $image = public_path('images/story').'/'.$story->image;
+        @unlink($image);
         $story->delete();
         return back()->with('alert-success', 'Deleted successfully!');
     }

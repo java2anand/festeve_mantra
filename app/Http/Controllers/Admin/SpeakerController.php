@@ -77,6 +77,8 @@ class SpeakerController extends Controller {
 
     public function destroy($id) {
         $speaker = Speaker::find($id);
+        $image = public_path('images/speaker').'/'.$speaker->image;
+        @unlink($image);
         $speaker->delete();
         return back()->with('alert-success', 'Deleted successfully!');
     }

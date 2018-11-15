@@ -73,6 +73,8 @@ class EmployeeController extends Controller{
 
     public function destroy($id) {
         $employee = Employee::find($id);
+        $image = public_path('images/employee').'/'.$employee->image;
+        @unlink($image);
         $employee->delete();
         return back()->with('alert-success', 'Deleted successfully!');
     }
