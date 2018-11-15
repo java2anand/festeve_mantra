@@ -71,7 +71,7 @@
 
                                     <td>{{ $i }}.</td>
                                     <td>{{ $speaker->speaker_name}}</td>
-                                    <td><img src="{{ asset( 'images/speaker/'.$speaker->image)}}" width="50px" height="50px"/></td>
+                                    <td><img src="{{ asset( 'images/speaker/'.$speaker->image)}}" width="50px" height="50px" alt="speaker"/></td>
                                     <td>{{ $speaker->created_at}}</td>
                                     <td>
                                         <?= $speaker->status == 1 ? 'Active' : 'Inactive';  ?>

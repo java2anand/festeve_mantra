@@ -12,11 +12,11 @@
                     <h1 class="text-center home_section_heading" style='margin-bottom:20px !important;'><span>Discover Festivals & Events </span></h1>
                     <h4 class="text-center" style='margin-bottom:20px !important;'><span>Find more than thousands of festivals and events of all genres near you and across india. </span></h4>
                 </div>
-                <!--<div class="col-xs-12 text-center">
+                <div class="col-xs-12 text-center">
                     {!! Form::open(['search','method'=>'get','id'=>'listing_search_form','name'=>'listing_search_form']) !!}
                     <input type="text" name='keyword' value="{{ request('keyword')}}" class="listing_search_input" placeholder="search event" autocomplete="off">
                     </form>
-                </div>-->
+                </div>
             </div>
             <div class="row mobile_filter_btn_outer">
                 <div class="col-xs-12 text-right"><button class="mobile_filter_btn"><img src="{{asset('ws/images/filter.svg')}}"> Filter</button></div>

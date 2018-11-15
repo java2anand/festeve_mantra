@@ -83,7 +83,7 @@
                                     <td>{{ $advertisement->ad_type == 1 ? 'Top Banner' : 'Right Banner' }}</td>
                                     <td>{{ $advertisement->ad_location }}
                                     </td>
-                                    <td><img src='{{ asset('images/advertisement/'.$advertisement->ad_image) }}' width='50px' height='50px'/> </td>
+                                    <td><img src='{{ asset('images/advertisement/'.$advertisement->ad_image) }}' width='50px' height='50px' alt="advertisement" /> </td>
                                     <td><a href='{{ $advertisement->ad_url }}'>{{ $advertisement->ad_url }}</a></td>
                                     <td>{{ $advertisement->status == 1 ? 'Active' : 'Inactive' }}</td>
                                     <td>
@@ -181,7 +181,7 @@
                             <span class="error error_type"></span>
                         </div>
                         <div class="form-group col-sm-12" id="img_div" style="display:none;">
-                            <img id="ad_icon" src="" width="100px;" height="100px;">
+                            <img id="ad_icon" src="" width="100px;" height="100px;" alt="ad_icon" >
                         </div>
                         <div class="form-group col-sm-12">
                             <label for="link_to">Link to</label>

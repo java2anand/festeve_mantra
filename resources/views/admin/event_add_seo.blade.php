@@ -74,7 +74,7 @@
                     <div class="box-footer">
                         <a href="{{ route('admin.event_add_address',$event_id) }}" class="btn btn-danger">Back</a>
                         <button type="submit" name='submit' value='save' class="btn btn-primary">Save</button>
-                        <button type="submit" name='submit' value='go' class="btn btn-primary">Save & Go To List</button>
+                        <button type="submit" name='submit' value='go' class="btn btn-primary">Save & Go To Gallery</button>
                         <a href="{{ route('admin.event_list') }}" class="btn btn-danger">Cancel</a>
 
                     </div>

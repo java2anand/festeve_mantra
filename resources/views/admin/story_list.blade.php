@@ -47,7 +47,7 @@
 
                                 </div>
                                 <div class="col-md-2">
-                                    <a href="{{url('admin/category_add')}}" class="btn btn-primary">Add New</a>
+                                    <a href="{{url('admin/story_add')}}" class="btn btn-primary">Add New</a>
                                 </div>
                             </div>
                         </div>

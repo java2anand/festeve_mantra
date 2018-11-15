@@ -11,6 +11,8 @@
 
             <li class='<?= (isset($current_tab) && $current_tab=='event_seo') ? 'active' :'';  ?>'><a href="{{ route('admin.event_add_seo',$event_id)}}">Event Seo</a></li>
 
+            <li class='<?= (isset($current_tab) && $current_tab=='event_gallery') ? 'active' :'';  ?>'><a href="{{ route('admin.event_add_gallery',$event_id)}}">Event Gallery</a></li>
+
         </ul>
     </div>
 </nav>

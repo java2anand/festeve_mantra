@@ -247,7 +247,7 @@ class AdminController extends Controller {
         $field = $request->get('field') != '' ? $request->get('field') : 'id';
         $sort = $request->get('sort') != '' ? $request->get('sort') : 'asc';
 
-        $arr_pages = DB::table('pages')->orderBy($field, $sort)->where('title', 'like', '%' . $search . '%')->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
+        $arr_pages = DB::table('pages')->orderBy($field, $sort)->where('title', 'like', '%' . $search . '%')->paginate(20)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
         return view('admin.pages_list', compact('arr_pages', 'page','search_term'));
     }
 

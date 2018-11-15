@@ -49,6 +49,23 @@
                         </div>
                     </div>
 
+                    @if(count($gallery)>0)
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="event_inner_section">
+                                    <h3 class="home_section_heading"><span>Event Gallery</span></h3>
+
+                                        @foreach($gallery as $gall)
+                                        <div class="col-xs-3">
+                                            <img src="{{asset('images/event/gallery/'.$gall->image)}}" class="img-responsive event_organiser_pic">
+                                            <p class="founder_name">{{$gall->title}}</p>
+
+                                        </div>
+                                        @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    @endif
 
                     @if(count($speaker)>0)
                         <div class="row">

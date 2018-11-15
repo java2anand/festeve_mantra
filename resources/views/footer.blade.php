@@ -228,6 +228,7 @@
 <script src="{{asset('ws/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('ws/js/swiper.min.js')}}"></script>
 <script src="{{asset('ws/js/jquery.validate.min.js')}}"></script>
+<script src="{{asset('ws/js/fontawesome.js')}}"></script>
 <script>
     $.ajaxSetup({
         headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')}

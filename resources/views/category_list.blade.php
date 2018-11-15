@@ -73,11 +73,12 @@
         <!-- add event ends -->
 
 
-        @if(count($arr_near)>0)
+
         <div class="event_page_latest_list"><!-- stories outer -->
+            @if(count($arr_near)>0)
             <div class="container">
                 <div class="row">
-                    <h3 class="home_section_heading text-center"><span>Trending </span>events in {{substr($current_city, 0, strrpos($current_city, ','))}}</h3>
+                    <h3 class="home_section_heading text-center"><span>Trending </span>events in {{substr($current_city, 0, stripos($current_city, ','))}}</h3>
                     <p class="text-center heading_seprator">
                         <span></span>
                     </p>
@@ -115,8 +116,9 @@
 
                 </div>
             </div>
+            @endif
         </div><!-- stories outer -->
-        @endif
+
         <!-- footer -->
         @include('footer')
         <!-- footer ends -->

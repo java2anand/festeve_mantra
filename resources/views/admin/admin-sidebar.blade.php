@@ -64,7 +64,7 @@
                 </ul>
             </li>-->
 
-            <li class="treeview <?= ($pages == 'add_event' || $pages == 'event_list' || $pages == 'event-top-hundred' || $pages == 'home_event' || $pages == 'premium_event') ? 'menu-open active' : ''; ?>">
+            <li class="treeview <?= ($pages == 'add_event' || $pages == 'event_list' || $pages == 'event-top-hundred' || $pages == 'home_event' || $pages == 'premium_event' || $pages == 'popular_event') ? 'menu-open active' : ''; ?>">
                 <a href="#">
                     <i class="fa fa-calendar-check-o"></i> <span>Events</span>
                     <span class="pull-right-container">
@@ -81,6 +81,8 @@
                     <li class="<?= ($pages == 'home_event') ? 'active' : ''; ?>"><a href="{{ route('admin.home_event') }}"><i class="fa fa-circle-o"></i> Home Event</a></li>
 
                     <li class="<?= ($pages == 'premium_event') ? 'active' : ''; ?>"><a href="{{ route('admin.premium_event') }}"><i class="fa fa-circle-o"></i> Premium Event</a></li>
+
+                    <li class="<?= ($pages == 'popular_event') ? 'active' : ''; ?>"><a href="{{ route('admin.popular_event') }}"><i class="fa fa-circle-o"></i> Popular Event</a></li>
                 </ul>
             </li>
 

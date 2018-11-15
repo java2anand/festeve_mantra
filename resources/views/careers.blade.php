@@ -28,7 +28,9 @@
                                 <div class="panel-heading active_title" role="tab" id="heading{{$i}}">
                                     <h4 class="panel-title">
                                         {{ $opening->position.' ('.$opening->total_opening.')' }}
+                                        <i class="pull-right more-less fa fa-angle-right"></i>
                                     </h4>
+
                                 </div>
                             </a>
                             <div id="collapse{{$i}}" class="panel-collapse collapse {{ $i==0 ? 'in': ''}}" role="tabpanel" aria-labelledby="heading{{$i}}">

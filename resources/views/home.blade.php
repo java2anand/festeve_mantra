@@ -2,7 +2,6 @@
 <html lang="en">
     <!-- Head Section -->
     @include('head')
-    <link rel="stylesheet" href="{{asset('ws/plugins/datepicker/bootstrap-datepicker.min.css') }}">
     <!-- //Head Section -->
     <body>
         <!-- header -->
@@ -38,6 +37,53 @@
         </div>
         <!-- new search ends -->
 
+        @if(count($popular_event)>0)
+        <div class="home_storeis_outer popular_event"><!-- stories outer -->
+            <div class="container">
+                <div class="row">
+                    <h3 class="home_section_heading text-center">{{$sitedata['popular_event_title']}} <span>EVENTS</span></h3>
+                    <p class="text-center heading_seprator"><span></span></p>
+                    <!-- Swiper -->
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            @foreach($popular_event as $event)
+                            <div class="swiper-slide">
+                                <div class="col-xs-12 upcoming_events"><!-- upcoming event -->
+                                    <div class="upcoming_item_container">
+                                        <div class="upcoming_item_image">
+                                            <a href="{{ url('event-detail/'.$event->slug)}}">
+                                                @if(isset($event->event_image) && !empty($event->event_image) && file_exists(public_path() . '/images/event/' . $event->event_image))
+                                                <img src="{{ asset( 'images/event/'.$event->event_image)}}" alt="event_banner">
+                                                @else
+                                                <img src="{{ asset( 'ws/images/no-image.jpg')}}" alt="event_banner">
+                                                @endif
+                                            </a>
+                                        </div>
+                                        <div class="upcoming_item_info {{ ($event->premium == 1) ? 'f_premium' : (($event->premium == 2) ? 'f_favourite' : '')  }}">
+                                            <span class="event_type_icon"><img src="{{asset('images/category/event_image/'.$event->category->event_image)}}" alt="category_event"></span>
+                                            <p class="uc_event_name"><a href="{{ url('event-detail/'.$event->slug)}}">{{$event->title}}</a></p>
+                                            <p class="uc_event_date">{{  ($event->start_date != $event->end_date ) ?  date('d M', strtotime($event->start_date)).' - '. date('d M', strtotime($event->end_date)).date(', Y')  : date('d M Y', strtotime($event->start_date))}}</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+
+                        </div>
+                        <!-- Add Pagination-->
+                        <div class="swiper-pagination" style="position:relative"></div>
+                        <!-- Add Arrows -->
+                        <!--<div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>-->
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- stories outer -->
+        @endif
+
+
         @if(count($arr_event)>0)
         <div class="container home_section upcoming_events">
             <div class="row">
@@ -52,14 +98,14 @@
                         <div class="upcoming_item_image">
                             <a href="{{ url('event-detail/'.$event->slug)}}">
                                 @if(isset($event->event_image) && !empty($event->event_image) && file_exists(public_path() . '/images/event/' . $event->event_image))
-                                <img src="{{ asset( 'images/event/'.$event->event_image)}}" alt="event banner">
+                                <img src="{{ asset( 'images/event/'.$event->event_image)}}" alt="event_banner">
                                 @else
-                                <img src="{{ asset( 'ws/images/no-image.jpg')}}" alt="event banner">
+                                <img src="{{ asset( 'ws/images/no-image.jpg')}}" alt="event_banner">
                                 @endif
                             </a>
                         </div>
                         <div class="upcoming_item_info {{ ($event->premium == 1) ? 'f_premium' : (($event->premium == 2) ? 'f_favourite' : '')  }}">
-                            <span class="event_type_icon"><img src="{{asset('images/category/event_image/'.$event->category->event_image)}}"></span>
+                            <span class="event_type_icon"><img src="{{asset('images/category/event_image/'.$event->category->event_image)}}" alt="category_event"></span>
                             <p class="uc_event_name"><a href="{{ url('event-detail/'.$event->slug)}}">{{$event->title}}</a></p>
                             <p class="uc_event_date">{{  ($event->start_date != $event->end_date ) ?  date('d M', strtotime($event->start_date)).' - '. date('d M', strtotime($event->end_date)).date(', Y')  : date('d M Y', strtotime($event->start_date))}}</p>
 
@@ -85,13 +131,13 @@
                                 <div class="col-xs-12 upcoming_events_items"><!-- upcoming event -->
                                     <div class="upcoming_item_container">
                                         <div class="upcoming_item_image">
-                                            <a href="{{ url('story-detail/'.$story->slug)}}"><img src="{{ asset( 'images/story/'.$story->image)}}" alt="Story banner"></a>
+                                            <a href="{{ url('story-detail/'.$story->slug)}}"><img src="{{ asset( 'images/story/'.$story->image)}}" alt="story_banner"></a>
                                         </div>
                                         <div class="upcoming_item_info">
                                             <p class="uc_event_name"><a href="{{ url('story-detail/'.$story->slug)}}">{{$story->story_name}}</a></p>
                                             <div class="media">
                                                 <div class="media-left">
-                                                    <img src="{{ asset( 'images/author/'.$story->author->image)}}" class="media-object" width="50px" height="50px">
+                                                    <img src="{{ asset( 'images/author/'.$story->author->image)}}" class="media-object" width="50px" height="50px" alt="author">
                                                 </div>
                                                 <div class="media-body">
                                                     <h4 class="media-heading"><span>by</span> {{$story->author->name}}</h4>
@@ -126,27 +172,37 @@
                         <div class="col-sm-7 col-xs-12 f_padding_right">
                             <a href="{{url('event-category/'.$arr_top_cat[0]->slug)}}">
                                 <div class="cat_left_item left_cat1" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[0]->image)}}');">
-                                    <p><span><img src="{{asset('images/category/mini_icon/'.$arr_top_cat[0]->mini_icon)}}"></span>Music</p>
+                                    <p><span>
+                                            <!--<img src="{{asset('images/category/mini_icon/'.$arr_top_cat[0]->mini_icon)}}" alt="mini_icon">-->
+                                        </span>Music</p>
                                 </div>
                             </a>
                         </div>
                         <div class="col-sm-5 col-xs-12">
-                            <a href="{{url('event-category/'.$arr_top_cat[1]->slug)}}"><div class="cat_left_item left_cat2" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[1]->image)}}');"><p><span><img src="{{asset('images/category/mini_icon/'.$arr_top_cat[1]->mini_icon)}}"></span>sports</p></div></a>
+                            <a href="{{url('event-category/'.$arr_top_cat[1]->slug)}}"><div class="cat_left_item left_cat2" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[1]->image)}}');"><p><span>
+                                            <!--<img src="{{asset('images/category/mini_icon/'.$arr_top_cat[1]->mini_icon)}}" alt="mini_icon">-->
+                                        </span>sports</p></div></a>
                         </div>
                     </div><!-- left top categories -->
                     <div class="row text-center"><!-- left middle categories -->
                         <div class="col-sm-5 col-xs-12 f_padding_right">
                             <a href="{{url('event-category/'.$arr_top_cat[2]->slug)}}">
-                                <div class="cat_left_item left_cat3" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[2]->image)}}');"><p><span><img src="{{asset('images/category/mini_icon/'.$arr_top_cat[2]->mini_icon)}}"></span>food</p></div></a>
+                                <div class="cat_left_item left_cat3" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[2]->image)}}');"><p><span>
+                                            <!--<img src="{{asset('images/category/mini_icon/'.$arr_top_cat[2]->mini_icon)}}" alt="mini_icon">-->
+                                        </span>food</p></div></a>
                         </div>
                         <div class="col-sm-7 col-xs-12">
-                            <a href="{{url('event-category/'.$arr_top_cat[3]->slug)}}"><div class="cat_left_item left_cat4" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[3]->image)}}');"><p><span><img src="{{asset('images/category/mini_icon/'.$arr_top_cat[3]->mini_icon)}}"></span>travel</p></div></a>
+                            <a href="{{url('event-category/'.$arr_top_cat[3]->slug)}}"><div class="cat_left_item left_cat4" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[3]->image)}}');"><p><span>
+                                            <!--<img src="{{asset('images/category/mini_icon/'.$arr_top_cat[3]->mini_icon)}}" alt="mini_icon">-->
+                                        </span>travel</p></div></a>
                         </div>
                     </div><!-- left middle categories -->
                     <div class="row text-center"><!-- left bottom categories -->
                         <div class="col-sm-12 col-xs-12 ">
                             <a href="{{url('event-category/'.$arr_top_cat[4]->slug)}}">
-                                <div class="cat_left_item left_cat5" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[4]->image)}}');"><p><span><img src="{{asset('images/category/mini_icon/'.$arr_top_cat[4]->mini_icon)}}"></span>DJ Party</p></div></a>
+                                <div class="cat_left_item left_cat5" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[4]->image)}}');"><p><span>
+                                            <!--<img src="{{asset('images/category/mini_icon/'.$arr_top_cat[4]->mini_icon)}}" alt="mini_icon">-->
+                                            </span>DJ Party</p></div></a>
                         </div>
                     </div><!-- left bottom categories -->
 
@@ -155,13 +211,17 @@
                     <div class="row text-center"><!-- right top categories -->
                         <div class="col-sm-12 col-xs-12">
                             <a href="{{url('event-category/'.$arr_top_cat[5]->slug)}}">
-                                <div class="cat_right_item1 right_cat1" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[5]->image)}}');"><p><span><img src="{{asset('images/category/mini_icon/'.$arr_top_cat[5]->mini_icon)}}"></span><br>Conference</p></div></a>
+                                <div class="cat_right_item1 right_cat1" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[5]->image)}}');"><p><span>
+                                            <!--<img src="{{asset('images/category/mini_icon/'.$arr_top_cat[5]->mini_icon)}}" alt="mini_icon">-->
+                                            </span><br>Conference</p></div></a>
                         </div>
                     </div> <!-- ends -->
                     <div class="row text-center"><!-- right bottom categories -->
                         <div class="col-sm-12 col-xs-12">
                             <a href="{{url('event-category/'.$arr_top_cat[6]->slug)}}">
-                                <div class="cat_right_item2 right_cat2" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[6]->image)}}');"><p><span><img src="{{asset('images/category/mini_icon/'.$arr_top_cat[6]->mini_icon)}}"></span><br>Skill Development</p></div></a>
+                                <div class="cat_right_item2 right_cat2" style="background-image:url('{{asset('images/category/image/'.$arr_top_cat[6]->image)}}');"><p><span>
+                                            <!--<img src="{{asset('images/category/mini_icon/'.$arr_top_cat[6]->mini_icon)}}" alt="mini_icon">-->
+                                            </span><br>Skill Development</p></div></a>
                         </div>
                     </div> <!-- ends -->
 
@@ -215,8 +275,6 @@
         <!-- footer -->
         @include('footer')
         <!-- footer ends -->
-
-        <script src="{{asset('ws/plugins/datepicker/bootstrap-datepicker.min.js') }}"></script>
         <script src="{{asset('ws/js/jquery.autocomplete.js') }}"></script>
         <!-- Initialize Swiper -->
         <script>
@@ -224,22 +282,34 @@
             var swiper = new Swiper('.swiper-container', {
                 slidesPerView: 3,
                 spaceBetween: 0,
+                loop: true,
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
+                },
+                navigation: {
+                  nextEl: '.swiper-button-next',
+                  prevEl: '.swiper-button-prev',
                 },
             });
         } else {
             var swiper = new Swiper('.swiper-container', {
                 slidesPerView: 1,
                 spaceBetween: 0,
+                loop: true,
                 pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
+                  el: '.swiper-pagination',
+                  clickable: true,
+                },
+                navigation: {
+                  nextEl: '.swiper-button-next',
+                  prevEl: '.swiper-button-prev',
                 },
             });
-
         }
+
+
+
 
         $(function () {
             $(document).on('keyup', '#keyword_main', function () {

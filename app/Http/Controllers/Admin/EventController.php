@@ -48,6 +48,16 @@ class EventController extends Controller {
         return view('admin.event_home_list', compact('arrEvent', 'page','search_term'));
     }
 
+    public function popular_event(Request $request) {
+        $page = 'popular_event';
+        $search = $request->get('search');
+        $field = $request->get('field') != '' ? $request->get('field') : 'id';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+
+        $arrEvent = Event::orderBy($field, $sort)->where('popular',1)->where('title', 'like', '%' . $search . '%')->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
+        return view('admin.event_popular_list', compact('arrEvent', 'page','search_term'));
+    }
+
     public function create($id = false) {
         $page = 'add_event';
         $current_tab = 'event_details';
@@ -95,7 +105,7 @@ class EventController extends Controller {
         $event->top_hundred = $request->top_hundred;
         $event->premium = $request->premium;
         $event->home_event = $request->home_event;
-
+        $event->popular = $request->popular;
         /* Event Top Banner */
         if ($request->hasFile('event_top_banner')) {
             $file = $request->file('event_top_banner');
@@ -329,7 +339,6 @@ class EventController extends Controller {
         return view('admin.event_add_address', compact('event', 'page', 'current_tab','event_id','event_address'));
     }
 
-
     public function save_seo(Request $request, $event_id = false) {
         $page = 'add_seo';
         $current_tab = 'event_seo';
@@ -361,12 +370,64 @@ class EventController extends Controller {
             $request->session()->flash('alert-success', 'Event address updated successfully!');
 
             if ($request->submit == 'go') {
-                return redirect('admin/event_list');
+                return redirect('admin/event_add_gallery/'. $event_id);
             } else {
                 return redirect('admin/event_add_seo/' . $event_id);
             }
         }
         return view('admin.event_add_seo', compact('event', 'page', 'current_tab','event_id'));
+    }
+
+    public function save_gallery(Request $request, $event_id = false) {
+        $page = 'add_event';
+        $current_tab = 'event_gallery';
+        $event_gallery_array = array();
+        if (!$event_id) {
+            return redirect()->route('admin.event_list')->with('alert-danger', 'Event not found!');
+        } else {
+            $event_gallery_array = DB::table('event_galleries')->where('event_id', $event_id)->get();
+        }
+        if ($request->isMethod('post')) {
+            for ($i = 0; $i < count($request->title); $i++) {
+               
+                $save_array = array(
+                    'event_id' => $event_id,
+                    'title' => (!empty($request->title[$i])) ? $request->title[$i] : '',
+                    'status' => (!empty($request->status[$i])) ? $request->status[$i] : '',
+                );
+
+                $image = $request->file('images');
+                if (isset($image[$i]) && !empty($image[$i])) {
+                    $file = $image[$i];
+                    $imagename = time() . '.' . $file->getClientOriginalExtension();
+                    $destinationPath = public_path('/images/event/gallery');
+                    if ($file->move($destinationPath, $imagename)) {
+                        $prev_image = public_path('images/event/gallery') . '/' . $request->old_image[$i];
+                        @unlink($prev_image);
+                    }
+                    $save_array['image'] = $imagename;
+                }else {
+                    $save_array['image'] = (!empty($request->old_image[$i])) ? $request->old_image[$i] : '';
+                }
+
+                if ($request->gallery_id[$i] == null) {
+                    $save_array['created_at']= date('Y-m-d H:i:s');
+                    $save = DB::table('event_galleries')->insert($save_array);
+                } else {
+                    $save_array['updated_at']= date('Y-m-d H:i:s');
+                    $save = DB::table('event_galleries')->where('id', $request->gallery_id[$i])->update($save_array);
+                }
+            }
+
+            $request->session()->flash('alert-success', 'Event galleries saved successfully!');
+            if ($request->submit == 'go') {
+                return redirect('admin/event_list');
+            } else {
+                return redirect('admin/event_add_gallery/' . $event_id);
+            }
+        }
+
+        return view('admin.event_add_gallery', compact('event_gallery_array', 'page', 'current_tab', 'event_id'));
     }
 
     public function destroy($id) {
@@ -391,6 +452,19 @@ class EventController extends Controller {
     public function delete_address(Request $request) {
         $row_id = $request->row_id;
         $delete = DB::table('event_addresses')->where('id', $row_id)->delete();
+        if ($delete) {
+            $result = json_encode(array('status' => 1, 'msg' => 'deleted successfully!'));
+        } else {
+            $result = json_encode(array('status' => 1, 'msg' => 'some error occurred!'));
+        }
+        header('Content-Type: application/x-json; charset=utf-8');
+        echo $result;
+        die;
+    }
+
+    public function delete_gallery(Request $request) {
+        $row_id = $request->row_id;
+        $delete = DB::table('event_galleries')->where('id', $row_id)->delete();
         if ($delete) {
             $result = json_encode(array('status' => 1, 'msg' => 'deleted successfully!'));
         } else {

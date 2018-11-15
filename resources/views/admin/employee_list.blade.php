@@ -73,9 +73,9 @@
                                     <td>{{ $employee->name}}</td>
                                     <td>
                                         @if(isset($employee->image) && !empty($employee->image) && file_exists(public_path() . '/images/employee/' . $employee->image))
-                                            <img src="{{ asset( 'images/employee/'.$employee->image)}}" class="img-responsive" alt="employee" width="50px" height="50px">
+                                            <img src="{{ asset( 'images/employee/'.$employee->image)}}" class="img-responsive" alt="employee" width="50px" height="50px" alt="employee">
                                         @else
-                                            <img src="{{ asset( 'images/employee/no_employee.png')}}" class="img-responsive" alt="employee" width="50px" height="50px">
+                                            <img src="{{ asset( 'images/employee/no_employee.png')}}" class="img-responsive" alt="employee" width="50px" height="50px" alt="employee">
                                         @endif
                                     </td>
                                     <td>{{ $employee->created_at}}</td>

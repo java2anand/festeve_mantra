@@ -140,6 +140,14 @@
                         </div>
 
                         <div class="form-group col-sm-3">
+                            <label for="popular">Popular</label>
+                            <select class="form-control" id="popular" name="popular">
+                                <option value="0" <?= (isset($event->popular) && ($event->popular == 0)) ? 'selected' : '' ?>>No</option>
+                                <option value="1" <?= (isset($event->popular) && ($event->popular == 1)) ? 'selected' : '' ?>>Yes</option>
+                            </select>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div class="form-group col-sm-3">
                             <div class="form-group">
                                 <label for="start_date">Start Date*</label>
                                 <div class="input-group date">
@@ -223,7 +231,7 @@
                             $image = (isset($event->event_image) && !empty($event->event_image)) ? $event->event_image : '';
                             if (isset($image) && !empty($image) && file_exists(public_path() . '/images/event/thumb/' . $image)) {
                                 ?>
-                                <img src="{{ asset( 'images/event/thumb/'.$image)}}" width="100" height="50"/>
+                                <img src="{{ asset( 'images/event/thumb/'.$image)}}" width="100" height="50" alt="event"/>
                             <?php } ?>
                         </div>
 
@@ -253,7 +261,7 @@
                             $top_banner = (isset($event->event_top_banner) && !empty($event->event_top_banner)) ? $event->event_top_banner : '';
                             if (isset($top_banner) && !empty($top_banner) && file_exists(public_path() . '/images/event/top_banner/' . $top_banner)) {
                                 ?>
-                                <img src="{{ asset( 'images/event/top_banner/'.$top_banner)}}" width="300px" height="100px"/>
+                                <img src="{{ asset( 'images/event/top_banner/'.$top_banner)}}" width="300px" height="100px" alt="top_banner"/>
                             <?php } ?>
                         </div>
                         <!-- Code for Add event Top Banner ends here -->

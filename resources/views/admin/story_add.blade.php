@@ -93,7 +93,7 @@
                                 <?php
                                     $image = (isset($story->image) && !empty($story->image)) ? $story->image: '';
                                     if (!empty($image) && file_exists( public_path() . '/images/story/' . $image)) {?>
-                                        <img src="{{ asset( 'images/story/'.$image)}}" width="200px;" height="80px;"/>
+                                        <img src="{{ asset( 'images/story/'.$image)}}" width="200px;" height="80px;" alt="story"/>
                                 <?php }?>
                             </div>
 

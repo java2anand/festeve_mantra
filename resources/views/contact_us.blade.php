@@ -16,73 +16,74 @@
 
         <div class="container contact_us_content">
             <div class="row">
-                <div class="col-md-8 col-sm-8 col-xs-12 contact_form_section">
-                    <p class="form-heading">The form below is your gateway to Festeve World! Fill in:</p>
+                <div class="col-md-8 col-sm-8 col-xs-12" >
+                    <div class="contact_form_section">
+                        <p class="form-heading">The form below is your gateway to Festeve World! Fill in:</p>
+                        <!-- form -->
+                        <div class="row">
+                            <form name="contact_form" id="contact_form">
+                                @php $option_arr = config('constant.contact_us_option'); @endphp
 
-                    <!-- form -->
-                    <div class="row">
-                        <form name="contact_form" id="contact_form">
-                            @php $option_arr = config('constant.contact_us_option'); @endphp
+                                <div class="form-group col-xs-12">
+                                    <select class="form-control" id="contact_title" name="contact_title">
+                                        @foreach($option_arr as $k=>$arr)
+                                            <option value='{{$k}}'>{{ $arr }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <input type="text" id='contact_name' name='contact_name' class="form-control" placeholder="Name" autocomplete="off">
+                                </div>
 
-                            <div class="form-group col-xs-12">
-                                <select class="form-control" id="contact_title" name="contact_title">
-                                    @foreach($option_arr as $k=>$arr)
-                                        <option value='{{$k}}'>{{ $arr }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group col-sm-6 col-xs-12">
-                                <input type="text" id='contact_name' name='contact_name' class="form-control" placeholder="Name" autocomplete="off">
-                            </div>
-
-                            <div class="form-group col-sm-6 col-xs-12">
-                                <input type="text" id='contact_company' id='contact_company' class="form-control" placeholder="Company Name" autocomplete="off">
-                            </div>
-                            <div style="clear:both"></div>
-                            <div class="form-group col-sm-6 col-xs-12">
-                                <input type="text" id="contact_city" name="contact_city" class="form-control" placeholder="City" autocomplete="off">
-                            </div>
-                            <div class="form-group col-sm-6 col-xs-12">
-                                <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email Id" autocomplete="off">
-                            </div>
-                            <div style="clear:both"></div>
-                            <div class="form-group col-xs-12">
-                                <input type="text" id="contact_phone" name="contact_phone" class="form-control" placeholder="Mobile No." autocomplete="off">
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <textarea name="contact_message" name="contact_message" class="form-control" rows="3" placeholder="Message"></textarea>
-                            </div>
-                            <div style="clear:both"></div>
-                            <div class="form-group col-xs-12">
-                                <button type="submit" id="contact_button" class="btn btn-default">Submit</button>
-                                <div id="contact_return_msg"></div>
-                            </div>
-                        </form>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <input type="text" id='contact_company' id='contact_company' class="form-control" placeholder="Company Name" autocomplete="off">
+                                </div>
+                                <div style="clear:both"></div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <input type="text" id="contact_city" name="contact_city" class="form-control" placeholder="City" autocomplete="off">
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email Id" autocomplete="off">
+                                </div>
+                                <div style="clear:both"></div>
+                                <div class="form-group col-xs-12">
+                                    <input type="text" id="contact_phone" name="contact_phone" class="form-control" placeholder="Mobile No." autocomplete="off">
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <textarea name="contact_message" name="contact_message" class="form-control" rows="3" placeholder="Message"></textarea>
+                                </div>
+                                <div style="clear:both"></div>
+                                <div class="form-group col-xs-12">
+                                    <button type="submit" id="contact_button" class="btn btn-default">Submit</button>
+                                    <div id="contact_return_msg"></div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- form ends -->
                     </div>
-                    <!-- form ends -->
 
-                    <!-- news letter section -->
-                    <h3 class="text-center cont_newsletter_heading">NEVER MISS THE NEXT UPCOMING</h3>
-                    <p class="cont_newsletter_subheading">EVENT AND FESTIVAL</p>
-                    <form name="newsletter_form" id="newsletter_form" novalidate="novalidate">
-                        <div class="input-group">
-                            <input type="email" class="form-control" name="newsletter_email" id="newsletter_email" placeholder="Enter you email">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit" name="newsletter_button" id="newsletter_button">Subscribe</button>
-                            </span>
+                    <div class="contact_form_section">
+                        <!-- news letter section -->
+                        <h3 class="text-center cont_newsletter_heading">NEVER MISS THE NEXT UPCOMING</h3>
+                        <p class="cont_newsletter_subheading">EVENT AND FESTIVAL</p>
+                        <form name="newsletter_form" id="newsletter_form" novalidate="novalidate">
+                            <div class="input-group">
+                                <input type="email" class="form-control" name="newsletter_email" id="newsletter_email" placeholder="Enter you email">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit" name="newsletter_button" id="newsletter_button">Subscribe</button>
+                                </span>
 
-                        </div><!-- /input-group -->
+                            </div><!-- /input-group -->
 
-                    </form>
-                    <div id="newsletter_return_msg" class="col-md-6 col-md-offset-2"></div>
-
-                    <!-- ends -->
-
-
-
+                        </form>
+                        <div id="newsletter_return_msg" class="col-md-6 col-md-offset-2"></div>
+                        <!-- ends -->
+                    </div>
                 </div><!-- left section ends -->
 
-                <div class="col-md-4 col-sm-4 col-xs-12 cont_right_section"><!-- right section -->
+
+
+                <div class="col-md-4 col-sm-4 col-xs-12"><!-- right section -->
                     <div class="contact_info_sections">
                         <div class="row">
                             <div class="col-xs-3 contact_icons">

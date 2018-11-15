@@ -107,7 +107,7 @@
                                     <?php
                                     $image = (isset($author->image) && !empty($author->image)) ? $author->image: '';
                                     if ( !empty($image) && file_exists( public_path() . '/images/author/' . $image)) {?>
-                                            <img src="{{ asset( 'images/author/'.$image)}}" width="100px" height="100px"/>
+                                            <img src="{{ asset( 'images/author/'.$image)}}" width="100px" height="100px" alt="author"/>
                                     <?php }?>
                                     <span class="error"><?php if ($errors->has('image')){ echo $errors->first('image'); } ?></span>
                                 </div>

@@ -30,6 +30,10 @@ class Event extends Model{
         return $this->belongsTo('App\Model\EventSeo', 'id','event_id');
     }
 
+    public function gallery(){
+        return $this->hasMany('App\Model\EventGallery', 'event_id','id');
+    }
+
     //accessors
     /*public function getTitleAttribute($value){
         return ucfirst($value);

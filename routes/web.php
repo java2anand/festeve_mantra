@@ -94,6 +94,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/event_list', 'Admin\EventController@index')->name('admin.event_list');
     Route::get('/premium_event', 'Admin\EventController@premium_event')->name('admin.premium_event');
     Route::get('/home_event', 'Admin\EventController@home_event')->name('admin.home_event');
+    Route::get('/popular_event', 'Admin\EventController@popular_event')->name('admin.popular_event');
     Route::get('/event_list', 'Admin\EventController@index')->name('admin.event_list');
     Route::get('/event_add/{id?}', 'Admin\EventController@create')->name('admin.event_add');
     Route::post('/event_store/{id?}', 'Admin\EventController@save_event')->name('admin.event_store');
@@ -101,9 +102,11 @@ Route::prefix('admin')->group(function() {
     Route::any('/event_add_address/{event_id?}/{address_id?}', 'Admin\EventController@save_address')->name('admin.event_add_address');
     Route::any('/event_add_social/{id?}', 'Admin\EventController@save_social')->name('admin.event_add_social');
     Route::any('/event_add_seo/{id?}', 'Admin\EventController@save_seo')->name('admin.event_add_seo');
+    Route::any('/event_add_gallery/{id?}', 'Admin\EventController@save_gallery')->name('admin.event_add_gallery');
 
     Route::post('/delete_event_schedule', 'Admin\EventController@delete_schedule')->name('admin.delete_event_schedule');
     Route::post('/delete_event_address', 'Admin\EventController@delete_address')->name('admin.delete_event_address');
+    Route::post('/delete_event_gallery', 'Admin\EventController@delete_gallery')->name('admin.delete_event_gallery');
     Route::get('/event_delete/{id}', 'Admin\EventController@destroy')->name('admin.event_delete');
 
     Route::get('/event_top_hundred', 'Admin\EventController@event_top_hundred')->name('admin.event_top_hundred');

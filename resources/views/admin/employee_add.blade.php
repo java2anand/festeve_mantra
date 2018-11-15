@@ -105,7 +105,7 @@
                                     <?php
                                     $image = (isset($employee->image) && !empty($employee->image)) ? $employee->image: '';
                                     if ( !empty($image) && file_exists( public_path() . '/images/speaker/' . $image)) {?>
-                                            <img src="{{ asset( 'images/employee/'.$image)}}" width="100px" height="100px"/>
+                                            <img src="{{ asset( 'images/employee/'.$image)}}" width="100px" height="100px" alt="employee" />
                                     <?php }?>
                                     <span class="error"><?php if ($errors->has('image')){ echo $errors->first('image'); } ?></span>
                                 </div>

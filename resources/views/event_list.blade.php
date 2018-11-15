@@ -37,8 +37,10 @@
                 <div class="col-xs-6 text-left">
                     <select name="order_by" class="btn mobile_new_sort">
                         <option value="">Sort by</option>
-                        <option value="heigh_price">Date: Oldest to Newest</option>
-                        <option value="low_price">Date: Newest to Oldest</option>
+                        <option value="newest">Date: Oldest to Newest</option>
+                        <option value="oldest">Date: Newest to Oldest</option>
+                        <option value="atoz">Name: A to Z</option>
+                        <option value="ztoa">Name: Z to A</option>
                     </select>
                 </div>
                 <div class="col-xs-6 text-right"><button class="mobile_filter_btn"><img src="{{ asset('ws/images/filter.svg')}}"> Filter</button></div>

@@ -35,18 +35,20 @@ class HomeController extends Controller {
         $arr_category = DB::table('categories')->where('status', 1)->where('popular', 1)->orderBy('sort_order', 'asc')->limit(6)->get();
 
         $arr_event = Event::orderBy('start_date', 'asc')->where('status', 1)->where('home_event', 1)->where('end_date', '>=', date('Y-m-d'))->limit(9)->get();
+
+        $popular_event = Event::orderBy('start_date', 'asc')->where('status', 1)->where('popular', 1)->where('end_date', '>=', date('Y-m-d'))->limit(15)->get();
+
         $arr_story = Story::orderBy('id', 'desc')->where('status', 1)->limit(6)->get();
 
         //static category in home page
         $arr_top_cat = DB::table('categories')->select('mini_icon', 'image', 'slug')->whereIn('id', array(1, 2, 3, 4, 5, 6, 7))->get();
-
 
         //seo data
         $page_data = DB::table('pages')->where('id', 1)->first();
         $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title : '';
         $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword : '';
         $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description : '';
-        return view('home', compact('arr_category', 'arr_event', 'arr_story', 'arr_top_cat', 'page_title', 'meta_keyword', 'meta_description'));
+        return view('home', compact('arr_category', 'arr_event', 'arr_story', 'arr_top_cat', 'page_title', 'meta_keyword', 'meta_description','popular_event'));
     }
 
     public function categories() {
@@ -54,16 +56,26 @@ class HomeController extends Controller {
         $popular_category = Category::whereStatus(1)->where('popular', 1)->limit(5)->get();
 
         //get events by user current location
+
         $lat_long = session()->get('current_location');
         $lat = $lat_long['latitude'];
         $long = $lat_long['longitude'];
-        $geocode=file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDjvjVSrDJA2dCpKqYaf4keThmElDGRSCg&latlng='.$lat.','.$long.'&sensor=false');
-        $output= json_decode($geocode);
-        $current_city = $output->results[7]->formatted_address;
+
+        /*$url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDjvjVSrDJA2dCpKqYaf4keThmElDGRSCg&latlng='.$lat.','.$long.'&sensor=false';
+        $ch = curl_init();
+        curl_setopt ($ch, CURLOPT_URL, $url);
+        curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
+        $contents = curl_exec($ch);*/
 
         //get near by events
+        $current_city = '';
         $arr_near = array();
         if(!empty($lat) && !empty($long)){
+            $geocode=file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDjvjVSrDJA2dCpKqYaf4keThmElDGRSCg&latlng='.$lat.','.$long.'&sensor=true');
+            $output= json_decode($geocode);
+            $current_city = $output->results[7]->formatted_address;
+
             $arr_near = DB::table('event_addresses')
                 ->select(DB::raw('events.title,events.slug,events.event_image,events.start_date,events.end_date,event_id, ( 6367 * acos( cos( radians('.$lat.') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('.$long.') ) + sin( radians('.$lat.') ) * sin( radians( latitude ) ) ) ) AS distance'))
                 ->join('events', 'events.id', '=', 'event_addresses.event_id')
@@ -143,6 +155,9 @@ class HomeController extends Controller {
             ->join('speakers as spkr', 'spkr.id', '=', 'event_speakers.speaker_id')
             ->select("spkr.id", "spkr.speaker_name", "spkr.image", "spkr.description", 'spkr.title')->get();
 
+        //event gallery
+        $gallery = $event->gallery;
+
         //event organiser
         $organiser = $event->organiser;
 
@@ -176,7 +191,7 @@ class HomeController extends Controller {
         }
         /*         * ****** advertisement ************** */
         $arr_ad = DB::table('advertisements')->where('status', 1)->whereRaw('FIND_IN_SET(?,event)', [$event->id])->get();
-        return view('event_detail', compact('event', 'speaker', 'organiser', 'arr_schedule', 'arr_similar_event', 'meta_keyword', 'meta_description', 'page_title', 'primar_address', 'arr_ad','arr_near'));
+        return view('event_detail', compact('event', 'speaker', 'organiser', 'arr_schedule', 'arr_similar_event', 'meta_keyword', 'meta_description', 'page_title', 'primar_address', 'arr_ad','arr_near','gallery'));
     }
 
     public function stories() {

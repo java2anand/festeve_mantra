@@ -97,7 +97,7 @@
                             if (isset($mini_icon) && $mini_icon != "" && file_exists(public_path() . '/images/category/mini_icon/' . $mini_icon)) {
                                 ?>
                                 <label>Mini Icon </label><br/>
-                                <img src="{{ asset( 'images/category/mini_icon/'.$mini_icon)}}"  />
+                                <img src="{{ asset( 'images/category/mini_icon/'.$mini_icon)}}" alt="mini_icon" />
 <?php } ?>
                             </div>
                             <br />
@@ -123,7 +123,7 @@
                             if (isset($popular_icon) && $popular_icon != "" && file_exists(public_path() . '/images/category/popular_icon/' . $popular_icon)) {
                                 ?>
                                 <label>Popular Icon </label><br/>
-                                <img src="{{ asset( 'images/category/popular_icon/'.$popular_icon)}}" width='50px' height='50px' />
+                                <img src="{{ asset( 'images/category/popular_icon/'.$popular_icon)}}" width='50px' height='50px' alt="popular_icon" />
 <?php } ?>
                             </div>
                             <br />
@@ -148,7 +148,7 @@
                                 $image = (isset($category->image) && !empty($category->image)) ? $category->image : '';
                                 if (isset($image) && $image != "" && file_exists(public_path() . '/images/category/image/' . $image)) { ?>
                                 <label>Image </label><br/>
-                                <img src="{{ asset( 'images/category/image/'.$image)}}" width='100px' height='50px'/>
+                                <img src="{{ asset( 'images/category/image/'.$image)}}" width='100px' height='50px' alt="category" />
     <?php } ?>
                             </div>
                             <br />
@@ -172,7 +172,7 @@
                                 $event_image = (isset($category->event_image) && !empty($category->event_image)) ? $category->event_image : '';
                                 if (isset($event_image) && $event_image != "" && file_exists(public_path() . '/images/category/event_image/' . $event_image)) { ?>
                                 <label>Image </label><br/>
-                                <img src="{{ asset( 'images/category/event_image/'.$event_image)}}" width='100px' height='50px'/>
+                                <img src="{{ asset( 'images/category/event_image/'.$event_image)}}" width='100px' height='50px' alt="event_image" />
     <?php } ?>
                             </div>
                             <br />
@@ -197,7 +197,7 @@
                             if (isset($right_banner) && $right_banner != "" && file_exists(public_path() . '/images/category/right_banner/' . $right_banner)) {
                                 ?>
                                 <label>Right Banner </label><br/>
-                                <img src="{{ asset( 'images/category/right_banner/'.$right_banner)}}"  height='50px;'/>
+                                <img src="{{ asset( 'images/category/right_banner/'.$right_banner)}}"  height='50px;' alt="right_banner"/>
 <?php } ?>
                             </div>
                             <br />
@@ -221,7 +221,7 @@
                             if (isset($top_banner) && $top_banner != "" && file_exists(public_path() . '/images/category/top_banner/' . $top_banner)) {
                                 ?>
                                 <label>Right Banner </label><br/>
-                                <img src="{{ asset( 'images/category/top_banner/'.$top_banner)}}"  height='50px;'/>
+                                <img src="{{ asset( 'images/category/top_banner/'.$top_banner)}}"  height='50px;' alt="top_banner" />
                             <?php } ?>
                             </div>
                             <br />
