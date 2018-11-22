@@ -146,6 +146,15 @@
                                 <option value="1" <?= (isset($event->popular) && ($event->popular == 1)) ? 'selected' : '' ?>>Yes</option>
                             </select>
                         </div>
+
+                        <div class="form-group col-sm-3">
+                            <label for="popular">Popular</label>
+                            <select class="form-control" id="popular" name="popular">
+                                <option value="0" <?= (isset($event->popular) && ($event->popular == 0)) ? 'selected' : '' ?>>No</option>
+                                <option value="1" <?= (isset($event->popular) && ($event->popular == 1)) ? 'selected' : '' ?>>Yes</option>
+                            </select>
+                        </div>
+
                         <div style="clear:both;"></div>
                         <div class="form-group col-sm-3">
                             <div class="form-group">

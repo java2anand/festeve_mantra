@@ -776,6 +776,16 @@ a{
     margin-bottom:10px;
     max-width:135px;
 }
+
+.event_gallery_pic{
+    float:left;
+    margin-right:20px;
+    margin-bottom:10px;
+    margin-left:-10px;
+    max-width: 240px;
+    max-height: 180px;
+}
+
 .event_inner_section{
     display:inline-block;
     width:100%;
@@ -2952,6 +2962,10 @@ background-size:100% 100%;
     .add_story_page .add_story_form{
         max-width:96%;
     }
+    .event_gallery_pic{
+        max-width: 150px;
+        max-height: 110px;
+    }
     /* ends */
 
 }
@@ -3593,6 +3607,10 @@ background-size:100% 100%;
         margin-bottom:5px;
         text-align:left !important;
     }
+    .event_gallery_pic{
+        max-width: 170px;
+        max-height: 125px;
+    }
 }
 @media(max-width:360px){
     .new_search_outer form{
@@ -3607,6 +3625,11 @@ background-size:100% 100%;
     .new_search_outer h1{
         font-size:24px;
     }
+    .event_gallery_pic{
+        max-width: 120px;
+        max-height: 90px;
+    }
+
 }
 
 /* ---------------------------------------- responsive css ends -------------------------------*/

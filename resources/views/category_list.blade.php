@@ -50,7 +50,7 @@
                         ?>
                         <li style="background-image: url('{{ $image }}')">
                             <a href="{{ url('event-category/'.$cat->slug) }}">
-                                <img src="{{ asset('images/category/mini_icon/'.$cat->mini_icon)}}" alt="mini_icon"><br>
+                                <!--<img src="{{ asset('images/category/mini_icon/'.$cat->mini_icon)}}" alt="mini_icon"><br>-->
                                 {{ $cat->category_name }}
                             </a>
                         </li>

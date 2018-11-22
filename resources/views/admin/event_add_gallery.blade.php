@@ -205,14 +205,14 @@ $(document).ready(function () {
     $('#event_add_gallery_form').validate({
         errorElement: 'span',
         rules: {
-            "title[]": {
+            /*"title[]": {
                 required: true
-            },
+            },*/
         },
         messages: {
-            "title[]": {
+            /*"title[]": {
                 required: "Enter title name!"
-            },
+            },*/
         },
         errorPlacement: function (error, element) {
             error.insertAfter(element);

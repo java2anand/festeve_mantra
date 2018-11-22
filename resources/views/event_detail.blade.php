@@ -6,6 +6,7 @@
         @include('header')
         <!-- header ends -->
         <link href="{{asset('ws/css/star-rating.min.css')}}" rel="stylesheet">
+        <link href="{{asset('ws/css/viewbox.css')}}" rel="stylesheet">
 
         <!-- evnt page content section -->
         <?php
@@ -56,10 +57,9 @@
                                     <h3 class="home_section_heading"><span>Event Gallery</span></h3>
 
                                         @foreach($gallery as $gall)
-                                        <div class="col-xs-3">
-                                            <img src="{{asset('images/event/gallery/'.$gall->image)}}" class="img-responsive event_organiser_pic">
-                                            <p class="founder_name">{{$gall->title}}</p>
-
+                                        <div class="col-sm-4 col-xs-6">
+                                            <a href="{{asset('images/event/gallery/'.$gall->image)}}" class="image-link"><img src="{{asset('images/event/gallery/'.$gall->image)}}" class="img-responsive event_gallery_pic"></a>
+                                            <!--<p class="founder_name">{{$gall->title}}</p>-->
                                         </div>
                                         @endforeach
                                 </div>
@@ -294,7 +294,7 @@
                                         </div>
                                         <div class="upcoming_item_info">
                                             <p class="uc_event_name"><a href="{{ url('event-detail/'.$s_event->slug )}}">{{ $s_event->title }}</a></p>
-                                            <p class="uc_event_date">{{  ($event->start_date != $event->end_date ) ?  date('d M', strtotime($event->start_date)).' - '. date('d M', strtotime($event->end_date)).date(', Y')  : date('d M Y', strtotime($event->start_date)) }}</p>
+                                            <p class="uc_event_date">{{  ($s_event->start_date != $s_event->end_date ) ?  date('d M', strtotime($s_event->start_date)).' - '. date('d M', strtotime($s_event->end_date)).date(', Y')  : date('d M Y', strtotime($s_event->start_date)) }}</p>
                                             <p class="uc_event_link"><a href="{{ url('event-detail/'.$s_event->slug )}}">View Event</a></p>
                                         </div>
                                     </div>
@@ -317,6 +317,7 @@
         <!-- footer ends -->
 
         <script src="{{asset('ws/js/star-rating.min.js')}}"></script>
+        <script src="{{asset('ws/js/jquery.viewbox.min.js')}}"></script>
         <!-- Initialize Swiper -->
         <script>
             if ($(window).width() > 766) {
@@ -339,6 +340,20 @@
                 });
 
             }
+
+            $(function(){
+                $('.image-link').viewbox({
+                    setTitle: true,
+                    margin: 20,
+                    resizeDuration: 300,
+                    openDuration: 200,
+                    closeDuration: 200,
+                    closeButton: true,
+                    navButtons: true,
+                    closeOnSideClick: true,
+                    nextOnContentClick: true
+                });
+            });
         </script>
     </body>
 </html>
