@@ -106,6 +106,7 @@ class EventController extends Controller {
         $event->premium = $request->premium;
         $event->home_event = $request->home_event;
         $event->popular = $request->popular;
+        $event->is_expirable = $request->is_expirable;
         /* Event Top Banner */
         if ($request->hasFile('event_top_banner')) {
             $file = $request->file('event_top_banner');

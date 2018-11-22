@@ -42,6 +42,7 @@ class CreateEventsTable extends Migration {
             $table->tinyInteger('top_hundred')->default(0);
             $table->tinyInteger('premium')->default(0)->comment('0=>None,1=>Premium,2=>favourite');
             $table->tinyInteger('popular')->default(0);
+            $table->tinyInteger('is_expirable')->default(1);
             $table->tinyInteger('status');
             $table->timestamps();
         });

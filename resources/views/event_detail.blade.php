@@ -21,7 +21,12 @@
             <div class="container event_2_container">
                 <div class="event_topbanner_info">
                     <h3>{{ $event->title }}</h3>
-                    <p class="event_topbanner_info_text"> {{ date('dS F',strtotime($event->start_date)) }} - {{ date('dS F',strtotime($event->end_date)) }},   {{ date('h:i A',strtotime($event->start_time)) }} </p>
+                    <p class="event_topbanner_info_text">
+                        @if($event->is_expirable == 1)
+                        {{ date('dS F',strtotime($event->start_date)) }} - {{ date('dS F',strtotime($event->end_date)) }},   {{ date('h:i A',strtotime($event->start_time)) }}
+                        @endif
+                    </p>
+
                     <p class="event_topbanner_info_text">{{ !empty($primar_address->event_location) ? $primar_address->event_location : '' }}</p>
                     <div>
                         <ul class="event_follow_ul">

@@ -148,10 +148,11 @@
                         </div>
 
                         <div class="form-group col-sm-3">
-                            <label for="popular">Popular</label>
-                            <select class="form-control" id="popular" name="popular">
-                                <option value="0" <?= (isset($event->popular) && ($event->popular == 0)) ? 'selected' : '' ?>>No</option>
-                                <option value="1" <?= (isset($event->popular) && ($event->popular == 1)) ? 'selected' : '' ?>>Yes</option>
+                            <label for="is_expirable">Event Expirable?</label>
+                            <select class="form-control" id="is_expirable" name="is_expirable">
+
+                                <option value="1" <?= (isset($event->is_expirable) && ($event->is_expirable == 1)) ? 'selected' : '' ?>>Yes</option>
+                                <option value="0" <?= (isset($event->is_expirable) && ($event->is_expirable == 0)) ? 'selected' : '' ?>>No</option>
                             </select>
                         </div>
 
