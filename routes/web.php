@@ -46,6 +46,7 @@ Route::get('/add-story', 'UserController@add_story')->name('add-story');
 Route::get('/add-advertise', 'UserController@add_advertise')->name('add-advertise');
 Route::get('/apply-job', 'UserController@apply_job')->name('apply-job');
 Route::get('/organizers', 'UserController@organizers')->name('organizers');
+Route::get('/dashboard', 'UserController@dashboard')->name('dashboard');
 
 /* * ***********Admin Panel ******************* */
 Route::prefix('admin')->group(function() {

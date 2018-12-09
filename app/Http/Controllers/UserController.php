@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class UserController extends Controller
-{
+class UserController extends Controller{
+
+	public function dashboard(){
+		return view('dashboard');
+	}
+
     public function add_event() {
         $page_data = DB::table('pages')->where('slug', 'add-event')->first();
         $page_title = isset($page_data->page_title) && !empty($page_data->page_title) ? $page_data->page_title : '';
