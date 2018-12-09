@@ -1,0 +1,431 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+	<title>Festeve Mantra</title>
+	<link href="Resources/css/style.css" rel="stylesheet" type="text/css" />
+	<!--<link href="Resources/css/font-awesome.min.css" rel="stylesheet" type="text/css" />-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,600i,700,700i,800" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i,900" rel="stylesheet">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="moblie_header_overlay"></div>
+	<header class="header">
+    <div class="container">
+        <div class="row">
+             <div class="col-xs-2 mobile_nav_section">
+                <button class="mobile_nav_btn"><img src="https://festevemantra.com/ws/images/menu.svg" alt="nav icon"></button>
+            </div>
+            <div class="col-sm-4 col-xs-6 header-logo-outer">
+                <a href="https://festevemantra.com"><img src="Resources/images/logo.png" alt="logo" class="logo"></a>
+            </div>
+             <div class="col-xs-4 mobile_user_section">
+                <button data-toggle="modal" data-target="#login_register_popup"><img src="https://festevemantra.com/ws/images/user.svg" alt="user icon"></button>
+                <button class="mobile_search_button"><img src="https://festevemantra.com/ws/images/search.png" alt="user icon"></button>
+            </div>
+            <div class="col-sm-8 nav_desktop">
+                <p class="mobile_logo_outer">
+                    <img src="https://festevemantra.com/ws/images/logo.png" alt="logo" class="logo_mobile">
+                    <button class="remove_mobile_navigation"><img src="https://festevemantra.com/ws/images/close.png" alt=""></button>
+                </p>
+                <ul class="header_navigation">
+                    <li><a href="https://festevemantra.com/add-event">+festeve</a></li>
+                    <li><a href="javascipt:void(0)">categories</a></li>
+                    <li><a href="javascipt:void(0)"><em></em> Login</a></li>
+
+                                            <li class="nav_m_hide"><a href="javascript:void(0)" class="active_btn" data-toggle="modal" data-target="#login_register_popup">Signup</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+</header>
+	<div class="page_inner_parent">
+		<div class="page_inner container">
+			<div class="left_tab">
+				<div class="profile_sec">
+					<img src="Resources/images/dp.png" alt="" />
+					<span class="name_span">
+						Hello
+						<em>Ravi Verma</em>
+					</span>
+				</div>
+				<ul class="nav nav-tabs tabs-left">
+					<li class="active"><a href="#profile" data-toggle="tab"><span class="profile_span"></span> Profile</a></li>
+					<li><a href="#event" data-toggle="tab"><span class="event_span"></span> My Events</a></li>
+					<li><a href="#stories" data-toggle="tab"><span class="story_span"></span> My Stories</a></li>
+					<li><a href="#fav" data-toggle="tab"><span class="fav_span"></span> My Favourites</a></li>
+					<li><a href="https://festevemantra.com/add-event" ><span class="crevent_span"></span> Create Event</a></li>
+					<li><a href="javascript:void(0)" ><span class="logout_span"></span> Logout</a></li>
+				</ul>
+			</div>
+			<div class="right_content tab-content">
+					<div class="tab-pane active" id="profile">
+						<h2>Personal Information</h2>
+						<div class="right_inner profile_div">
+							<form >
+								<ul class="form_ul">
+									<li>
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" placeholder="Full Name" />
+										<button type="button" class="btn" >Edit</button>
+									</li>
+									<li>
+										<label for="email">Email ID</label>
+										<input type="email" name="email" id="email" placeholder="Email Address" />
+										<button type="button" class="btn" >Edit</button>
+									</li>
+									<li>
+										<label for="password">Password</label>
+										<input type="password" name="password" id="password" placeholder="Password" />
+										<button type="button" class="btn" >Edit</button>
+									</li>
+									<li>
+										<label for="location">Location</label>
+										<textarea name="location" id="location" ></textarea>
+										<button type="button" class="btn" >Edit</button>
+									</li>
+									<li>
+										<label for="mobile">Mobile No.</label>
+										<input type="tel" name="mobile" id="mobile" placeholder="Mobile Number" />
+										<button type="button" class="btn" >Edit</button>
+									</li>
+									<li>
+										<button type="submit" class="btn" >Save</button>
+									</li>
+								</ul>
+							
+							</form>
+							
+						</div>
+						
+					</div>
+					<div class="tab-pane" id="event">
+						<h2>My Events</h2>
+							<div class="right_inner">
+								<div class="event_first">
+									<p>You have not added any event / festival till now</p>
+									<button type="button" id="create_event" class="btn" >CREATE YOUR EVENT</button>
+								</div>
+								
+								<div class="event_third">
+							<div class="right_inner_child">
+								<div class="event_img">
+									<img src="Resources/images/event.png" alt="" />
+								</div>
+								<h3>New Food Event 5</h3>
+								<div class="view_deal">
+									<button class="btn" >VIEW</button>
+									<a href="javascript:void(0)" >Activate</a>
+								</div>
+								<button class="btn edit_btn">EDIT</button>
+							</div>
+							<div class="right_inner_child ">
+								<div class="event_img">
+									<img src="Resources/images/event.png" alt="" />
+								</div>
+								<h3>New Food Event 5</h3>
+								<div class="view_deal">
+									<button class="btn" >VIEW</button>
+									<a href="javascript:void(0)" >Activate</a>
+								</div>
+								<button class="btn edit_btn">EDIT</button>
+							</div>
+							<div class="right_inner_child ">
+								<div class="event_img">
+									<img src="Resources/images/event.png" alt="" />
+								</div>
+								<h3>New Food Event 5</h3>
+								<div class="view_deal">
+									<button class="btn" >VIEW</button>
+									<a href="javascript:void(0)" >Activate</a>
+								</div>
+								<button class="btn edit_btn">EDIT</button>
+							</div>
+									<div class="pagination_div">
+										<ul class="pagination">
+										<li class="page-item">
+										  <a class="page-link" href="#" aria-label="Previous">
+											<span aria-hidden="true">«</span>
+										  </a>
+										</li>
+										<li class="page-item active"><a class="page-link" href="#">1</a></li>
+										<li class="page-item"><a class="page-link" href="#">2</a></li>
+										<li class="page-item"><a class="page-link" href="#">3</a></li>
+										<li class="page-item">
+										  <a class="page-link" href="#" aria-label="Next">
+									<span aria-hidden="true">»</span>
+								  </a>
+								</li>
+  							</ul>
+						</div>
+							</div>
+						</div>
+						
+						<div class="event_second">
+									<h4>Thank You!</h4>
+									<p>We’ve received your request for event submission. <br />
+										Sit Back and relax while we receive your event. <br />
+										We will drop the update in your inbox in next 48 hours</p>
+									<div class="timeline">
+										<p>Track your event submission status</p>
+										<ul>
+											<li class="active"><span>Submitted</span></li>
+											<li><span>Under Review</span></li>
+											<li><span>Approved/Declined</span></li>
+											<li><span>Event Live</span></li>
+										</ul>
+									</div>
+								</div>
+					</div>
+					<div class="tab-pane" id="stories">
+						<h2>My Stories</h2>
+							<div class="right_inner">
+								<div class="event_first stories_first">
+									<p>You have not added any Event's Story till now
+										<br /> Thousand of events goers want to read about your cherisable event story
+									</p>
+									
+									<button type="button" id="" class="btn" >SUBMIT</button>
+								</div>
+								<div class="stories_third">
+							<div class="right_inner_child">
+								<div class="event_img">
+									<img src="Resources/images/event.png" alt="" />
+								</div>
+								<h3>New Food Event 5</h3>
+								<div class="view_deal">
+									<button class="btn" >VIEW</button>
+									<a href="javascript:void(0)" class="btn" >Edit</a>
+								</div>
+								
+							</div>
+							<div class="right_inner_child ">
+								<div class="event_img">
+									<img src="Resources/images/event.png" alt="" />
+								</div>
+								<h3>New Food Event 5</h3>
+								<div class="view_deal">
+									<button class="btn" >VIEW</button>
+									<a href="javascript:void(0)" class="btn" >Edit</a>
+								</div>
+								
+							</div>
+							<div class="right_inner_child ">
+								<div class="event_img">
+									<img src="Resources/images/event.png" alt="" />
+								</div>
+								<h3>New Food Event 5</h3>
+								<div class="view_deal">
+									<button class="btn" >VIEW</button>
+									<a href="javascript:void(0)" class="btn" >Edit</a>
+								</div>
+							
+							</div>
+									<div class="pagination_div">
+							<ul class="pagination">
+								<li class="page-item">
+								  <a class="page-link" href="#" aria-label="Previous">
+									<span aria-hidden="true">«</span>
+								  </a>
+								</li>
+								<li class="page-item active"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item">
+								  <a class="page-link" href="#" aria-label="Next">
+									<span aria-hidden="true">»</span>
+								  </a>
+								</li>
+  							</ul>
+						</div>
+							</div>
+						</div>
+						<div class="event_second">
+									<h4>Thank You!</h4>
+									<p>We’ve received your request for event submission. <br />
+										Sit Back and relax while we receive your event. <br />
+										We will drop the update in your inbox in next 48 hours</p>
+									<div class="timeline">
+										<p>Track your event submission status</p>
+										<ul>
+											<li class="active"><span>Submitted</span></li>
+											<li><span>Under Review</span></li>
+											<li><span>Approved/Declined</span></li>
+											<li><span>Story Live</span></li>
+										</ul>
+									</div>
+								</div>
+						
+					</div>
+					<div class="tab-pane" id="fav">
+						<h2>My Favourites</h2>
+							<div class="right_inner fav_item_parent">
+								<p class="fav_item">Your Favourite Events are Saved here...</p>
+							<div class="right_inner_child">
+								<div class="event_img">
+									<img src="Resources/images/event.png" alt="" />
+								</div>
+								<h3>New Food Event 5 <span>by Anurag on 27-July-2018</span></h3>
+								<span class="music_txt">MUSIC</span>
+								<div class="view_deal">
+									<button class="btn" >VIEW</button>
+									<a href="javascript:void(0)" class="btn like_btn" ><i class="fa fa-heart-o"></i> LIKE</a>
+								</div>
+								
+							</div>
+							<div class="right_inner_child ">
+								<div class="event_img">
+									<img src="Resources/images/event.png" alt="" />
+								</div>
+								<h3>New Food Event 5 <span>by Anurag on 27-July-2018</span></h3>
+								<span class="music_txt">MUSIC</span>
+								<div class="view_deal">
+									<button class="btn" >VIEW</button>
+									<a href="javascript:void(0)" class="btn like_btn" ><i class="fa fa-heart-o"></i> LIKE</a>
+								</div>
+								
+							</div>
+							<div class="right_inner_child ">
+								<div class="event_img">
+									<img src="Resources/images/event.png" alt="" />
+								</div>
+								<h3>New Food Event 5 <span>by Anurag on 27-July-2018</span></h3>
+								<span class="music_txt">MUSIC</span>
+								<div class="view_deal">
+									<button class="btn" >VIEW</button>
+									<a href="javascript:void(0)" class="btn like_btn" ><i class="fa fa-heart-o"></i> LIKE</a>
+								</div>
+							
+							</div>
+							
+						</div>
+						<div class="pagination_div">
+							<ul class="pagination">
+								<li class="page-item">
+								  <a class="page-link" href="#" aria-label="Previous">
+									<span aria-hidden="true">«</span>
+								  </a>
+								</li>
+								<li class="page-item active"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item">
+								  <a class="page-link" href="#" aria-label="Next">
+									<span aria-hidden="true">»</span>
+								  </a>
+								</li>
+  							</ul>
+						</div>
+					</div>
+				
+				
+			</div>
+		</div>
+	</div>
+	<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-3 col-xs-12 footer_items new_footer_alignment">
+                <h3 class="footer_headings">Our Story</h3>
+                <ul>
+                    <li><a href="https://festevemantra.com/about-us">About us</a></li>
+                    <li><a href="https://festevemantra.com/our-team">Our Team</a></li>
+                    <li><a href="https://festevemantra.com/careers">We are hiring!</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3 col-xs-12 footer_items new_footer_alignment">
+                <h3 class="footer_headings">Get Inspired</h3>
+                <ul>
+                    <li><a href="https://festevemantra.com/stories">Festeve stories</a></li>
+                    <li><a href="https://festevemantra.com/add-event">Submit your event</a></li>
+                    <li><a href="https://festevemantra.com/add-story">Submit your story</a></li>
+
+                </ul>
+            </div>
+            <div class="col-sm-3 col-xs-12 footer_items new_footer_alignment">
+                <h3 class="footer_headings">policies</h3>
+                <ul>
+
+                    <li><a href="https://festevemantra.com/terms-conditions">T&amp;C </a></li>
+                    <li><a href="https://festevemantra.com/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="https://festevemantra.com/contact-us">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3 col-xs-12 footer_items new_footer_alignment">
+                <h3 class="footer_headings">More</h3>
+                <ul>
+                    <li><a href="https://festevemantra.com/add-advertise">Advertise With Us</a></li>
+                    <li><a href="https://festevemantra.com/apply-job">Fest Job Seekers</a></li>
+                    <li><a href="https://festevemantra.com/organizers">Organizers</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3 col-xs-12 footer_items">
+                <img src="https://festevemantra.com/ws/images/logo-white.png" alt="footer logo" class="footer_logo">
+                <ul class="footer_address"><li class="add_icon" style="background-image: url(https://festevemantra.com/ws/images/add_location.png);"><a href="#">Tower 4B, DLF Corporate Park, Gurgaon , Haryana 122001</a></li></ul>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="footer_new_section">
+        <div class="container ">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <span>CONNECT-<span>
+                    <a href="https://www.facebook.com/festevemantra/" target="_blank"><img src="https://festevemantra.com/ws/images/fb.jpg" alt="facebook"></a>
+                    <a href="https://twitter.com/festevemantra" target="_blank"><img src="https://festevemantra.com/ws/images/tw.jpg" alt="twitter"></a>
+                    <a href="https://www.linkedin.com/company/digitalbeginner/" target="_blank"><img src="https://festevemantra.com/ws/images/in.jpg" alt="linkedin"></a>
+                    <a href="https://www.instagram.com/festevemantra/" target="_blank"><img src="https://festevemantra.com/ws/images/insta.jpg" alt="instagram"></a>
+
+                </span></span></div>
+                <div class="col-sm-4 col-xs-12 text-center">
+                    <img src="https://festevemantra.com/ws/images/add_phone.png" alt="add_phone"> <a href="tel:9650311009">+91-7742544192, +91-9650311009</a>
+                </div>
+                <div class="col-sm-4 col-xs-12 text-right">
+                    <img src="https://festevemantra.com/ws/images/add_email.png" alt="email"> <a href="mailto:info@festevemantra.com">info@festevemantra.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-center">
+        <p><span>Copyright @2018.</span> Festeve Mantra. All Rights Reserved</p>
+    </div>
+</footer>
+	<script type="text/javascript">
+	$(document).ready(function(){
+        /******mobile sidebar **********/
+        $(".mobile_nav_btn").click(function () {
+            $(".nav_desktop").addClass("listing_page_sidebar_active");
+            $("body").removeClass("body_overflow");
+            $(".moblie_header_overlay").show();
+
+        });
+        $(".moblie_header_overlay").click(function () {
+            $(".nav_desktop").removeClass("listing_page_sidebar_active");
+            $("body").removeClass("body_overflow");
+            $(".moblie_header_overlay").hide();
+
+        });
+        $(".remove_mobile_navigation").click(function () {
+            $(".nav_desktop").removeClass("listing_page_sidebar_active");
+            $("body").removeClass("body_overflow");
+            $(".moblie_header_overlay").hide();
+
+        });
+        /******mobile sidebar end**********/
+	});
+
+	</script>
+</body>
+</html>
