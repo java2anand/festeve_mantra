@@ -47,6 +47,9 @@ Route::get('/add-advertise', 'UserController@add_advertise')->name('add-advertis
 Route::get('/apply-job', 'UserController@apply_job')->name('apply-job');
 Route::get('/organizers', 'UserController@organizers')->name('organizers');
 Route::get('/dashboard', 'UserController@dashboard')->name('dashboard');
+Route::get('/my-events', 'UserController@my_events')->name('my-events');
+Route::get('/my-stories', 'UserController@my_stories')->name('my-stories');
+Route::get('/favourite-events', 'UserController@favourite_events')->name('favourite-events');
 
 /* * ***********Admin Panel ******************* */
 Route::prefix('admin')->group(function() {

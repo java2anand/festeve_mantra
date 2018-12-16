@@ -4,12 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Model\EventFavourite;
 
-class UserController extends Controller{
+class UserController extends Controller {
 
-	public function dashboard(){
-		return view('dashboard');
-	}
+    public function dashboard() {
+        return view('dashboard');
+    }
+
+    public function my_events(){
+        return view('my_events');
+    }
+
+    public function my_stories(){
+        return view('my_stories');
+    }
+
+    public function favourite_events(){
+        $favorites = EventFavourite::where('user_id', 1)->get();
+        return view('favourite_events',compact('favorites'));
+    }
 
     public function add_event() {
         $page_data = DB::table('pages')->where('slug', 'add-event')->first();
@@ -17,7 +31,7 @@ class UserController extends Controller{
         $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword : '';
         $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description : '';
 
-        return view('add_event',compact('page_data','page_title','meta_keyword','meta_description'));
+        return view('add_event', compact('page_data', 'page_title', 'meta_keyword', 'meta_description'));
     }
 
     public function add_story() {
@@ -26,7 +40,7 @@ class UserController extends Controller{
         $meta_keyword = isset($page_data->meta_keyword) && !empty($page_data->meta_keyword) ? $page_data->meta_keyword : '';
         $meta_description = isset($page_data->meta_description) && !empty($page_data->meta_description) ? $page_data->meta_description : '';
 
-        return view('add_story',compact('page_data','page_title','meta_keyword','meta_description'));
+        return view('add_story', compact('page_data', 'page_title', 'meta_keyword', 'meta_description'));
     }
 
     public function get_reminder() {
@@ -59,4 +73,5 @@ class UserController extends Controller{
 
         return view('organizers', compact('page_data', 'page_title', 'meta_keyword', 'meta_description'));
     }
+
 }
