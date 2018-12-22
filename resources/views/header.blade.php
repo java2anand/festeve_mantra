@@ -21,7 +21,12 @@
                 <a href="{{ url('/')}}"><img src="{{asset('ws/images/logo.png')}}" alt="logo" class="logo"></a>
             </div>
             <div class="col-xs-4 mobile_user_section">
-                <button data-toggle="modal" data-target="#login_register_popup"><img src="{{asset('ws/images/user.svg')}}" alt="user icon"></button>
+                @guest
+                    <button data-toggle="modal" data-target="#login_register_popup"><img src="{{asset('ws/images/user.svg')}}" alt="user icon"></button>
+                @else
+                    <button><img src="{{asset('ws/images/user.svg')}}" alt="user icon"></button>
+                @endguest
+                
                 <button class="mobile_search_button"><img src="{{asset('ws/images/search.png')}}" alt="user icon"></button>
             </div>
             <div class="col-sm-8 nav_desktop">
@@ -40,8 +45,15 @@
                     @guest
                         <li class="nav_m_hide"><a href="javascript:void(0)" class="active_btn" data-toggle="modal" data-target="#login_register_popup">Login</a></li>
                     @else
-                        <li><a href="{{ route('user.logout') }}" class="active_btn" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                        <li class="nav_m_show"><a href="{{ url('dashboard') }}">Dashboard</a></li>
+                        <li class="nav_m_show"><a href="{{ url('my-events') }}">My Events</a></li>
+                        <li class="nav_m_show"><a href="{{ url('my-stories') }}">My Stories</a></li>
+                        <li class="nav_m_show"><a href="{{ url('favourite-events') }}">Favourite Events</a></li>
+                        <li class="nav_m_show"><a href="{{ url('add-event') }}">Create Event</a></li>
+                        <li><a class="active_btn" href="{{ url('logout') }}">Logout</a></li>
+
+                        <!--<li><a href="" class="active_btn" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>-->
                     @endguest
                 </ul>
             </div>

@@ -70,112 +70,111 @@
     </div>
 </footer>
 
-
 <!---------- login/Register Popup -------------------->
 <!-- Modal -->
 <div class="modal fade" id="login_register_popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <!--<div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div> -->
-      <div class="modal-body">
-        <!-- login.register content here -->
-        <div class="row">
-            <div class="col-sm-6 lr_left_section"></div>
-            <div class="col-sm-6 col-xs-12 lr_right_section">
-                <button type="button" class="close lr_close_btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <div class="lr_register_outer"><!-- register form -->
-                    <p class="lr_mail_heading">Sign up <span>Now!</span></p>
-                    <div class="lr_social_buttons">
-                        <button><img src="{{ asset('ws/images/fb_login.jpg')}}" alt="fb_login"></button>
-                        <button><img src="{{ asset('ws/images/g_login.jpg')}}" alt="g_login"></button>
-                        <div class="lr_divider"><hr/><span>or</span></div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!--<div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div> -->
+            <div class="modal-body">
+                <!-- login.register content here -->
+                <div class="row">
+                    <div class="col-sm-6 lr_left_section"></div>
+                    <div class="col-sm-6 col-xs-12 lr_right_section">
+                        <button type="button" class="close lr_close_btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class="lr_register_outer"><!-- register form -->
+                            <p class="lr_mail_heading">Sign up <span>Now!</span></p>
+                            <div class="lr_social_buttons">
+                                <button><img src="{{ asset('ws/images/fb_login.jpg')}}" alt="fb_login"></button>
+                                <button><img src="{{ asset('ws/images/g_login.jpg')}}" alt="g_login"></button>
+                                <div class="lr_divider"><hr/><span>or</span></div>
+                            </div>
+
+                            <div class="lr_custom_forms">
+                                <p>Create an account with Email</p>
+                                <form>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="Enter Your Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Confirm Password">
+                                    </div>
+                                    <div class="checkbox">
+                                        <label class="lr_tc_label">
+                                            <input type="checkbox"> I Agree T&C, Privacy Policy.
+                                        </label>
+                                    </div>
+                                    <button type="button" class="btn btn-default lr_primary_btn">Sign up</button>
+                                </form>
+
+                                <button class="lr_secondary_btns open_login_form">Already a member? Login Now</button>
+                            </div>
+                        </div><!-- register form ends -->
+
+                        <div class="lr_login_outer"><!-- Login form -->
+                            <p class="lr_mail_heading">Login <span>Now!</span></p>
+                            <div class="lr_social_buttons">
+                                <button><img src="{{ asset('ws/images/fb_login.jpg')}}" alt="fb_login"></button>
+                                <button><img src="{{ asset('ws/images/g_login.jpg')}}" alt="g_login"></button>
+                                <div class="lr_divider"><hr/><span>or</span></div>
+                            </div>
+
+                            <div class="lr_custom_forms">
+                                <p>Login using your email address</p>
+                                <form class="login" action="{{ url('/login') }}" method="post" data-type="json">
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control"  placeholder="Enter Your Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="checkbox">
+                                        <label class="lr_tc_label">
+                                            <input type="checkbox"> Remember me
+                                        </label>
+                                        <button type="button" class="lr_tc_label lr_forgot_pass open_forgot_pass_form">Forgot Password?</button>
+                                    </div>
+                                    <button type="submit" class="btn btn-default lr_primary_btn">Login</button>
+                                </form>
+
+                                <button class="lr_secondary_btns open_register_form">Not a member yet? Sign up</button>
+                            </div>
+                        </div><!-- login form ends -->
+
+
+                        <div class="lr_forgot_pass_outer"><!-- forgot password form -->
+                            <p class="lr_mail_heading">Forgot <span>Password?</span></p>
+
+                            <div class="lr_custom_forms">
+                                <p>Reset password now</p>
+                                <form>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Your Email">
+                                    </div>
+                                    <button type="button" class="btn btn-default lr_primary_btn">Reset Password</button>
+                                </form>
+
+                                <button class="lr_secondary_btns open_login_form">Already a member? Login Now</button>
+                            </div>
+                        </div><!-- forgot password form ends -->
+
                     </div>
+                </div>
 
-                    <div class="lr_custom_forms">
-                        <p>Create an account with Email</p>
-                        <form>
-                          <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Enter Your Email">
-                          </div>
-                          <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password">
-                          </div>
-                          <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Confirm Password">
-                          </div>
-                          <div class="checkbox">
-                                <label class="lr_tc_label">
-                                  <input type="checkbox"> I Agree T&C, Privacy Policy.
-                                </label>
-                          </div>
-                          <button type="button" class="btn btn-default lr_primary_btn">Sign up</button>
-                        </form>
-
-                        <button class="lr_secondary_btns open_login_form">Already a member? Login Now</button>
-                    </div>
-                </div><!-- register form ends -->
-
-                <div class="lr_login_outer"><!-- Login form -->
-                    <p class="lr_mail_heading">Login <span>Now!</span></p>
-                    <div class="lr_social_buttons">
-                        <button><img src="{{ asset('ws/images/fb_login.jpg')}}" alt="fb_login"></button>
-                        <button><img src="{{ asset('ws/images/g_login.jpg')}}" alt="g_login"></button>
-                        <div class="lr_divider"><hr/><span>or</span></div>
-                    </div>
-
-                    <div class="lr_custom_forms">
-                        <p>Login using your email address</p>
-                        <form>
-                          <div class="form-group">
-                                <input type="email" class="form-control"  placeholder="Enter Your Email">
-                          </div>
-                          <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password">
-                          </div>
-                          <div class="checkbox">
-                                <label class="lr_tc_label">
-                                  <input type="checkbox"> Remember me
-                                </label>
-                                <button type="button" class="lr_tc_label lr_forgot_pass open_forgot_pass_form">Forgot Password?</button>
-                          </div>
-                          <button type="button" class="btn btn-default lr_primary_btn">Login</button>
-                        </form>
-
-                        <button class="lr_secondary_btns open_register_form">Not a member yet? Sign up</button>
-                    </div>
-                </div><!-- login form ends -->
-
-
-                <div class="lr_forgot_pass_outer"><!-- forgot password form -->
-                    <p class="lr_mail_heading">Forgot <span>Password?</span></p>
-
-                    <div class="lr_custom_forms">
-                        <p>Reset password now</p>
-                        <form>
-                          <div class="form-group">
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Your Email">
-                          </div>
-                          <button type="button" class="btn btn-default lr_primary_btn">Reset Password</button>
-                        </form>
-
-                        <button class="lr_secondary_btns open_login_form">Already a member? Login Now</button>
-                    </div>
-                </div><!-- forgot password form ends -->
-
+                <!-- content ends -->
             </div>
+            <!--<div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>-->
         </div>
-
-	<!-- content ends -->
-        </div>
-        <!--<div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>-->
     </div>
-  </div>
 </div>
 <!--------- login/register popup ends ----------------->
 
@@ -187,10 +186,10 @@
     'url' => ['search?'],
     'method' => 'get'
     ]) !!}
-        <div class="form-group">
-            <input type="text" class="form-control" name="keyword" placeholder="Search all the upcoming events...">
-        </div>
-        <button type="submit" class="btn btn-default mobile_search_box_button">Search</button>
+    <div class="form-group">
+        <input type="text" class="form-control" name="keyword" placeholder="Search all the upcoming events...">
+    </div>
+    <button type="submit" class="btn btn-default mobile_search_box_button">Search</button>
     {!! Form::close() !!}
 
     <!--<form method="get" action="#">
@@ -205,19 +204,21 @@
 <!---------- fgacebook chat ------------>
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id))
+            return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
 <!-- Your customer chat code -->
 <div class="fb-customerchat"
-  attribution=setup_tool
-  page_id="1115804248623618"
-  theme_color="#fa3c4c">
+     attribution=setup_tool
+     page_id="1115804248623618"
+     theme_color="#fa3c4c">
 </div>
 <!---------- fgacebook chat End ------------>
 
@@ -233,8 +234,7 @@
     $.ajaxSetup({
         headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')}
     })
-
-    $(document).ready(function(){
+    $(document).ready(function () {
         /******mobile sidebar **********/
         $('.mobile_nav_section button').click(function () {
             $('.nav_desktop').addClass('listing_page_sidebar_active');
@@ -258,18 +258,18 @@
 
 
         /****** authenticate popup ***********/
-        $('.open_login_form').click(function(){
+        $('.open_login_form').click(function () {
             $('.lr_register_outer').hide();
             $('.lr_forgot_pass_outer').hide();
             $('.lr_login_outer').show();
         })
 
-        $('.open_register_form').click(function(){
+        $('.open_register_form').click(function () {
             $('.lr_login_outer').hide();
             $('.lr_register_outer').show();
         })
 
-        $('.open_forgot_pass_form').click(function(){
+        $('.open_forgot_pass_form').click(function () {
             $('.lr_login_outer').hide();
             $('.lr_forgot_pass_outer').show();
         });
@@ -295,14 +295,14 @@
             },
             rules: {
                 newsletter_email: {
-                    required:true,
-                    email:true
+                    required: true,
+                    email: true
                 }
             },
             messages: {
-                newsletter_email:{
-                    required:"Enter your email id!",
-                    email:"Enter valid email id!"
+                newsletter_email: {
+                    required: "Enter your email id!",
+                    email: "Enter valid email id!"
                 }
             },
             submitHandler: function (form) {
@@ -319,5 +319,23 @@
             }
         });
         /******* newsletter end **********/
+        $('form.login:first').on('submit', function (e) {
+            e.preventDefault();
+            var $this = $(this);
+            $.ajax({
+                type: $this.attr('method'),
+                url: $this.attr('action'),
+                data: $this.serializeArray(),
+                dataType: $this.data('type'),
+                success: function (response) {
+                    if (response.success) {
+                        location.reload();
+                    }
+                },
+                error: function (jqXHR) {
+                    var response = $.parseJSON(jqXHR.responseText);
+                }
+            });
+        });
     });
 </script>

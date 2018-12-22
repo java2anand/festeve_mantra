@@ -1,3 +1,11 @@
+<?php
+    if(isset($event->event_top_banner) && !empty($event->event_top_banner) && file_exists(public_path() . '/images/event/top_banner/' . $event->event_top_banner)){
+        $image = asset( 'images/event/top_banner/'.$event->event_top_banner);
+    }else{
+        $image = asset( 'ws/images/no_top_banner.jpg');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     @include('head')
@@ -9,14 +17,6 @@
         <link href="{{asset('ws/css/viewbox.css')}}" rel="stylesheet">
 
         <!-- evnt page content section -->
-        <?php
-            if(isset($event->event_top_banner) && !empty($event->event_top_banner) && file_exists(public_path() . '/images/event/top_banner/' . $event->event_top_banner)){
-                $image = asset( 'images/event/top_banner/'.$event->event_top_banner);
-            }else{
-                $image = asset( 'ws/images/no_top_banner.jpg');
-            }
-        ?>
-
         <div class="event1_top_bg_section" style="background-image: url('{{ $image }}')">
             <div class="container event_2_container">
                 <div class="event_topbanner_info">
@@ -195,6 +195,20 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="event_right_bottom_inner">
+                                <h5>Share Event</h5>
+                                <p  class="event_social_links">
+                                    <a class="facebook share-click" href="javascript:void(0)" ><img src="{{asset('ws/images/facebook.png')}}"></a>
+                                    <a class="twitter share-click" href="javascript:void(0)" ><img src="{{asset('ws/images/twitter.png')}}"></a>
+                                    <a class="whatsapp share-click" href="javascript:void(0)" >Wapp</a>
+                                    <a class="linkedin share-click" href="javascript:void(0)" >Link</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-xs-12">
@@ -230,7 +244,7 @@
                             </div>
                         </div>
                     </div>
-
+                    
                     <div class="row"> <!-- new ads section -->
                         <div class="col-xs-12">
                             @if(count($arr_ad)>0)
@@ -359,6 +373,72 @@
                     nextOnContentClick: true
                 });
             });
+            
+            
+            $(document).ready(function(){
+                /*social sharing start*/
+                var share_url = '{{ URL::current() }}';
+                $('.share-click').click(function (event) {
+                    var shareName = $(this).attr('class').split(' ')[0]; //get the first class name of clicked element
+                    if (shareName == 'facebook') {
+                        var openLink = 'https://www.facebook.com/sharer.php?u=' + encodeURIComponent(share_url);
+                        winWidth = 650;
+                        winHeight = 450;
+                        winLeft = ($(window).width() - winWidth) / 2,
+                                winTop = ($(window).height() - winHeight) / 2,
+                                winOptions = 'width=' + winWidth + ',height=' + winHeight + ',top=' + winTop + ',left=' + winLeft;
+                        window.open(openLink, 'Share', winOptions);
+                        return false;
+                    } else if (shareName == 'twitter') {
+                        var openLink = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(share_url);
+                        winWidth = 650;
+                        winHeight = 450;
+                        winLeft = ($(window).width() - winWidth) / 2,
+                                winTop = ($(window).height() - winHeight) / 2,
+                                winOptions = 'width=' + winWidth + ',height=' + winHeight + ',top=' + winTop + ',left=' + winLeft;
+                        window.open(openLink, 'Share', winOptions);
+                        return false;
+                    } else if (shareName == 'linkedin') {
+                        var openLink = 'http://www.linkedin.com/shareArticle?url=' + encodeURIComponent(share_url);
+                        winWidth = 650;
+                        winHeight = 450;
+                        winLeft = ($(window).width() - winWidth) / 2,
+                                winTop = ($(window).height() - winHeight) / 2,
+                                winOptions = 'width=' + winWidth + ',height=' + winHeight + ',top=' + winTop + ',left=' + winLeft;
+                        window.open(openLink, 'Share', winOptions);
+                        return false;
+                    } else if (shareName == 'google') {
+                        var openLink = 'https://plus.google.com/share?url=' + encodeURIComponent(share_url);
+                        winWidth = 800;
+                        winHeight = 600;
+                        winLeft = ($(window).width() - winWidth) / 2,
+                                winTop = ($(window).height() - winHeight) / 2,
+                                winOptions = 'width=' + winWidth + ',height=' + winHeight + ',top=' + winTop + ',left=' + winLeft;
+                        window.open(openLink, 'Share', winOptions);
+                        return false;
+                    } else if (shareName == 'whatsapp') {
+                        var text = "<?php echo isset($event->description) ? substr(strip_tags($event->description),0,100) : '';  ?>";
+                        var url = share_url;
+                        var message = encodeURIComponent(text) + " - " + encodeURIComponent(url);
+                        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                            var whatsapp_url = "whatsapp://send?text=" + message;
+                            window.location.href = whatsapp_url;
+                        } else {
+                            var openLink = 'https://web.whatsapp.com/send?text=' + message;
+                            winWidth = 800;
+                            winHeight = 600;
+                            winLeft = ($(window).width() - winWidth) / 2,
+                                    winTop = ($(window).height() - winHeight) / 2,
+                                    winOptions = 'width=' + winWidth + ',height=' + winHeight + ',top=' + winTop + ',left=' + winLeft;
+                            window.open(openLink, 'Share', winOptions);
+                            return false;
+                        }
+                    }
+
+                });
+ 
+            });
+            
         </script>
     </body>
 </html>

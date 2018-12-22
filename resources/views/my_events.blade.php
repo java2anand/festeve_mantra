@@ -9,13 +9,6 @@
         <div class="page_inner_parent">
             <div class="page_inner container">
                 <div class="left_tab">
-                    <div class="profile_sec">
-                        <img src="{{asset('ws/images/dp.png')}}" alt="" />
-                        <span class="name_span">
-                            Hello
-                            <em>Ravi Verma</em>
-                        </span>
-                    </div>
                     <!----- my profile common tab --->
                     @include('dashboard_leftnav')
                 </div>
