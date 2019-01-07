@@ -4,24 +4,43 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Model\Event;
+use App\Model\Story;
 use App\Model\EventFavourite;
+use Auth;
 
 class UserController extends Controller {
+    public function __construct() {
+        $this->middleware('auth');
+        //$this->middleware('auth', ['except' => ['index','about_us','categories','event_list','event_detail','save_newsleter','top_hundred','search','stories']]);
+        //Common::test();//external class testing
+        //test();//external helper testing
+    }
 
-    public function dashboard() {
-        return view('dashboard');
+    public function dashboard(Request $request) {
+        $user_data = Auth::user();
+        //dd($request);
+        /*if(isset($request->input('submit'))){
+            echo 'Is set';die;
+        }*/
+        return view('dashboard', compact('user_data'));
     }
 
     public function my_events(){
-        return view('my_events');
+        $user_id = Auth::user()->id;
+        $arr_events = Event::where('added_by','U')->where('added_by_id',$user_id)->paginate(9);
+        return view('my_events', compact('arr_events'));
     }
 
     public function my_stories(){
-        return view('my_stories');
+        $user_id = Auth::user()->id;
+        $arr_story = Story::where('added_by','U')->where('added_by_id',$user_id)->get();
+        return view('my_stories', compact('arr_story'));
     }
 
     public function favourite_events(){
-        $favorites = EventFavourite::where('user_id', 1)->get();
+        $user_id = Auth::user()->id;
+        $favorites = EventFavourite::where('user_id', $user_id)->paginate(9);
         return view('favourite_events',compact('favorites'));
     }
 

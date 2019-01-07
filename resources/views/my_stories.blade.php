@@ -17,6 +17,7 @@
                     <div class="tab-pane active" id="stories">
                         <h2>My Stories</h2>
                         <div class="right_inner">
+                            <?php if(count($arr_story) == 0){ ?>
                             <div class="event_first stories_first">
                                 <p>You have not added any Event's Story till now
                                     <br /> Thousand of events goers want to read about your cherisable event story
@@ -24,6 +25,7 @@
 
                                 <button type="button" id="" class="btn" >SUBMIT</button>
                             </div>
+                            <?php }else{ ?>
                             <div class="stories_third">
                                 <div class="right_inner_child">
                                     <div class="event_img">
@@ -36,28 +38,8 @@
                                     </div>
 
                                 </div>
-                                <div class="right_inner_child ">
-                                    <div class="event_img">
-                                        <img src="{{asset('ws/images/event.png')}}" alt="" />
-                                    </div>
-                                    <h3>New Food Event 5</h3>
-                                    <div class="view_deal">
-                                        <button class="btn" >VIEW</button>
-                                        <a href="javascript:void(0)" class="btn" >Edit</a>
-                                    </div>
-
-                                </div>
-                                <div class="right_inner_child ">
-                                    <div class="event_img">
-                                        <img src="{{asset('ws/images/event.png')}}" alt="" />
-                                    </div>
-                                    <h3>New Food Event 5</h3>
-                                    <div class="view_deal">
-                                        <button class="btn" >VIEW</button>
-                                        <a href="javascript:void(0)" class="btn" >Edit</a>
-                                    </div>
-
-                                </div>
+                                
+                                
                                 <div class="pagination_div">
                                     <ul class="pagination">
                                         <li class="page-item">
@@ -76,8 +58,9 @@
                                     </ul>
                                 </div>
                             </div>
+                            <?php } ?>
                         </div>
-                        <div class="event_second">
+                        <div class="event_second" style="display: none;">
                             <h4>Thank You!</h4>
                             <p>We’ve received your request for event submission. <br />
                                 Sit Back and relax while we receive your event. <br />

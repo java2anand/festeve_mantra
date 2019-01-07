@@ -16,47 +16,56 @@
                     <div class="tab-pane active" id="event">
                         <h2>My Events</h2>
                         <div class="right_inner">
+                            <?php if(count($arr_events) == 0){ ?>
                             <div class="event_first">
                                 <p>You have not added any event / festival till now</p>
-                                <button type="button" id="create_event" class="btn" >CREATE YOUR EVENT</button>
+                                <a href="{{ url('add-event')}}" class="btn">CREATE YOUR EVENT</a>
                             </div>
-
+                            <?php }else{ ?>
                             <div class="event_third">
-                                <div class="right_inner_child">
-                                    <div class="event_img">
-                                        <img src="{{asset('ws/images/event.png')}}" alt="" />
-                                    </div>
-                                    <h3>New Food Event 5</h3>
-                                    <div class="view_deal">
-                                        <button class="btn" >VIEW</button>
-                                        <a href="javascript:void(0)" >Activate</a>
-                                    </div>
-                                    <button class="btn edit_btn">EDIT</button>
-                                </div>
+                                
+                                <?php foreach($arr_events as $event){ ?>
                                 <div class="right_inner_child ">
-                                    <div class="event_img">
-                                        <img src="{{asset('ws/images/event.png')}}" alt="" />
+                                    <div class="upcoming_item_container">
+                                        <div class="upcoming_item_image">
+                                            <a href="javascript:void(0)">
+                                                @if(isset($event->event_image) && !empty($event->event_image) && file_exists(public_path() . '/images/event/' . $event->event_image))
+                                                <img src="{{ asset( 'images/event/'.$event->event_image)}}" alt="event_banner">
+                                                @else
+                                                <img src="{{ asset( 'ws/images/no-image.jpg')}}" alt="event_banner">
+                                                @endif
+                                            </a>
+                                        </div>
+                                        <div class="upcoming_item_info {{ ($event->premium == 1) ? 'f_premium' : (($event->premium == 2) ? 'f_favourite' : '')  }}">
+                                            <span class="event_type_icon"><img src="{{asset( 'images/category/mini_icon/'.$event->category->mini_icon)}}" alt="category_event"></span>
+                                            <p class="uc_event_name"><a href="javascript:void(0)">{{ substr($event->title,0,80) }}</a></p>
+                                            <p class="uc_event_date">{{  ($event->start_date != $event->end_date ) ?  date('d M', strtotime($event->start_date)).' - '. date('d M', strtotime($event->end_date)).date(', Y')  : date('d M Y', strtotime($event->start_date))}}</p>
+
+                                        </div>
                                     </div>
-                                    <h3>New Food Event 5</h3>
                                     <div class="view_deal">
-                                        <button class="btn" >VIEW</button>
-                                        <a href="javascript:void(0)" >Activate</a>
+                                        <?php if($event->status == 1){ ?>
+                                            <a href="{{ url('event-detail/'.$event->slug)}}" class="btn">VIEW</a>
+                                            <a href="javascript:void(0);" class="">Approved</a>
+                                        <?php }else{ ?>
+                                            <a href="" class="btn">TRACK</a>
+                                            <?php if($event->status == 0){ ?>
+                                                <a href="javascript:void(0);" class="">Pending</a>
+                                            <?php }else{ ?>
+                                                <a href="javascript:void(0);" class="">Declined</a>
+                                            <?php } ?>
+                                        <?php } ?>
                                     </div>
-                                    <button class="btn edit_btn">EDIT</button>
+                                    
+                                  
+                                    <button class="btn edit_btn"><?= $event->status != 1 ? 'EDIT' : 'LIVE' ?></button>
                                 </div>
-                                <div class="right_inner_child ">
-                                    <div class="event_img">
-                                        <img src="{{asset('ws/images/event.png')}}" alt="" />
-                                    </div>
-                                    <h3>New Food Event 5</h3>
-                                    <div class="view_deal">
-                                        <button class="btn" >VIEW</button>
-                                        <a href="javascript:void(0)" >Activate</a>
-                                    </div>
-                                    <button class="btn edit_btn">EDIT</button>
-                                </div>
+                                
+                                <?php } ?>
                                 <div class="pagination_div">
-                                    <ul class="pagination">
+                                    {{ $arr_events->links() }}
+                                    <!--<ul class="pagination">
+                                        
                                         <li class="page-item">
                                             <a class="page-link" href="#" aria-label="Previous">
                                                 <span aria-hidden="true">«</span>
@@ -70,12 +79,13 @@
                                                 <span aria-hidden="true">»</span>
                                             </a>
                                         </li>
-                                    </ul>
+                                    </ul>-->
                                 </div>
                             </div>
+                            <?php } ?>
                         </div>
 
-                        <div class="event_second">
+                        <div class="event_second"style="display: none;">
                             <h4>Thank You!</h4>
                             <p>We’ve received your request for event submission. <br />
                                 Sit Back and relax while we receive your event. <br />

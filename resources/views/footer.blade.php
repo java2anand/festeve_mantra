@@ -57,7 +57,7 @@
 
                 </div>
                 <div class="col-sm-4 col-xs-12 text-center">
-                    <img src="{{ asset('ws/images/add_phone.png')}}" alt="add_phone"> <a href="tel:{{$sitedata['mobile_number']}}">{{ '+91-'.$sitedata['phone_number'].', +91-'.$sitedata['mobile_number']}}</a>
+                    <img src="{{ asset('ws/images/whatsapp.png')}}" alt="add_phone"> <a href="tel:{{$sitedata['mobile_number']}}">{{ '+91-'.$sitedata['phone_number'].', +91-'.$sitedata['mobile_number']}}</a>
                 </div>
                 <div class="col-sm-4 col-xs-12 text-right">
                     <img src="{{ asset('ws/images/add_email.png')}}" alt="email"> <a href="mailto:{{$sitedata['contact_email']}}">{{$sitedata['contact_email']}}</a>
@@ -127,12 +127,14 @@
 
                             <div class="lr_custom_forms">
                                 <p>Login using your email address</p>
-                                <form class="login" action="{{ url('/login') }}" method="post" data-type="json">
+                                <form class="login" id="login-form" action="{{ url('/login') }}" method="post" data-type="json">
+                                    {!! csrf_field() !!}
+                                    <div id="login-msg"></div>
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control"  placeholder="Enter Your Email">
+                                        <input type="text" name="login_email" id="login_email" class="form-control"  placeholder="Enter Your Email">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" class="form-control" placeholder="Password">
+                                        <input type="password" name="login_password" id="login_password" class="form-control" placeholder="Password">
                                     </div>
                                     <div class="checkbox">
                                         <label class="lr_tc_label">
@@ -319,7 +321,49 @@
             }
         });
         /******* newsletter end **********/
-        $('form.login:first').on('submit', function (e) {
+        $("#login-form").validate({
+            errorElement: 'span',
+            /*errorPlacement: function (error, element) {
+                error.insertAfter($("#login-form"));
+            },*/
+            rules: {
+                login_email: {
+                    required: true,
+                    email: true
+                },
+                login_password: {
+                    required: true
+                }
+            },
+            messages: {
+                login_email: {
+                    required: "Enter your festeve account email id!",
+                    email: "Enter valid email id!"
+                },
+                login_password: {
+                    required: "Enter your festeve account password!",
+                }
+            },
+            submitHandler: function (form) {
+                $.ajax({
+                    url: "{{ URL::route('login') }}",
+                    type: "POST",
+                    data: {'email': $("#login_email").val(),'password': $("#login_password").val()},
+                    success: function (response) {
+                        if (response.success) {
+                            $("#login-msg").html('<p class="alert alert-success">Login successfully</p>');
+                            setTimeout(function(){
+                                location.reload();
+                            },2000);
+                        }else{
+                            $("#login-msg").html('<p class="alert alert-danger">'+response.message+'</p>');
+                        }
+                    }
+                });
+            }
+        });
+        
+        /*$('form.login:first').on('submit', function (e) {
             e.preventDefault();
             var $this = $(this);
             $.ajax({
@@ -334,8 +378,9 @@
                 },
                 error: function (jqXHR) {
                     var response = $.parseJSON(jqXHR.responseText);
+                    $("#login-msg").html('<p class="alert alert-danger">'+response.error+'</p>');
                 }
             });
-        });
+        });*/
     });
 </script>

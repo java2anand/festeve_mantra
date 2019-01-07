@@ -203,8 +203,8 @@
                                 <p  class="event_social_links">
                                     <a class="facebook share-click" href="javascript:void(0)" ><img src="{{asset('ws/images/facebook.png')}}"></a>
                                     <a class="twitter share-click" href="javascript:void(0)" ><img src="{{asset('ws/images/twitter.png')}}"></a>
-                                    <a class="whatsapp share-click" href="javascript:void(0)" >Wapp</a>
-                                    <a class="linkedin share-click" href="javascript:void(0)" >Link</a>
+                                    <a class="whatsapp share-click" href="javascript:void(0)" ><img src="{{asset('ws/images/whatsapp.png')}}"></a>
+                                    <a class="linkedin share-click" href="javascript:void(0)" ><img src="{{asset('ws/images/linkedin.png')}}"></a>
                                 </p>
                             </div>
                         </div>
@@ -272,7 +272,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="event_right_bottom_inner">
-                                <h5>Nearby Festivals</h5>
+                                <h5>Nearby Events/Festivals</h5>
                                 <p class="event_near_by_festivals">
                                     @if(count($arr_near)>0)
                                     @foreach($arr_near as $near)

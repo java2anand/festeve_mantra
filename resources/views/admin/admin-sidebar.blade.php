@@ -64,7 +64,7 @@
                 </ul>
             </li>-->
 
-            <li class="treeview <?= ($pages == 'add_event' || $pages == 'event_list' || $pages == 'event-top-hundred' || $pages == 'home_event' || $pages == 'premium_event' || $pages == 'popular_event') ? 'menu-open active' : ''; ?>">
+            <li class="treeview <?= ($pages == 'add_event' || $pages == 'event_list' || $pages == 'event_active_list' || $pages == 'event-top-hundred' || $pages == 'home_event' || $pages == 'premium_event' || $pages == 'popular_event') ? 'menu-open active' : ''; ?>">
                 <a href="#">
                     <i class="fa fa-calendar-check-o"></i> <span>Events</span>
                     <span class="pull-right-container">
@@ -73,6 +73,8 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="<?= ($pages == 'event_list') ? 'active' : ''; ?>"><a href="{{ route('admin.event_list') }}"><i class="fa fa-circle-o"></i> List</a></li>
+                    
+                    <li class="<?= ($pages == 'event_active_list') ? 'active' : ''; ?>"><a href="{{ route('admin.event_active_list') }}"><i class="fa fa-circle-o"></i> Active List</a></li>
 
                     <li class="<?= ($pages == 'add_event') ? 'active' : ''; ?>"><a href="{{ route('admin.event_add') }}"><i class="fa fa-circle-o"></i> Add</a></li>
 

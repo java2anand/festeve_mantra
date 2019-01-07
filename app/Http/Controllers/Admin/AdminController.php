@@ -29,6 +29,7 @@ class AdminController extends Controller {
      */
     public function index() {
         $page = 'dashboard';
+        $data['total_active_events'] = DB::table('events')->where([['status','=',1],['end_date','>=',DATE('Y-m-d')]])->count();
         $data['total_events'] = DB::table('events')->count();
         $data['total_category'] = DB::table('categories')->count();
         $data['total_organiser'] = DB::table('organisers')->count();

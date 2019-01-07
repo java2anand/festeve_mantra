@@ -15,10 +15,10 @@
                         <h1 class="home_section_heading"><span>Create</span> Event </h1>
                         <p class="add_evet_subheading">3 Steps: Details - Organise - Review</p>
                     </div>
-                    <div class="col-sm-6 col-xs-12 addevent_top_buttons">
+                    <!--<div class="col-sm-6 col-xs-12 addevent_top_buttons">
                         <label class="view_event_btn">PREVIEW</label>
                         <label class="add_event_btn" for="event_final_update_btn">SAVE</label>
-                    </div>
+                    </div>-->
 
                 </div>
                 <!-- ends -->
@@ -31,18 +31,13 @@
                             <label>Event Title</label>
                             <input type="text" class="form-control" placeholder="Event Title">
                         </div>
-                        <div class="form-group fg_50 m_100 fpaddingright">
+                        <div class="form-group">
                             <label>Category</label>
                             <select class="form-control">
                                 <option>Select Category</option>
                             </select>
                         </div>
-                        <div class="form-group fg_50 m_100 fpaddingleft">
-                            <label>Sub Category</label>
-                            <select class="form-control">
-                                <option>Select Sub Category</option>
-                            </select>
-                        </div>
+                        
                         <div class="form-group">
                             <label>Description</label>
                             <textarea class="form-control" placeholder="Description"></textarea>
@@ -150,7 +145,7 @@
                 <!-- ends -->
 
                 <!-- Event Revie and Submit section -->
-                <div class="row add_evet_form_sections">
+                <!--<div class="row add_evet_form_sections">
                     <div class="col-xs-12">
                         <h3  class="home_section_heading add_event_inner_heading"><span>Step 3 -</span>  Review & Submit </h3>
                         <p class="text-center event_review_text">
@@ -158,7 +153,7 @@
                         </p>
 
                     </div>
-                </div>
+                </div>-->
                 <!-- ends -->
 
                 <!-- top heading and buttons -->
@@ -167,8 +162,8 @@
                         <h3 class="home_section_heading"><span>Great</span> Almost Done!</h3>
                     </div>
                     <div class="col-sm-6 col-xs-12 add_event_bottom_section_buttons">
-                        <button class="view_event_btn" id="event_final_save_btn">SAVE</button>
-                        <button class="add_event_btn" id="event_final_update_btn">UPDATE LIVE</button>
+                        <button class="view_event_btn" id="event_final_save_btn">UPDATE</button>
+                        <!--<button class="add_event_btn" id="event_final_update_btn">UPDATE LIVE</button>-->
                     </div>
 
                 </div>

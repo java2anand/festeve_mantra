@@ -139,7 +139,7 @@
                         <!-- right sidebar -->
                         <!-- listing -->
                         <li class="listing_page_mid_section">
-
+                            <?php //echo "<pre>";print_r($arrevent); ?>
                             @if(count($arrevent)>0)
                             @foreach($arrevent as $event)
                                 <?php
@@ -160,7 +160,7 @@
                                         </p>
                                         <h3><a href="{{ url('event-detail/'.$event->slug )}}">{{ $event->title }}</a></h3>
                                         <p class="listing_mid_category_info">
-                                            {!! substr($event->short_description,0,180).'..' !!}
+                                            {!! $event->short_description !!}
                                         </p>
                                         <p class="listing_mid_category_link"><a href="{{ url('event-detail/'.$event->slug )}}">View</a></p>
                                     </div>

@@ -27,6 +27,17 @@ class EventController extends Controller {
             ->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
         return view('admin.event_list', compact('arrEvent', 'page','search_term'));
     }
+    
+    public function active_list(Request $request) {
+        $page = 'event_active_list';
+        $search = $request->get('search');
+        $field = $request->get('field') != '' ? $request->get('field') : 'id';
+        $sort = $request->get('sort') != '' ? $request->get('sort') : 'desc';
+
+        $arrEvent = Event::orderBy($field, $sort)->where('status','=',1)->where('end_date','>=',DATE('Y-m-d'))->where('title', 'like', '%' . $search . '%')
+            ->paginate(10)->withPath('?search=' . $search . '&field=' . $field . '&sort=' . $sort);
+        return view('admin.event_list', compact('arrEvent', 'page','search_term'));
+    }
 
     public function premium_event(Request $request) {
         $page = 'premium_event';

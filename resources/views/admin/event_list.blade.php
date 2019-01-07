@@ -57,13 +57,13 @@
                                     <th>Sr. No.</th>
 
                                     <th>
-                                        <a href="{{url('admin/event_list')}}?search={{request('search')}}&field=title&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Event Name &nbsp;<i class="fa fa-sort-alpha-{{request('field','title')=='title'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i></a>
+                                        <a href="{{ url()->current() }}?search={{request('search')}}&field=title&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Event Name &nbsp;<i class="fa fa-sort-alpha-{{request('field','title')=='title'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i></a>
                                     </th>
                                     <th>View</th>
                                     <th>Category</th>
                                     <th>Total View</th>
                                     <th>
-                                        <a href="{{url('admin/event_list')}}?search={{request('search')}}&field=created_at&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Added Date &nbsp<i class="fa fa-sort-numeric-{{request('field','created_at')=='created_at'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i></a>
+                                        <a href="{{ url()->current() }}?search={{request('search')}}&field=created_at&sort={{request('sort','asc')=='asc'?'desc':'asc'}}">Added Date &nbsp<i class="fa fa-sort-numeric-{{request('field','created_at')=='created_at'?(request('sort','asc')=='asc'?'asc':'desc'):'asc'}}"></i></a>
                                     </th>
                                     <th>Active/Expired</th>
                                     <th>Status</th>

@@ -48,17 +48,42 @@ class LoginController extends Controller {
         return redirect('/');
     }*/
     
-    public function __construct()
-    {
+    public function __construct(){
         $this->middleware('guest', ['except' => 'logout']);
     }
 
     protected function username() {
         return 'email';
     }
+    
+    public function login(Request $request){
+        $credentials = $request->only('email', 'password');
+        $rules = ['email' => 'required|email|max:255',
+            'password' => 'required'
+        ];
 
-    public function login(Request $request)
-    {
+        $validation = Validator::make($credentials, $rules);
+        $errors = $validation->errors()->first();
+        //$error_msg = json_decode($errors);
+        
+        if ($validation->passes()) {
+            if (Auth::attempt([
+                    'email' => trim($request->email),
+                    'password' => $request->password,
+                ], $request->has('remember'))) {
+                
+                return response()->json(['redirect' => true, 'success' => true], 200);
+            } else {
+                $message = 'Invalid username or password';
+                return response()->json(['redirect' => false, 'success' => false , 'message'=>$message], 200);
+            }
+        } else {
+            return response()->json(['redirect' => false, 'success' => false , 'message'=>$errors], 200);
+        }
+    }
+    
+    
+    public function register(Request $request){
         $credentials = $request->only('email', 'password');
         $rules = ['email' => 'required|email|max:255',
             'password' => 'required'
@@ -80,25 +105,9 @@ class LoginController extends Controller {
         } else {
             return response()->json($errors, 400);
         }
-        
-        
-        /*$credentials = $request->only($this->username(), 'password');
-        $authSuccess = Auth::attempt($credentials, $request->has('remember'));
-        //print_r($authSuccess);die;
-        if($authSuccess) {
-            $request->session()->regenerate();
-            return response(['success' => true], Response::HTTP_OK);
-        }
-
-        return
-            response([
-                'success' => false,
-                'message' => 'Auth failed (or some other message)'
-            ], Response::HTTP_OK);*/
     }
 
-    public function logout(Request $request)
-    {
+    public function logout(Request $request){
         Auth::logout();
         $request->session()->flush();
         $request->session()->regenerate();

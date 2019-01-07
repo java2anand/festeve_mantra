@@ -22,7 +22,7 @@
                     <p class="text-center cont_info">Reach us at <img src="{{ asset('ws/images/mail.png')}}">
                         <a href="mailto:{{$sitedata['contact_email']}}">{{$sitedata['contact_email']}}</a>
                         Or Call at
-                        <img src="{{ asset('ws/images/call.png')}}">  <a href="tel:{{$sitedata['mobile_number']}}">+91-{{$sitedata['mobile_number']}}</a></p>
+                        <img src="{{ asset('ws/images/call.png')}}">  <a href="tel:{{$sitedata['phone_number']}}">+91-{{$sitedata['phone_number']}}</a></p>
 
                 </div>
             </div><!-- team section 1 ends -->

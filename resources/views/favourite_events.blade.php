@@ -21,15 +21,28 @@
 
                             @foreach($favorites as $k=>$fav)
                                 <?php $event = $fav->event;?>
-                                <div class="right_inner_child">
-                                    <div class="event_img">
-                                        <img src="{{asset('ws/images/event.png')}}" alt="" />
+                                <div class="right_inner_child ">
+                                    <div class="upcoming_item_container">
+                                        <div class="upcoming_item_image">
+                                            <a href="{{ url('event-detail/'.$event->slug)}}">
+                                                @if(isset($event->event_image) && !empty($event->event_image) && file_exists(public_path() . '/images/event/' . $event->event_image))
+                                                <img src="{{ asset( 'images/event/'.$event->event_image)}}" alt="event_banner">
+                                                @else
+                                                <img src="{{ asset( 'ws/images/no-image.jpg')}}" alt="event_banner">
+                                                @endif
+                                            </a>
+                                        </div>
+                                        <div class="upcoming_item_info {{ ($event->premium == 1) ? 'f_premium' : (($event->premium == 2) ? 'f_favourite' : '')  }}">
+                                            <span class="event_type_icon"><img src="{{asset( 'images/category/mini_icon/'.$event->category->mini_icon)}}" alt="category_event"></span>
+                                            <p class="uc_event_name"><a href="{{ url('event-detail/'.$event->slug)}}">{{ substr($event->title,0,80) }}</a></p>
+                                            <p class="uc_event_date">{{  ($event->start_date != $event->end_date ) ?  date('d M', strtotime($event->start_date)).' - '. date('d M', strtotime($event->end_date)).date(', Y')  : date('d M Y', strtotime($event->start_date))}}</p>
+
+                                        </div>
                                     </div>
-                                    <h3>{{ $event->title }} <span>by Anurag on 27-July-2018</span></h3>
-                                    <span class="music_txt">MUSIC</span>
+                                    
                                     <div class="view_deal">
-                                        <button class="btn" >VIEW</button>
-                                        <a href="javascript:void(0)" class="btn like_btn" ><i class="fa fa-heart-o"></i> LIKE</a>
+                                        <a href="{{ url('event-detail/'.$event->slug)}}" class="btn">View</a>
+                                        <a href="javascript:void(0)" class="btn like_btn" >Remove</a>
                                     </div>
 
                                 </div>
@@ -37,7 +50,8 @@
                         </div>
 
                         <div class="pagination_div">
-                            <ul class="pagination">
+                            {{ $favorites->links() }}
+                            <!--<ul class="pagination">
                                 <li class="page-item">
                                     <a class="page-link" href="#" aria-label="Previous">
                                         <span aria-hidden="true">«</span>
@@ -51,7 +65,7 @@
                                         <span aria-hidden="true">»</span>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul>-->
                         </div>
                     </div>
 

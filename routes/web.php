@@ -20,7 +20,6 @@
 
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-//Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::get('/', 'HomeController@index')->name('home');
 
@@ -50,7 +49,7 @@ Route::get('/add-story', 'UserController@add_story')->name('add-story');
 Route::get('/add-advertise', 'UserController@add_advertise')->name('add-advertise');
 Route::get('/apply-job', 'UserController@apply_job')->name('apply-job');
 Route::get('/organizers', 'UserController@organizers')->name('organizers');
-Route::get('/dashboard', 'UserController@dashboard')->name('dashboard');
+Route::any('/dashboard', 'UserController@dashboard')->name('dashboard');
 Route::get('/my-events', 'UserController@my_events')->name('my-events');
 Route::get('/my-stories', 'UserController@my_stories')->name('my-stories');
 Route::get('/favourite-events', 'UserController@favourite_events')->name('favourite-events');
@@ -100,6 +99,7 @@ Route::prefix('admin')->group(function() {
 
     /*     * ********events routes ******************* */
     Route::get('/event_list', 'Admin\EventController@index')->name('admin.event_list');
+    Route::get('/event_active_list', 'Admin\EventController@active_list')->name('admin.event_active_list');
     Route::get('/premium_event', 'Admin\EventController@premium_event')->name('admin.premium_event');
     Route::get('/home_event', 'Admin\EventController@home_event')->name('admin.home_event');
     Route::get('/popular_event', 'Admin\EventController@popular_event')->name('admin.popular_event');

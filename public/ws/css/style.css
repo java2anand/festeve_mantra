@@ -2696,6 +2696,9 @@ background-size:100% 100%;
     padding-top:0px;
     padding-bottom:0px;
 }
+.error{
+    color: red;
+}
 /* ends */
 
 /* autocomplete css */
@@ -3676,7 +3679,7 @@ background-size:100% 100%;
 .left_tab ul{border:none;width: 100%;float: left;}
 .left_tab .nav-tabs>li{border-top: solid 1px #f3f3f3;}
 .left_tab .nav-tabs>li>a{color: #555555;border: none;border-radius: 0px;font-size: 16px;margin: 0px;padding: 16px 30px;}
-.left_tab .nav-tabs>li.active>a, .left_tab .nav-tabs>li.active>a:focus, .left_tab .nav-tabs>li.active>a:hover, .left_tab .nav>li>a:focus, .left_tab .nav>li>a:hover{background: #5665ae;border: none;color: #fff;font-weight: 700;}
+.left_tab .nav-tabs>li.active>a, .left_tab .nav-tabs>li.active>a:focus, .left_tab .nav-tabs>li.active>a:hover, .left_tab .nav>li>a:focus, .left_tab .nav>li>a:hover{background: #eb7a40;border: none;color: #fff;font-weight: 700;}
 .left_tab .nav-tabs>li>a span{background: url(../images/sprite.png) no-repeat top center;display: inline-block; position: relative;width: 20px;top: 1px;height: 16px;left: -5px;}
 .left_tab .nav-tabs>li>a span.profile_span{background-position: -7px -2px;}
 .left_tab .nav-tabs>li>a span.event_span{background-position: -7px -30px;}
@@ -3699,7 +3702,7 @@ background-size:100% 100%;
 .view_deal a, .view_deal a:hover{width: 45%;color: #00960b;display: inline-block;font-weight: 700;font-size: 16px;position: relative;
     top: 3px;}
 .right_inner .btn.edit_btn{width: 100%;border-radius:0px;background:#f3f3f3;border:solid 1px #cccccc;border-left: none;border-right: none;}
-.right_content h2{text-align: center;background: #5665ae;color: #fff;margin: 0px;font-size: 20px;padding: 14px 0;}
+.right_content h2{text-align: center;background: #eb7a40;color: #fff;margin: 0px;font-size: 20px;padding: 14px 0;}
 .right_content h3{color: #000;margin-top: 15px;font-size: 18px;text-align: left;padding-left: 16px;line-height: 20px;min-height: 30px;width: 100%;float: left;}
 .pagination_div{width: 100%; float: left;text-align: center;margin: 38px 0 20px 0px;}
 .right_content .pagination>li>a{border-radius: 4px !important;margin: 0 4px;background: #cccccc;color: #fff;padding: 4px 11px;border: none;}

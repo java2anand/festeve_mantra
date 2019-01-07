@@ -53,4 +53,14 @@
           src="https://www.facebook.com/tr?id=192999948314763&ev=PageView&noscript=1"
         /></noscript>
     <!-- End Facebook Pixel Code -->
+    <?php if(Route::currentRouteName() != 'home'){ ?>
+        <!-- google ads ---->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-9675579814225068",
+            enable_page_level_ads: true
+          });
+        </script>
+    <?php } ?>
   </head>
