@@ -151,7 +151,7 @@
                                 ?>
                                 <div class="listing_page_mid_section_outer">
                                     <div class="listing_page_mid_section_left">
-                                        <a href="{{ url('event-detail/'.$event->slug )}}"><img src="{{ asset($image )}}"></a>
+                                        <a href="{{ url('event-detail/'.$event->slug )}}"><img src="{{ asset($image )}}" alt="category_image"></a>
                                     </div>
                                     <div class="listing_page_mid_section_right {{ ($event->premium == 1) ? 'f_premium' : (($event->premium == 2) ? 'f_favourite' : '')  }}">
                                         <p class="listing_mid_category_date">

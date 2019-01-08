@@ -95,12 +95,13 @@
 
                             <div class="lr_custom_forms">
                                 <p>Create an account with Email</p>
-                                <form>
+                                <form id="register-form" action="{{ url('/register') }}" method="post" data-type="json">
+                                    {!! csrf_field() !!}
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Enter Your Email">
+                                        <input type="email" name="reg_email" id="reg_email" class="form-control" placeholder="Enter Your Email">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <input type="text" name="reg_phone" class="form-control" placeholder="Password">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control" placeholder="Confirm Password">
@@ -320,12 +321,11 @@
                 });
             }
         });
-        /******* newsletter end **********/
+        
+        
+        /******* login-form start **********/
         $("#login-form").validate({
             errorElement: 'span',
-            /*errorPlacement: function (error, element) {
-                error.insertAfter($("#login-form"));
-            },*/
             rules: {
                 login_email: {
                     required: true,

@@ -26,6 +26,8 @@ class CreateStoriesTable extends Migration {
             $table->text('meta_description');
             $table->text('page_title');
             $table->tinyInteger('home_story')->default(0);
+            $table->enum('added_by', ['A','U'])->default('A')->comment('A=>Admin,U=>User');
+            $table->integer('added_by_id');
             $table->timestamps();
         });
     }

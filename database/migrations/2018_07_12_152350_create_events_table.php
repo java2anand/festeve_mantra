@@ -44,6 +44,8 @@ class CreateEventsTable extends Migration {
             $table->tinyInteger('popular')->default(0);
             $table->tinyInteger('is_expirable')->default(1);
             $table->tinyInteger('status');
+            $table->enum('added_by', ['A','U'])->default('A')->comment('A=>Admin,U=>User');
+            $table->integer('added_by_id');
             $table->timestamps();
         });
     }

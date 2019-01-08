@@ -32,7 +32,7 @@
             <div class="col-sm-8 nav_desktop">
                 <p class="mobile_logo_outer">
                     <img src="{{asset('ws/images/logo.png')}}" alt="logo" class="logo_mobile">
-                    <button class="remove_mobile_navigation"><img src="{{asset('ws/images/close.png')}}"></button>
+                    <button class="remove_mobile_navigation"><img src="{{asset('ws/images/close.png')}}" alt="close-button"></button>
                 </p>
                 <ul class="header_navigation">
                     <li><a href="{{ route('add-event') }}">+festeve</a></li>
@@ -49,7 +49,7 @@
                         </li>
                     @else
                         <li>
-                            <a href="{{ url('dashboard') }}"><img src="http://localhost:8000/ws/images/no-image.jpg" class="img-circle" alt="" width="30" height="30"></a>
+                            <a href="{{ url('dashboard') }}"><img src="{{asset('ws/images/no-image.jpg')}}" class="img-circle" alt="" width="30" height="30"></a>
                         </li>
                     @endguest
                 </ul>
