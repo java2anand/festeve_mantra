@@ -9,11 +9,10 @@
     <meta name="_token" content="{!! csrf_token() !!}"/>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('ws/images/favicon.ico')}}" />
     
-    <link rel="canonical" href="{{ url('/') }}" />
+    <!--<link rel="canonical" href="{{ url('/') }}" />
     <link rel="alternate" href="{{ url('/') }}" hreflang="x-default" />
     <link rel="alternate" href="{{ url('/') }}" hreflang="en-IN" />
-    <link rel="alternate" href="{{ url('/') }}" hreflang="en-US" />
-    
+    <link rel="alternate" href="{{ url('/') }}" hreflang="en-US" />-->
     
     <title><?= isset($page_title) && !empty($page_title) ? $page_title : $sitedata['page_title'] ?></title>
     <meta name="keywords" content="<?= isset($meta_keyword) ? $meta_keyword : $sitedata['meta_keyword'] ?>" />
@@ -28,12 +27,12 @@
     <meta name="twitter:creator" content="@author_handle">
     <meta name="twitter:image" content="<?php echo isset($image) ? $image : '';  ?>">
 
-    <meta property="og:url"   		content="{{ URL::current() }}" />
-    <meta property="og:site_name"      	content="{{ config('app.name') }}" />
-    <meta property="og:type"            content="website" />
-    <meta property="og:title"           content="<?php echo isset($event->title) ? $event->title : (isset($page_title) && !empty($page_title) ? $page_title : $sitedata['page_title']);  ?>" />
-    <meta property="og:description"     content="<?php echo isset($event->description) ? substr(strip_tags($event->description),0,100) : (isset($meta_description) ? $meta_description : $sitedata['meta_description']);  ?>" />
-    <meta property="og:image"           content="<?php echo isset($image) ? $image : '';  ?>" />
+    <meta property="og:url" content="{{ URL::current() }}" />
+    <meta property="og:site_name" content="{{ config('app.name') }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<?php echo isset($event->title) ? $event->title : (isset($page_title) && !empty($page_title) ? $page_title : $sitedata['page_title']);  ?>" />
+    <meta property="og:description" content="<?php echo isset($event->description) ? substr(strip_tags($event->description),0,100) : (isset($meta_description) ? $meta_description : $sitedata['meta_description']);  ?>" />
+    <meta property="og:image" content="<?php echo isset($image) ? $image : '';  ?>" />
     <!-- / Open Graph Codes -->
     
     <meta itemprop="name" content="<?= isset($page_title) && !empty($page_title) ? $page_title : $sitedata['page_title'] ?>" />
@@ -67,7 +66,8 @@
           src="https://www.facebook.com/tr?id=192999948314763&ev=PageView&noscript=1"
         /></noscript>
     <!-- End Facebook Pixel Code -->
-    <?php if(Route::currentRouteName() != 'home'){ ?>
+    <?php $current_url = Route::currentRouteName();
+        if($current_url == 'top-hundred' || $current_url == 'categories' || $current_url == 'event-category' || $current_url == 'search' || $current_url == 'event-detail'){ ?>
         <!-- google ads ---->
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
@@ -77,4 +77,32 @@
           });
         </script>
     <?php } ?>
+        
+    <?php if( Route::currentRouteName() == 'event-detail'){ ?>
+        <!-- google ads ---->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Display Ads -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9675579814225068"
+             data-ad-slot="7575071647"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    <?php } ?>
+        
+    <?php /* if( Route::currentRouteName() == 'event-category'){ ?>
+        <!-- google ads ---->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- 160x600 - Category -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:160px;height:600px"
+             data-ad-client="ca-pub-9675579814225068"
+             data-ad-slot="2201962051"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    <?php }*/ ?>
   </head>

@@ -10,6 +10,7 @@ use Illuminate\Http\Response;
 //use Illuminate\Support\Facades\Auth;
 use Validator;
 use Auth;
+use App\User;
 
 class LoginController extends Controller {
     /*
@@ -84,34 +85,37 @@ class LoginController extends Controller {
     
     
     public function register(Request $request){
-        $credentials = $request->only('email', 'password');
-        $rules = ['email' => 'required|email|max:255',
-            'password' => 'required'
-        ];
-
-        $validation = Validator::make($credentials, $rules);
-        $errors = $validation->errors();
-        $errors = json_decode($errors);
-        if ($validation->passes()) {
-            if (Auth::attempt([
-                    'email' => trim($request->email),
-                    'password' => $request->password,
-                ], $request->has('remember'))) {
-                return response()->json(['redirect' => true, 'success' => true], 200);
-            } else {
-                $message = 'Invalid username or password';
-                return response()->json(array('error' => $message), 400);
+        $first_name = $request->reg_first_name;
+        $last_name = $request->reg_last_name;
+        $email = $request->reg_email;
+        $phone = $request->reg_phone;
+        $password = $request->reg_password;
+        
+        if(User::where('email', '=', $email)->count() > 0){
+            return response()->json(['redirect' => false, 'success' => false , 'message'=>'Email Id already exists!'], 200);
+        }else if(User::where('phone', '=', $phone)->count() > 0){
+            return response()->json(['redirect' => false, 'success' => false , 'message'=>'Phone number already exists!'], 200);
+        }else{
+            $user = new User;
+            $user->first_name   = $first_name;
+            $user->last_name    = $last_name;
+            $user->email        = $email;
+            $user->phone        = $phone;
+            $user->password     = bcrypt($password);
+            
+            if($user->save()){
+                //send email
+                return response()->json(['redirect' => true, 'success' => true, 'message'=>'Registered successfully!'], 200);
             }
-        } else {
-            return response()->json($errors, 400);
         }
+        
+        
     }
 
     public function logout(Request $request){
         Auth::logout();
         $request->session()->flush();
         $request->session()->regenerate();
-
         return redirect('/');
     }
 

@@ -20,9 +20,15 @@
                                 {!! csrf_field() !!}
                                 <ul class="form_ul">
                                     <li>
-                                        <label for="name">Name</label>
-                                        <input value="{{ !empty($user_data->name) ? $user_data->name : ''}}" type="text" name="name" id="name" placeholder="Full Name" />
+                                        <label for="first_name">First Name</label>
+                                        <input value="{{ !empty($user_data->first_name) ? $user_data->first_name : ''}}" type="text" name="first_name" id="first_name" placeholder="First Name" />
                                     </li>
+                                    
+                                    <li>
+                                        <label for="last_name">Last Name</label>
+                                        <input value="{{ !empty($user_data->last_name) ? $user_data->last_name : ''}}" type="text" name="last_name" id="last_name" placeholder="Last Name" />
+                                    </li>
+                                    
                                     <li>
                                         <label for="email">Email ID</label>
                                         <input value="{{ !empty($user_data->email) ? $user_data->email : ''}}" type="email" disabled placeholder="Email Address" />

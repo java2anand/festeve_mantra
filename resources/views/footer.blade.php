@@ -95,23 +95,31 @@
 
                             <div class="lr_custom_forms">
                                 <p>Create an account with Email</p>
-                                <form id="register-form" action="{{ url('/register') }}" method="post" data-type="json">
+                                <form id="register-form">
                                     {!! csrf_field() !!}
+                                    <div id="register-msg"></div>
+                                    <div class="form-group">
+                                        <input type="text" name="reg_first_name" id="reg_first_name" class="form-control" placeholder="Enter Your First Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="reg_last_name" id="reg_last_name" class="form-control" placeholder="Enter Your Last Name">
+                                    </div>
                                     <div class="form-group">
                                         <input type="email" name="reg_email" id="reg_email" class="form-control" placeholder="Enter Your Email">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="reg_phone" class="form-control" placeholder="Password">
+                                        <input type="text" name="reg_phone" id="reg_phone" class="form-control" placeholder="Enter Your Phone Number">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Confirm Password">
+                                        <input type="password" name="reg_password" id="reg_password" class="form-control" placeholder="Enter Password">
                                     </div>
+                                    
                                     <div class="checkbox">
                                         <label class="lr_tc_label">
-                                            <input type="checkbox"> I Agree T&C, Privacy Policy.
+                                            <input type="checkbox" name="term_check" id="term_check"> I Agree T&C, Privacy Policy.
                                         </label>
                                     </div>
-                                    <button type="button" class="btn btn-default lr_primary_btn">Sign up</button>
+                                    <button type="submit" class="btn btn-default lr_primary_btn">Sign up</button>
                                 </form>
 
                                 <button class="lr_secondary_btns open_login_form">Already a member? Login Now</button>
@@ -206,7 +214,7 @@
 
 <!---------- fgacebook chat ------------>
 <!-- Load Facebook SDK for JavaScript -->
-<div id="fb-root"></div>
+<!--<div id="fb-root"></div>
 <script>(function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id))
@@ -215,14 +223,14 @@
         js.id = id;
         js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    }(document, 'script', 'facebook-jssdk'));</script>-->
 
 <!-- Your customer chat code -->
-<div class="fb-customerchat"
+<!--<div class="fb-customerchat"
      attribution=setup_tool
      page_id="1115804248623618"
      theme_color="#fa3c4c">
-</div>
+</div>-->
 <!---------- fgacebook chat End ------------>
 
 
@@ -363,24 +371,72 @@
             }
         });
         
-        /*$('form.login:first').on('submit', function (e) {
-            e.preventDefault();
-            var $this = $(this);
-            $.ajax({
-                type: $this.attr('method'),
-                url: $this.attr('action'),
-                data: $this.serializeArray(),
-                dataType: $this.data('type'),
-                success: function (response) {
-                    if (response.success) {
-                        location.reload();
-                    }
+        
+        /******* login-form start **********/
+        $("#register-form").validate({
+            errorElement: 'span',
+            rules: {
+                reg_first_name: {
+                    required: true
                 },
-                error: function (jqXHR) {
-                    var response = $.parseJSON(jqXHR.responseText);
-                    $("#login-msg").html('<p class="alert alert-danger">'+response.error+'</p>');
+                reg_last_name: {
+                    required: true
+                },
+                reg_email: {
+                    required: true,
+                    email:true
+                },
+                reg_phone: {
+                    required: true,
+                    number:true,
+                    minlength:10,
+                    maxlength:10
+                },
+                reg_password: {
+                    required: true,
+                    minlength:8
                 }
-            });
-        });*/
+            },
+            messages: {
+                reg_first_name: {
+                    required: "Enter first name!"
+                },
+                reg_last_name: {
+                    required: "Enter last name!"
+                },
+                reg_email: {
+                    required: "Enter your email id!",
+                    email:"Enter valid email id!"
+                },
+                reg_phone: {
+                    required: "Enter phone number!",
+                    number:"Enter valid phone number!",
+                    minlength:"Enter valid phone number!",
+                    maxlength:"Enter valid phone number!"
+                },
+                reg_password: {
+                    required: "Enter password!",
+                    minlength: "Password must be 8 characters in length!"
+                }
+            },
+            submitHandler: function (form) {
+                $.ajax({
+                    url: "{{ URL::route('register') }}",
+                    type: "POST",
+                    data: $("#register-form").serialize(),
+                    success: function (response) {
+                        if (response.success) {
+                            $("#register-msg").html('<p class="alert alert-success">'+response.message+'</p>');
+                            setTimeout(function(){
+                                location.reload();
+                            },2000);
+                        }else{
+                            $("#register-msg").html('<p class="alert alert-danger">'+response.message+'</p>');
+                        }
+                    }
+                });
+            }
+        });
+        
     });
 </script>

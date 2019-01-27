@@ -199,7 +199,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="event_right_bottom_inner">
-                                <h5>Share Event</h5>
+                                <h5>Share Now</h5>
                                 <p  class="event_social_links">
                                     <a class="facebook share-click" href="javascript:void(0)" ><img src="{{asset('ws/images/facebook.png')}}"></a>
                                     <a class="twitter share-click" href="javascript:void(0)" ><img src="{{asset('ws/images/twitter.png')}}"></a>
@@ -258,12 +258,6 @@
                                         </div>
                                     @endif
                                 @endforeach
-                            @else
-                            <div class="event_right_bottom_inner event_page_ads">
-                                <a href="javascript:void(0)">
-                                    <img src="{{ $image }}" class="img-responsive" alt="adsvertise banner">
-                                </a>
-                            </div>
                             @endif
 
                         </div>
@@ -417,7 +411,8 @@
                         window.open(openLink, 'Share', winOptions);
                         return false;
                     } else if (shareName == 'whatsapp') {
-                        var text = "<?php echo isset($event->description) ? substr(strip_tags($event->description),0,100) : '';  ?>";
+                        //var text = "<?php //echo isset($event->description) ? substr(strip_tags($event->description),0,100) : '';  ?>";
+                        var text = '';
                         var url = share_url;
                         var message = encodeURIComponent(text) + " - " + encodeURIComponent(url);
                         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
