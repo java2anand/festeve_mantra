@@ -172,6 +172,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Moloquent\MongodbServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -181,6 +182,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         //App\Providers\HelperServiceProvider::class,
+        
 
     ],
 
