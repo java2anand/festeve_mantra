@@ -85,11 +85,44 @@
                     <div class="col-sm-6 lr_left_section"></div>
                     <div class="col-sm-6 col-xs-12 lr_right_section">
                         <button type="button" class="close lr_close_btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        
+                        <div class="lr_login_outer"><!-- Login form -->
+                            <p class="lr_mail_heading">Login <span>Now!</span></p>
+                            <div class="lr_social_buttons">
+                                <a href="{{ url('/auth/facebook') }}"><img src="{{ asset('ws/images/fb_login.jpg')}}" alt="fb_login"></a>
+                                <!--<a href="{{ url('/auth/google') }}"><img src="{{ asset('ws/images/g_login.jpg')}}" alt="g_login"></a>-->
+                                <div class="lr_divider"><hr/><span>or</span></div>
+                            </div>
+
+                            <div class="lr_custom_forms">
+                                <p>Login using your email address</p>
+                                <form class="login" id="login-form" action="{{ url('/login') }}" method="post" data-type="json">
+                                    {!! csrf_field() !!}
+                                    <div id="login-msg"></div>
+                                    <div class="form-group">
+                                        <input type="text" name="login_email" id="login_email" class="form-control"  placeholder="Enter Your Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="login_password" id="login_password" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="checkbox">
+                                        <label class="lr_tc_label">
+                                            <input type="checkbox"> Remember me
+                                        </label>
+                                        <button type="button" class="lr_tc_label lr_forgot_pass open_forgot_pass_form">Forgot Password?</button>
+                                    </div>
+                                    <button type="submit" class="btn btn-default lr_primary_btn">Login</button>
+                                </form>
+
+                                <button class="lr_secondary_btns open_register_form">Not a member yet? Sign up</button>
+                            </div>
+                        </div><!-- login form ends -->
+                        
                         <div class="lr_register_outer"><!-- register form -->
                             <p class="lr_mail_heading">Sign up <span>Now!</span></p>
                             <div class="lr_social_buttons">
-                                <button><img src="{{ asset('ws/images/fb_login.jpg')}}" alt="fb_login"></button>
-                                <button><img src="{{ asset('ws/images/g_login.jpg')}}" alt="g_login"></button>
+                                <a href="{{ url('/auth/facebook') }}"><img src="{{ asset('ws/images/fb_login.jpg')}}" alt="fb_login"></a>
+                               
                                 <div class="lr_divider"><hr/><span>or</span></div>
                             </div>
 
@@ -126,39 +159,7 @@
                             </div>
                         </div><!-- register form ends -->
 
-                        <div class="lr_login_outer"><!-- Login form -->
-                            <p class="lr_mail_heading">Login <span>Now!</span></p>
-                            <div class="lr_social_buttons">
-                                <button><img src="{{ asset('ws/images/fb_login.jpg')}}" alt="fb_login"></button>
-                                <button><img src="{{ asset('ws/images/g_login.jpg')}}" alt="g_login"></button>
-                                <div class="lr_divider"><hr/><span>or</span></div>
-                            </div>
-
-                            <div class="lr_custom_forms">
-                                <p>Login using your email address</p>
-                                <form class="login" id="login-form" action="{{ url('/login') }}" method="post" data-type="json">
-                                    {!! csrf_field() !!}
-                                    <div id="login-msg"></div>
-                                    <div class="form-group">
-                                        <input type="text" name="login_email" id="login_email" class="form-control"  placeholder="Enter Your Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="login_password" id="login_password" class="form-control" placeholder="Password">
-                                    </div>
-                                    <div class="checkbox">
-                                        <label class="lr_tc_label">
-                                            <input type="checkbox"> Remember me
-                                        </label>
-                                        <button type="button" class="lr_tc_label lr_forgot_pass open_forgot_pass_form">Forgot Password?</button>
-                                    </div>
-                                    <button type="submit" class="btn btn-default lr_primary_btn">Login</button>
-                                </form>
-
-                                <button class="lr_secondary_btns open_register_form">Not a member yet? Sign up</button>
-                            </div>
-                        </div><!-- login form ends -->
-
-
+                        
                         <div class="lr_forgot_pass_outer"><!-- forgot password form -->
                             <p class="lr_mail_heading">Forgot <span>Password?</span></p>
 

@@ -34,5 +34,17 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    
+    'facebook' => [
+        'client_id'     => '2607252755968405',
+        'client_secret' => '214f607e6eaf8c8671902309342a00b1',
+        'redirect'      => 'http://localhost:8000/auth/facebook/callback',
+    ],
+    
+    'google' => [
+        'client_id'     => '77637080620-cmsi97jnfh0237b3aud2g91s272j67cd.apps.googleusercontent.com',
+        'client_secret' => 'Oc89dzgieXyEi1d_RhPZLfgD',
+        'redirect'      => 'http://localhost:8000/auth/google/callback'
+    ],
 
 ];

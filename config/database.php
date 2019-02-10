@@ -93,7 +93,7 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
         ],
-        'mongodb' => [
+        /*'mongodb' => [
             'driver'   => 'mongodb',
             'host'     => env('DB_HOST', 'localhost'),
             'port'     => env('DB_PORT', 27017),
@@ -105,7 +105,7 @@ return [
                 'db' => 'admin', // Sets the authentication database required by mongo 3
                 //['replicaSet' => 'replicaSetName'], // Connect to multiple servers or replica sets
             ]
-        ],
+        ],*/
 
     ],
 
